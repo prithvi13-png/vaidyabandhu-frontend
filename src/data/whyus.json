@@ -1,0 +1,38 @@
+[
+    {
+        "id":1,
+        "title":"Affordable Healthcare for All",
+        "icon":"flaticon-heartbeat",
+        "text":"Cost-effective medical treatments."
+    },
+    {
+        "id":2,
+        "title":"Highly Experienced Doctors",
+        "icon":"flaticon-group",
+        "text":"Specialists across all departments."
+    },
+        {
+        "id":3,
+        "title":"Network of Health Warriors",
+        "icon":"flaticon-heartbeat",
+        "text":"Doctors & hospitals committed to helping people."
+    },
+    {
+        "id":4,
+        "title":"Pan Karnataka Coverage",
+        "icon":"flaticon-group",
+        "text":"Services available across the state."
+    },
+        {
+        "id":5,
+        "title":"Seamless Healthcare Experience",
+        "icon":"flaticon-heartbeat",
+        "text":"One-stop solution for all medical needs."
+    },
+    {
+        "id":6,
+        "title":"₹49 Membership Card ",
+        "icon":"flaticon-group",
+        "text":"Unlocks up to 40% discounts on medical services."
+    }
+]

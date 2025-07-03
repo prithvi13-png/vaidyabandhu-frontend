@@ -1,0 +1,26 @@
+[
+    {
+        "id":1,
+        "icon":"fal fa-procedures",
+        "title":"Verified Doctors",
+        "value":100
+    },
+    {
+        "id":2,
+        "icon":"fal fa-file-medical-alt",
+        "title":"Specialties Covered",
+        "value":80
+    },
+    {
+        "id":3,
+        "icon":"fal fa-heartbeat",
+        "title":"Satisfied Patients",
+        "value":200
+    },
+    {
+        "id":4,
+        "icon":"fal fa-ambulance",
+        "title":"24/7 Support",
+        "value":100
+    }
+]

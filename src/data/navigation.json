@@ -1,0 +1,33 @@
+[
+   {
+  "id": 1,
+  "linkText": "Home",
+  "link": "/"
+},
+  {
+  "id": 2,
+  "link": "/about",
+                "linkText": "About Us"
+},
+  {
+  "id": 3,
+   "link": "/doctor-list",
+                "linkText": "Doctors"
+},
+ {
+  "id": 4,
+   "link": "/services",
+                "linkText": "Specializations"
+},
+ {
+  "id": 5,
+   "link": "/services",
+                "linkText": "Our Services"
+},
+   
+    {
+        "id": 6,
+        "link": "/contact",
+        "linkText": "Contact Us"
+    }
+]
