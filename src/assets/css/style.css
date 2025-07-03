@@ -286,12 +286,12 @@ body {
 
 .section {
   position: relative;
-  padding: 100px 0;
+  padding: 70px 0;
 }
 
-.section.section-padding {
+/* .section.section-padding {
   padding: 100px 0 70px;
-}
+} */
 
 .section.shape-after::after {
   content: '';
@@ -12127,7 +12127,7 @@ background-color: var(--thm-border);
 }
 
 .sigma_footer .sigma_footer-bottom {
-  border-top: 1px solid var(--thm-border);
+  border-top: 10px solid var(--thm-base);
   padding: 30px 0;
   margin-top: 30px;
   text-align: center;
@@ -12224,7 +12224,7 @@ background-color: var(--thm-border);
 /* style 5 */
 
 .sigma_footer.style-5 .sigma_footer-bottom{
-  margin-top: 50px;
+  /* margin-top: 50px; */
 }
 
 .sigma_footer.style-5.has-newsletter{
@@ -12243,17 +12243,17 @@ background-color: var(--thm-border);
   margin-top: 0;
 }
 
-.sigma_footer.style-5 .sigma_footer-bottom .sigma_footer-links li + li:before,
+/* .sigma_footer.style-5 .sigma_footer-bottom .sigma_footer-links li + li:before,
 .sigma_footer.style-6 .sigma_footer-bottom .sigma_footer-links li + li:before{
   content: "";
   position: absolute;
   left: 0;
-  top: 50%;
+  
   transform: translateY(-50%);
   width: 2px;
   height: 16px;
   background-color: #999b9f;
-}
+} */
 
 .sigma_footer.style-5 .sigma_info-wrapper.style-18{
   background-color: #1c1e22;
