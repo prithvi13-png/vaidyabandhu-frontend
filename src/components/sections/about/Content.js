@@ -10,7 +10,7 @@ class Content extends Component {
         return (
             <Fragment>
                 <Workprocess />
-                <div className="section bg-secondary-1" style={{ backgroundImage: "url(" + process.env.PUBLIC_URL + "/assets/img/bg-1.jpg)" }}>
+               <div className="section bg-secondary-1" >
                     <div className="container">
                         <Whyus />
                         <Counter />
