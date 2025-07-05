@@ -28,15 +28,20 @@ class Headertwo extends Navhelper {
                                         <li>
                                             <Link to="#">
                                                 <i className="fal fa-envelope" />
-                                                example@example.com
+                                            support@vaidyabandhu.com
                                             </Link>
                                         </li>
                                         <li>
                                             <Link to="#">
                                                 <i className="fal fa-map-marker-alt" />
-                                                Oakwood, Los Angeles, CA 1098
+                                          Bangalore
                                             </Link>
                                         </li>
+                                         <li>
+                      <a href="tel:+918535853589">
+                        <i className="fal fa-phone" /> +91 8535853589
+                      </a>
+                    </li>
                                     </ul>
                                 </div>
                                 <div className="sigma_header-top-contacts">
@@ -59,8 +64,8 @@ class Headertwo extends Navhelper {
                             <div className="navbar">
                                 <div className="sigma_logo-wrapper">
                                     <Link to="/" className="sigma_logo">
-                                        <img src={process.env.PUBLIC_URL + "/assets/img/logo.png"} alt="logo" />
-                                    </Link>
+                                                      <img src={process.env.PUBLIC_URL + "/assets/img/logo-final.png"} alt="logo" style={{ borderRadius: '20px' }} />
+                                                    </Link>
                                 </div>
                                 <div className="d-flex align-items-center">
                                     <ul className="navbar-nav">

@@ -1,8 +1,8 @@
 {
-  "name": "docfind",
+  "name": "VaidyaBandhu",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://metropolitanhost.com/themes/themeforest/react/docfind/",
+  "homepage": "https://metropolitanhost.com/VaidyaBandhu",
   "dependencies": {
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^11.2.7",

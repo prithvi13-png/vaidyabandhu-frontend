@@ -8,7 +8,7 @@ class Content extends Component {
         return (
             <Fragment>
                 <Contacticons />
-                <Contactform />
+                {/* <Contactform /> */}
                 <Contactmap />
             </Fragment>
         );

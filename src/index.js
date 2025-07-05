@@ -14,10 +14,10 @@ import './assets/css/style.css';
 import './index.css';
 
 ReactDOM.render(
-  <BrowserRouter basename={"/themes/themeforest/react/docfind/"}>
+  <BrowserRouter basename={"/VaidyaBandhu"}>
     <App />
   </BrowserRouter>,
-  document.getElementById('docfind')
+  document.getElementById('VaidyaBandhu')
 );
 
 // If you want to start measuring performance in your app, pass a function

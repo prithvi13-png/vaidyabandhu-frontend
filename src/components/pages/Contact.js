@@ -12,7 +12,7 @@ class Contact extends Component {
         return (
             <Fragment>
                 <MetaTags>
-                    <title>Docfind - Doctors Appointment Booking - React Template | {pagelocation}</title>
+                    <title>VaidyaBandhu</title>
                     <meta
                         name="description"
                         content="#"

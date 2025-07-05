@@ -11,7 +11,7 @@ class Hometwo extends Component {
         return (
             <Fragment>
                 <MetaTags>
-                    <title>Docfind - Doctors Appointment Booking - React Template | {pagelocation}</title>
+                    <title>VaidyaBandhu - Doctors Appointment Booking - React Template | {pagelocation}</title>
                     <meta
                         name="description"
                         content="#"

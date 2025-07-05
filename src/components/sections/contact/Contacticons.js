@@ -15,7 +15,9 @@ class Contacticons extends Component {
                                 </div>
                                 <div className="sigma_info-description">
                                     <h5>Our Address</h5>
-                                    <p>PSD Building, 2 Tower St, United States.</p>
+                                    <p>Vaidya Bandhu Healthcare Foundation (A Unit of MyCompanyon Healthcare Pvt Ltd)
+No. 93, 3rd Floor, 1st Cross, Wilson Garden Housing Society, Kothnur Main Road, J.P. Nagar 7th Phase, Bangalore - 560078
+Karnataka, India.</p>
                                 </div>
                             </div>
                         </div>
@@ -28,8 +30,8 @@ class Contacticons extends Component {
                                 </div>
                                 <div className="sigma_info-description">
                                     <h5>Our Phone</h5>
-                                    <p>Telephone: 0029129102320</p>
-                                    <p>Mobile: 000 2324 39493</p>
+                                    {/* <p>Telephone: 0029129102320</p> */}
+                                    <p>Mobile: +91 8535853589</p>
                                 </div>
                             </div>
                         </div>
@@ -42,8 +44,8 @@ class Contacticons extends Component {
                                 </div>
                                 <div className="sigma_info-description">
                                     <h5>Our Email</h5>
-                                    <p>Main Email: example@example.com</p>
-                                    <p>Inquiries: example@example.com</p>
+                                    <p>support@vaidyabandhu.com</p>
+                                    {/* <p>Inquiries: example@example.com</p> */}
                                 </div>
                             </div>
                         </div>

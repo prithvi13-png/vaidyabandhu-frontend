@@ -1,20 +1,33 @@
 [
-    {
-        "id":1,
-        "icon":"flaticon-pharmacy",
-        "title":"Search Best Online <br> Professional",
-        "text":"It is a long established fact that a reader will be distracted by the readable."
-    },
-    {
-        "id":2,
-        "icon":"flaticon-event",
-        "title":"Get Instant <br> Appointment",
-        "text":"It is a long established fact that a reader will be distracted by the readable."
-    },
-    {
-        "id":3,
-        "icon":"flaticon-doctor",
-        "title":"Leave Your <br> Feedback",
-        "text":"It is a long established fact that a reader will be distracted by the readable."
-    }
+  {
+    "id": 1,
+    "icon": "flaticon-pharmacy",
+    "title": "Get Your ₹49 <br> Membership Card",
+    "points": [
+      "Fill out the membership form (Name, Address, Phone Number; PAN & Aadhaar optional).",
+      "Pay ₹49 (valid for 1 year).",
+      "Receive your membership card at your doorstep."
+    ]
+  },
+  {
+    "id": 2,
+    "icon": "flaticon-event",
+    "title": "Access Quality Healthcare <br> at Affordable Rates",
+    "points": [
+      "Call or Email Us – Tell us your medical concern.",
+      "Consult Top Doctors – We connect you with the best specialists.",
+      "Avail Up to 40% Discounts – On surgeries, treatments, and diagnostics.",
+      "Visit Partner Hospitals & Diagnostic Centers – Use your membership card to get benefits."
+    ]
+  },
+  {
+    "id": 3,
+    "icon": "flaticon-doctor",
+    "title": "Get Complete <br> Healthcare Support",
+    "points": [
+      "Free Medical Advice – Talk to our experts anytime.",
+      "Best Treatment Plans – We help you choose the right hospital and doctor.",
+      "Priority Support for Critical Cases – Quick access to necessary treatments."
+    ]
+  }
 ]
