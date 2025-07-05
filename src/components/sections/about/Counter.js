@@ -6,7 +6,7 @@ import VisibilitySensor from "react-visibility-sensor";
 function Counter(props) {
     const [focus, setFocus] = React.useState(false);
     return (
-        <div className="sigma_counter-wrapper margin-negative bg-primary-1 style-5" style={{ backgroundImage: "url(" + process.env.PUBLIC_URL + "/assets/img/pattern-2.png)" }}>
+        <div className="sigma_counter-wrapper margin-negative bg-primary-1 style-5">
             <div className="row">
                 {/* Data */}
                 {counter.map((item, i) => (

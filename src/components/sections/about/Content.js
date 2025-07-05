@@ -4,25 +4,28 @@ import Team from './Team';
 import Whyus from './Whyus';
 import Workprocess from './Workprocess';
 import Galleryslider from '../../layouts/Galleryslider';
+import LeadershipInline from './Leadership';
+import OurStory from './Ourstory';
+import WhoCanBenefit from './Benifit';
 
 class Content extends Component {
     render() {
         return (
             <Fragment>
-                <Workprocess />
-               <div className="section bg-secondary-1" >
+                 <LeadershipInline />
+                  <OurStory/>
+                     <div className="section bg-secondary-1" >
                     <div className="container">
                         <Whyus />
                         <Counter />
                     </div>
                 </div>
-                <div className="section pb-0 bg-gray" />
-                <Team />
-                <div className="section section-padding p-0">
-                    <div className="container-fluid p-0">
-                        <Galleryslider />
-                    </div>
-                </div>
+              
+           
+                  <Workprocess />
+            
+                    <WhoCanBenefit/>
+            
             </Fragment>
         );
     }

@@ -1,22 +1,86 @@
 [
     {
         "id":1,
-        "title":"Destinations"
+        "title":"Orthopedics"
     },
     {
         "id":2,
-        "title":"Hotels"
+        "title":"Cardiology"
     },
     {
         "id":3,
-        "title":"News"
+        "title":"Spine Care"
     },
     {
         "id":4,
-        "title":"StartUp"
+        "title":"Cancer Care / Oncology"
     },
     {
         "id":5,
-        "title":"Strategy"
+        "title":"Neurology"
+    },
+      {
+        "id":6,
+        "title":"Urology"
+    },
+    {
+        "id":7,
+        "title":"Gastroenterology"
+    },
+    {
+        "id":8,
+        "title":"Pulmonology"
+    },
+    {
+        "id":9,
+        "title":"Dermatology"
+    },
+    {
+        "id":10,
+        "title":"Obstetrics & Gynecology"
+    },
+     {
+        "id":11,
+        "title":"Pediatrics"
+    },
+      {
+        "id":12,
+        "title":"Endocrinology"
+    },
+    {
+        "id":13,
+        "title":"Rheumatology"
+    },
+    {
+        "id":14,
+        "title":"ENT (Ear, Nose & Throat)"
+    },
+    {
+        "id":15,
+        "title":"Psychiatry"
+    },
+    {
+        "id":16,
+        "title":"Plastic & Cosmetic Surgery"
+    },
+     {
+        "id":17,
+        "title":"Hematology"
+    },
+      {
+        "id":18,
+        "title":"Nephrology"
+    },
+    {
+        "id":19,
+        "title":"Geriatrics"
+    },
+    {
+        "id":20,
+        "title":"Infectious Diseases"
+    },
+    {
+        "id":21,
+        "title":"Sexology"
     }
 ]
