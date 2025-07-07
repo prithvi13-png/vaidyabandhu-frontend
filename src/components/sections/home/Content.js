@@ -19,7 +19,7 @@ class Content extends Component {
             <Fragment>
                 <Banner />
                 <Searchform />
-                
+
                 <Services />
                 <div className="section bg-secondary-1" >
                     <div className="container">
@@ -27,31 +27,11 @@ class Content extends Component {
                         <Counter />
                     </div>
                 </div>
-                <div className="section pb-0 bg-gray" />
-                <div className="section section-padding bg-gray">
-                    <div className="container">
-                        <div className="section-title centered">
-                            <span className="subtitle">What We do</span>
-                            <h3 className="title">Our Services</h3>
-                        </div>
-                        <Servicesimage />
-                        <div className="margin-negative">
-                            <div className="row">
-                                <div className="col-lg-6">
-                                    <Newsletter />
-                                </div>
-                                <div className="col-lg-6">
-                                    <Clients />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                <div style={{ marginTop: "150px" }}>
+                    <Workprocess />
                 </div>
-                <div className="section section-padding" />
-                <Workprocess />
-                <Team />
-                <Blogs />
-                <Testimonials />
+                  <Testimonials />
+              
                 <div className="container-fluid p-0">
                     <Galleryslider />
                 </div>

@@ -1,11 +1,11 @@
 [
     {
         "id": 1,
-        "name": "Matthew Reyes",
+        "name": "Dr. Ravi Narayan",
         "image": "assets/img/clinic-grid/348x350-0.jpg",
         "rating": 5,
         "specialist": "Obstetrics & Gynaecology",
-        "location": "Hong Kong",
+        "location": "Bangalore",
         "qualification": "University of California San Francisco Parnassus Campus",
         "experience": 5,
         "available": [

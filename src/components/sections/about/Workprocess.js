@@ -5,7 +5,7 @@ import workprocess from "../../../data/workprocess.json";
 class Workprocess extends Component {
     render() {
         return (
-            <div className="section section-padding top-100">
+            <div className="section section-padding top-40">
                 <div className="container">
                     <div className="row align-items-center mb-5">
                         <div className="col-lg-5">

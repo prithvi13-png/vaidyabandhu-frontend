@@ -1,11 +1,11 @@
 [
     {
         "id": 1,
-        "name": "Matthew Reyes",
-        "image":"assets/img/doctors-grid/348x350-0.jpg",
+        "name": "Dr. Ravi Narayan",
+        "image":"assets/img/dc.jpg",
         "rating": 5,
         "specialist": "Obstetrics & Gynaecology",
-        "location": "Hong Kong",
+        "location": "Bangalore",
         "qualification": "University of California San Francisco Parnassus Campus",
         "experience": 5,
         "available": [
@@ -66,11 +66,11 @@
     },
     {
         "id": 2,
-        "name": "Rebecca Gilbert",
-        "image":"assets/img/doctors-grid/348x350-1.jpg",
+        "name": "Dr. Vinay Raj Shetty",
+        "image":"assets/img/dc3.jpg",
         "rating": 4,
-        "specialist": "Obstetrics & Gynaecology",
-        "location": "Hong Kong",
+        "specialist": "Oncologist",
+        "location": "Bangalore",
         "qualification": "University of California San Francisco Parnassus Campus",
         "experience": 5,
         "available": [
@@ -131,11 +131,11 @@
     },
     {
         "id": 3,
-        "name": "Bobby Stanley",
-        "image":"assets/img/doctors-grid/348x350-2.jpg",
+        "name": "Dr. Nirmala Rao",
+        "image":"assets/img/doc-1.jpeg",
         "rating": 5,
-        "specialist": "Obstetrics & Gynaecology",
-        "location": "Hong Kong",
+        "specialist": "General Surgeon",
+        "location": "Bangalore",
         "qualification": "University of California San Francisco Parnassus Campus",
         "experience": 5,
         "available": [

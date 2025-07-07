@@ -4,6 +4,7 @@ const OurStory = () => {
   return (
     <section
       style={{
+        
         padding: '5px 5px', /* Increased vertical padding for more impact */
         background: 'linear-gradient(to bottom, #FDF7F0, #F8F0E8)', /* Subtle warm gradient background */
         fontFamily: 'Lora, serif', /* Elegant serif font */
@@ -15,6 +16,7 @@ const OurStory = () => {
       <div
         className="container" /* Assuming 'container' is a global utility class */
         style={{
+           marginBottom: '40px', 
           maxWidth: '1200px', /* Wider max-width for a more spacious feel */
           margin: '0 auto',
           padding: '0 10px', /* Increased horizontal padding */
@@ -36,12 +38,12 @@ const OurStory = () => {
           >
             <h2
               style={{
-                fontSize: '2.1rem', /* Larger, more impactful title */
+                fontSize: '2.0rem', /* Larger, more impactful title */
                 fontWeight: 700,
-                marginBottom: '2.5rem', /* More space below title */
+                // marginBottom: '2.5rem', /* More space below title */
                 color: '#8B4513', /* Rich, warm brown for headings */
                 position: 'relative', /* For the pseudo-element underline */
-                paddingBottom: '25px', /* Space for the custom underline */
+                paddingBottom: '15px', /* Space for the custom underline */
                 textAlign: 'center',
               }}
             >
@@ -74,11 +76,11 @@ const OurStory = () => {
                 }}
               ></span>
             </h2>
-            <p style={{ marginBottom: '2.5rem', fontSize: '1.25rem', color: '#4A4A4A' }}> 
+            <p style={{  fontSize: '1.25rem', color: '#4A4A4A' }}> 
               Healthcare is a basic necessity, yet millions of people struggle to afford quality medical care.
               High treatment costs, lack of guidance, and financial stress prevent many from getting the care they need.
             </p>
-            <p style={{ marginBottom: '2.5rem', fontSize: '1.25rem', color: '#4A4A4A' }}>
+            <p style={{  fontSize: '1.25rem', color: '#4A4A4A' }}>
               Understanding these challenges, <strong style={{ color: '#C05621' }}>Vaidya Bandhu was created to bridge the gap between patients and affordable healthcare.</strong>
               Our goal is simple: No one should suffer due to financial limitations.
             </p>
@@ -88,7 +90,7 @@ const OurStory = () => {
           <div
             className="col-12"
             style={{
-              marginBottom: '40px',
+              marginBottom: '20px',
               padding: '20px',
               backgroundColor: '#FFFFFF',
               borderRadius: '20px',
@@ -98,12 +100,12 @@ const OurStory = () => {
           >
             <h2
               style={{
-                fontSize: '2.1rem',
+                fontSize: '2.0rem',
                 fontWeight: 700,
-                marginBottom: '2.5rem',
+                
                 color: '#8B4513',
                 position: 'relative',
-                paddingBottom: '25px',
+                paddingBottom: '15px',
                 textAlign: 'center',
               }}
             >
@@ -141,10 +143,10 @@ const OurStory = () => {
                 color: '#C05621',
                 fontSize: '1.5rem', /* Even larger font size for vision statement */
                 textAlign: 'center',
-                padding: '20px', /* More padding for emphasis */
+                padding: '10px', /* More padding for emphasis */
                 backgroundColor: '#FDF7F0', /* Background matches main section for a subtle highlight */
                 borderRadius: '15px', /* More rounded corners */
-                border: '3px solid #D4A373', /* Solid border matching primary accent */
+                border: '3px', /* Solid border matching primary accent */
                 boxShadow: '0 10px 25px rgba(0, 0, 0, 0.15)', /* More prominent shadow */
               }}
             >
@@ -165,12 +167,12 @@ const OurStory = () => {
           >
             <h2
               style={{
-                fontSize: '2.1rem',
+                fontSize: '2.0rem',
                 fontWeight: 700,
-                marginBottom: '2.5rem',
+                marginBottom: '1.5rem',
                 color: '#8B4513',
                 position: 'relative',
-                paddingBottom: '25px',
+                paddingBottom: '15px',
                 textAlign: 'center',
               }}
             >
@@ -202,7 +204,7 @@ const OurStory = () => {
                 }}
               ></span>
             </h2>
-            <p style={{ marginBottom: '2.5rem', fontSize: '1.25rem', color: '#4A4A4A' }}>
+            <p style={{ marginBottom: '1.5rem', fontSize: '1.25rem', color: '#4A4A4A' }}>
               To empower patients with timely medical guidance, trusted hospital access, and compassionate support throughout their healthcare journey.
             </p>
             <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>

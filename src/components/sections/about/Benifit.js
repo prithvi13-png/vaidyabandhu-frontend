@@ -32,7 +32,7 @@ const WhoCanBenefit = () => {
         backgroundColor: '#FDF7F0', /* Very light, warm off-white background */
         fontFamily: 'Georgia, serif', /* A slightly more classic, warm font */
         color: '#4A4A4A', /* Soft dark gray for main text */
-        lineHeight: '1.7', /* Enhanced line spacing for readability */
+        lineHeight: '1.4', /* Enhanced line spacing for readability */
         boxShadow: '0 6px 20px rgba(0, 0, 0, 0.08)', /* Slightly more prominent, softer shadow for the whole section */
       }}
     >
@@ -46,12 +46,12 @@ const WhoCanBenefit = () => {
       >
         <h2
           style={{
-            fontSize: '2.1rem', // Larger, more impactful title
+            fontSize: '2.0rem', // Larger, more impactful title
             fontWeight: 700,
-            marginBottom: '2.5rem', // More space below title
+            marginBottom: '1.5rem', // More space below title
             color: '#8B4513', // Rich, warm brown for headings
             position: 'relative', // For the custom underline
-            paddingBottom: '25px', // Space for the custom underline
+            paddingBottom: '15px', // Space for the custom underline
             textAlign: 'center',
           }}
         >
@@ -85,7 +85,7 @@ const WhoCanBenefit = () => {
           ></span>
         </h2>
 
-        <ul style={{ listStyle: 'none', padding: 0, margin: 0, marginTop: '50px' }}> {/* Increased margin-top for more separation */}
+        <ul style={{ listStyle: 'none', padding: 0, margin: 0, marginTop: '20px' }}> {/* Increased margin-top for more separation */}
           {[
             'Patients who need affordable treatments & surgeries',
             'Families looking for trusted doctors & hospitals',
@@ -101,7 +101,7 @@ const WhoCanBenefit = () => {
                 display: 'flex',
                 alignItems: 'flex-start', // Align checkmark to the top of the text
                 backgroundColor: '#FFFFFF', // Pure white background for each item card
-                padding: '25px 30px', // More ample padding for a substantial card effect
+                padding: '15px 20px', // More ample padding for a substantial card effect
                 borderRadius: '15px', // More rounded corners for a softer look
                 boxShadow: '0 5px 15px rgba(0, 0, 0, 0.08)', // More prominent, soft shadow
                 borderLeft: `6px solid ${index % 2 === 0 ? '#C05621' : '#D4A373'}`, // Alternating border color for visual interest
