@@ -59,7 +59,7 @@ class Content extends Component {
                                             <div className="row no-gutters">
                                                 <div className="col-md-3">
                                                     <div className="sigma_team-thumb">
-                                                        <img src={process.env.PUBLIC_URL + "/" + item.photo} alt={item.name} />
+                                                        <img src={item.photo} alt={item.name} />
                                                     </div>
                                                 </div>
                                                 <div className="col-md-5 col-sm-6">
@@ -76,7 +76,7 @@ class Content extends Component {
                                                         <div className="d-flex align-items-center mt-4">
                                                             <Link to={"/doctor-details/" + item.id} className="sigma_btn">View More</Link>
                                                             <div className="sigma_team-controls ml-3">
-                                                                <Link to="#" className={this.state.favorite === item ? 'active' : ''} onClick={(e) => this.favoriteTrigger(item)}>
+                                                                <Link to="#" className={this.state.favorite === item ? 'active' : ''}>
                                                                     <i className="fal fa-heart" />
                                                                 </Link>
                                                             </div>
@@ -102,7 +102,7 @@ class Content extends Component {
                                                             </span>
                                                         </div>
                                                         <div className="sigma_rating">
-                                                            {Rating(item.rating || 0)}
+                                                            {Rating(item.ratings || 0)}
                                                             <span className="ml-3">({item?.reviews?.length})</span>
                                                         </div>
                                                     </div>
