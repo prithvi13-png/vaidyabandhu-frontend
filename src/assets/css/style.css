@@ -8692,7 +8692,7 @@ background-color: var(--thm-border);
 }
 
 .sigma_team .sigma_team-categories a+a {
-  margin-left: 10px;
+  /* margin-left: 10px; */
 }
 
 .sigma_team .sigma_team-categories a {
