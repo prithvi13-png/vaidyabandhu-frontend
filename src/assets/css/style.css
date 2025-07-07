@@ -11998,7 +11998,7 @@ background-color: var(--thm-border);
 /* Style 8 */
 
 .sigma_banner.style-8 .title{
-  font-size: 72px;
+  font-size: 44px;
 }
 
 .sigma_banner-info{
@@ -14766,7 +14766,7 @@ background-color: var(--thm-border);
 
   .sigma_banner .title,
   .sigma_banner.style-8 .title {
-    font-size: 42px;
+    font-size: 32px;
   }
 
   /* banner style 3 */

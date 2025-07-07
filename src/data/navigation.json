@@ -14,19 +14,24 @@
    "link": "/doctor-list",
                 "linkText": "Doctors"
 },
- {
+  {
   "id": 4,
+   "link": "/clinic-list",
+                "linkText": "Diagnostics"
+},
+ {
+  "id": 5,
    "link": "/services",
                 "linkText": "Specializations"
 },
  {
-  "id": 5,
+  "id": 6,
    "link": "/services",
                 "linkText": "Our Services"
 },
    
     {
-        "id": 6,
+        "id": 7,
         "link": "/contact",
         "linkText": "Contact Us"
     }

@@ -68,7 +68,7 @@ const ServicesPreview = () => {
   }, []);
 
   const sectionStyle = {
-    padding: "80px 20px",
+    padding: "40px 20px",
     background: "linear-gradient(135deg, #e0f7fa 0%, #ffffff 100%)",
     textAlign: "center",
     overflow: "hidden",

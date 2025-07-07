@@ -12,6 +12,11 @@ import Team from './Team';
 import Blogs from './Blogs';
 import Testimonials from './Testimonials';
 import Galleryslider from '../../layouts/Galleryslider';
+import ClientLogosCarousel from './ClientLogosCarousel';
+import HealthcareReality from './HealthcareReality';
+import MembershipCardBenefits from './MembershipCardBenefits';
+import FAQSection from './FAQSection';
+import DoctorsComponent from './DoctorsComponent';
 
 class Content extends Component {
     render() {
@@ -19,6 +24,7 @@ class Content extends Component {
             <Fragment>
                 <Banner />
                 <Searchform />
+                <HealthcareReality/>
 
                 <Services />
                 <div className="section bg-secondary-1" >
@@ -30,11 +36,14 @@ class Content extends Component {
                 <div style={{ marginTop: "150px" }}>
                     <Workprocess />
                 </div>
+                <MembershipCardBenefits/>
+                <DoctorsComponent/>
+                <ClientLogosCarousel/>
                   <Testimonials />
-              
-                <div className="container-fluid p-0">
+              <FAQSection/>
+                {/* <div className="container-fluid p-0">
                     <Galleryslider />
-                </div>
+                </div> */}
             </Fragment>
         );
     }
