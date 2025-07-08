@@ -14,9 +14,11 @@ import './assets/css/style.css';
 import './index.css';
 
 ReactDOM.render(
+  <React.StrictMode>
   <BrowserRouter basename={"/VaidyaBandhu"}>
     <App />
-  </BrowserRouter>,
+  </BrowserRouter>
+  </React.StrictMode>,
   document.getElementById('VaidyaBandhu')
 );
 
