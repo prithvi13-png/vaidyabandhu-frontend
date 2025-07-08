@@ -310,7 +310,7 @@ const Content = () => {
                     border: "1px solid #e9ecef",
                     maxWidth: "600px",
                     margin: "0 auto",
-                    position: "relative"
+                    position: "relative",
                   }}
                 >
                   <input
@@ -346,7 +346,7 @@ const Content = () => {
                         alignItems: "center",
                         justifyContent: "center",
                         lineHeight: "1",
-                        zIndex: 10
+                        zIndex: 10,
                       }}
                     >
                       ×
@@ -362,7 +362,7 @@ const Content = () => {
                       justifyContent: "center",
                       padding: "0",
                       position: "relative",
-                      zIndex: 5
+                      zIndex: 5,
                     }}
                   >
                     <i
@@ -476,9 +476,11 @@ const Content = () => {
                           className="form-control form-control-sm mb-3"
                           placeholder="Search Speciality"
                           value={specialtySearchTerm}
-                          onChange={(e) => setSpecialtySearchTerm(e.target.value)}
+                          onChange={(e) =>
+                            setSpecialtySearchTerm(e.target.value)
+                          }
                           style={{
-                            paddingRight: specialtySearchTerm ? "35px" : "12px"
+                            paddingRight: specialtySearchTerm ? "35px" : "12px",
                           }}
                         />
                         {specialtySearchTerm && (
@@ -498,7 +500,7 @@ const Content = () => {
                               display: "flex",
                               alignItems: "center",
                               justifyContent: "center",
-                              zIndex: 10
+                              zIndex: 10,
                             }}
                           >
                             ×
@@ -545,9 +547,11 @@ const Content = () => {
                           className="form-control form-control-sm mb-3"
                           placeholder="Search Cities"
                           value={locationSearchTerm}
-                          onChange={(e) => setLocationSearchTerm(e.target.value)}
+                          onChange={(e) =>
+                            setLocationSearchTerm(e.target.value)
+                          }
                           style={{
-                            paddingRight: locationSearchTerm ? "35px" : "12px"
+                            paddingRight: locationSearchTerm ? "35px" : "12px",
                           }}
                         />
                         {locationSearchTerm && (
@@ -567,7 +571,7 @@ const Content = () => {
                               display: "flex",
                               alignItems: "center",
                               justifyContent: "center",
-                              zIndex: 10
+                              zIndex: 10,
                             }}
                           >
                             ×
@@ -704,71 +708,78 @@ const Content = () => {
                 </div>
               ) : (
                 <>
-                 {currentDepartments.map((item) => (
-                                    <div className="sigma_team style-17" key={item.id}>
-                                        <div className="row no-gutters">
-                                            <div className="col-md-3">
-                                                <div className="sigma_team-thumb">
-                                                    <img src={item.photo} alt={item.name} />
-                                                </div>
-                                            </div>
-                                            <div className="col-md-5 col-sm-6">
-                                                <div className="sigma_team-body">
-                                                    <h5>
-                                                        <Link to={`/doctor-details/${item.id}`}>{item.name}</Link>
-                                                    </h5>
-                                                    <div className="sigma_team-categories">
-                                                        {item.speciality?.map((specialityItem, index) => (
-                                                            <Link
-                                                                to={`/doctor-details/${specialityItem.id}`}
-                                                                className="sigma_team-category"
-                                                                key={index}
-                                                            >
-                                                                {specialityItem.description}
-                                                                {index !== item.speciality.length - 1 && ', '}
-                                                            </Link>
-                                                        ))}
-                                                    </div>
-                                                    <p>{item.qualification}</p>
-                                                    <div className="d-flex align-items-center mt-4">
-                                                        <Link to={`/doctor-details/${item.id}`} className="sigma_btn">
-                                                            View More
-                                                        </Link>
-                                                        <div className="sigma_team-controls ml-3">
-                                                            <Link to="#" className="">
-                                                                <i className="fal fa-heart" />
-                                                            </Link>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div className="col-md-4 col-sm-6">
-                                                <div className="sigma_team-footer">
-                                                    <div className="sigma_team-info">
-                                                        <span>
-                                                            <i className="fal fa-map-marker-alt" />
-                                                            {item.location || 'Not specified'}
-                                                        </span>
-                                                        <span>
-                                                            <i className="fal fa-award" />
-                                                            {item.experience} Yrs Experience
-                                                        </span>
-                                                        <span>
-                                                            <i className="fal fa-calendar" />
-                                                            {item.available?.map((data, i) => (
-                                                                <b key={i}>{data}, </b>
-                                                            ))}
-                                                        </span>
-                                                    </div>
-                                                    <div className="sigma_rating">
-                                                        {Rating(item.ratings || 0)}
-                                                        <span className="ml-3">({item.reviews?.length})</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                  {currentDepartments.map((item) => (
+                    <div className="sigma_team style-17" key={item.id}>
+                      <div className="row no-gutters">
+                        <div className="col-md-3">
+                          <div className="sigma_team-thumb">
+                            <img src={item.photo} alt={item.name} />
+                          </div>
+                        </div>
+                        <div className="col-md-5 col-sm-6">
+                          <div className="sigma_team-body">
+                            <h5>
+                              <Link to={`/doctor-details/${item.id}`}>
+                                {item.name}
+                              </Link>
+                            </h5>
+                            <div className="sigma_team-categories">
+                              {item.speciality?.map((specialityItem, index) => (
+                                <Link
+                                  to={`/doctor-details/${specialityItem.id}`}
+                                  className="sigma_team-category"
+                                  key={index}
+                                >
+                                  {specialityItem.description}
+                                  {index !== item.speciality.length - 1 && ", "}
+                                </Link>
+                              ))}
+                            </div>
+                            <p>{item.qualification}</p>
+                            <div className="d-flex align-items-center mt-4">
+                              <Link
+                                to={`/doctor-details/${item.id}`}
+                                className="sigma_btn"
+                              >
+                                View More
+                              </Link>
+                              <div className="sigma_team-controls ml-3">
+                                <Link to="#" className="">
+                                  <i className="fal fa-heart" />
+                                </Link>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div className="col-md-4 col-sm-6">
+                          <div className="sigma_team-footer">
+                            <div className="sigma_team-info">
+                              <span>
+                                <i className="fal fa-map-marker-alt" />
+                                {item.location || "Not specified"}
+                              </span>
+                              <span>
+                                <i className="fal fa-award" />
+                                {item.experience} Yrs Experience
+                              </span>
+                              <span>
+                                <i className="fal fa-calendar" />
+                                {item.available?.map((data, i) => (
+                                  <b key={i}>{data}, </b>
                                 ))}
+                              </span>
+                            </div>
+                            <div className="sigma_rating">
+                              {Rating(item.ratings || 0)}
+                              <span className="ml-3">
+                                ({item.reviews?.length})
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
 
                   {/* Pagination */}
                   {departments.length > itemPerpage && (
