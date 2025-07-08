@@ -111,7 +111,7 @@ const FAQSection = () => {
       <div
         style={{
           width: "90%",
-          maxWidth: "900px", // Max width for content
+          maxWidth: "1200px", // Max width for content
           margin: "0 auto",
           position: "relative",
           zIndex: 1,

@@ -72,12 +72,12 @@ const HowToBecomeMember = () => {
       >
         <h2
           style={{
-            fontSize: 'clamp(22px, 4.5vw, 40px)', /* Larger, responsive title size */
+            fontSize: 'clamp(22px, 4.5vw, 38px)', /* Larger, responsive title size */
             fontWeight: 800, // Bolder
             color: '#004d4f', /* Dark teal for headings */
             position: 'relative',
             paddingBottom: '20px', // More space for underline
-            marginBottom: '40px', // More space below title
+            marginBottom: '15px', // More space below title
             transition: baseTransition,
           }}
           onMouseEnter={() => setHoveredHeading(true)}
@@ -85,34 +85,7 @@ const HowToBecomeMember = () => {
         >
           How to Become a <span style={{ color: '#007a7e' }}>Member</span>
           {/* Custom double underline effect for elegance */}
-          <span
-            style={{
-              content: '""',
-              position: 'absolute',
-              bottom: '12px', // Position first line
-              left: '50%',
-              transform: 'translateX(-50%)',
-              width: hoveredHeading ? '120px' : '90px', // Expand on hover
-              height: '4px', // Thicker line
-              backgroundColor: '#007a7e', // Primary teal accent
-              borderRadius: '2px',
-              transition: baseTransition,
-            }}
-          ></span>
-          <span
-            style={{
-              content: '""',
-              position: 'absolute',
-              bottom: '0', // Position second line
-              left: '50%',
-              transform: 'translateX(-50%)',
-              width: hoveredHeading ? '80px' : '60px', // Expand on hover
-              height: '4px', // Thicker line
-              backgroundColor: 'rgba(0, 122, 126, 0.6)', // Lighter primary teal accent
-              borderRadius: '2px',
-              transition: baseTransition,
-            }}
-          ></span>
+        
         </h2>
 
         <div

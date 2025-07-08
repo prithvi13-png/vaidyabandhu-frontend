@@ -24,7 +24,7 @@ const MembershipCardBenefits = () => {
   return (
     <div
       style={{
-        padding: "20px 20px",
+        padding: "40px 20px",
         background: "linear-gradient(135deg, #e0f7fa 0%, #ffffff 100%)", // Light, inviting gradient
         textAlign: "center", // Overall text alignment for the section
         overflow: "hidden",
@@ -77,7 +77,7 @@ const MembershipCardBenefits = () => {
               transition: "opacity 0.8s ease-out 0.2s, transform 0.8s ease-out 0.2s",
             }}
           >
-            To make affordable healthcare accessible to all, we offer a ₹49 membership card, valid for 1 year.
+            To make affordable healthcare accessible to all,<br/> we offer a ₹49 membership card, valid for 1 year.
           </p>
       <div
         style={{
