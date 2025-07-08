@@ -5,6 +5,10 @@ import { Link } from 'react-router-dom';
 import serviceblock from '../../../data/service/service.json';
 import { getFilteredPosts } from '../../../helper/serviceHelper';
 import Pagination from "react-js-pagination";
+import ServicesPreview from '../home/Services';
+import HowToBecomeMember from './HowToBecomeMember';
+import MembershipCardBenefits from '../home/MembershipCardBenefits';
+import ClientLogosCarousel from '../home/ClientLogosCarousel';
 
 class Content extends Component {
     constructor(props) {
@@ -41,33 +45,10 @@ class Content extends Component {
         });
         return (
             <Fragment>
-                <div className="section section-padding">
-                    <div className="container">
-                        <div className="row">
-                            {/* Data */}
-                            {paginationData}
-                            {/* Data */}
-                        </div>
-                        {/* Pagination */}
-                        <Pagination
-                            activePage={this.state.activePage}
-                            itemsCountPerPage={this.state.itemPerpage}
-                            totalItemsCount={this.state.data.length}
-                            pageRangeDisplayed={this.state.data.length}
-                            onChange={this.handlePageChange.bind(this)}
-                            innerClass="pagination"
-                            activeClass="active"
-                            itemClass="page-item"
-                            linkClass="page-link"
-                        />
-                        {/* Pagination */}
-                    </div>
-                </div>
-                <div className="section pt-0">
-                    <div className="container-fluid p-0">
-                        <Galleryslider />
-                    </div>
-                </div>
+                <ServicesPreview/>
+             <HowToBecomeMember/>
+             <MembershipCardBenefits/>
+               <ClientLogosCarousel/>
                 <Testimonials />
             </Fragment>
         );

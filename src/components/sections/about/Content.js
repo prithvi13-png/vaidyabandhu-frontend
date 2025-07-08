@@ -12,7 +12,7 @@ class Content extends Component {
     render() {
         return (
             <Fragment>
-                 <LeadershipInline />
+               
                   <OurStory/>
                      <div className="section bg-secondary-1" >
                     <div className="container">
@@ -20,6 +20,7 @@ class Content extends Component {
                         <Counter />
                     </div>
                 </div>
+                  <LeadershipInline />
               
            
                   <Workprocess />

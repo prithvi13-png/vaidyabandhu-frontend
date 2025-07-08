@@ -88,24 +88,7 @@ class Content extends Component {
                             <div className="col-lg-4">
                                 <Sidebar />
                             </div>
-                            <div className="col-lg-8">
-                                {/* Data */}
-                                {paginationData}
-                                {/* Data */}
-                                {/* Pagination */}
-                                <Pagination
-                                    activePage={this.state.activePage}
-                                    itemsCountPerPage={this.state.itemPerpage}
-                                    totalItemsCount={this.state.data.length}
-                                    pageRangeDisplayed={this.state.data.length}
-                                    onChange={this.handlePageChange.bind(this)}
-                                    innerClass="pagination"
-                                    activeClass="active"
-                                    itemClass="page-item"
-                                    linkClass="page-link"
-                                />
-                                {/* Pagination */}
-                            </div>
+                         
                         </div>
                     </div>
                 </div>

@@ -1,23 +1,32 @@
 [
-    {
-        "id": 1,
-        "author": [
-            1
-        ],
-        "comment": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.Lorem ipsum dolor sit amet consectetur adipisicing elit."
-    },
-    {
-        "id": 2,
-        "author": [
-            2
-        ],
-        "comment": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.Lorem ipsum dolor sit amet consectetur adipisicing elit."
-    },
-    {
-        "id": 3,
-        "author": [
-            4
-        ],
-        "comment": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.Lorem ipsum dolor sit amet consectetur adipisicing elit."
-    }
+  {
+    "id": 1,
+    "author": [1],
+    "comment": "Trusted online advice is helping patients avoid unnecessary visits. A much-needed support system."
+  },
+  {
+    "id": 2,
+    "author": [2],
+    "comment": "Affordable surgeries are now within reach for many. Great initiative by Vaidya Bandhu."
+  },
+  {
+    "id": 3,
+    "author": [3],
+    "comment": "Proud to help patients get life-saving surgeries they couldn’t otherwise afford."
+  },
+  {
+    "id": 4,
+    "author": [4],
+    "comment": "Discounted tests ensure early detection without financial burden. A big win for patients."
+  },
+  {
+    "id": 5,
+    "author": [5],
+    "comment": "All healthcare services in one place. It’s efficient and patient-friendly."
+  },
+  {
+    "id": 6,
+    "author": [6],
+    "comment": "Second opinions have helped many avoid unnecessary treatments. A truly valuable service."
+  }
 ]

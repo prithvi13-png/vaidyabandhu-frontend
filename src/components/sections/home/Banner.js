@@ -33,20 +33,20 @@ class Banner extends Component {
                                 <div className="sigma_banner-text text-center">
                                     <div className="container">
                                         <div className="row justify-content-center">
-                                            <div className="col-lg-8">
-                                                <h5 className="text-white">{item.subtitle}</h5>
-                                                <h1 className="title text-white" dangerouslySetInnerHTML={{ __html: item.title }} />
-                                                <div className="banner-links d-flex align-items-center justify-content-center">
-                                                    <Link to="/doctor-grid" className="sigma_btn">
-                                                        Find A Doctor
-                                                        <i className="fal fa-plus ml-3 d-none d-sm-inline-block" />
-                                                    </Link>
-                                                    <Link to="/about" className="sigma_btn light ml-4">
-                                                        Read More
-                                                        <i className="fal fa-plus ml-3 d-none d-sm-inline-block" />
-                                                    </Link>
-                                                </div>
-                                            </div>
+                                         <div className="col-lg-8">
+    <h5 className="text-white" style={{ color: '#007a7e', fontWeight: 'bold', fontSize: '2.0rem' }}>{item.subtitle}</h5> {/* Highlighted subtitle */}
+    <h1 className="title text-white" dangerouslySetInnerHTML={{ __html: item.title }} />
+    <div className="banner-links d-flex align-items-center justify-content-center">
+        <Link to="/doctor-grid" className="sigma_btn">
+            Find A Doctor
+            <i className="fal fa-plus ml-3 d-none d-sm-inline-block" />
+        </Link>
+        <Link to="/about" className="sigma_btn light ml-4">
+            Read More
+            <i className="fal fa-plus ml-3 d-none d-sm-inline-block" />
+        </Link>
+    </div>
+</div>
                                         </div>
                                     </div>
                                 </div>
