@@ -66,7 +66,7 @@ const FAQSection = () => {
   return (
     <div
       style={{
-        padding: "80px 20px",
+        padding: "40px 20px",
         background: "linear-gradient(135deg, #f5fdfd 0%, #e0f7fa 100%)", // Light, calming gradient
         textAlign: "center",
         overflow: "hidden",
@@ -120,10 +120,10 @@ const FAQSection = () => {
         {/* Main Heading */}
         <h2
           style={{
-            fontSize: "clamp(36px, 5vw, 48px)",
+            fontSize: "clamp(36px, 5vw, 38px)",
             fontWeight: "800",
             color: "#004d4f",
-            marginBottom: "20px",
+            marginBottom: "10px",
             lineHeight: "1.2",
             opacity: animated ? 1 : 0,
             transform: animated ? "translateY(0)" : "translateY(30px)",
@@ -138,9 +138,9 @@ const FAQSection = () => {
           style={{
             fontSize: "clamp(16px, 2.5vw, 20px)",
             color: "#4a5568",
-            lineHeight: "1.8",
-            fontWeight: "400",
-            marginBottom: "50px",
+            lineHeight: "1.4",
+            fontWeight: "500",
+            marginBottom: "30px",
             opacity: animated ? 1 : 0,
             transform: animated ? "translateY(0)" : "translateY(30px)",
             transition: "opacity 0.8s ease-out 0.2s, transform 0.8s ease-out 0.2s",
@@ -191,7 +191,7 @@ const FAQSection = () => {
                 >
                   <h4
                     style={{
-                      fontSize: "clamp(18px, 2.5vw, 22px)",
+                      fontSize: "clamp(18px, 2.5vw, 20px)",
                       fontWeight: "600",
                       color: "#004d4f",
                       margin: 0,

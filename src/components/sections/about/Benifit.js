@@ -35,11 +35,11 @@ const WhoCanBenefit = () => {
   return (
     <section
       style={{
-        padding: '80px 20px', /* Generous padding for section */
+        padding: '40px 20px', /* Generous padding for section */
         background: 'linear-gradient(135deg, #e0f7fa 0%, #ffffff 100%)', /* Light, inviting gradient */
         fontFamily: "'Inter', sans-serif", /* Consistent font */
         color: '#4a5568', /* Soft dark gray for main text */
-        lineHeight: '1.8',
+        lineHeight: '1.4',
         overflow: 'hidden',
         position: 'relative', // For absolute positioned background elements
         opacity: animated ? 1 : 0, // Section fade-in
@@ -90,11 +90,11 @@ const WhoCanBenefit = () => {
         {/* Centered H2 Title */}
         <h2
           style={{
-            fontSize: 'clamp(32px, 4.5vw, 40px)', /* Larger, responsive title size */
+            fontSize: 'clamp(32px, 4.5vw, 38px)', /* Larger, responsive title size */
             fontWeight: 800, // Bolder
             color: '#004d4f', /* Dark teal for headings */
             position: 'relative',
-            paddingBottom: '20px', // More space for underline
+            paddingBottom: '10px', // More space for underline
             textAlign: 'center', // Centered title
             marginBottom: '40px', // More space below title
             transition: baseTransition,
@@ -104,34 +104,6 @@ const WhoCanBenefit = () => {
         >
           Who Can <span style={{ color: '#007a7e' }}>Benefit</span>?
           {/* Custom double underline effect for elegance */}
-          <span
-            style={{
-              content: '""',
-              position: 'absolute',
-              bottom: '12px', // Position first line
-              left: '50%', // Centered underline
-              transform: 'translateX(-50%)',
-              width: hoveredHeading ? '120px' : '90px', // Expand on hover
-              height: '4px', // Thicker line
-              backgroundColor: '#007a7e', // Primary teal accent
-              borderRadius: '2px',
-              transition: baseTransition,
-            }}
-          ></span>
-          <span
-            style={{
-              content: '""',
-              position: 'absolute',
-              bottom: '0', // Position second line
-              left: '50%', // Centered underline
-              transform: 'translateX(-50%)',
-              width: hoveredHeading ? '80px' : '60px', // Expand on hover
-              height: '4px', // Thicker line
-              backgroundColor: 'rgba(0, 122, 126, 0.6)', // Lighter primary teal accent
-              borderRadius: '2px',
-              transition: baseTransition,
-            }}
-          ></span>
         </h2>
 
         <div
@@ -139,7 +111,7 @@ const WhoCanBenefit = () => {
             display: 'flex', // Use flexbox for columns
             flexWrap: 'wrap', // Allow wrapping on smaller screens
             alignItems: 'center', // Vertically align items
-            gap: '40px', // Gap between columns
+            gap: '30px', // Gap between columns
           }}
         >
           {/* Left Column: Image */}
@@ -187,7 +159,7 @@ const WhoCanBenefit = () => {
                 <li
                   key={index}
                   style={{
-                    marginBottom: '25px', // Increased spacing for list items
+                    marginBottom: '20px', // Increased spacing for list items
                     fontSize: 'clamp(17px, 2.2vw, 19px)', // Larger, responsive font for list items
                     color: '#4a5568', // Consistent text color
                     display: 'flex',

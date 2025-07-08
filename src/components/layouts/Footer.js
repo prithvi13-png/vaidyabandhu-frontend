@@ -203,11 +203,17 @@ const Footer = () => {
                         {/* Logo and About */}
                         <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-start" }}>
                             <div style={{ marginBottom: "20px" }}>
-                                <img
-                                    src="https://placehold.co/190x120/007a7e/ffffff?text=Vaidya+Bandhu+Logo" // Placeholder logo with accent color
-                                    alt="logo"
-                                    style={{ maxWidth: "100%", height: "auto", borderRadius: "8px" }}
-                                />
+                             <img
+  src="assets/img/logo-final.png"
+  alt="logo"
+  style={{
+    width: "160px",           // Set a fixed or smaller width
+    height: "auto",           // Maintain aspect ratio
+    borderRadius: "8px",
+    display: "block",         // Ensures no inline spacing issues
+  }}
+/>
+
                             </div>
                             <p style={{ fontSize: "15px", lineHeight: "1.6", color: "#cbd5e0", marginBottom: "20px" }}>
                                 Quality healthcare at affordable rates, anytime, anywhere.
@@ -282,7 +288,7 @@ const Footer = () => {
                         <div>
                             <h5 style={{ fontSize: "20px", fontWeight: "700", color: "#e2e8f0", marginBottom: "20px" }}>Useful Links</h5>
                             <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
-                                {[{ title: "Home", path: "/" }, { title: "About Us", path: "/about" }, { title: "News", path: "/blog" }, { title: "Doctors", path: "/doctor-grid" }, { title: "Contact Us", path: "/contact" }].map((item, i) => (
+                                {[{ title: "Home", path: "/" }, { title: "About Us", path: "/about" }, { title: "Doctors", path: "/doctor-list" }, { title: "Diagnostics", path: "/clinic-list" }, { title: "Contact Us", path: "/contact" },].map((item, i) => (
                                     <li key={i} style={{ marginBottom: "10px" }}>
                                         <a
                                             href={item.path} // Placeholder link

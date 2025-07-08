@@ -12,7 +12,7 @@ const HealthcareReality = () => {
   return (
     <div
       style={{
-        padding: "40px 20px",
+        padding: "25px 20px",
         background: "linear-gradient(135deg, #fdfefe 0%, #e8f5e9 100%)", // Very light, calming gradient
         textAlign: "center",
         overflow: "hidden",
@@ -82,10 +82,10 @@ const HealthcareReality = () => {
         {/* Main Heading */}
         <h2
           style={{
-            fontSize: "clamp(36px, 5vw, 48px)", // Responsive font size
+            fontSize: "clamp(22px, 5vw, 36px)", // Responsive font size
             fontWeight: "800",
             color: "#004d4f",
-            marginBottom: "10px",
+            marginBottom: "1px",
             lineHeight: "1.2",
             opacity: animated ? 1 : 0,
             transform: animated ? "translateY(0)" : "translateY(30px)",
@@ -102,7 +102,7 @@ const HealthcareReality = () => {
             color: "#4a5568",
             lineHeight: "1.5",
             fontWeight: "400",
-            marginBottom: "30px",
+            marginBottom: "10px",
             opacity: animated ? 1 : 0,
             transform: animated ? "translateY(0)" : "translateY(30px)",
             transition: "opacity 0.8s ease-out 0.2s, transform 0.8s ease-out 0.2s",

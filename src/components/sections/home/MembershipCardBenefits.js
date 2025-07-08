@@ -24,7 +24,7 @@ const MembershipCardBenefits = () => {
   return (
     <div
       style={{
-        padding: "40px 20px",
+        padding: "20px 20px",
         background: "linear-gradient(135deg, #e0f7fa 0%, #ffffff 100%)", // Light, inviting gradient
         textAlign: "center", // Overall text alignment for the section
         overflow: "hidden",
@@ -51,10 +51,10 @@ const MembershipCardBenefits = () => {
       ></div>
          <h2
             style={{
-              fontSize: "clamp(22px, 5vw, 48px)",
+              fontSize: "clamp(22px, 5vw, 38px)",
               fontWeight: "800",
               color: "#004d4f",
-              marginBottom: "10px",
+              marginBottom: "5px",
               lineHeight: "1.2",
               opacity: animated ? 1 : 0,
               transform: animated ? "translateY(0)" : "translateY(30px)",
@@ -107,7 +107,7 @@ const MembershipCardBenefits = () => {
           flexWrap: "wrap", // Allow items to wrap on smaller screens
           justifyContent: "space-between", // Distribute space between image and content
           alignItems: "center", // Center items vertically
-          gap: "40px", // Gap between image and text content
+          gap: "30px", // Gap between image and text content
         }}
       >
         {/* Membership Card Image Section (Left Side) */}
@@ -159,12 +159,12 @@ const MembershipCardBenefits = () => {
               maxWidth: "100%",
             }}
           >
-            <h3
+            {/* <h3
               style={{
-                fontSize: "clamp(24px, 3.5vw, 30px)",
-                fontWeight: "700",
+                fontSize: "clamp(24px, 3.5vw, 22px)",
+                fontWeight: "600",
                 color: "#004d4f",
-                marginBottom: "10px",
+                marginBottom: "5px",
                 textAlign: "left", // Align this heading left
                 opacity: animated ? 1 : 0,
                 transform: animated ? "translateY(0)" : "translateY(20px)",
@@ -172,14 +172,15 @@ const MembershipCardBenefits = () => {
               }}
             >
               Benefits of the Membership Card:
-            </h3>
+            </h3> */}
             {benefits.map((benefit, index) => (
               <div
                 key={index}
                 style={{
+                      marginTop: "10px",
                   display: "flex",
                   alignItems: "center",
-                  padding: "10px 10px", // Reduced vertical padding, removed horizontal
+                  padding: "6px 6px", // Reduced vertical padding, removed horizontal
                   borderBottom: "1px solid rgba(0, 122, 126, 0.1)", // Subtle separator
                   opacity: animated ? 1 : 0,
                   transform: animated ? "translateY(0)" : "translateY(20px)",
@@ -216,7 +217,7 @@ const MembershipCardBenefits = () => {
                   <span
                     style={{
                       color: "#ffffff",
-                      fontSize: "20px",
+                      fontSize: "18px",
                       lineHeight: "1",
                     }}
                   >
@@ -227,7 +228,7 @@ const MembershipCardBenefits = () => {
                   style={{
                     fontSize: "clamp(16px, 2vw, 18px)",
                     color: "#4a5568",
-                    lineHeight: "1.6",
+                    lineHeight: "1.4",
                     margin: 0,
                   }}
                 >

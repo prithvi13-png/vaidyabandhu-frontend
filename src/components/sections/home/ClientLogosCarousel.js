@@ -27,7 +27,7 @@ const ClientLogosCarousel = () => {
   return (
     <div
       style={{
-        padding: "80px 20px",
+        padding: "40px 20px",
         background: "linear-gradient(135deg, #f5fdfd 0%, #e0f7fa 100%)", // Light, calming gradient
         textAlign: "center",
         overflow: "hidden", // Hide overflowing content for the carousel effect
@@ -38,10 +38,10 @@ const ClientLogosCarousel = () => {
       {/* Section Heading */}
       <h2
         style={{
-          fontSize: "42px",
+          fontSize: "38px",
           fontWeight: "800",
           color: "#004d4f",
-          marginBottom: "20px",
+          marginBottom: "10px",
           position: "relative",
           display: "inline-block",
           opacity: animated ? 1 : 0,
@@ -50,28 +50,15 @@ const ClientLogosCarousel = () => {
         }}
       >
         Our Valued <span style={{ color: "#007a7e" }}>Partners & Clients</span>
-        <span
-          style={{
-            content: '""',
-            position: "absolute",
-            left: "50%",
-            bottom: "-10px",
-            transform: "translateX(-50%)",
-            width: "80px",
-            height: "4px",
-            background: "#007a7e",
-            borderRadius: "2px",
-          }}
-        ></span>
       </h2>
       <p
         style={{
           fontSize: "18px",
           color: "#4a5568",
           maxWidth: "800px",
-          margin: "0 auto 60px",
+          margin: "0 auto 40px",
           lineHeight: "1.7",
-          fontWeight: "300",
+          fontWeight: "500",
           opacity: animated ? 1 : 0,
           transform: animated ? "translateY(0)" : "translateY(20px)",
           transition: "opacity 0.8s ease-out 0.2s, transform 0.8s ease-out 0.2s", // Slight delay

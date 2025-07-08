@@ -46,7 +46,7 @@ const Workprocess = () => {
   return (
     <div
       style={{
-        padding: "80px 20px",
+        padding: "40px 20px",
         background: "linear-gradient(135deg, #f5fdfd 0%, #e0f7fa 100%)", // Light, calming gradient
         fontFamily: "'Inter', sans-serif",
         color: "#4a5568",
@@ -94,7 +94,7 @@ const Workprocess = () => {
             display: "flex",
             flexWrap: "wrap",
             alignItems: "center",
-            marginBottom: "50px",
+            marginBottom: "30px",
             gap: "20px", // Gap for responsive wrapping
           }}
         >
@@ -106,20 +106,10 @@ const Workprocess = () => {
                 transition: "opacity 0.8s ease-out, transform 0.8s ease-out",
               }}
             >
-              <span
-                style={{
-                  fontSize: "clamp(16px, 2.5vw, 20px)",
-                  fontWeight: "600",
-                  color: "#007a7e",
-                  marginBottom: "10px",
-                  display: "block",
-                }}
-              >
-                Work Process
-              </span>
+             
               <h3
                 style={{
-                  fontSize: "clamp(36px, 5vw, 48px)",
+                  fontSize: "clamp(36px, 5vw, 38px)",
                   fontWeight: "800",
                   color: "#004d4f",
                   marginBottom: "0",
@@ -135,7 +125,7 @@ const Workprocess = () => {
               style={{
                 fontSize: "clamp(16px, 2.5vw, 18px)",
                 color: "#4a5568",
-                lineHeight: "1.7",
+                lineHeight: "1.4",
                 marginBottom: "0",
                 opacity: animated ? 1 : 0,
                 transform: animated ? "translateY(0)" : "translateY(30px)",
@@ -238,7 +228,7 @@ const Workprocess = () => {
               </div>
               <h5
                 style={{
-                  fontSize: "clamp(20px, 2.5vw, 24px)",
+                  fontSize: "clamp(20px, 2.5vw, 22px)",
                   fontWeight: "700",
                   color: "#004d4f",
                   marginBottom: "15px",

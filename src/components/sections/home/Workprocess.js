@@ -45,7 +45,7 @@ const Workprocess = () => {
     <div
       style={{
         background: "linear-gradient(135deg, #e0f7fa 0%, #ffffff 100%)", // Softer, more inviting gradient
-        padding: "80px 20px", // Increased padding
+        padding: "40px 20px", // Increased padding
         position: "relative",
         overflow: "hidden",
         fontFamily: "'Inter', sans-serif", // Modern font (assuming it's imported or fallback)
@@ -86,11 +86,12 @@ const Workprocess = () => {
        
         <h2
           style={{
-            fontSize: 42, // Larger, more impactful heading
+            fontSize: 36, // Larger, more impactful heading
             fontWeight: "700",
             color: "#004d4f",
-            margin: "20px 0 25px", // Adjusted margins
+            // margin: "20px 0 25px", // Adjusted margins
             lineHeight: 1.2,
+             marginTop: 60,
           }}
         >
           How Vaidya Bandhu Works<br /> 
@@ -101,12 +102,12 @@ const Workprocess = () => {
             maxWidth: 750, // Increased max-width
             margin: "0 auto",
             fontSize: 18, // Slightly larger body text
-            lineHeight: 1.7,
-            fontWeight: "300", // Lighter font-weight for body
+            lineHeight: 1.4,
+            fontWeight: "400", // Lighter font-weight for body
           }}
         >
           At Vaidya Bandhu, we believe in making quality healthcare simple, affordable, and accessible for everyone.
-          Discover our straightforward process to unlock a world of health benefits:
+          Discover our straightforward process to unlock a world of health benefits
         </p>
       </div>
 
@@ -115,7 +116,7 @@ const Workprocess = () => {
           display: "flex",
           justifyContent: "center", // Centered items
           flexWrap: "wrap",
-          gap: "40px", // Increased gap between steps
+          gap: "30px", // Increased gap between steps
           alignItems: "stretch", // Ensures cards have same height if content varies
           position: "relative",
           zIndex: 1,
@@ -129,7 +130,7 @@ const Workprocess = () => {
               maxWidth: 360, // Increased max-width for each card
               background: "#ffffff",
               borderRadius: 15,
-              padding: "30px 25px", // Adjusted padding
+              padding: "20px 25px", // Adjusted padding
               boxShadow: "0 15px 30px rgba(0,0,0,0.08)", // More pronounced shadow
               textAlign: "center",
               display: "flex",
@@ -195,7 +196,7 @@ const Workprocess = () => {
                 listStyleType: "none",
                 fontSize: 16, // Larger font for points
                 color: "#4a5568",
-                lineHeight: 1.8, // Increased line height for readability
+                lineHeight: 1.4, // Increased line height for readability
                 textAlign: "left", // Align points to the left
                 flexGrow: 1, // Allows the ul to take available space
                 position: "relative",
@@ -206,7 +207,7 @@ const Workprocess = () => {
                 <li
                   key={i}
                   style={{
-                    marginBottom: 10,
+                    marginBottom: 1,
                     display: "flex",
                     alignItems: "flex-start",
                   }}

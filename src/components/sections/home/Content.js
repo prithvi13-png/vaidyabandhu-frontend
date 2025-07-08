@@ -33,7 +33,7 @@ class Content extends Component {
                         <Counter />
                     </div>
                 </div>
-                <div style={{ marginTop: "150px" }}>
+                <div style={{ marginTop: "80px" }}>
                     <Workprocess />
                 </div>
                 <MembershipCardBenefits/>

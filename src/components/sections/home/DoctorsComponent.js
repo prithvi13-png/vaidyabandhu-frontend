@@ -127,10 +127,10 @@ const DoctorsComponent = () => {
     <>
       <h2
         style={{
-          fontSize: "clamp(36px, 5vw, 48px)",
+          fontSize: "clamp(36px, 5vw, 38px)",
           fontWeight: "800",
           color: "#004d4f",
-          marginBottom: "20px",
+          marginBottom: "10px",
           lineHeight: "1.2",
           opacity: animated ? 1 : 0,
           transform: animated ? "translateY(0)" : "translateY(30px)",
@@ -143,9 +143,9 @@ const DoctorsComponent = () => {
         style={{
           fontSize: "clamp(16px, 2.5vw, 20px)",
           color: "#4a5568",
-          lineHeight: "1.8",
+          lineHeight: "1.4",
           fontWeight: "400",
-          marginBottom: "50px",
+          marginBottom: "20px",
           opacity: animated ? 1 : 0,
           transform: animated ? "translateY(0)" : "translateY(30px)",
           transition: "opacity 0.8s ease-out 0.2s, transform 0.8s ease-out 0.2s",
@@ -271,7 +271,7 @@ const DoctorsComponent = () => {
         background: "#ffffff",
         borderRadius: "16px",
         boxShadow: "0 10px 30px rgba(0, 122, 126, 0.1)",
-        padding: "40px",
+        padding: "20px",
         textAlign: "left",
         opacity: animated ? 1 : 0,
         transform: animated ? "translateY(0)" : "translateY(30px)",
@@ -378,7 +378,7 @@ const DoctorsComponent = () => {
   return (
     <div
       style={{
-        padding: "80px 20px",
+        padding: "40px 20px",
         background: "linear-gradient(135deg, #e0f7fa 0%, #ffffff 100%)",
         textAlign: "center",
         overflow: "hidden",

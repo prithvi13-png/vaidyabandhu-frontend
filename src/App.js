@@ -46,6 +46,7 @@ function App() {
       <Suspense fallback={<div></div>}>
         <ScrollToTop>
           <Switch>
+            
             {/* Home */}
             <Route exact path="/" component={Home} />
             <Route exact path="/home-v2" component={Hometwo} />

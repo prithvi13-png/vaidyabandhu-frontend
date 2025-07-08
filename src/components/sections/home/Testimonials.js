@@ -8,8 +8,7 @@ class Testimonials extends Component {
             <div className="section section-padding">
                 <div className="container">
                     <div className="section-title centered">
-                        <span className="subtitle">Client Testimonials</span>
-                        <h3 className="title">What Our Clients Say</h3>
+                        <h3 className="title">What Our Doctors Say</h3>
                     </div>
                     <div className="row">
                         {/* Data */}

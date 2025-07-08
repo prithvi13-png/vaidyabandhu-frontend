@@ -20,7 +20,7 @@ const OurStory = () => {
         background: 'linear-gradient(135deg, #e0f7fa 0%, #ffffff 100%)', /* Light, inviting gradient */
         fontFamily: "'Inter', sans-serif", /* Consistent font */
         color: '#4a5568', /* Soft dark gray for main text */
-        lineHeight: '1.8', // Adjusted for better readability
+        lineHeight: '1.4', // Adjusted for better readability
         overflow: 'hidden',
         position: 'relative', // For absolute positioned background elements
       }}
@@ -69,11 +69,11 @@ const OurStory = () => {
           zIndex: 1,
         }}
       >
-        <div className="row" style={{ display: 'flex', flexDirection: 'column', gap: '60px' }}> {/* Increased gap */}
+        <div className="row" style={{ display: 'flex', flexDirection: 'column', gap: '40px' }}> {/* Increased gap */}
           {/* Our Story Section */}
           <div
             style={{
-              padding: '40px', /* Increased padding within the card */
+              padding: '30px', /* Increased padding within the card */
               backgroundColor: '#FFFFFF', /* Pure white background for a crisp look */
               borderRadius: '20px', /* More rounded corners */
               border: '1px solid rgba(0, 77, 79, 0.1)', /* Subtle border matching dark primary */
@@ -88,47 +88,19 @@ const OurStory = () => {
           >
             <h2
               style={{
-                fontSize: 'clamp(24px, 4.5vw, 40px)', /* Larger, responsive title size */
+                fontSize: 'clamp(24px, 4.5vw, 38px)', /* Larger, responsive title size */
                 fontWeight: 800, // Bolder
                 color: '#004d4f', /* Dark teal for headings */
                 position: 'relative',
-                paddingBottom: '20px', // More space for underline
+                paddingBottom: '10px', // More space for underline
                 textAlign: 'center',
-                marginBottom: '25px', // More space below title
+                marginBottom: '10px', // More space below title
               }}
             >
               Our <span style={{ color: '#007a7e' }}>Story</span>
               {/* Custom underline effect: double line */}
-              <span
-                style={{
-                  content: '""',
-                  position: 'absolute',
-                  bottom: '12px',
-                  left: '50%',
-                  transform: 'translateX(-50%)',
-                  width: '90px',
-                  height: '4px', // Thicker line
-                  backgroundColor: '#007a7e', /* Primary teal accent */
-                  borderRadius: '2px',
-                  transition: baseTransition,
-                  ...(hoveredSection === 'story' && { width: '120px' }), // Expand on hover
-                }}
-              ></span>
-              <span
-                style={{
-                  content: '""',
-                  position: 'absolute',
-                  bottom: '0',
-                  left: '50%',
-                  transform: 'translateX(-50%)',
-                  width: '60px',
-                  height: '4px', // Thicker line
-                  backgroundColor: 'rgba(0, 122, 126, 0.6)', /* Lighter primary teal accent */
-                  borderRadius: '2px',
-                  transition: baseTransition,
-                  ...(hoveredSection === 'story' && { width: '80px' }), // Expand on hover
-                }}
-              ></span>
+            
+          
             </h2>
             <p
               style={{
@@ -175,54 +147,25 @@ const OurStory = () => {
           >
             <h2
               style={{
-                fontSize: 'clamp(32px, 4.5vw, 40px)',
+                fontSize: 'clamp(32px, 4.5vw, 38px)',
                 fontWeight: 800,
                 color: '#004d4f',
                 position: 'relative',
-                paddingBottom: '20px',
+                paddingBottom: '10px',
                 textAlign: 'center',
-                marginBottom: '25px',
+                marginBottom: '15px',
               }}
             >
               Our <span style={{ color: '#007a7e' }}>Vision</span>
-              <span
-                style={{
-                  content: '""',
-                  position: 'absolute',
-                  bottom: '12px',
-                  left: '50%',
-                  transform: 'translateX(-50%)',
-                  width: '90px',
-                  height: '4px',
-                  backgroundColor: '#007a7e',
-                  borderRadius: '2px',
-                  transition: baseTransition,
-                  ...(hoveredSection === 'vision' && { width: '120px' }),
-                }}
-              ></span>
-              <span
-                style={{
-                  content: '""',
-                  position: 'absolute',
-                  bottom: '0',
-                  left: '50%',
-                  transform: 'translateX(-50%)',
-                  width: '60px',
-                  height: '4px',
-                  backgroundColor: 'rgba(0, 122, 126, 0.6)',
-                  borderRadius: '2px',
-                  transition: baseTransition,
-                  ...(hoveredSection === 'vision' && { width: '80px' }),
-                }}
-              ></span>
+          
             </h2>
             <p
               style={{
                 fontWeight: 600,
                 color: '#007a7e', // Bright teal accent for vision statement
-                fontSize: 'clamp(20px, 3vw, 24px)', /* Larger font size for vision statement */
+                fontSize: 'clamp(20px, 3vw, 22px)', /* Larger font size for vision statement */
                 textAlign: 'center',
-                padding: '20px 30px', /* More padding for emphasis */
+                padding: '10px 20px', /* More padding for emphasis */
                 backgroundColor: 'rgba(0, 122, 126, 0.05)', /* Subtle background highlight */
                 borderRadius: '18px', // Slightly more rounded
                 border: '1px solid #007a7e', /* Solid border matching primary accent */
@@ -254,47 +197,31 @@ const OurStory = () => {
           >
             <h2
               style={{
-                fontSize: 'clamp(32px, 4.5vw, 40px)',
+                fontSize: 'clamp(32px, 4.5vw, 38px)',
                 fontWeight: 800,
                 color: '#004d4f',
                 position: 'relative',
-                paddingBottom: '20px',
+                paddingBottom: '10px',
                 textAlign: 'center', // Centered title for mission
-                marginBottom: '25px',
+                marginBottom: '10px',
               }}
             >
               Our <span style={{ color: '#007a7e' }}>Mission</span>
-              <span
-                style={{
-                  content: '""',
-                  position: 'absolute',
-                  bottom: '12px',
-                  left: '50%', // Centered underline
-                  transform: 'translateX(-50%)',
-                  width: '90px',
-                  height: '4px',
-                  backgroundColor: '#007a7e',
-                  borderRadius: '2px',
-                  transition: baseTransition,
-                  ...(hoveredSection === 'mission' && { width: '120px' }),
-                }}
-              ></span>
-              <span
-                style={{
-                  content: '""',
-                  position: 'absolute',
-                  bottom: '0',
-                  left: '50%', // Centered underline
-                  transform: 'translateX(-50%)',
-                  width: '60px',
-                  height: '4px',
-                  backgroundColor: 'rgba(0, 122, 126, 0.6)',
-                  borderRadius: '2px',
-                  transition: baseTransition,
-                  ...(hoveredSection === 'mission' && { width: '80px' }),
-                }}
-              ></span>
+             
             </h2>
+            <p
+  style={{
+    marginBottom: '25px',
+    fontSize: 'clamp(17px, 2.2vw, 19px)',
+    color: '#4a5568',
+    textAlign: 'center',
+    maxWidth: '800px',
+    margin: '0 auto 25px',
+  }}
+>
+  To empower patients with timely medical guidance, trusted hospital access, and compassionate support throughout their healthcare journey.
+</p>
+
 
             {/* Mission Content: Image Left, Text Right */}
             <div
@@ -339,15 +266,7 @@ const OurStory = () => {
                   transition: `opacity 0.8s ease-out 0.8s, transform 0.8s ease-out 0.8s`,
                 }}
               >
-                <p
-                  style={{
-                    marginBottom: '25px', // More space below paragraph
-                    fontSize: 'clamp(17px, 2.2vw, 19px)',
-                    color: '#4a5568',
-                  }}
-                >
-                  To empower patients with timely medical guidance, trusted hospital access, and compassionate support throughout their healthcare journey.
-                </p>
+              
                 <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
                   {[
                     'Provide 10 - 40% discounts on surgeries, treatments, and diagnostics.',
@@ -359,7 +278,7 @@ const OurStory = () => {
                     <li
                       key={index}
                       style={{
-                        marginBottom: '18px', /* Spacing for list items */
+                        marginBottom: '15px', /* Spacing for list items */
                         fontSize: 'clamp(16px, 2vw, 18px)', /* Font for list items */
                         color: '#4a5568',
                         display: 'flex',

@@ -68,7 +68,7 @@ const ServicesPreview = () => {
   }, []);
 
   const sectionStyle = {
-    padding: "40px 20px",
+    padding: "25px 20px",
     background: "linear-gradient(135deg, #e0f7fa 0%, #ffffff 100%)",
     textAlign: "center",
     overflow: "hidden",
@@ -76,10 +76,10 @@ const ServicesPreview = () => {
   };
 
   const headingStyle = {
-    fontSize: "48px",
+    fontSize: "38px",
     fontWeight: "800",
     color: "#004d4f",
-    marginBottom: "20px",
+    // marginBottom: "20px",
     position: "relative",
     display: "inline-block",
   };
@@ -89,7 +89,7 @@ const ServicesPreview = () => {
     color: "#4a5568",
     maxWidth: "800px",
     margin: "0 auto 60px",
-    lineHeight: "1.7",
+    lineHeight: "1.4",
     fontWeight: "300",
   };
 
@@ -177,11 +177,11 @@ const ServicesPreview = () => {
           content: '""',
           position: "absolute",
           left: "50%",
-          bottom: "-10px",
-          transform: "translateX(-50%)",
+          // bottom: "-10px",
+          // transform: "translateX(-50%)",
           width: "80px",
           height: "4px",
-          background: "#007a7e",
+          // background: "#007a7e",
           borderRadius: "2px",
         }}></span>
       </h2>

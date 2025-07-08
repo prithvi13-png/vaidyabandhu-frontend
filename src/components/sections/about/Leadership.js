@@ -18,7 +18,7 @@ const LeadershipInline = () => {
       style={{
        paddingTop: '140px',
  /* Generous padding for section */
-  paddingBottom: '20px',
+
         background: 'linear-gradient(135deg, #e0f7fa 0%, #ffffff 100%)', /* Light, inviting gradient */
         fontFamily: "'Inter', sans-serif", /* Consistent font */
         color: '#4a5568', /* Soft dark gray for main text */
@@ -90,7 +90,7 @@ const LeadershipInline = () => {
           >
             <h2
               style={{
-                fontSize: 'clamp(22px, 4.5vw, 40px)', /* Larger, responsive title size */
+                fontSize: 'clamp(22px, 4.5vw, 36px)', /* Larger, responsive title size */
                 fontWeight: 800, // Bolder
                 color: '#004d4f', /* Dark teal for headings */
                 position: 'relative',
@@ -254,7 +254,7 @@ Vaidya Bandhu is more than an organization. It is a promise. A promise to suppor
           >
             <h2
               style={{
-                fontSize: 'clamp(32px, 4.5vw, 40px)',
+                fontSize: 'clamp(32px, 4.5vw, 36px)',
                 fontWeight: 800,
                 color: '#004d4f',
                 position: 'relative',
@@ -326,7 +326,7 @@ Vaidya Bandhu is more than an organization. It is a promise. A promise to suppor
                         transition: `opacity 0.7s ease-out 1.0s, transform 0.7s ease-out 1.0s`,
                     }}
                     >
-                    Dr. Subhashith Shetty
+                    Mr. Subhashith Shetty
                     </h3>
                     <h5
                     style={{

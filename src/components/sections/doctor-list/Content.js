@@ -88,6 +88,7 @@ class Content extends Component {
                             {/* <div className="col-lg-4">
                                 <Sidebar />
                             </div> */}
+                            
                             <div className="col-lg-8">
                                 {/* Data */}
                                 {paginationData}
