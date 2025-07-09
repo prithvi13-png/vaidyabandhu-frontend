@@ -126,10 +126,11 @@ const WhoCanBenefit = () => {
             }}
           >
             <img
-              src="https://placehold.co/500x500/007a7e/ffffff?text=Who+Can+Benefit" // Placeholder image
+              src="assets/img/doc-25.jpg" // Placeholder image
               alt="People benefiting from healthcare"
               style={{
                 maxWidth: '100%',
+                 maxHeight: '100%',
                 height: 'auto',
                 borderRadius: '20px', // Rounded corners for the image
                 boxShadow: '0 15px 40px rgba(0, 122, 126, 0.15)', // Soft shadow

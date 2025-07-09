@@ -19,7 +19,7 @@ const MembershipCardBenefits = () => {
   ];
 
   // Placeholder image for the membership card
-  const membershipCardImage = "https://placehold.co/400x250/007a7e/ffffff?text=Membership+Card";
+  const membershipCardImage = "assets/img/mm.png";
 
   return (
     <div
@@ -51,7 +51,7 @@ const MembershipCardBenefits = () => {
       ></div>
          <h2
             style={{
-              fontSize: "clamp(22px, 5vw, 38px)",
+              fontSize: "clamp(22px, 5vw, 36px)",
               fontWeight: "800",
               color: "#004d4f",
               marginBottom: "5px",
@@ -77,7 +77,7 @@ const MembershipCardBenefits = () => {
               transition: "opacity 0.8s ease-out 0.2s, transform 0.8s ease-out 0.2s",
             }}
           >
-            To make affordable healthcare accessible to all,<br/> we offer a ₹49 membership card, valid for 1 year.
+            To make affordable healthcare accessible to all, we offer a<br/> ₹49 membership card, valid for 1 year.
           </p>
       <div
         style={{
@@ -122,18 +122,25 @@ const MembershipCardBenefits = () => {
             order: 1, // Ensure it's the first item in the flex container
           }}
         >
-          <img
-            src={membershipCardImage}
-            alt="Vaidya Bandhu Membership Card"
-            style={{
-              maxWidth: "100%",
-              height: "auto",
-              borderRadius: "15px",
-              boxShadow: "0 15px 30px rgba(0, 122, 126, 0.2)",
-              border: "3px solid #007a7e", // Add a subtle border
-            }}
-            onError={(e) => { e.target.onerror = null; e.target.src="https://placehold.co/400x250/CCCCCC/666666?text=Card+Image+Error"; }}
-          />
+        <img
+  src={membershipCardImage}
+  alt="Vaidya Bandhu Membership Card"
+  style={{
+    width: "100%",                // Let it scale up to container width
+    maxWidth: "500px",            // Increased max width
+    height: "auto",               // Maintain aspect ratio
+    borderRadius: "15px",
+    boxShadow: "0 15px 30px rgba(0, 122, 126, 0.2)",
+    border: "3px solid #007a7e",
+    display: "block",             // Remove inline gap
+    margin: "0 auto",             // Center if needed
+  }}
+  onError={(e) => {
+    e.target.onerror = null;
+    e.target.src = "https://placehold.co/500x300/CCCCCC/666666?text=Card+Image+Error";
+  }}
+/>
+
         </div>
 
         {/* Text Content Section (Right Side) */}
