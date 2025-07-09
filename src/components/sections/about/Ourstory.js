@@ -243,17 +243,21 @@ const OurStory = () => {
                   transition: `opacity 0.8s ease-out 0.8s, transform 0.8s ease-out 0.8s`,
                 }}
               >
-                <img
-                  src="https://placehold.co/400x400/007a7e/ffffff?text=Our+Mission" // Placeholder image for Mission
-                  alt="Our Mission"
-                  style={{
-                    maxWidth: '100%',
-                    height: 'auto',
-                    borderRadius: '15px', // Rounded corners for the image
-                    boxShadow: '0 10px 30px rgba(0, 122, 126, 0.1)', // Soft shadow
-                    transition: baseTransition,
-                  }}
-                />
+ <img
+  src="assets/img/ourv.jpg"
+  alt="Our Mission"
+  style={{
+    width: '100%',
+    height: 'auto',
+    maxHeight: '400px', // You can adjust this value as needed
+    objectFit: 'contain', // Ensures full image is shown without cropping
+    borderRadius: '15px',
+    boxShadow: '0 10px 30px rgba(0, 122, 126, 0.1)',
+    transition: baseTransition,
+  }}
+/>
+
+
               </div>
 
               {/* Right Column: Mission Text Content */}

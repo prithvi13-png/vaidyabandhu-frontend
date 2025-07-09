@@ -135,22 +135,28 @@ const LeadershipInline = () => {
 
             {/* Dr. Ajith Ramaswamy's Photo and Name/Designation Container */}
             <div style={{ display: 'flex', alignItems: 'center', gap: '20px', marginBottom: '20px', flexDirection: 'row' }}> {/* Changed to row */}
-                <img
-                    src="https://placehold.co/150x150/007a7e/ffffff?text=Dr+Ajith" // Placeholder image for Dr. Ajith
-                    alt="Dr. Ajith Ramaswamy"
-                    style={{
-                        width: '150px',
-                        height: '150px',
-                        borderRadius: '50%',
-                        objectFit: 'cover',
-                        border: '4px solid #007a7e',
-                        boxShadow: '0 8px 20px rgba(0, 77, 79, 0.2)',
-                        transition: baseTransition,
-                        ...(hoveredSection === 'ceo' && { transform: 'scale(1.05)' }),
-                        flexShrink: 0, // Prevent image from shrinking
-                    }}
-                    onError={(e) => { e.target.onerror = null; e.target.src="https://placehold.co/150x150/CCCCCC/666666?text=Dr+Img"; }}
-                />
+              <img
+  src="assets/img/ajith.jpg"
+  alt="Dr. Ajith Ramaswamy"
+  style={{
+    width: '150px',
+    height: '150px',
+    borderRadius: '50%',
+    objectFit: 'cover',
+    objectPosition: 'center 15%', // shifts image focus downward
+    border: '4px solid #007a7e',
+    boxShadow: '0 8px 20px rgba(0, 77, 79, 0.2)',
+    transition: baseTransition,
+    ...(hoveredSection === 'ceo' && { transform: 'scale(1.05)' }),
+    flexShrink: 0,
+    marginTop: '2px',
+  }}
+  onError={(e) => {
+    e.target.onerror = null;
+    e.target.src = "https://placehold.co/150x150/CCCCCC/666666?text=Dr+Img";
+  }}
+/>
+
                 <div style={{ flexGrow: 1, textAlign: 'left' }}> {/* Container for name and designation */}
                     <h3
                     style={{
@@ -299,19 +305,21 @@ Vaidya Bandhu is more than an organization. It is a promise. A promise to suppor
             {/* Dr. Subhashith Shetty's Photo and Name/Designation Container */}
             <div style={{ display: 'flex', alignItems: 'center', gap: '20px', marginBottom: '20px', flexDirection: 'row' }}> {/* Changed to row */}
                 <img
-                    src="https://placehold.co/150x150/007a7e/ffffff?text=Dr+Subhashith" // Placeholder image for Dr. Subhashith
-                    alt="Dr. Subhashith Shetty"
-                    style={{
-                        width: '150px',
-                        height: '150px',
-                        borderRadius: '50%',
-                        objectFit: 'cover',
-                        border: '4px solid #007a7e',
-                        boxShadow: '0 8px 20px rgba(0, 77, 79, 0.2)',
-                        transition: baseTransition,
-                        ...(hoveredSection === 'coo' && { transform: 'scale(1.05)' }),
-                        flexShrink: 0, // Prevent image from shrinking
-                    }}
+                     src="assets/img/Subhashith.jpeg"
+  alt="Dr. Ajith Ramaswamy"
+  style={{
+    width: '150px',
+    height: '150px',
+    borderRadius: '50%',
+    objectFit: 'cover',
+    objectPosition: 'center 15%', // shifts image focus downward
+    border: '4px solid #007a7e',
+    boxShadow: '0 8px 20px rgba(0, 77, 79, 0.2)',
+    transition: baseTransition,
+    ...(hoveredSection === 'ceo' && { transform: 'scale(1.05)' }),
+    flexShrink: 0,
+    marginTop: '2px',
+  }}
                     onError={(e) => { e.target.onerror = null; e.target.src="https://placehold.co/150x150/CCCCCC/666666?text=Dr+Img"; }}
                 />
                 <div style={{ flexGrow: 1, textAlign: 'left' }}> {/* Container for name and designation */}
