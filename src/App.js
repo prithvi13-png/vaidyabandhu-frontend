@@ -1,5 +1,6 @@
 import React, { Suspense, useLayoutEffect } from 'react'
 import { BrowserRouter as Router, Route, Switch, withRouter } from 'react-router-dom';
+import BasicDetail from './components/pages/BasicDetail';
 
 // Home
 const Home = React.lazy(() => import("./components/pages/Home"));
@@ -45,8 +46,7 @@ function App() {
     <Router basename={"/VaidyaBandhu"}>
       <Suspense fallback={<div></div>}>
         <ScrollToTop>
-          <Switch>
-            
+          <Switch>            
             {/* Home */}
             <Route exact path="/" component={Home} />
             <Route exact path="/home-v2" component={Hometwo} />
@@ -80,6 +80,9 @@ function App() {
             <Route exact path="/doctor-details/:id" component={props => (<Doctordetails {...props} key={window.location.pathname} />)} />
             {/* Contact */}
             <Route exact path="/contact" component={Contact} />
+            {/* Basic Route */}
+            <Route exact path="/basic-details" component={BasicDetail} />
+
             {/* Extra */}
             <Route exact path="/error-page" component={Errorpage} />
             <Route exact component={Errorpage} />
