@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { Rating } from "../../../helper/helper";
 import Pagination from "react-js-pagination";
 import axios from "axios";
+import { useLocation } from "react-router-dom";
 
 const Content = () => {
   const [departments, setDepartments] = useState([]); // Departments from API
@@ -12,10 +13,15 @@ const Content = () => {
   const [itemPerpage] = useState(3);
   const [loader, setLoader] = useState(false);
   const [error, setError] = useState(null);
+  const { search } = useLocation();
+  const params = new URLSearchParams(search);
+  const specialtyParam = params.get("specialty");
 
   // Filter states
   const [searchTerm, setSearchTerm] = useState("");
-  const [selectedSpecialties, setSelectedSpecialties] = useState([]);
+  const [selectedSpecialties, setSelectedSpecialties] = useState(
+    specialtyParam ? [Number(specialtyParam)] : []
+  );
   const [selectedLocations, setSelectedLocations] = useState([]);
   const [selectedAvailability, setSelectedAvailability] = useState([]);
   const [selectedRating, setSelectedRating] = useState("");

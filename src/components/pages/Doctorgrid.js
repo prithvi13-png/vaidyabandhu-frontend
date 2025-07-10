@@ -5,14 +5,14 @@ import Breadcrumbs from '../layouts/Breadcrumbs';
 import Footer from '../layouts/Footer';
 import Content from '../sections/doctor-grid/Content';
 
-const pagelocation = "Doctor Grid";
+const pagelocation = "Specializations";
 
 class Doctorgrid extends Component {
     render() {
         return (
             <Fragment>
                 <MetaTags>
-                    <title>VaidyaBandhu - Doctors Appointment Booking - React Template | {pagelocation}</title>
+                    <title>VaidyaBandhu - Doctors Appointment Booking - Specializations | {pagelocation}</title>
                     <meta
                         name="description"
                         content="#"

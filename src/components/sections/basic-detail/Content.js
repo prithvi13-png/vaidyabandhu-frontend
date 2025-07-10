@@ -8,41 +8,49 @@ import {
   Shield,
 } from "lucide-react";
 import { Form, Col, Row, Card } from "react-bootstrap";
-import "../../../assets/css/BasicDetail.css"; // Assuming you will add custom styles in a separate file
+import "../../../assets/css/BasicDetail.css";
+import languagesType from "./data.json";
 
-import languagesType from "./data.json"; // Import the languagesType JSON file
+const BLOOD_GROUPS = [
+  "A+",
+  "A-",
+  "B+",
+  "B-",
+  "AB+",
+  "AB-",
+  "O+",
+  "O-",
+  "Unknown",
+];
 
 const VaidyaBandhuForm = () => {
   const [formData, setFormData] = useState({
-    fullName: "",
+    full_name: "",
     age: "",
     gender: "",
-    bloodGroup: "",
-    mobileNumber: "",
-    alternateNumber: "",
-    emailId: "",
-    fullAddress: "",
-    pinCode: "",
-    aadhaarNumber: "",
-    panNumber: "",
+    blood_group: "",
+    mobile_number: "",
+    alternate_mobile: "",
+    email: "",
+    address: "",
+    pin_code: "",
+    aadhaar_number: "",
+    pan_number: "",
   });
 
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
-
-  // State for the selected language (default to English)
+  const token = localStorage.getItem('token');
   const [selectedLanguage, setSelectedLanguage] = useState("en");
 
   // Handle language change
-  const handleLanguageChange = (e) => {
-    setSelectedLanguage(e.target.value);
-  };
+  const handleLanguageChange = (e) => setSelectedLanguage(e.target.value);
 
   const validateForm = () => {
     const newErrors = {};
 
-    if (!formData.fullName.trim()) {
-      newErrors.fullName =
+    if (!formData.full_name.trim()) {
+      newErrors.full_name =
         languagesType[selectedLanguage].validation.fullNameRequired;
     }
 
@@ -57,52 +65,52 @@ const VaidyaBandhuForm = () => {
         languagesType[selectedLanguage].validation.genderRequired;
     }
 
-    if (!formData.mobileNumber.trim()) {
-      newErrors.mobileNumber =
+    if (!formData.mobile_number.trim()) {
+      newErrors.mobile_number =
         languagesType[selectedLanguage].validation.mobileRequired;
-    } else if (!/^[6-9]\d{9}$/.test(formData.mobileNumber)) {
-      newErrors.mobileNumber =
+    } else if (!/^[6-9]\d{9}$/.test(formData.mobile_number)) {
+      newErrors.mobile_number =
         languagesType[selectedLanguage].validation.mobileValid;
     }
 
-    if (!formData.fullAddress.trim()) {
-      newErrors.fullAddress =
+    if (!formData.address.trim()) {
+      newErrors.address =
         languagesType[selectedLanguage].validation.addressRequired;
     }
 
-    if (!formData.pinCode.trim()) {
-      newErrors.pinCode =
+    if (!formData.pin_code.trim()) {
+      newErrors.pin_code =
         languagesType[selectedLanguage].validation.pinCodeRequired;
-    } else if (!/^\d{6}$/.test(formData.pinCode)) {
-      newErrors.pinCode =
+    } else if (!/^\d{6}$/.test(formData.pin_code)) {
+      newErrors.pin_code =
         languagesType[selectedLanguage].validation.pinCodeValid;
     }
 
     if (
-      formData.alternateNumber &&
-      !/^[6-9]\d{9}$/.test(formData.alternateNumber)
+      formData.alternate_mobile &&
+      !/^[6-9]\d{9}$/.test(formData.alternate_mobile)
     ) {
-      newErrors.alternateNumber =
+      newErrors.alternate_mobile =
         languagesType[selectedLanguage].validation.alternateValid;
     }
 
     if (
-      formData.emailId &&
-      !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.emailId)
+      formData.email &&
+      !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)
     ) {
-      newErrors.emailId = languagesType[selectedLanguage].validation.emailValid;
+      newErrors.email = languagesType[selectedLanguage].validation.emailValid;
     }
 
-    if (formData.aadhaarNumber && !/^\d{12}$/.test(formData.aadhaarNumber)) {
-      newErrors.aadhaarNumber =
+    if (formData.aadhaar_number && !/^\d{12}$/.test(formData.aadhaar_number)) {
+      newErrors.aadhaar_number =
         languagesType[selectedLanguage].validation.aadhaarValid;
     }
 
     if (
-      formData.panNumber &&
-      !/^[A-Z]{5}[0-9]{4}[A-Z]{1}$/.test(formData.panNumber)
+      formData.pan_number &&
+      !/^[A-Z]{5}[0-9]{4}[A-Z]{1}$/.test(formData.pan_number)
     ) {
-      newErrors.panNumber = languagesType[selectedLanguage].validation.panValid;
+      newErrors.pan_number = languagesType[selectedLanguage].validation.panValid;
     }
 
     return newErrors;
@@ -114,8 +122,6 @@ const VaidyaBandhuForm = () => {
       ...prev,
       [name]: value,
     }));
-
-    // Clear error when user starts typing
     if (errors[name]) {
       setErrors((prev) => ({
         ...prev,
@@ -126,25 +132,20 @@ const VaidyaBandhuForm = () => {
 
   const handleNumberChange = (e, fieldName) => {
     const value = e.target.value;
-
-    // Define maxLength per field
     const maxLength =
-      fieldName === "pinCode"
+      fieldName === "pin_code"
         ? 6
-        : fieldName === "mobileNumber"
+        : fieldName === "mobile_number"
         ? 10
-        : fieldName === "aadhaarNumber"
+        : fieldName === "aadhaar_number"
         ? 12
-        : 3; // Default for any other number fields (like Age)
+        : 3;
 
-    // Validate numeric input and ensure length doesn't exceed the max limit
     if (/^[0-9]*$/.test(value) && value.length <= maxLength) {
       setFormData((prev) => ({
         ...prev,
         [fieldName]: value,
       }));
-
-      // Clear error when user starts typing
       if (errors[fieldName]) {
         setErrors((prev) => ({
           ...prev,
@@ -156,62 +157,28 @@ const VaidyaBandhuForm = () => {
 
   const handleSubmit = async () => {
     const validationErrors = validateForm();
-
     if (Object.keys(validationErrors).length > 0) {
       setErrors(validationErrors);
       return;
     }
-
     setIsSubmitting(true);
 
-    // Simulate API request to create a Razorpay order
     try {
-      const response = await fetch("/api/create-order", {
-        // replace with your backend API
+      const response = await fetch("http://3.27.214.105/api/users/2/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          Authorization: token || ''
         },
-        body: JSON.stringify({ ...formData, amount: 49, currency: "INR" }), // ₹49
+        body: JSON.stringify({ ...formData, amount: 49, currency: "INR" }),
       });
 
       const data = await response.json();
-      console.log({ data });
-
-      const { orderId, amount, currency, razorpayKeyId } = data;
-
-      if (orderId) {
-        const options = {
-          key: razorpayKeyId,
-          amount: amount,
-          currency: currency,
-          name: languagesType[selectedLanguage].title,
-          description: languagesType[selectedLanguage].subtitle,
-          order_id: orderId,
-          handler: function (response) {
-            alert(
-              languagesType[selectedLanguage].payNow +
-                " Payment ID: " +
-                response.razorpay_payment_id
-            );
-          },
-          prefill: {
-            name: formData.fullName,
-            email: formData.emailId,
-            contact: formData.mobileNumber,
-          },
-          theme: {
-            color: "#F37254",
-          },
-        };
-
-        const rzp = new window.Razorpay(options);
-        rzp.open();
-      }
+      // Do something with the response
     } catch (error) {
       alert("Error occurred while creating order");
-      setIsSubmitting(false);
     }
+    setIsSubmitting(false);
   };
 
   const benefits = languagesType[selectedLanguage].benefits;
@@ -221,7 +188,6 @@ const VaidyaBandhuForm = () => {
     <div className="container-fluid bg-light py-5">
       <div className="container">
         <div className="d-flex justify-content-end">
-          {/* Language Selection Dropdown */}
           <div className="text-right mb-4" style={{ width: "200px" }}>
             <select
               className="form-select"
@@ -238,7 +204,6 @@ const VaidyaBandhuForm = () => {
           </div>
         </div>
 
-        {/* Header */}
         <div className="text-center mb-5">
           <h1 className="display-4 text-dark mb-2">
             💳 {languagesType[selectedLanguage].title}
@@ -248,11 +213,9 @@ const VaidyaBandhuForm = () => {
           </p>
         </div>
 
-        {/* Main Content Row */}
         <Row className="mb-8">
-          {/* Left Section: Membership Benefits, Charges, and Terms */}
           <Col md={4}>
-            <Card className="bg-gradient-to-r from-blue-500 to-indigo-600 p-6 mb-4 shadow-lg">
+            <Card className="mb-4 shadow-lg">
               <Card.Body>
                 <h4 className="h4 mb-4">
                   <Star className="h-6 w-6 text-yellow-500 mr-1" />{" "}
@@ -269,7 +232,7 @@ const VaidyaBandhuForm = () => {
               </Card.Body>
             </Card>
 
-            <Card className="bg-gradient-to-r from-green-500 to-blue-600 p-6 mb-4 shadow-lg">
+            <Card className="mb-4 shadow-lg">
               <Card.Body>
                 <h2 className="h4 mb-4">
                   <CreditCard className="h-6 w-6 text-green-500 mr-2" />{" "}
@@ -293,7 +256,6 @@ const VaidyaBandhuForm = () => {
             </Card>
           </Col>
 
-          {/* Right Section: Personal Details Form */}
           <Col md={8}>
             <Card className="bg-white rounded-xl shadow-lg p-6 mb-4">
               <Card.Body>
@@ -309,31 +271,29 @@ const VaidyaBandhuForm = () => {
                   }}
                 >
                   <Row>
-                    {/* Full Name */}
                     <Col md={12}>
                       <Form.Group controlId="formFullName" className="mb-3">
                         <Form.Label>
-                          {languagesType[selectedLanguage].form.fullName} *
+                          {languagesType[selectedLanguage].form.full_name} *
                         </Form.Label>
                         <Form.Control
                           type="text"
-                          name="fullName"
-                          value={formData.fullName}
+                          name="full_name"
+                          value={formData.full_name}
                           onChange={handleInputChange}
-                          isInvalid={!!errors.fullName}
+                          isInvalid={!!errors.full_name}
                           placeholder={
                             languagesType[selectedLanguage].form.placeholders
-                              .fullName
+                              .full_name
                           }
                         />
                         <Form.Control.Feedback type="invalid">
-                          {errors.fullName}
+                          {errors.full_name}
                         </Form.Control.Feedback>
                       </Form.Group>
                     </Col>
                   </Row>
                   <Row>
-                    {/* Age */}
                     <Col md={6}>
                       <Form.Group controlId="formAge" className="mb-3">
                         <Form.Label>
@@ -358,7 +318,6 @@ const VaidyaBandhuForm = () => {
                       </Form.Group>
                     </Col>
 
-                    {/* Gender */}
                     <Col>
                       <Form.Group controlId="formGender" className="mb-3">
                         <Form.Label>
@@ -390,80 +349,132 @@ const VaidyaBandhuForm = () => {
                       </Form.Group>
                     </Col>
                   </Row>
-                  {/* Blood Group */}
-                  <Col md={6}>
-                    <Form.Group controlId="formBloodGroup" className="mb-3">
-                      <Form.Label>
-                        {languagesType[selectedLanguage].form.bloodGroup}
-                      </Form.Label>
-                      <Form.Control
-                        type="text"
-                        name="bloodGroup"
-                        value={formData.bloodGroup}
-                        onChange={handleInputChange}
-                        isInvalid={!!errors.bloodGroup}
-                        placeholder={
-                          languagesType[selectedLanguage].form.placeholders
-                            .bloodGroup
-                        }
-                      />
-                      <Form.Control.Feedback type="invalid">
-                        {errors.bloodGroup}
-                      </Form.Control.Feedback>
-                    </Form.Group>
-                  </Col>
+                  {/* Blood Group - select */}
+                  <Row>
+                    <Col md={6}>
+                      <Form.Group controlId="formBloodGroup" className="mb-3">
+                        <Form.Label>
+                          {languagesType[selectedLanguage].form.blood_group}
+                        </Form.Label>
+                        <Form.Control
+                          as="select"
+                          name="blood_group"
+                          value={formData.blood_group}
+                          onChange={handleInputChange}
+                          isInvalid={!!errors.blood_group}
+                        >
+                          <option value="">
+                            {languagesType[selectedLanguage].form.selectBloodGroup || "Select Blood Group"}
+                          </option>
+                          {BLOOD_GROUPS.map((bg, idx) => (
+                            <option key={bg + idx} value={bg}>
+                              {bg}
+                            </option>
+                          ))}
+                        </Form.Control>
+                        <Form.Control.Feedback type="invalid">
+                          {errors.blood_group}
+                        </Form.Control.Feedback>
+                      </Form.Group>
+                    </Col>
+                  </Row>
+
+                  {/* Address and Pin code */}
+                  <Row>
+                    <Col md={8}>
+                      <Form.Group controlId="formAddress" className="mb-3">
+                        <Form.Label>
+                          {languagesType[selectedLanguage].form.address} *
+                        </Form.Label>
+                        <Form.Control
+                          type="text"
+                          name="address"
+                          value={formData.address}
+                          onChange={handleInputChange}
+                          isInvalid={!!errors.address}
+                          placeholder={
+                            languagesType[selectedLanguage].form.placeholders
+                              .address
+                          }
+                        />
+                        <Form.Control.Feedback type="invalid">
+                          {errors.address}
+                        </Form.Control.Feedback>
+                      </Form.Group>
+                    </Col>
+                    <Col md={4}>
+                      <Form.Group controlId="formPinCode" className="mb-3">
+                        <Form.Label>
+                          {languagesType[selectedLanguage].form.pin_code} *
+                        </Form.Label>
+                        <Form.Control
+                          type="text"
+                          name="pin_code"
+                          value={formData.pin_code}
+                          onChange={(e) => handleNumberChange(e, "pin_code")}
+                          isInvalid={!!errors.pin_code}
+                          placeholder={
+                            languagesType[selectedLanguage].form.placeholders
+                              .pin_code
+                          }
+                          maxLength="6"
+                        />
+                        <Form.Control.Feedback type="invalid">
+                          {errors.pin_code}
+                        </Form.Control.Feedback>
+                      </Form.Group>
+                    </Col>
+                  </Row>
+
                   <Row>
                     <Col>
-                      {/* Mobile Number */}
                       <Form.Group controlId="formMobileNumber" className="mb-3">
                         <Form.Label>
-                          {languagesType[selectedLanguage].form.mobileNumber} *
+                          {languagesType[selectedLanguage].form.mobile_number} *
                         </Form.Label>
                         <Form.Control
                           type="tel"
-                          name="mobileNumber"
-                          value={formData.mobileNumber}
+                          name="mobile_number"
+                          value={formData.mobile_number}
                           onChange={(e) =>
-                            handleNumberChange(e, "mobileNumber")
+                            handleNumberChange(e, "mobile_number")
                           }
-                          isInvalid={!!errors.mobileNumber}
+                          isInvalid={!!errors.mobile_number}
                           placeholder={
                             languagesType[selectedLanguage].form.placeholders
-                              .mobileNumber
+                              .mobile_number
                           }
                           maxLength="10"
                         />
                         <Form.Control.Feedback type="invalid">
-                          {errors.mobileNumber}
+                          {errors.mobile_number}
                         </Form.Control.Feedback>
                       </Form.Group>
                     </Col>
-
-                    {/* Alternate Number */}
                     <Col>
                       <Form.Group
                         controlId="formAlternateNumber"
                         className="mb-3"
                       >
                         <Form.Label>
-                          {languagesType[selectedLanguage].form.alternateNumber}
+                          {languagesType[selectedLanguage].form.alternate_mobile}
                         </Form.Label>
                         <Form.Control
                           type="tel"
-                          name="alternateNumber"
-                          value={formData.alternateNumber}
+                          name="alternate_mobile"
+                          value={formData.alternate_mobile}
                           onChange={(e) =>
-                            handleNumberChange(e, "alternateNumber")
+                            handleNumberChange(e, "alternate_mobile")
                           }
-                          isInvalid={!!errors.alternateNumber}
+                          isInvalid={!!errors.alternate_mobile}
                           placeholder={
                             languagesType[selectedLanguage].form.placeholders
-                              .alternateNumber
+                              .alternate_mobile
                           }
                           maxLength="10"
                         />
                         <Form.Control.Feedback type="invalid">
-                          {errors.alternateNumber}
+                          {errors.alternate_mobile}
                         </Form.Control.Feedback>
                       </Form.Group>
                     </Col>
@@ -471,70 +482,69 @@ const VaidyaBandhuForm = () => {
                   {/* Email ID */}
                   <Form.Group controlId="formEmailId" className="mb-3">
                     <Form.Label>
-                      {languagesType[selectedLanguage].form.emailId}
+                      {languagesType[selectedLanguage].form.email}
                     </Form.Label>
                     <Form.Control
                       type="email"
-                      name="emailId"
-                      value={formData.emailId}
+                      name="email"
+                      value={formData.email}
                       onChange={handleInputChange}
-                      isInvalid={!!errors.emailId}
+                      isInvalid={!!errors.email}
                       placeholder={
                         languagesType[selectedLanguage].form.placeholders
-                          .emailId
+                          .email
                       }
                     />
                     <Form.Control.Feedback type="invalid">
-                      {errors.emailId}
+                      {errors.email}
                     </Form.Control.Feedback>
                   </Form.Group>
 
                   {/* Aadhaar Number */}
                   <Form.Group controlId="formAadhaarNumber" className="mb-3">
                     <Form.Label>
-                      {languagesType[selectedLanguage].form.aadhaarNumber}
+                      {languagesType[selectedLanguage].form.aadhaar_number}
                     </Form.Label>
                     <Form.Control
                       type="text"
-                      name="aadhaarNumber"
-                      value={formData.aadhaarNumber}
-                      onChange={(e) => handleNumberChange(e, "aadhaarNumber")}
-                      isInvalid={!!errors.aadhaarNumber}
+                      name="aadhaar_number"
+                      value={formData.aadhaar_number}
+                      onChange={(e) => handleNumberChange(e, "aadhaar_number")}
+                      isInvalid={!!errors.aadhaar_number}
                       placeholder={
                         languagesType[selectedLanguage].form.placeholders
-                          .aadhaarNumber
+                          .aadhaar_number
                       }
                       maxLength="12"
                     />
                     <Form.Control.Feedback type="invalid">
-                      {errors.aadhaarNumber}
+                      {errors.aadhaar_number}
                     </Form.Control.Feedback>
                   </Form.Group>
 
                   {/* PAN Number */}
                   <Form.Group controlId="formPanNumber" className="mb-3">
                     <Form.Label>
-                      {languagesType[selectedLanguage].form.panNumber}
+                      {languagesType[selectedLanguage].form.pan_number}
                     </Form.Label>
                     <Form.Control
                       type="text"
-                      name="panNumber"
-                      value={formData.panNumber}
+                      name="pan_number"
+                      value={formData.pan_number}
                       onChange={handleInputChange}
-                      isInvalid={!!errors.panNumber}
+                      isInvalid={!!errors.pan_number}
                       placeholder={
                         languagesType[selectedLanguage].form.placeholders
-                          .panNumber
+                          .pan_number
                       }
                       maxLength="10"
                       style={{ textTransform: "uppercase" }}
                     />
                     <Form.Control.Feedback type="invalid">
-                      {errors.panNumber}
+                      {errors.pan_number}
                     </Form.Control.Feedback>
                   </Form.Group>
 
-                  {/* Submit Button */}
                   <button
                     type="submit"
                     disabled={isSubmitting}
@@ -549,8 +559,6 @@ const VaidyaBandhuForm = () => {
             </Card>
           </Col>
         </Row>
-
-        {/* Terms and Conditions */}
         <Row>
           <Col>
             <Card>
@@ -576,4 +584,4 @@ const VaidyaBandhuForm = () => {
   );
 };
 
-export default VaidyaBandhuForm;
+export default VaidyaBandhuForm
