@@ -10,7 +10,7 @@ const dummyWorkprocess = [
       "Pay ₹49 (valid for 1 year).",
       "Receive your membership card at your doorstep.",
     ],
-    imageUrl: "https://placehold.co/60x60/007a7e/ffffff?text=Card", // Placeholder image for Step 1
+    imageUrl: "https://cdn-icons-png.flaticon.com/128/3135/3135768.png", // ID card icon
   },
   {
     title: "Access Quality Healthcare <br/>at Affordable Rates",
@@ -20,7 +20,7 @@ const dummyWorkprocess = [
       "Avail 10% to 40% Discounts – On surgeries, treatments, and diagnostics.",
       "Visit Partner Hospitals & Diagnostic Centers – Use your membership card to get benefits.",
     ],
-    imageUrl: "https://placehold.co/60x60/007a7e/ffffff?text=Access", // Placeholder image for Step 2
+    imageUrl: "https://cdn-icons-png.flaticon.com/128/3209/3209265.png", // Doctor and hospital icon
   },
   {
     title: "Get Complete <br/>Healthcare Support",
@@ -29,9 +29,10 @@ const dummyWorkprocess = [
       "Best Treatment Plans – We help you choose the right hospital and doctor.",
       "Priority Support for Critical Cases – Quick access to necessary treatments.",
     ],
-    imageUrl: "https://placehold.co/60x60/007a7e/ffffff?text=Support", // Placeholder image for Step 3
+    imageUrl: "https://cdn-icons-png.flaticon.com/128/2991/2991158.png", // Support/help icon
   },
 ];
+
 
 const Workprocess = () => {
   const [animated, setAnimated] = useState(false);

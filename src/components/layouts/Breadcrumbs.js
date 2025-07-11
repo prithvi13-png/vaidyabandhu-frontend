@@ -19,31 +19,22 @@ class Breadcrumbs extends Component {
           </ol>
         </div>
 
-        {/* Decorative SVG in 3 corners */}
-        <img src={decorativeSvg} className="br" alt="decorative healthcare icon" />
-        <img src={decorativeSvg} className="bl" alt="decorative healthcare icon" />
-        <img src={decorativeSvg} className="tr" alt="decorative healthcare icon" />
+        {/* Single Decorative SVG */}
+        <img
+          src={decorativeSvg}
+          alt="decorative healthcare icon"
+          className="breadcrumb-decor"
+        />
 
-        {/* CSS styles */}
+        {/* Inline Styles */}
         <style>{`
-          .sigma_subheader img {
+          .breadcrumb-decor {
             position: absolute;
-            opacity: 0.06;
-            width: 100px;
-            height: auto;
-            z-index: 1;
-          }
-          .sigma_subheader .br {
-            bottom: 10px;
-            right: 10px;
-          }
-          .sigma_subheader .bl {
-            bottom: 10px;
-            left: 10px;
-          }
-          .sigma_subheader .tr {
             top: 10px;
             right: 10px;
+            width: 100px;
+            opacity: 0.06;
+            z-index: 1;
           }
         `}</style>
       </div>

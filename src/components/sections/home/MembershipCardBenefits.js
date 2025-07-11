@@ -12,6 +12,7 @@ const MembershipCardBenefits = () => {
 
   const benefits = [
     "10% to 40% discount on surgeries, treatments, and diagnostic tests.",
+    "10% to 40% discounts on surgeries, treatments, and diagnostics",
     "Valid across Karnataka at our partner hospitals and diagnostic centers.",
     "One-time payment of ₹49 – No hidden charges.",
     "Card delivered to your address after registration.",

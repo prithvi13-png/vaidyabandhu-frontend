@@ -28,11 +28,5 @@
   "id": 6,
    "link": "/services",
                 "linkText": "Our Services"
-},
-   
-    {
-        "id": 7,
-        "link": "/contact",
-        "linkText": "Contact Us"
-    }
+}
 ]

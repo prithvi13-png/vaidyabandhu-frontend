@@ -2,11 +2,11 @@ import React, { useEffect, useState } from 'react';
 
 // Dummy serviceblock data as we cannot access local JSON files
 const dummyServiceblock = [
-  { "title": "Consult a Doctor", path: "/services/consult-doctor" },
-  { "title": "Surgeries & Treatments", path: "/services/surgeries-treatments" },
-  { "title": "Free Surgeries", path: "/services/free-surgeries" },
-  { "title": "Diagnostic Tests", path: "/services/diagnostic-tests" },
-  { "title": "One-Stop Solution", path: "/services/one-stop-solution" }
+    { "title": "Consult a Doctor", path: "/services/consult-doctor" },
+    { "title": "Surgeries & Treatments", path: "/services/surgeries-treatments" },
+    { "title": "Free Surgeries", path: "/services/free-surgeries" },
+    { "title": "Diagnostic Tests", path: "/services/diagnostic-tests" },
+    { "title": "One-Stop Solution", path: "/services/one-stop-solution" }
 ];
 
 const Footer = () => {
@@ -142,7 +142,7 @@ const Footer = () => {
                             </svg>
                         </div>
                         <div>
-                            <p style={{ margin: "0", fontSize: "16px", color: "#a0aec0" }}>Call Us</p>
+                            <p style={{ margin: "0", fontSize: "16px", color: "#a0aec0" }}>Call Us - Helpline</p>
                             <p style={{ margin: "0", fontSize: "18px", fontWeight: "bold", color: "#e2e8f0" }}>+91 8535853589</p>
                         </div>
                     </div>
@@ -200,66 +200,7 @@ const Footer = () => {
                             textAlign: "left",
                         }}
                     >
-                        {/* Logo and About */}
-                        <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-start" }}>
-                            <div style={{ marginBottom: "20px" }}>
-                             <img
-  src="assets/img/logo-final.png"
-  alt="logo"
-  style={{
-    width: "160px",           // Set a fixed or smaller width
-    height: "auto",           // Maintain aspect ratio
-    borderRadius: "8px",
-    display: "block",         // Ensures no inline spacing issues
-  }}
-/>
-
-                            </div>
-                            <p style={{ fontSize: "15px", lineHeight: "1.6", color: "#cbd5e0", marginBottom: "20px" }}>
-                                Quality healthcare at affordable rates, anytime, anywhere.
-                            </p>
-                            <ul
-                                style={{
-                                    display: "flex",
-                                    listStyle: "none",
-                                    padding: 0,
-                                    margin: 0,
-                                    gap: "15px",
-                                }}
-                            >
-                                {['facebook-f', 'twitter', 'instagram', 'linkedin', 'google'].map((social, i) => (
-                                    <li key={i}>
-                                        <a
-                                            href={`#${social}`} // Placeholder link
-                                            style={{
-                                                width: "40px",
-                                                height: "40px",
-                                                borderRadius: "50%",
-                                                border: "1px solid rgba(0, 122, 126, 0.5)", // More visible border
-                                                display: "flex",
-                                                alignItems: "center",
-                                                justifyContent: "center",
-                                                color: "#007a7e", // Accent color for icons
-                                                textDecoration: "none",
-                                                transition: baseTransition,
-                                            }}
-                                            onMouseEnter={(e) => {
-                                                e.currentTarget.style.background = "#007a7e";
-                                                e.currentTarget.style.color = "#ffffff";
-                                            }}
-                                            onMouseLeave={(e) => {
-                                                e.currentTarget.style.background = "transparent";
-                                                e.currentTarget.style.color = "#007a7e";
-                                            }}
-                                        >
-                                            {/* Using simple text as fallback for icons */}
-                                            {social.charAt(0).toUpperCase()}
-                                        </a>
-                                    </li>
-                                ))}
-                            </ul>
-                        </div>
-
+                     
                         {/* Our Services */}
                         <div>
                             <h5 style={{ fontSize: "20px", fontWeight: "700", color: "#e2e8f0", marginBottom: "20px" }}>Our Services</h5>
@@ -310,7 +251,7 @@ const Footer = () => {
 
                         {/* Subscribe Form */}
                         <div>
-                            <h5 style={{ fontSize: "20px", fontWeight: "700", color: "#e2e8f0", marginBottom: "20px" }}>Subscribe</h5>
+                            <h5 style={{ fontSize: "20px", fontWeight: "700",  padding: "12px 15px", color: "#e2e8f0", marginBottom: "0px" }}>Subscribe</h5>
                             <form>
                                 <input
                                     type="email"
@@ -337,6 +278,7 @@ const Footer = () => {
                                         background: "#007a7e",
                                         color: "#ffffff",
                                         border: "none",
+                                         background: "linear-gradient(to right, #007a7e, #004d4f)",
                                         borderRadius: "8px",
                                         cursor: "pointer",
                                         fontSize: "16px",
@@ -361,12 +303,12 @@ const Footer = () => {
                     style={{
                         padding: "25px 0",
                         borderTop: "1px solid rgba(0, 122, 126, 0.2)", // Lighter border for contrast
-                        marginTop: "40px",
+                        marginTop: "0px",
                         display: "flex",
                         flexWrap: "wrap",
                         alignItems: "center",
                         justifyContent: "space-between",
-                        gap: "20px", // Gap for wrapping items
+                        gap: "14px", // Gap for wrapping items
                         opacity: animated ? 1 : 0,
                         transform: animated ? "translateY(0)" : "translateY(30px)",
                         transition: `opacity 0.8s ease-out 0.6s, transform 0.8s ease-out 0.6s`,
@@ -374,7 +316,7 @@ const Footer = () => {
                 >
                     <div style={{ fontSize: "14px", color: "#cbd5e0", textAlign: "left", flex: "1 1 300px" }}>
                         <p style={{ margin: "0", lineHeight: "1.6" }}>
-                            © <a href="#" style={{ color: "#007a7e", textDecoration: "none" }}>2025</a> Vaidya Bandhu – All Rights Reserved. <br />
+                            © <a href="#" style={{ color: "white", textDecoration: "none" }}>2025</a> Vaidya Bandhu – All Rights Reserved. <br />
                             This website and its content are the intellectual property of <strong>MyCompanyon Healthcare Pvt Ltd</strong>. <br />
                             Unauthorized use is strictly prohibited under <strong>Copyright Act, 1957</strong>.
                         </p>
@@ -385,13 +327,13 @@ const Footer = () => {
                             listStyle: "none",
                             padding: 0,
                             margin: 0,
-                            gap: "15px", // Spacing between bottom links
+                            gap: "5px", // Spacing between bottom links
                             flexWrap: "wrap",
                             justifyContent: "flex-end", // Align right on desktop
                             flex: "1 1 200px",
                         }}
                     >
-                        {[{ title: "Privacy", path: "#" }, { title: "Terms", path: "#" }, { title: "Refund", path: "#" }, { title: "Help", path: "#" }].map((item, i) => (
+                        {[{ title: "Privacy Policy", path: "#" }, { title: "Terms & Conditions", path: "#" }, { title: "Refund & Cancellation Policy", path: "#" }].map((item, i) => (
                             <li key={i}>
                                 <a
                                     href={item.path}
@@ -406,7 +348,7 @@ const Footer = () => {
                                 >
                                     {item.title}
                                 </a>
-                                {i < 3 && <span style={{ color: "#a0aec0", marginLeft: "15px" }}>|</span>} {/* Lighter separator */}
+                                {i < 2 && <span style={{ color: "#a0aec0", marginLeft: "15px" }}>|</span>} {/* Lighter separator */}
                             </li>
                         ))}
                     </ul>

@@ -40,7 +40,16 @@ class Header extends Navhelper {
           <div className="sigma_header-top dark-bg d-none d-md-block">
             <div className="container-fluid">
               <div className="sigma_header-top-inner">
-                <div className="sigma_header-top-links">
+               
+                <div className="sigma_header-top-contacts">
+                  <ul className="sigma_header-top-nav">
+                    <li><Link to="#"><i className="fab fa-facebook-f" /></Link></li>
+                    <li><Link to="#"><i className="fab fa-twitter" /></Link></li>
+                    <li><Link to="#"><i className="fab fa-linkedin-in" /></Link></li>
+                    <li><Link to="#"><i className="fab fa-google" /></Link></li>
+                  </ul>
+                </div>
+                 <div className="sigma_header-top-links">
                   <ul className="sigma_header-top-nav">
                     <li>
                       <a href="mailto:support@vaidyabandhu.com">
@@ -54,17 +63,9 @@ class Header extends Navhelper {
                     </li>
                     <li>
                       <a href="tel:+918535853589">
-                        <i className="fal fa-phone" /> +91 8535853589
+                        <i className="fal fa-mobile" /> +91 8535853589
                       </a>
                     </li>
-                  </ul>
-                </div>
-                <div className="sigma_header-top-contacts">
-                  <ul className="sigma_header-top-nav">
-                    <li><Link to="#"><i className="fab fa-facebook-f" /></Link></li>
-                    <li><Link to="#"><i className="fab fa-twitter" /></Link></li>
-                    <li><Link to="#"><i className="fab fa-linkedin-in" /></Link></li>
-                    <li><Link to="#"><i className="fab fa-google" /></Link></li>
                   </ul>
                 </div>
               </div>
@@ -76,7 +77,7 @@ class Header extends Navhelper {
               <div className="navbar">
                 <div className="sigma_logo-wrapper">
                   <Link to="/" className="sigma_logo">
-                    <img src={process.env.PUBLIC_URL + "/assets/img/logo-final.png"} alt="logo" style={{ borderRadius: '20px' }} />
+                    <img src={process.env.PUBLIC_URL + "/assets/img/logoo.png"} alt="logo" style={{ borderRadius: '20px' }} />
                   </Link>
                 </div>
 
@@ -116,11 +117,11 @@ class Header extends Navhelper {
 
                 <div className="sigma_header-controls style-2">
                   <ul className="sigma_header-controls-inner">
-                    <li className="search-trigger header-controls-item d-none d-sm-block">
+                    {/* <li className="search-trigger header-controls-item d-none d-sm-block">
                       <Link to="#" className="sigma_header-control-search bg-transparent border-0" title="Search" onClick={this.toggleSearch}>
                         <i className="far fa-search" />
                       </Link>
-                    </li>
+                    </li> */}
                     {/* Login/Profile Switch */}
                     {this.state.userPhone ? (
                       <>

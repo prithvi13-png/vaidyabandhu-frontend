@@ -11,7 +11,6 @@ import Workprocess from './Workprocess';
 import Team from './Team';
 import Blogs from './Blogs';
 import Testimonials from './Testimonials';
-import Galleryslider from '../../layouts/Galleryslider';
 import ClientLogosCarousel from './ClientLogosCarousel';
 import HealthcareReality from './HealthcareReality';
 import MembershipCardBenefits from './MembershipCardBenefits';

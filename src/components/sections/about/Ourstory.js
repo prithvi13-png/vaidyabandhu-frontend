@@ -99,8 +99,8 @@ const OurStory = () => {
             >
               Our <span style={{ color: '#007a7e' }}>Story</span>
               {/* Custom underline effect: double line */}
-            
-          
+
+
             </h2>
             <p
               style={{
@@ -157,7 +157,7 @@ const OurStory = () => {
               }}
             >
               Our <span style={{ color: '#007a7e' }}>Vision</span>
-          
+
             </h2>
             <p
               style={{
@@ -207,20 +207,20 @@ const OurStory = () => {
               }}
             >
               Our <span style={{ color: '#007a7e' }}>Mission</span>
-             
+
             </h2>
             <p
-  style={{
-    marginBottom: '25px',
-    fontSize: 'clamp(17px, 2.2vw, 19px)',
-    color: '#4a5568',
-    textAlign: 'center',
-    maxWidth: '800px',
-    margin: '0 auto 25px',
-  }}
->
-  To empower patients with timely medical guidance, trusted hospital access, and compassionate support throughout their healthcare journey.
-</p>
+              style={{
+                marginBottom: '25px',
+                fontSize: 'clamp(17px, 2.2vw, 19px)',
+                color: '#4a5568',
+                textAlign: 'center',
+                maxWidth: '800px',
+                margin: '0 auto 25px',
+              }}
+            >
+              To empower patients with timely medical guidance, trusted hospital access, and compassionate support throughout their healthcare journey.
+            </p>
 
 
             {/* Mission Content: Image Left, Text Right */}
@@ -243,19 +243,19 @@ const OurStory = () => {
                   transition: `opacity 0.8s ease-out 0.8s, transform 0.8s ease-out 0.8s`,
                 }}
               >
- <img
-  src="assets/img/ourv.jpg"
-  alt="Our Mission"
-  style={{
-    width: '100%',
-    height: 'auto',
-    maxHeight: '400px', // You can adjust this value as needed
-    objectFit: 'contain', // Ensures full image is shown without cropping
-    borderRadius: '15px',
-    boxShadow: '0 10px 30px rgba(0, 122, 126, 0.1)',
-    transition: baseTransition,
-  }}
-/>
+                <img
+                  src="assets/img/cvv.jpeg"
+                  alt="Our Mission"
+                  style={{
+                    width: '100%',
+                    height: 'auto',
+                    maxHeight: '800px', // You can adjust this value as needed
+                    objectFit: 'contain', // Ensures full image is shown without cropping
+                    borderRadius: '15px',
+                    boxShadow: '0 10px 30px rgba(0, 122, 126, 0.1)',
+                    transition: baseTransition,
+                  }}
+                />
 
 
               </div>
@@ -270,11 +270,12 @@ const OurStory = () => {
                   transition: `opacity 0.8s ease-out 0.8s, transform 0.8s ease-out 0.8s`,
                 }}
               >
-              
+
                 <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
                   {[
                     'Provide 10 - 40% discounts on surgeries, treatments, and diagnostics.',
                     'Offer free medical guidance to help people make informed decisions.',
+                    '10% CASHBACK BENEFIT - Submit bill/invoice within 7 days via WhatsApp/email  - Get 10% cashback credited to your account.',
                     'Connect patients with top doctors in every medical department.',
                     'Support underprivileged patients by arranging free surgeries.',
                     'Expand our network of hospitals & diagnostic centers across India.',

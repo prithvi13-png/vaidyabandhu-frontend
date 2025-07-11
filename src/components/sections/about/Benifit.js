@@ -126,7 +126,7 @@ const WhoCanBenefit = () => {
             }}
           >
             <img
-              src="assets/img/doc-25.jpg" // Placeholder image
+              src="assets/img/ms.jpg" // Placeholder image
               alt="People benefiting from healthcare"
               style={{
                 maxWidth: '100%',
