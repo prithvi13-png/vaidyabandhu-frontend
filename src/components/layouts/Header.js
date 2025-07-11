@@ -3,6 +3,7 @@ import Navhelper from '../../helper/NavHelper';
 import Mobilemenu from './Mobilemenu';
 import { Link } from 'react-router-dom';
 import navigation from '../../data/navigation.json';
+import MembershipModal from './MembershipModal';
 
 class Header extends Navhelper {
   constructor(props) {
@@ -142,9 +143,7 @@ class Header extends Navhelper {
                       </>
                     ) : (
                       <li className="d-none d-sm-block">
-                        <Link to="/basic-details" className="sigma_btn btn-sm">
-                          Buy Membership <i className="fal fa-user ms-1" />
-                        </Link>
+                       <MembershipModal />
                       </li>
                     )}
 

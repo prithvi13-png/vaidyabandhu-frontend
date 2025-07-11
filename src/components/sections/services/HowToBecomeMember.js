@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react'; // Fixed: Changed '=>' to 'from'
+import MembershipModal from '../../layouts/MembershipModal';
 
 const HowToBecomeMember = () => {
   const [animated, setAnimated] = useState(false);
-  const [hoveredButton, setHoveredButton] = useState(false);
+  // const [hoveredButton, setHoveredButton] = useState(false);
   const [hoveredHeading, setHoveredHeading] = useState(false);
 
   useEffect(() => {
@@ -114,29 +115,8 @@ const HowToBecomeMember = () => {
             and upon expiration, you can easily renew it.
           </p>
 
-          <a
-            href="/appointment" // Link to the appointment/membership page
-            style={{
-              background: hoveredButton ? '#004d4f' : '#007a7e', // Darker teal on hover
-              color: '#ffffff',
-              border: 'none',
-              padding: '15px 35px', // Larger padding for a prominent button
-              borderRadius: '10px', // More rounded button
-              cursor: 'pointer',
-              fontSize: 'clamp(18px, 2vw, 20px)', // Responsive button text size
-              fontWeight: '700', // Bolder text
-              textDecoration: 'none', // Remove underline
-              display: 'inline-block', // Allows padding and transforms
-         // Space above the button
-              boxShadow: hoveredButton ? '0 10px 25px rgba(0, 122, 126, 0.4)' : '0 5px 15px rgba(0, 122, 126, 0.2)', // Enhanced shadow on hover
-              transition: baseTransition,
-              transform: hoveredButton ? 'translateY(-3px)' : 'translateY(0)', // Lift on hover
-            }}
-            onMouseEnter={() => setHoveredButton(true)}
-            onMouseLeave={() => setHoveredButton(false)}
-          >
-            Get Membership
-          </a>
+          <MembershipModal />
+
         </div>
       </div>
 

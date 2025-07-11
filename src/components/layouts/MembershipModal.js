@@ -189,7 +189,7 @@ const MembershipModal = () => {
   return (
     <>
       <button onClick={handleShow} className="buy-membership-btn">
-        Buy Membership
+        Get ₹49 Membership
       </button>
 
       <Modal

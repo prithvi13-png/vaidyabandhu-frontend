@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import MembershipModal from '../../layouts/MembershipModal';
 
 // Updated dummy workprocess data with 3 steps and new content
 const dummyWorkprocess = [
@@ -136,34 +137,7 @@ const Workprocess = () => {
             </p>
           </div>
           <div style={{ flex: "1 1 auto", textAlign: "right" }}> {/* col-lg-3 equivalent */}
-            <a
-              href="/appointment" // Changed Link to a tag
-              style={{
-                background: "#007a7e",
-                color: "#ffffff",
-                border: "none",
-                padding: "12px 25px",
-                borderRadius: "8px",
-                cursor: "pointer",
-                fontSize: "18px",
-                fontWeight: "600",
-                display: "inline-block", // Ensures padding and hover effects work
-                textDecoration: "none", // Remove underline
-                marginTop: "20px", // Added margin for smaller screens
-                boxShadow: "0 4px 10px rgba(0, 122, 126, 0.2)",
-                transition: baseTransition,
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.background = "#004d4f";
-                e.currentTarget.style.transform = "translateY(-3px)";
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.background = "#007a7e";
-                e.currentTarget.style.transform = "translateY(0)";
-              }}
-            >
-              Get Membership
-            </a>
+          <MembershipModal />
           </div>
         </div>
 
