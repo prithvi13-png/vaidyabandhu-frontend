@@ -121,32 +121,32 @@ class Header extends Navhelper {
                       </Link>
                     </li>
                     {/* Login/Profile Switch */}
-                 {this.state.userPhone ? (
-  <>
-    <li className="d-none d-sm-block">
-      <Link to="/profile" className="sigma_btn btn-sm">
-        My Profile
-      </Link>
-    </li>
-    <li className="d-none d-sm-block">
-      <button
-        onClick={() => {
-          localStorage.removeItem("userPhone");
-          window.location.reload();
-        }}
-        className="btn btn-sm btn-outline-light ms-2"
-      >
-        Logout
-      </button>
-    </li>
-  </>
-) : (
-  <li className="d-none d-sm-block">
-    <Link to="/auth" className="sigma_btn btn-sm">
-      Login / Register <i className="fal fa-user ms-1" />
-    </Link>
-  </li>
-)}
+                    {this.state.userPhone ? (
+                      <>
+                        <li className="d-none d-sm-block">
+                          <Link to="/profile" className="sigma_btn btn-sm">
+                            My Profile
+                          </Link>
+                        </li>
+                        <li className="d-none d-sm-block">
+                          <button
+                            onClick={() => {
+                              localStorage.removeItem("userPhone");
+                              window.location.reload();
+                            }}
+                            className="btn btn-sm btn-outline-light ms-2"
+                          >
+                            Logout
+                          </button>
+                        </li>
+                      </>
+                    ) : (
+                      <li className="d-none d-sm-block">
+                        <Link to="/basic-details" className="sigma_btn btn-sm">
+                          Buy Membership <i className="fal fa-user ms-1" />
+                        </Link>
+                      </li>
+                    )}
 
                     <li className="aside-toggle aside-trigger" onClick={this.toggleNav}>
                       <span />
@@ -160,19 +160,7 @@ class Header extends Navhelper {
           </div>
         </header>
 
-        {/* Search Bar */}
-        <div className={this.state.searchMethod ? 'search-form-wrapper open' : 'search-form-wrapper'}>
-          <div className="search-trigger sigma_close" onClick={this.toggleSearch}>
-            <span />
-            <span />
-          </div>
-          <form className="search-form">
-            <input type="text" placeholder="Search..." required />
-            <button type="submit" className="search-btn">
-              <i className="fal fa-search m-0" />
-            </button>
-          </form>
-        </div>
+      
       </Fragment>
     );
   }

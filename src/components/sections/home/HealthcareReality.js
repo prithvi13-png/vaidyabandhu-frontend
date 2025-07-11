@@ -12,7 +12,7 @@ const HealthcareReality = () => {
   return (
     <div
       style={{
-        padding: "25px 20px",
+        padding: "40px 20px",
         background: "linear-gradient(135deg, #fdfefe 0%, #e8f5e9 100%)", // Very light, calming gradient
         textAlign: "center",
         overflow: "hidden",
