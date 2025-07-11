@@ -13,7 +13,7 @@ const Workprocess = () => {
 
   const steps = [
     {
-      icon: "flaticon-id-card",
+      icon: "fas fa-id-card",
       title: "Step 1: Get Your ₹49 Membership Card",
       points: [
         "Fill out the membership form (Name, Address, Phone).",
@@ -31,7 +31,7 @@ const Workprocess = () => {
       ]
     },
     {
-      icon: "flaticon-support",
+      icon: "flaticon-doctor",
       title: "Step 3: Complete Healthcare Support",
       points: [
         "Free medical advice anytime.",

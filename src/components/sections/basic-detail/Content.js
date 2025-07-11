@@ -206,14 +206,14 @@ const VaidyaBandhuForm = () => {
 
         <div className="text-center mb-5">
           <h1 className="display-4 text-dark mb-2">
-            💳 {languagesType[selectedLanguage].title}
+            {languagesType[selectedLanguage].title}
           </h1>
           <p className="lead text-muted mb-4">
             {languagesType[selectedLanguage].subtitle}
           </p>
         </div>
 
-        <Row className="mb-8">
+        <Row className="mb-4">
           <Col md={4}>
             <Card className="mb-4 shadow-lg">
               <Card.Body>
