@@ -12,7 +12,6 @@ const HowToBecomeMember = () => {
     return () => clearTimeout(timer);
   }, []);
 
-  // Unified, smoother transition for hover effects and animations
   const baseTransition = "all 0.5s cubic-bezier(0.23, 1, 0.32, 1)";
 
   return (
