@@ -372,6 +372,11 @@ It was heartbreaking, and more importantly, it was avoidable. If they had reache
             }}>
 This experience stayed with me. I shared it with Dr. Ajith, whose compassionate nature and healthcare expertise made him the perfect partner to bring this idea to life. Together, we founded Vaidya Bandhu - a platform committed to bridging the gap between affordability and quality healthcare.
             </p>
+              <p style={{ marginBottom: '15px', fontSize: 'clamp(16px, 2vw, 18px)', color: '#4a5568',
+                opacity: animated ? 1 : 0, transform: animated ? "translateY(0)" : "translateY(15px)", transition: `opacity 0.7s ease-out 1.5s, transform 0.7s ease-out 1.5s`,
+            }}>
+Along with offering 10% to 40% discounts on medical treatments and diagnostics, we are committed to providing 25 free surgeries in our first year to patients who are in dire financial need. Because for us, it’s not just about discounts - it’s about dignity, access, and saving lives.
+            </p>
           
                 <p
               style={{
@@ -390,7 +395,7 @@ This experience stayed with me. I shared it with Dr. Ajith, whose compassionate 
                 transition: `opacity 0.8s ease-out 1.6s, transform 0.8s ease-out 1.6s`,
               }}
             >
-Along with offering 10% to 40% discounts on medical treatments and diagnostics, we are committed to providing 25 free surgeries in our first year to patients who are in dire financial need. Because for us, it’s not just about discounts - it’s about dignity, access, and saving lives.
+Today, many people feel that healthcare is no longer about care, but about commerce. But that’s not the whole truth. Not every doctor is chasing profit. Not every hospital is built for business. There are still many who chose this noble profession to heal, to serve, and to stand by those in need. At Vaidya Bandhu, we’re here to prove that healthcare can be ethical, affordable, and full of heart.
             </p>
               <p
               style={{
