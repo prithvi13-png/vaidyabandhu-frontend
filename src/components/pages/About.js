@@ -5,7 +5,7 @@ import Breadcrumbs from '../layouts/Breadcrumbs';
 import Footer from '../layouts/Footer';
 import Content from '../sections/about/Content';
 
-const pagelocation = "About Us";
+const pagelocation = "About Vaidya Bandhu";
 
 class About extends Component {
     render() {

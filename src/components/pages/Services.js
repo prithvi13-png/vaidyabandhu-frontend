@@ -5,7 +5,7 @@ import Breadcrumbs from '../layouts/Breadcrumbs';
 import Footer from '../layouts/Footer';
 import Content from '../sections/services/Content';
 
-const pagelocation = "Services";
+const pagelocation = "Bandhu Seva";
 
 class Services extends Component {
     render() {

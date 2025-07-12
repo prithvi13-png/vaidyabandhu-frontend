@@ -5,7 +5,7 @@ import Breadcrumbs from '../layouts/Breadcrumbs';
 import Footer from '../layouts/Footer';
 import Content from '../sections/contact/Content';
 
-const pagelocation = "Contact Us";
+const pagelocation = "We’re Here to Help";
 
 class Contact extends Component {
     render() {

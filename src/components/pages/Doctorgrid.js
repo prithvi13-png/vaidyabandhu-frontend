@@ -5,14 +5,14 @@ import Footer from '../layouts/Footer';
 import Content from '../sections/doctor-grid/Content';
 import Header from '../layouts/Header';
 
-const pagelocation = "Specializations";
+const pagelocation = "Expert Care Areas";
 
 class Doctorgrid extends Component {
     render() {
         return (
             <Fragment>
                 <MetaTags>
-                    <title>VaidyaBandhu - Doctors Appointment Booking - Specializations | {pagelocation}</title>
+                    <title>VaidyaBandhu</title>
                     <meta
                         name="description"
                         content="#"

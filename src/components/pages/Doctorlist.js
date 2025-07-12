@@ -5,7 +5,7 @@ import Breadcrumbs from '../layouts/Breadcrumbs';
 import Footer from '../layouts/Footer';
 import Content from '../sections/doctor-list/Content';
 
-const pagelocation = "Doctor List";
+const pagelocation = "Meet Our Vaidyas";
 
 class Doctorlist extends Component {
     render() {
