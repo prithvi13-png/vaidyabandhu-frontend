@@ -300,7 +300,7 @@ const Content = () => {
   const activeFilters = getActiveFilters();
 
   return (
-    <div className="sidebar-style-9">
+    <div className="sidebar-style-9 container-bg">
       <div className="section section-padding">
         <div className="container-fluid">
           {/* Top Search Bar */}

@@ -98,7 +98,7 @@ const MedicalDepartments = () => {
   };
 
   return (
-    <div className="mdc-root">
+    <div className="mdc-root container-bg">
       <h2 className="mdc-title">Browse All Departments</h2>
       {error && (
         <div className="mdc-alert">
@@ -163,7 +163,7 @@ const MedicalDepartments = () => {
           <>
             <div className="mdc-specialty-header">
               <span>
-                <b>{selectedDept.name}</b> Specialties
+                {selectedDept.name} Specialties
               </span>
               <button
                 className="mdc-btn mdc-btn-close"

@@ -185,7 +185,7 @@ const VaidyaBandhuForm = () => {
   const termsConditions = languagesType[selectedLanguage].terms;
 
   return (
-    <div className="container-fluid bg-light py-5">
+    <div className="container-fluid bg-light py-5 container-bg" >
       <div className="container">
         <div className="d-flex justify-content-end">
           <div className="text-right mb-4" style={{ width: "200px" }}>
@@ -205,10 +205,10 @@ const VaidyaBandhuForm = () => {
         </div>
 
         <div className="text-center mb-5">
-          <h1 className="display-4 text-dark mb-2">
+          <h1 className="display-4 mb-2">
             {languagesType[selectedLanguage].title}
           </h1>
-          <p className="lead text-muted mb-4">
+          <p className="lead secondary-color mb-4">
             {languagesType[selectedLanguage].subtitle}
           </p>
         </div>
@@ -235,7 +235,7 @@ const VaidyaBandhuForm = () => {
             <Card className="mb-4 shadow-lg">
               <Card.Body>
                 <h2 className="h4 mb-4">
-                  <CreditCard className="h-6 w-6 text-green-500 mr-2" />{" "}
+                  <CreditCard className="h-6 w-6 secondary-color mr-2" />{" "}
                   {languagesType[selectedLanguage].membershipCharges}
                 </h2>
                 <div className="text-center">
@@ -259,7 +259,7 @@ const VaidyaBandhuForm = () => {
           <Col md={8}>
             <Card className="bg-white rounded-xl shadow-lg p-6 mb-4">
               <Card.Body>
-                <h2 className="h4 mb-6 text-dark flex items-center">
+                <h2 className="h4 mb-6 secondary-color flex items-center">
                   <MapPin className="h-6 w-6 text-blue-500 mr-2" />{" "}
                   {languagesType[selectedLanguage].personalDetails}
                 </h2>

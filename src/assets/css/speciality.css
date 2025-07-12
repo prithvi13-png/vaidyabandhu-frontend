@@ -1,11 +1,9 @@
 .mdc-root {
-  background: #f8fbfe;
   min-height: 100vh;
   padding: 2rem 0 3rem 0;
 }
 .mdc-title {
   text-align: center;
-  color: #153860;
   font-size: 2rem;
   font-weight: bold;
   margin-bottom: 2.2rem;
@@ -24,7 +22,6 @@
   scrollbar-width: thin;
 }
 .mdc-info-msg {
-  color: #4077ad;
   background: #e9f4fc;
   border-radius: 1rem;
   text-align: center;
@@ -125,11 +122,13 @@
   justify-content: space-between;
   align-items: center;
   font-size: 1.14rem;
-  color: #13356e;
   font-weight: 600;
   border-bottom: 1.5px solid #e3ecf7;
   padding-bottom: 0.82rem;
   margin-bottom: 1.6rem;
+}
+.mdc-specialty-header > span {
+  color: var(--thm-secondary);
 }
 .mdc-btn {
   border: none;
