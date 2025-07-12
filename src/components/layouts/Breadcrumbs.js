@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 class Breadcrumbs extends Component {
   render() {
-    const decorativeSvg = `${process.env.PUBLIC_URL}/assets/img/stethoscope.svg`;
+    const decorativeSvg = `${process.env.PUBLIC_URL}/assets/img/banner-2.jpeg`;
 
     return (
       <div className="sigma_subheader style-5 bg-gray" style={{ position: 'relative', overflow: 'hidden' }}>

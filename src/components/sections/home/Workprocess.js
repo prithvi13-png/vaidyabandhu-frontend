@@ -107,7 +107,7 @@ const Workprocess = () => {
           }}
         >
           At Vaidya Bandhu, we believe in making quality healthcare simple, affordable, and accessible for everyone.
-          Discover our straightforward process to unlock a world of health benefits
+          Discover our straightforward process to unlock a world of health benefits.
         </p>
       </div>
 
