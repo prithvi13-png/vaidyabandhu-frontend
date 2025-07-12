@@ -136,7 +136,7 @@ const LeadershipInline = () => {
             {/* Dr. Ajith Ramaswamy's Photo and Name/Designation Container */}
             <div style={{ display: 'flex', alignItems: 'center', gap: '20px', marginBottom: '20px', flexDirection: 'row' }}> {/* Changed to row */}
               <img
-  src="assets/img/ajith.jpg"
+  src="/assets/img/ajith.jpg"
   alt="Dr. Ajith Ramaswamy"
   style={{
     width: '150px',

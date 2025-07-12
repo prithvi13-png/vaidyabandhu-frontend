@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link, withRouter } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import category from "../../data/category.json";
 
 class Clinicsidebar extends Component {
@@ -32,4 +32,4 @@ class Clinicsidebar extends Component {
     }
 }
 
-export default withRouter(Clinicsidebar);
+export default Clinicsidebar;
