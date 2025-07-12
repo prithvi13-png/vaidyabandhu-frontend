@@ -9,7 +9,7 @@ class Mobilemenu extends Navhelper {
             <Fragment>
                 <div className="sigma_logo-wrapper">
                     <Link to="/" className="sigma_logo">
-                        <img src={process.env.PUBLIC_URL + "/assets/img/logo.png"} alt="logo" />
+                        <img src={process.env.PUBLIC_URL + "/assets/img/logoo.png"} alt="logo" />
                     </Link>
                 </div>
                 <ul className="navbar-nav">
