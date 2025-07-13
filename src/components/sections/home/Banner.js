@@ -6,7 +6,7 @@ const dummyBannerData = [
   {
     id: 1,
     // Using a direct placeholder image URL for static environment
-    image: "assets/img/ban1.jpeg",
+   image: process.env.PUBLIC_URL + "/assets/img/ban1.jpeg",
     title: "India’s First & No.1 Comprehensive Healthcare Network Under One Roof", // Main title
     benefits: [
       "10% to 40% discounts on surgeries, treatments, and diagnostics",

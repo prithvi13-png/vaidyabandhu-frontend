@@ -136,7 +136,7 @@ const LeadershipInline = () => {
             {/* Dr. Ajith Ramaswamy's Photo and Name/Designation Container */}
             <div style={{ display: 'flex', alignItems: 'center', gap: '20px', marginBottom: '20px', flexDirection: 'row' }}> {/* Changed to row */}
               <img
-  src="/assets/img/ajith.jpg"
+ src={process.env.PUBLIC_URL + "/assets/img/ajith.jpg"}
   alt="Dr. Ajith Ramaswamy"
   style={{
     width: '150px',
@@ -305,7 +305,7 @@ Vaidya Bandhu is more than an organization. It is a promise. A promise to suppor
             {/* Dr. Subhashith Shetty's Photo and Name/Designation Container */}
             <div style={{ display: 'flex', alignItems: 'center', gap: '20px', marginBottom: '20px', flexDirection: 'row' }}> {/* Changed to row */}
                 <img
-                     src="assets/img/Subhashith.jpeg"
+                    src={process.env.PUBLIC_URL + "/assets/img/Subhashith.jpeg"}
   alt="Dr. Ajith Ramaswamy"
   style={{
     width: '150px',
