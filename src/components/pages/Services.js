@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import { useParams } from 'react-router-dom';
-import MetaTags from "react-meta-tags";
+import { Helmet } from "react-helmet-async";
 import Header from '../layouts/Header';
 import Breadcrumbs from '../layouts/Breadcrumbs';
 import Footer from '../layouts/Footer';
@@ -13,13 +13,13 @@ class ServicesClass extends Component {
     render() {
         return (
             <Fragment>
-                <MetaTags>
+                <Helmet>
                     <title>VaidyaBandhu</title>
                     <meta
                         name="description"
                         content="#"
                     />
-                </MetaTags>
+                </Helmet>
              <Header />
                 <Breadcrumbs breadcrumb={{ pagename: pagelocation }} />
                 <Content

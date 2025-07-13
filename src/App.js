@@ -1,5 +1,6 @@
 import React, { Suspense, useLayoutEffect } from 'react'
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { HelmetProvider } from 'react-helmet-async';
 import BasicDetail from './components/pages/BasicDetail';
 
 // Home
@@ -44,62 +45,64 @@ function ScrollToTop({ children }) {
 
 function App() {
   return (
-    <Router>
-      <Suspense fallback={<div></div>}>
-        <ScrollToTop>
-          <Routes>            
-            {/* Home */}
-            <Route path="/" element={<Home />} />
-            <Route path="/home-v2" element={<Hometwo />} />
-            
-            {/* Blog */}
-            <Route path="/blog/cat/:catId" element={<Blog key={window.location.pathname} />} />
-            <Route path="/blog/tag/:tagId" element={<Blog key={window.location.pathname} />} />
-            <Route path="/blog/search/:query" element={<Blog key={window.location.pathname} />} />
-            <Route path="/blog/author/:authorId" element={<Blog key={window.location.pathname} />} />
-            <Route path="/blog" element={<Blog />} />
-            <Route path="/blog-standard" element={<Blogstandard />} />
-            <Route path="/blog-details/:id" element={<Blogdetails key={window.location.pathname} />} />
-            
-            {/* About */}
-            <Route path="/about" element={<About />} />
-            
-            {/* Services */}
-            <Route path="/service/cat/:catId" element={<Services key={window.location.pathname} />} />
-            <Route path="/services" element={<Services />} />
-            <Route path="/service-details/:id" element={<Servicedetails key={window.location.pathname} />} />
-            
-            {/* FAQ's */}
-            <Route path="/faqs" element={<Faqs />} />
-            
-            {/* Appointment */}
-            <Route path="/appointment" element={<Appointment />} />
-            
-            {/* Clinics */}
-            <Route path="/clinic/cat/:catId" element={<Clinicgrid key={window.location.pathname} />} />
-            <Route path="/clinic-grid" element={<Clinicgrid />} />
-            <Route path="/clinic-list" element={<Cliniclist />} />
-            <Route path="/clinic-details/:id" element={<Clinicdetails key={window.location.pathname} />} />
-            
-            {/* Doctors */}
-            <Route path="/doctor/cat/:catId" element={<Doctorgrid key={window.location.pathname} />} />
-            <Route path="/doctor-grid" element={<Doctorgrid />} />
-            <Route path="/doctor-list" element={<Doctorlist />} />
-            <Route path="/doctor-details/:id" element={<Doctordetails key={window.location.pathname} />} />
-            
-            {/* Contact */}
-            <Route path="/contact" element={<Contact />} />
-            
-            {/* Basic Route */}
-            <Route path="/basic-details" element={<BasicDetail />} />
+    <HelmetProvider>
+      <Router>
+        <Suspense fallback={<div></div>}>
+          <ScrollToTop>
+            <Routes>            
+              {/* Home */}
+              <Route path="/" element={<Home />} />
+              <Route path="/home-v2" element={<Hometwo />} />
+              
+              {/* Blog */}
+              <Route path="/blog/cat/:catId" element={<Blog key={window.location.pathname} />} />
+              <Route path="/blog/tag/:tagId" element={<Blog key={window.location.pathname} />} />
+              <Route path="/blog/search/:query" element={<Blog key={window.location.pathname} />} />
+              <Route path="/blog/author/:authorId" element={<Blog key={window.location.pathname} />} />
+              <Route path="/blog" element={<Blog />} />
+              <Route path="/blog-standard" element={<Blogstandard />} />
+              <Route path="/blog-details/:id" element={<Blogdetails key={window.location.pathname} />} />
+              
+              {/* About */}
+              <Route path="/about" element={<About />} />
+              
+              {/* Services */}
+              <Route path="/service/cat/:catId" element={<Services key={window.location.pathname} />} />
+              <Route path="/services" element={<Services />} />
+              <Route path="/service-details/:id" element={<Servicedetails key={window.location.pathname} />} />
+              
+              {/* FAQ's */}
+              <Route path="/faqs" element={<Faqs />} />
+              
+              {/* Appointment */}
+              <Route path="/appointment" element={<Appointment />} />
+              
+              {/* Clinics */}
+              <Route path="/clinic/cat/:catId" element={<Clinicgrid key={window.location.pathname} />} />
+              <Route path="/clinic-grid" element={<Clinicgrid />} />
+              <Route path="/clinic-list" element={<Cliniclist />} />
+              <Route path="/clinic-details/:id" element={<Clinicdetails key={window.location.pathname} />} />
+              
+              {/* Doctors */}
+              <Route path="/doctor/cat/:catId" element={<Doctorgrid key={window.location.pathname} />} />
+              <Route path="/doctor-grid" element={<Doctorgrid />} />
+              <Route path="/doctor-list" element={<Doctorlist />} />
+              <Route path="/doctor-details/:id" element={<Doctordetails key={window.location.pathname} />} />
+              
+              {/* Contact */}
+              <Route path="/contact" element={<Contact />} />
+              
+              {/* Basic Route */}
+              <Route path="/basic-details" element={<BasicDetail />} />
 
-            {/* Extra */}
-            <Route path="/error-page" element={<Errorpage />} />
-            <Route path="*" element={<Errorpage />} />
-          </Routes>
-        </ScrollToTop>
-      </Suspense>
-    </Router>
+              {/* Extra */}
+              <Route path="/error-page" element={<Errorpage />} />
+              <Route path="*" element={<Errorpage />} />
+            </Routes>
+          </ScrollToTop>
+        </Suspense>
+      </Router>
+    </HelmetProvider>
   );
 }
 

@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import { useParams } from 'react-router-dom';
-import MetaTags from "react-meta-tags";
+import { Helmet } from "react-helmet-async";
 import Breadcrumbs from '../layouts/Breadcrumbs';
 import Footer from '../layouts/Footer';
 import Content from '../sections/doctor-grid/Content';
@@ -13,13 +13,13 @@ class DoctorgridClass extends Component {
     render() {
         return (
             <Fragment>
-                <MetaTags>
+                <Helmet>
                     <title>VaidyaBandhu</title>
                     <meta
                         name="description"
                         content="#"
                     />
-                </MetaTags>
+                </Helmet>
                 <Header />
                 <Breadcrumbs breadcrumb={{ pagename: pagelocation }} />
                 <Content
