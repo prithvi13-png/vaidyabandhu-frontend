@@ -6,7 +6,7 @@ const dummyBannerData = [
   {
     id: 1,
     // Using a direct placeholder image URL for static environment
-    image: "assets/img/ban1.jpeg",
+   image: process.env.PUBLIC_URL + "/assets/img/ban1.jpeg",
     title: "India’s First & No.1 Comprehensive Healthcare Network Under One Roof", // Main title
     benefits: [
       "10% to 40% discounts on surgeries, treatments, and diagnostics",
@@ -47,11 +47,11 @@ const Banner = () => {
           justifyContent: 'center',
           position: 'relative',
           zIndex: 1,
-          filter: 'brightness(1.2)', // Slightly dim the background image for text clarity
+          // filter: 'brightness(1.2)', // Slightly dim the background image for text clarity
         }}
       >
         {/* Enhanced Overlay with subtle gradient */}
-        <div
+        {/* <div
           style={{
             position: 'absolute',
             top: 0,
@@ -61,7 +61,7 @@ const Banner = () => {
             background: 'linear-gradient(to top, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.2) 50%, rgba(0, 0, 0, 0.6) 100%)', // Radial gradient for depth
             zIndex: 2,
           }}
-        ></div>
+        ></div> */}
 
         <div className="sigma_banner-text text-center" style={{ position: 'relative', zIndex: 3 }}>
           <div className="container" style={{ maxWidth: '1250px', margin: '0 auto', padding: '0 15px' }}>

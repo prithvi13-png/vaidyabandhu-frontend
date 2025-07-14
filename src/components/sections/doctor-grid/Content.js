@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useCallback } from "react";
-import { useHistory } from "react-router-dom";
+// import { useHistory } from "react-router-dom";/
+import { useNavigate } from 'react-router-dom';
 import '../../../assets/css/speciality.css'
 // Emoji icons for departments
 const deptIcons = [
@@ -36,7 +37,7 @@ const MedicalDepartments = () => {
   const [loading, setLoading] = useState(false);
   const [specialtyLoading, setSpecialtyLoading] = useState(false);
   const [error, setError] = useState("");
-  const history = useHistory();
+  const navigate = useNavigate();
 
   // Fetch departments
   const fetchDepartments = useCallback(async () => {
@@ -94,7 +95,7 @@ const MedicalDepartments = () => {
     imgUrl ? imgUrl : specialtyImages[i % specialtyImages.length];
 
   const onClickSpeclist = (item) => {
-    history.push("/doctor-list?specialty=" + item.id);
+    navigate("/doctor-list?specialty=" + item.id);
   };
 
   return (

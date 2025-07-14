@@ -2,62 +2,51 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 
 class Breadcrumbs extends Component {
-  render() {
-    const decorativeSvg = `${process.env.PUBLIC_URL}/assets/img/stethoscope.svg`;
-
-    return (
-      <div
+   render() {
+       return (
+              <div
         className="sigma_subheader style-5 bg-gray"
-        style={{ position: "relative", overflow: "hidden" }}
+        style={{
+          position: 'relative',
+          overflow: 'hidden',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          justifyContent: 'center',
+          textAlign: 'center',
+          height: '550px', // Fixed height for consistent layout
+          backgroundColor: '#f8f8f8',
+        }}
       >
-        <div className="container">
-          <div className="sigma_subheader-inner">
-            <h1>{this.props.breadcrumb.pagename}</h1>
-          </div>
-          <ol className="breadcrumb">
-            <li className="breadcrumb-item">
-              <Link to="/" className="btn-link">
-                Home
-              </Link>
-            </li>
-            {this.props.breadcrumb?.lastPagePath && (
-              <li className="breadcrumb-item">
-                <Link
-                  to={this.props.breadcrumb?.lastPagePath}
-                  className="btn-link"
-                >
-                  {this.props.breadcrumb?.page}
-                </Link>
-              </li>
-            )}
-
-            <li className="breadcrumb-item active" aria-current="page">
-              {this.props.breadcrumb.pagename}
-            </li>
-          </ol>
-        </div>
-
-        {/* Single Decorative SVG */}
-        <img
-          src={decorativeSvg}
-          alt="decorative healthcare icon"
-          className="breadcrumb-decor"
+               <div className="container">
+                   <div className="sigma_subheader-inner">
+                       <h1>{this.props.breadcrumb.pagename}</h1>
+                   </div>
+                   {/* <ol className="breadcrumb">
+                       <li className="breadcrumb-item">
+                           <Link to="/" className="btn-link">Home</Link>
+                       </li>
+                       <li className="breadcrumb-item active" aria-current="page">{this.props.breadcrumb.pagename}</li>
+                   </ol> */}
+               </div>
+               {/* Replaced multiple images with a single banner image */}
+               <img
+          src={process.env.PUBLIC_URL + "/assets/img/bn-2.jpeg"}
+          alt="Subheader Banner"
+          style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover',
+            objectPosition: 'center',
+            zIndex: 0,
+          }}
         />
-
-        {/* Inline Styles */}
-        <style>{`
-          .breadcrumb-decor {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            width: 100px;
-            opacity: 0.06;
-            z-index: 1;
-          }
-        `}</style>
-      </div>
-    );
-  }
+           </div>
+       );
+   }
 }
 
 export default Breadcrumbs;

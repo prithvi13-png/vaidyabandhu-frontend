@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
+import { useNavigate  } from "react-router-dom";
 
 import { Modal, Button, Form, Spinner } from "react-bootstrap";
 import OTPInput from "react-otp-input";
@@ -11,7 +11,7 @@ const MembershipModal = () => {
   const [otp, setOtp] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [step, setStep] = useState(1); // 1: Mobile Number, 2: OTP, 3: Basic Details
-  const history = useHistory();
+  const navigate = useNavigate ();
   const [errors, setErrors] = useState({});
 
   const handleShow = () => setShow(true);
@@ -116,9 +116,9 @@ const MembershipModal = () => {
         // For example: localStorage.setItem('userToken', data.token);
         // Or store user data in context/state management
         const token = data?.data?.token || "";
-        localStorage.setItem("tokan", token);
+        localStorage.setItem("token", token);
         handleClose(); // Close the modal
-        history.push("/basic-details");
+        navigate("/basic-details");
       } else {
         // Handle API error
         setErrors((prev) => ({

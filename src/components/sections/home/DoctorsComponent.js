@@ -231,7 +231,7 @@ const DoctorsComponent = () => {
       {/* "View More" button - now an <a> tag for redirection */}
       {doctorsData.length > initialDoctorCount && (
         <a
-          href="/doctors" // This will cause a browser redirect to /doctors
+          href="/doctor-list" // This will cause a browser redirect to /doctors
           style={{
             background: "#007a7e",
             color: "#ffffff",
