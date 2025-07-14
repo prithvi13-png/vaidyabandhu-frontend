@@ -2,7 +2,7 @@
   "name": "vaidyabandhu",
   "version": "0.1.0",
   "private": true,
-"homepage": ".",
+  "homepage": ".",
   "dependencies": {
     "@testing-library/jest-dom": "^6.4.2",
     "@testing-library/react": "^14.2.1",
@@ -18,7 +18,6 @@
     "react-dom": "^18.3.1",
     "react-google-recaptcha": "^3.1.0",
     "react-helmet-async": "^2.0.5",
-    "react-ion-slider": "^1.0.17",
     "react-js-pagination": "^3.0.3",
     "react-otp-input": "^3.1.1",
     "react-router-dom": "^6.22.3",
