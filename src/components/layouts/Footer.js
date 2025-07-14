@@ -321,37 +321,52 @@ const Footer = () => {
                             Unauthorized use is strictly prohibited under <strong>Copyright Act, 1957</strong>.
                         </p>
                     </div>
-                    <ul
-                        style={{
-                            display: "flex",
-                            listStyle: "none",
-                            padding: 0,
-                            margin: 0,
-                            gap: "5px", // Spacing between bottom links
-                            flexWrap: "wrap",
-                            justifyContent: "flex-end", // Align right on desktop
-                            flex: "1 1 200px",
-                        }}
-                    >
-                        {[{ title: "Privacy Policy", path: "#" }, { title: "Terms & Conditions", path: "#" }, { title: "Refund & Cancellation Policy", path: "#" }].map((item, i) => (
-                            <li key={i}>
-                                <a
-                                    href={item.path}
-                                    style={{
-                                        fontSize: "14px",
-                                        color: "#cbd5e0", // Lighter link color
-                                        textDecoration: "none",
-                                        transition: baseTransition,
-                                    }}
-                                    onMouseEnter={(e) => e.currentTarget.style.color = "#007a7e"}
-                                    onMouseLeave={(e) => e.currentTarget.style.color = "#cbd5e0"}
-                                >
-                                    {item.title}
-                                </a>
-                                {i < 2 && <span style={{ color: "#a0aec0", marginLeft: "15px" }}>|</span>} {/* Lighter separator */}
-                            </li>
-                        ))}
-                    </ul>
+                   <ul
+  style={{
+    display: "flex",
+    flexWrap: "wrap",
+    listStyle: "none",
+    padding: 0,
+    margin: 0,
+    justifyContent: "center", // center for small screens (you can change this)
+    gap: "10px", // controls spacing between items
+  }}
+>
+  {[
+    { title: "Privacy Policy", path: "#" },
+    { title: "Terms & Conditions", path: "#" },
+    { title: "Refund & Cancellation Policy", path: "#" },
+  ].map((item, i, arr) => (
+    <li
+      key={i}
+      style={{
+        display: "flex",
+        alignItems: "center",
+        whiteSpace: "nowrap", // prevents text from breaking into new lines
+      }}
+    >
+      <a
+        href={item.path}
+        style={{
+          fontSize: "14px",
+          color: "#cbd5e0",
+          textDecoration: "none",
+          transition: "0.3s all",
+        }}
+        onMouseEnter={(e) => (e.currentTarget.style.color = "#007a7e")}
+        onMouseLeave={(e) => (e.currentTarget.style.color = "#cbd5e0")}
+      >
+        {item.title}
+      </a>
+
+      {/* Add | separator only if not last item */}
+      {i < arr.length - 1 && (
+        <span style={{ marginLeft: "10px", color: "#a0aec0" }}>|</span>
+      )}
+    </li>
+  ))}
+</ul>
+
                 </div>
             </div>
 
@@ -400,34 +415,86 @@ const Footer = () => {
                         p { font-size: clamp(15px, 2.5vw, 18px) !important; }
                         h5 { font-size: clamp(18px, 3vw, 22px) !important; }
                     }
+@media (max-width: 480px) {
+  div[style*="padding-top: 60px"] {
+    padding-top: 40px !important;
+  }
 
-                    @media (max-width: 480px) {
-                        div[style*="padding-top: 60px"] { /* Footer padding */
-                            padding-top: 40px !important;
-                        }
-                        div[style*="margin-bottom: 60px"] { /* Info wrapper margin */
-                            margin-bottom: 40px !important;
-                        }
-                        div[style*="padding: 60px 0"] { /* Middle footer padding */
-                            padding: 40px 0 !important;
-                        }
-                        div[style*="padding: 25px 0"] { /* Bottom footer padding */
-                            padding: 15px 0 !important;
-                        }
-                        h2 { font-size: clamp(28px, 7vw, 36px) !important; }
-                        p { font-size: clamp(14px, 3vw, 16px) !important; }
-                        h5 { font-size: clamp(16px, 4vw, 20px) !important; }
-                        input[type="email"], button {
-                            padding: 10px 12px !important;
-                            font-size: 14px !important;
-                        }
-                        ul[style*="gap: 15px"] { /* Social icons and bottom links */
-                            gap: 10px !important;
-                        }
-                        ul[style*="gap: 15px"] li span { /* Separator for bottom links */
-                            margin-left: 10px !important;
-                        }
-                    }
+  div[style*="margin-bottom: 60px"] {
+    margin-bottom: 40px !important;
+  }
+
+  div[style*="padding: 60px 0"] {
+    padding: 40px 0 !important;
+  }
+
+  div[style*="padding: 25px 0"] {
+    padding: 15px 0 !important;
+  }
+
+  h2 {
+    font-size: clamp(28px, 7vw, 36px) !important;
+  }
+
+  p {
+    font-size: clamp(14px, 3vw, 16px) !important;
+  }
+
+  h5 {
+    font-size: clamp(16px, 4vw, 20px) !important;
+  }
+
+  input[type="email"],
+  button {
+    padding: 10px 12px !important;
+    font-size: 14px !important;
+  }
+
+  ul[style*="gap: 15px"] {
+    gap: 10px !important;
+  }
+
+  ul[style*="gap: 15px"] li span {
+    margin-left: 10px !important;
+  }
+
+  /* Remove display: flex and fix icon + text block layout */
+  div[style*="display: flex"][style*="flex-wrap: wrap"][style*="justify-content: space-around"] {
+    display: block !important;
+    gap: 0 !important;
+    margin-bottom: 40px !important;
+  }
+
+  /* ICON + TEXT block fix (only on mobile) */
+ div[style*="flex: 1 1 280px"] {
+  display: table !important;
+  width: 100% !important;
+  text-align: left !important;
+  max-width: 100% !important;
+  gap: 0 !important;
+  margin-bottom: 20px !important; /* ✅ adds vertical gap between blocks */
+}
+
+
+  div[style*="flex: 1 1 280px"] > div:first-child {
+    display: table-cell !important;
+    vertical-align: middle !important;
+    width: 60px !important;
+  }
+
+  div[style*="flex: 1 1 280px"] > div:first-child svg {
+    display: block !important;
+    margin: auto;
+  }
+
+  div[style*="flex: 1 1 280px"] > div:nth-child(2) {
+    display: table-cell !important;
+    vertical-align: middle !important;
+    padding-left: 15px !important;
+  }
+}
+
+
                 `}
             </style>
         </footer>
