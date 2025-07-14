@@ -12,10 +12,10 @@ const MembershipCardBenefits = () => {
 
   const benefits = [
     "10% to 40% discount on surgeries, treatments, and diagnostic tests.",
-    "10% to 40% discounts on surgeries, treatments, and diagnostics.",
-    "Valid across Karnataka at our partner hospitals and diagnostic centers.",
+    "10% CASHBACK BENEFIT - Submit bill/invoice within 7 days via WhatsApp/email - Get 10% cashback credited to your account",
+    "Valid across Karnataka at our partner doctors/hospitals and diagnostic centers.",
     "One-time payment of ₹49 – No hidden charges.",
-    "Card delivered to your address after registration.",
+    "Get your Membership Card instantly through our Website or App.",
     "Easy renewal after 1 year (If card is not used for 1 year, it will auto-renew).",
   ];
 

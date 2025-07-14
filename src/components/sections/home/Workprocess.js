@@ -18,7 +18,7 @@ const Workprocess = () => {
       points: [
         "Fill out the membership form (Name, Address, Phone).",
         "Pay ₹49 (valid for 1 year).",
-        "Receive your card at your doorstep."
+        "Get your Membership Card instantly through our Website or App."
       ]
     },
     {
@@ -27,14 +27,14 @@ const Workprocess = () => {
       points: [
         "Call or email us with your medical concern.",
         "Consult top doctors from our network.",
-        "Get 10%–40% discounts on surgeries & tests."
+        "Get 10%–40% discounts on surgeries, treatments & Diagnostics."
       ]
     },
     {
       icon: "flaticon-doctor",
       title: "Step 3: Complete Healthcare Support",
       points: [
-        "Free medical advice anytime.",
+        "Free medical advice from experts.",
         "Best treatment plans and guidance.",
         "Priority help for critical cases."
       ]
