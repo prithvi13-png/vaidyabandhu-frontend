@@ -5,7 +5,7 @@ import Breadcrumbs from '../layouts/Breadcrumbs';
 import Footer from '../layouts/Footer';
 import Content from '../sections/clinic-list/Content';
 
-const pagelocation = "Clinic List";
+const pagelocation = "Diagnostics List";
 
 class Cliniclist extends Component {
     render() {
