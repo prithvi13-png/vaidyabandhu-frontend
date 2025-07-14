@@ -19,7 +19,7 @@ import {
 } from "lucide-react";
 import { Spinner } from "react-bootstrap";
 import ShowEnquireModal from "./showEnquireModal";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const DiagnosticCentersApp = () => {
   // State management
@@ -45,7 +45,7 @@ const DiagnosticCentersApp = () => {
   const [errorServices, setErrorServices] = useState(null);
   const [errorCenters, setErrorCenters] = useState(null);
 
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const token = localStorage.getItem("token");
   const itemsPerPage = 6;
@@ -224,7 +224,7 @@ const DiagnosticCentersApp = () => {
 
   const handleCenterClick = (center) => {
     // Uncomment and import useHistory from react-router-dom when ready
-    history.push(`/clinic-list/${center.id}`);
+    navigate(`/clinic-list/${center.id}`);
     console.log(`Navigate to center ${center.id}`);
   };
 

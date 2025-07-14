@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { Link } from "react-router-dom";
-import { Rating } from "../../../helper/helper";
 import Pagination from "react-js-pagination";
 import axios from "axios";
 import { useLocation } from "react-router-dom";
@@ -57,12 +56,12 @@ const Content = () => {
     { value: "Nopreference", label: "No preference" },
   ];
 
-  const sortOptions = [
-    { value: "name", label: "Name (A-Z)" },
-    { value: "experience", label: "Experience" },
-    { value: "rating", label: "Rating" },
-    { value: "reviews", label: "Reviews" },
-  ];
+  // const sortOptions = [
+  //   { value: "name", label: "Name (A-Z)" },
+  //   { value: "experience", label: "Experience" },
+  //   { value: "rating", label: "Rating" },
+  //   { value: "reviews", label: "Reviews" },
+  // ];
 
   // Memoize fetchDepartments to prevent unnecessary re-renders
   const fetchDepartments = useCallback(async () => {
@@ -456,7 +455,7 @@ const Content = () => {
               <div className="card shadow-sm">
                 <div className="card-body">
                   {/* Sort By */}
-                  <div className="mb-4">
+                  {/* <div className="mb-4">
                     <h6 className="font-weight-bold mb-3">Sort By</h6>
                     <select
                       className="form-control form-control-sm"
@@ -470,7 +469,7 @@ const Content = () => {
                         </option>
                       ))}
                     </select>
-                  </div>
+                  </div> */}
 
                   {/* Specialities */}
                   <div className="mb-4">
@@ -749,11 +748,11 @@ const Content = () => {
                               >
                                 View More
                               </Link>
-                              <div className="sigma_team-controls ml-3">
+                              {/* <div className="sigma_team-controls ml-3">
                                 <Link to="#" className="">
                                   <i className="fal fa-heart" />
                                 </Link>
-                              </div>
+                              </div> */}
                             </div>
                           </div>
                         </div>
@@ -769,18 +768,16 @@ const Content = () => {
                                 {item.experience} Yrs Experience
                               </span>
                               <span>
-                                <i className="fal fa-calendar" />
-                                {item.available?.map((data, i) => (
-                                  <b key={i}>{data}, </b>
-                                ))}
+                              <i className="fal fa-calendar" />
+                                {item.educational_degrees}
                               </span>
                             </div>
-                            <div className="sigma_rating">
+                            {/* <div className="sigma_rating">
                               {Rating(item.ratings || 0)}
                               <span className="ml-3">
                                 ({item.reviews?.length})
                               </span>
-                            </div>
+                            </div> */}
                           </div>
                         </div>
                       </div>

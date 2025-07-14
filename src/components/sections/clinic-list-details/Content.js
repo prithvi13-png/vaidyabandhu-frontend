@@ -1,12 +1,12 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { Phone, MapPin, Star, Calendar } from "lucide-react";
-import { useHistory, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { Spinner } from "react-bootstrap";
 import ShowEnquireModal from "../clinic-list/showEnquireModal";
 
 const DiagnosticCenterDetail = () => {
   const { id } = useParams();
-  const history = useHistory();
+  const navigate = useNavigate();
   const [centerDetail, setCenterDetail] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -137,7 +137,7 @@ const DiagnosticCenterDetail = () => {
           </p>
           <button
             className="btn btn-secondary btn-lg rounded-pill px-5 shadow-sm modern-btn"
-            onClick={() => history.goBack()}
+            onClick={() => navigate(-1)}
           >
             <i className="fas fa-arrow-left me-2"></i>
             Go Back
