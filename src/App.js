@@ -82,9 +82,9 @@ function App() {
               {/* Clinics */}
               <Route path="/clinic/cat/:catId" element={<Clinicgrid key={window.location.pathname} />} />
               <Route path="/clinic-grid" element={<Clinicgrid />} />
+              <Route path="/clinic-details/:id" element={<ClinicListdetails key={window.location.pathname} />} />
               <Route path="/clinic-list" element={<Cliniclist />} />
               <Route path="/clinic-details/:id" element={<Clinicdetails key={window.location.pathname} />} />
-              <Route exact path="/clinic-list/:id" component={props => (<ClinicListdetails {...props} key={window.location.pathname} />)} />
               {/* Doctors */}
               <Route path="/doctor/cat/:catId" element={<Doctorgrid key={window.location.pathname} />} />
               <Route path="/doctor-grid" element={<Doctorgrid />} />

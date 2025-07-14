@@ -42,11 +42,11 @@ const DiagnosticCenterDetail = () => {
     setShowEnquireModal(true); // Open the Enquire Modal
   };
 
-  const handleCall = () => {
-    if (centerDetail?.contact_number) {
-      window.open(`tel:${centerDetail.contact_number}`, "_self");
-    }
-  };
+  // const handleCall = () => {
+  //   if (centerDetail?.contact_number) {
+  //     window.open(`tel:${centerDetail.contact_number}`, "_self");
+  //   }
+  // };
 
   if (loading) {
     return (
@@ -209,7 +209,7 @@ const DiagnosticCenterDetail = () => {
             </div>
           </div>
 
-          <div className="col-md-4 mb-4">
+          {/* <div className="col-md-4 mb-4">
             <div className="info-card rating-card">
               <div className="info-card-icon">
                 <Star size={24} />
@@ -230,7 +230,7 @@ const DiagnosticCenterDetail = () => {
                 </div>
               </div>
             </div>
-          </div>
+          </div> */}
 
           <div className="col-md-4 mb-4">
             <div className="info-card hours-card">
@@ -295,14 +295,14 @@ const DiagnosticCenterDetail = () => {
           </div>
 
           <div className="action-buttons">
-            <button className="action-btn primary-btn" onClick={handleEnquire}>
+            <button className="buy-membership-btn" onClick={handleEnquire}>
               <Calendar size={20} className="btn-icon" />
               <span className="btn-text">Make Enquiry</span>
             </button>
-            <button className="" onClick={handleCall}>
+            {/* <button className="" onClick={handleCall}>
               <Phone size={20} className="btn-icon" />
               <span className="btn-text">Call Now</span>
-            </button>
+            </button> */}
           </div>
         </div>
 

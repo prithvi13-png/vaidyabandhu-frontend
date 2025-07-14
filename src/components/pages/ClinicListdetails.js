@@ -21,7 +21,6 @@ class ClinicListdetails extends Component {
                 <Header />
                 <Breadcrumbs breadcrumb={{ pagename: pagelocation, lastPagePath: '/clinic-list', page: 'Diagnostics' }} />
                 <Content
-                    detailId={this.props.match.params.id}
                 />
                 <Footer />
             </Fragment>

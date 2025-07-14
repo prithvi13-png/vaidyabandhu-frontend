@@ -2,7 +2,7 @@ import React from 'react';
 import { createRoot } from 'react-dom/client';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-
+import { Toaster } from 'sonner'
 // Css
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import '../node_modules/slick-carousel/slick/slick.css';
@@ -22,6 +22,7 @@ const root = createRoot(container);
 root.render(
   <React.StrictMode>
     <App />
+    <Toaster richColors />
   </React.StrictMode>
 );
 

@@ -16,10 +16,12 @@ import {
   CheckCircle,
   MapIcon,
   Building,
+  Copy,
 } from "lucide-react";
 import { Spinner } from "react-bootstrap";
 import ShowEnquireModal from "./showEnquireModal";
 import { useNavigate } from "react-router-dom";
+import { toast } from 'sonner';
 
 const DiagnosticCentersApp = () => {
   // State management
@@ -44,7 +46,6 @@ const DiagnosticCentersApp = () => {
   const [errorAddresses, setErrorAddresses] = useState(null);
   const [errorServices, setErrorServices] = useState(null);
   const [errorCenters, setErrorCenters] = useState(null);
-
   const navigate = useNavigate();
 
   const token = localStorage.getItem("token");
@@ -223,8 +224,8 @@ const DiagnosticCentersApp = () => {
   };
 
   const handleCenterClick = (center) => {
-    // Uncomment and import useHistory from react-router-dom when ready
-    navigate(`/clinic-list/${center.id}`);
+    // Navigate to the center details page
+    navigate(`/clinic-details/${center.id}`);
     console.log(`Navigate to center ${center.id}`);
   };
 
@@ -297,6 +298,17 @@ const DiagnosticCentersApp = () => {
     </div>
   );
 
+  const handleCopy = (e, text) => {
+    // Try copying the text to clipboard
+    navigator.clipboard.writeText(text).then(() => {
+      toast.success(`${text} has been copied.`, { position: 'top-center'})
+      // Reset the "Copied!" message after 2 seconds
+    }).catch((err) => {
+      console.error('Failed to copy text: ', err);
+    });
+    e.stopPropagation();
+  };
+
   return (
     <div
       className="min-vh-100 container-bg"
@@ -367,7 +379,7 @@ const DiagnosticCentersApp = () => {
           <div className="col-12 d-lg-none mb-4">
             <div className="d-flex gap-2">
               <button
-                className="btn btn-outline-primary flex-fill d-flex align-items-center justify-content-center gap-2 secondary-color"
+                className="btn text-white flex-fill d-flex align-items-center justify-content-center gap-2 secondary-color"
                 onClick={() => setShowMobileFilters(!showMobileFilters)}
                 style={{ borderRadius: "12px" }}
               >
@@ -595,7 +607,7 @@ const DiagnosticCentersApp = () => {
                             <div className="card-body p-4 h-100 d-flex flex-column">
                               <div className="flex-grow-1">
                                 <div className="d-flex justify-content-between align-items-start mb-3">
-                                  <h5 className="card-title mb-0 fw-bold text-primary">
+                                  <h5 className="card-title mb-0 fw-bold secondary-color">
                                     {center.name}
                                   </h5>
                                   <div className="d-flex align-items-center">
@@ -621,6 +633,7 @@ const DiagnosticCentersApp = () => {
                                   <div className="d-flex align-items-center text-muted mb-2">
                                     <Phone size={16} className="me-2" />
                                     <span>{center.contact_number}</span>
+                                    <Copy size={16} style={{ marginLeft: '.5rem'}} onClick={(e) => handleCopy(e, center.contact_number)}  />
                                   </div>
                                 </div>
 
@@ -657,9 +670,10 @@ const DiagnosticCentersApp = () => {
                               </div>
 
                               <div className="d-flex gap-2 mt-auto">
+                                <div className="d-flex">
                                 <button
-                                  className="btn btn-primary px-4 py-2 flex-fill mr-2"
-                                  style={{ borderRadius: "12px" }}
+                                  className="btn btn-primary flex-fill mr-2"
+                                  style={{ borderRadius: "8px", padding: '8px 36px' }}
                                   onClick={(e) => {
                                     e.stopPropagation();
                                     handleEnquire(center);
@@ -667,7 +681,8 @@ const DiagnosticCentersApp = () => {
                                 >
                                   Enquiry
                                 </button>
-                                <button
+                                </div>
+                                {/* <button
                                   className="btn text-white px-3 py-2"
                                   style={{ borderRadius: "12px" }}
                                   onClick={(e) => {
@@ -676,7 +691,7 @@ const DiagnosticCentersApp = () => {
                                   }}
                                 >
                                   <Phone size={16} className=" mr-1" />
-                                </button>
+                                </button> */}
                               </div>
                             </div>
                           </div>

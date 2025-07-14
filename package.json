@@ -27,6 +27,7 @@
     "react-slick": "^0.30.2",
     "react-visibility-sensor": "^5.1.1",
     "slick-carousel": "^1.8.1",
+    "sonner": "^2.0.6",
     "web-vitals": "^3.5.2"
   },
   "scripts": {
