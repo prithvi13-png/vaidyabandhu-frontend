@@ -36,6 +36,7 @@ class Searchform extends Component {
             <div
                 className="sigma_banner-info"
                 style={{
+                    
                     padding: '20px 10px',
                     // Removed the background gradient as requested
                     borderRadius: '16px',
