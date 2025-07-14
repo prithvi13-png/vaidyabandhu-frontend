@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import FloatingCallButton from './helpline';
 
 // Dummy serviceblock data as we cannot access local JSON files
 const dummyServiceblock = [
@@ -34,6 +35,7 @@ const Footer = () => {
                 borderTopRightRadius: "40px", // Added top-right border radius
             }}
         >
+            <FloatingCallButton />
             {/* Decorative background elements (optional, but consistent with previous components) */}
             <div
                 style={{
@@ -275,7 +277,6 @@ const Footer = () => {
                                     style={{
                                         width: "100%",
                                         padding: "12px 15px",
-                                        background: "#007a7e",
                                         color: "#ffffff",
                                         border: "none",
                                          background: "linear-gradient(to right, #007a7e, #004d4f)",

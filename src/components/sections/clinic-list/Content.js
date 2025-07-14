@@ -356,15 +356,15 @@ const DiagnosticCentersApp = () => {
             <div className="col-lg-4 text-end d-none d-lg-block">
               <div className="text-white">
                 <div className="d-flex align-items-center justify-content-end mb-2">
-                  <CheckCircle className="me-2 mr-1" size={20} />
+                  <CheckCircle className="me-1" size={20} />
                   <span>Verified Centers</span>
                 </div>
                 <div className="d-flex align-items-center justify-content-end mb-2">
-                  <Shield className="me-2 mr-1" size={20} />
+                  <Shield className="me-1" size={20} />
                   <span>Accredited Labs</span>
                 </div>
                 <div className="d-flex align-items-center justify-content-end">
-                  <Clock className="me-2 mr-1" size={20} />
+                  <Clock className="me-1" size={20} />
                   <span>Quick Results</span>
                 </div>
               </div>
