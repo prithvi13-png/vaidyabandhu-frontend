@@ -13,7 +13,7 @@ const dummyBannerData = [
       "10% CASHBACK BENEFIT - Submit bill/invoice within 7 days via WhatsApp/email - Get 10% cashback credited to your account",
       "Free surgeries for the needy through our social impact programs",
       "Free medical guidance from 9 AM to 6 PM via our helpline",
-      "Personal support in choosing the right doctor, hospital, or diagnostic service"
+      "Personal support in choosing the right doctor, hospital, or diagnostic services"
     ]
   }
 ];

@@ -4,12 +4,12 @@ import { Link } from "react-router-dom";
 const services = [
   {
     icon: "flaticon-stethoscope",
-    title: "Consult a Doctor – Free Medical Advice",
-    points: [
-      "Get expert guidance from highly experienced doctors anytime.",
-      "Clarify doubts, discuss symptoms, and get the right medical advice.",
-      "Avoid unnecessary hospital visits with trusted online consultations.",
-    ],
+    title: "Get 10% cashback ",
+   points: [
+    "Submit your hospital or medical bills within 7 days via WhatsApp or email.",
+    "Receive 10% cashback directly credited to your bank.",
+    "Valid on surgeries, treatments, and diagnostic services from our partner network.",
+  ],
   },
   {
     icon: "flaticon-doctor",
@@ -18,6 +18,15 @@ const services = [
       "Affordable medical procedures across all major departments.",
       "Best hospitals & specialists to ensure quality care.",
       "Seamless treatment process – from consultation to recovery.",
+    ],
+  },
+    {
+    icon: "flaticon-stethoscope",
+    title: "Consult a Doctor – Free Medical Advice",
+    points: [
+      "Get expert guidance from highly experienced doctors anytime.",
+      "Clarify doubts, discuss symptoms, and get the right medical advice.",
+      "Avoid unnecessary hospital visits with trusted online consultations.",
     ],
   },
   {
