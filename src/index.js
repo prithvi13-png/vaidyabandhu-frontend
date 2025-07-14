@@ -1,7 +1,6 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import App from './App';
-import { BrowserRouter } from 'react-router-dom';
 import reportWebVitals from './reportWebVitals';
 
 // Css
@@ -13,11 +12,17 @@ import './assets/fonts/flaticon/flaticon.css';
 import './assets/css/style.css';
 import './index.css';
 
-ReactDOM.render(
-  <BrowserRouter basename={"/VaidyaBandhu"}>
+// Get the root container
+const container = document.getElementById('VaidyaBandhu');
+
+// Create root
+const root = createRoot(container);
+
+// Render the app
+root.render(
+  <React.StrictMode>
     <App />
-  </BrowserRouter>,
-  document.getElementById('VaidyaBandhu')
+  </React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function

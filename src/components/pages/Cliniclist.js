@@ -1,23 +1,23 @@
 import React, { Component, Fragment } from 'react';
-import MetaTags from "react-meta-tags";
-import Header from '../layouts/Headertwo';
+import { Helmet } from "react-helmet-async";
+import Header from '../layouts/Header';
 import Breadcrumbs from '../layouts/Breadcrumbs';
 import Footer from '../layouts/Footer';
 import Content from '../sections/clinic-list/Content';
 
-const pagelocation = "Clinic List";
+const pagelocation = "Diagnostics & Tests";
 
 class Cliniclist extends Component {
     render() {
         return (
             <Fragment>
-                <MetaTags>
-                    <title>VaidyaBandhu - Doctors Appointment Booking - React Template | {pagelocation}</title>
+                <Helmet>
+                    <title>VaidyaBandhu</title>
                     <meta
                         name="description"
                         content="#"
                     />
-                </MetaTags>
+                </Helmet>
                 <Header />
                 <Breadcrumbs breadcrumb={{ pagename: pagelocation }} />
                 <Content />

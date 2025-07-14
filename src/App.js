@@ -1,5 +1,7 @@
 import React, { Suspense, useLayoutEffect } from 'react'
-import { BrowserRouter as Router, Route, Switch, withRouter } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { HelmetProvider } from 'react-helmet-async';
+import BasicDetail from './components/pages/BasicDetail';
 
 // Home
 const Home = React.lazy(() => import("./components/pages/Home"));
@@ -30,62 +32,77 @@ const Contact = React.lazy(() => import("./components/pages/Contact"));
 // Extra
 const Errorpage = React.lazy(() => import("./components/pages/Errorpage"));
 
-// Scroll to Top
-const ScrollToTop = withRouter(({ children, location: { pathname } }) => {
+// Scroll to Top component (updated for React Router v6)
+function ScrollToTop({ children }) {
+  const location = useLocation();
+  
   useLayoutEffect(() => {
-    window.scrollTo(0, 0)
-  }, [pathname])
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
 
-  return children || null
-})
-
+  return children || null;
+}
 
 function App() {
   return (
-    <Router basename={"/VaidyaBandhu"}>
-      <Suspense fallback={<div></div>}>
-        <ScrollToTop>
-          <Switch>
-            {/* Home */}
-            <Route exact path="/" component={Home} />
-            <Route exact path="/home-v2" component={Hometwo} />
-            {/* Blog */}
-            <Route exact path="/blog/cat/:catId" component={props => (<Blog {...props} key={window.location.pathname} />)} />
-            <Route exact path="/blog/tag/:tagId" component={props => (<Blog {...props} key={window.location.pathname} />)} />
-            <Route exact path="/blog/search/:query" component={props => (<Blog {...props} key={window.location.pathname} />)} />
-            <Route exact path="/blog/author/:authorId" component={props => (<Blog {...props} key={window.location.pathname} />)} />
-            <Route exact path="/blog" component={Blog} />
-            <Route exact path="/blog-standard" component={Blogstandard} />
-            <Route exact path="/blog-details/:id" component={props => (<Blogdetails {...props} key={window.location.pathname} />)} />
-            {/* About */}
-            <Route exact path="/about" component={About} />
-            {/* Services */}
-            <Route exact path="/service/cat/:catId" component={props => (<Services {...props} key={window.location.pathname} />)} />
-            <Route exact path="/services" component={Services} />
-            <Route exact path="/service-details/:id" component={props => (<Servicedetails {...props} key={window.location.pathname} />)} />
-            {/* FAQ's */}
-            <Route exact path="/faqs" component={Faqs} />
-            {/* Appointment */}
-            <Route exact path="/appointment" component={Appointment} />
-            {/* Clinics */}
-            <Route exact path="/clinic/cat/:catId" component={props => (<Clinicgrid {...props} key={window.location.pathname} />)} />
-            <Route exact path="/clinic-grid" component={Clinicgrid} />
-            <Route exact path="/clinic-list" component={Cliniclist} />
-            <Route exact path="/clinic-details/:id" component={props => (<Clinicdetails {...props} key={window.location.pathname} />)} />
-            {/* Doctors */}
-            <Route exact path="/doctor/cat/:catId" component={props => (<Doctorgrid {...props} key={window.location.pathname} />)} />
-            <Route exact path="/doctor-grid" component={Doctorgrid} />
-            <Route exact path="/doctor-list" component={Doctorlist} />
-            <Route exact path="/doctor-details/:id" component={props => (<Doctordetails {...props} key={window.location.pathname} />)} />
-            {/* Contact */}
-            <Route exact path="/contact" component={Contact} />
-            {/* Extra */}
-            <Route exact path="/error-page" component={Errorpage} />
-            <Route exact component={Errorpage} />
-          </Switch>
-        </ScrollToTop>
-      </Suspense>
-    </Router>
+    <HelmetProvider>
+      <Router>
+        <Suspense fallback={<div></div>}>
+          <ScrollToTop>
+            <Routes>            
+              {/* Home */}
+              <Route path="/" element={<Home />} />
+              <Route path="/home-v2" element={<Hometwo />} />
+              
+              {/* Blog */}
+              <Route path="/blog/cat/:catId" element={<Blog key={window.location.pathname} />} />
+              <Route path="/blog/tag/:tagId" element={<Blog key={window.location.pathname} />} />
+              <Route path="/blog/search/:query" element={<Blog key={window.location.pathname} />} />
+              <Route path="/blog/author/:authorId" element={<Blog key={window.location.pathname} />} />
+              <Route path="/blog" element={<Blog />} />
+              <Route path="/blog-standard" element={<Blogstandard />} />
+              <Route path="/blog-details/:id" element={<Blogdetails key={window.location.pathname} />} />
+              
+              {/* About */}
+              <Route path="/about" element={<About />} />
+              
+              {/* Services */}
+              <Route path="/service/cat/:catId" element={<Services key={window.location.pathname} />} />
+              <Route path="/services" element={<Services />} />
+              <Route path="/service-details/:id" element={<Servicedetails key={window.location.pathname} />} />
+              
+              {/* FAQ's */}
+              <Route path="/faqs" element={<Faqs />} />
+              
+              {/* Appointment */}
+              <Route path="/appointment" element={<Appointment />} />
+              
+              {/* Clinics */}
+              <Route path="/clinic/cat/:catId" element={<Clinicgrid key={window.location.pathname} />} />
+              <Route path="/clinic-grid" element={<Clinicgrid />} />
+              <Route path="/clinic-list" element={<Cliniclist />} />
+              <Route path="/clinic-details/:id" element={<Clinicdetails key={window.location.pathname} />} />
+              
+              {/* Doctors */}
+              <Route path="/doctor/cat/:catId" element={<Doctorgrid key={window.location.pathname} />} />
+              <Route path="/doctor-grid" element={<Doctorgrid />} />
+              <Route path="/doctor-list" element={<Doctorlist />} />
+              <Route path="/doctor-details/:id" element={<Doctordetails key={window.location.pathname} />} />
+              
+              {/* Contact */}
+              <Route path="/contact" element={<Contact />} />
+              
+              {/* Basic Route */}
+              <Route path="/basic-details" element={<BasicDetail />} />
+
+              {/* Extra */}
+              <Route path="/error-page" element={<Errorpage />} />
+              <Route path="*" element={<Errorpage />} />
+            </Routes>
+          </ScrollToTop>
+        </Suspense>
+      </Router>
+    </HelmetProvider>
   );
 }
 

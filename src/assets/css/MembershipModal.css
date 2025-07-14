@@ -1,0 +1,163 @@
+/* Custom modal styles */
+.membership-modal .modal-content {
+    border-radius: 15px;
+    padding: 20px;
+    background-color: #f8f9fa;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+    max-width: 800px; /* Adjust modal width */
+    width: 100%;
+    height: auto;
+}
+
+/* Modal Header */
+.membership-modal .modal-header {
+    border-radius: 15px 15px 0 0;
+    padding: 10px 20px;
+}
+
+.membership-modal .modal-title {
+    font-weight: 600;
+    font-size: 18px;
+}
+
+/* Modal Footer */
+.membership-modal .modal-footer {
+    border-top: none;
+    padding: 20px;
+    justify-content: center;
+}
+
+/* Submit Button */
+.submit-btn {
+    width: 100%;
+    padding: 12px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+}
+
+.submit-btn:hover {
+    background-color: #0056b3;
+}
+
+/* Resend OTP Button */
+.resend-otp-btn {
+    display: block;
+    margin-top: 10px;
+    text-decoration: underline;
+    color: #007bff;
+    cursor: pointer;
+}
+
+/* Styling the OTP input fields */
+.otp-input input {
+    width: 50px;
+    height: 50px;
+    margin: 0 5px;
+    text-align: center;
+    font-size: 20px; /* Increase font size for better visibility */
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+/* Adding styling for the separator */
+.otp-input span {
+    font-size: 20px; /* Make the separator larger */
+    margin: 0 5px;
+    color: #007bff;
+}
+
+/* Buy Membership Button */
+.buy-membership-btn {
+    /* background-color: #007bff; */
+    color: white;
+    padding: 9px 16px;
+    font-size: 15px;
+    font-weight: 600;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    text-transform: capitalize;
+}
+
+.buy-membership-btn:hover {
+    background-color: #0056b3;
+}
+
+/* Center the modal vertically and horizontally */
+.membership-modal .modal-dialog {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+/* Styling the input fields */
+input, select {
+    margin-bottom: 15px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    width: 100%;
+    font-size: 14px;
+}
+
+input:focus, select:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+/* Styling for form labels */
+label {
+    font-weight: 500;
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+/* Form padding */
+form {
+    padding: 20px;
+}
+
+/* Scrollable Modal Body */
+.membership-modal .modal-body::-webkit-scrollbar {
+    width: 8px;
+}
+
+.membership-modal .modal-body::-webkit-scrollbar-thumb {
+    background-color: #007bff;
+    border-radius: 10px;
+}
+
+/* Ensure the modal dialog is centered */
+.membership-modal .modal-dialog {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    /* For small screens */
+    .membership-modal .modal-dialog {
+        margin: 0 20px;
+    }
+
+    .buy-membership-btn {
+        width: 100%;
+    }
+
+    .submit-btn {
+        width: 100%;
+    }
+
+    .otp-input input {
+        width: 45px;
+        height: 45px;
+    }
+}

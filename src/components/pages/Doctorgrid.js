@@ -1,32 +1,41 @@
 import React, { Component, Fragment } from 'react';
-import MetaTags from "react-meta-tags";
-import Header from '../layouts/Headertwo';
+import { useParams } from 'react-router-dom';
+import { Helmet } from "react-helmet-async";
 import Breadcrumbs from '../layouts/Breadcrumbs';
 import Footer from '../layouts/Footer';
 import Content from '../sections/doctor-grid/Content';
+import Header from '../layouts/Header';
 
-const pagelocation = "Doctor Grid";
+const pagelocation = "Expert Care Areas";
 
-class Doctorgrid extends Component {
+// Class component (renamed)
+class DoctorgridClass extends Component {
     render() {
         return (
             <Fragment>
-                <MetaTags>
-                    <title>VaidyaBandhu - Doctors Appointment Booking - React Template | {pagelocation}</title>
+                <Helmet>
+                    <title>VaidyaBandhu</title>
                     <meta
                         name="description"
                         content="#"
                     />
-                </MetaTags>
+                </Helmet>
                 <Header />
                 <Breadcrumbs breadcrumb={{ pagename: pagelocation }} />
                 <Content
-                    catId={this.props.match.params.catId}
+                    catId={this.props.catId}
                 />
                 <Footer />
             </Fragment>
         );
     }
+}
+
+// Wrapper function component using hooks
+function Doctorgrid() {
+    const { catId } = useParams();
+    
+    return <DoctorgridClass catId={catId} />;
 }
 
 export default Doctorgrid;

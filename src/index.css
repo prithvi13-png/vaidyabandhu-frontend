@@ -209,3 +209,11 @@ button:focus,
 .alert.d-block{
     display: block!important;
 }
+ /* Remove underlines from all links */
+  a {
+    text-decoration: none;
+  }
+
+  a:hover {
+    text-decoration: none;
+  }

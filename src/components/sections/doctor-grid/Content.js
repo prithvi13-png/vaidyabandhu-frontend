@@ -1,105 +1,233 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import doctorpost from '../../../data/doctor/doctor.json';
-import { getFilteredPosts } from '../../../helper/doctorHelper';
-import { Rating } from '../../../helper/helper';
-import Sidebar from '../../layouts/Doctorsidebar';
-import Pagination from "react-js-pagination";
+import React, { useState, useEffect, useCallback } from "react";
+// import { useHistory } from "react-router-dom";/
+import { useNavigate } from 'react-router-dom';
+import '../../../assets/css/speciality.css'
+// Emoji icons for departments
+const deptIcons = [
+  "🩺",
+  "🔬",
+  "🚑",
+  "👁️",
+  "🫁",
+  "🫀",
+  "⚖️",
+  "🩹",
+  "👩‍⚕️",
+  "💄",
+  "🔎",
+  "🩻",
+  "🦠",
+];
+const DEFAULT_ICON = "🏥";
 
-class Content extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            data: this.getPosts(),
-            activePage: 1,
-            itemPerpage: 4,
-            favorite: false
-        }
-        this.favoriteTrigger = this.favoriteTrigger.bind(this);
-    }
-    getPosts() {
-        var cat = this.props.catId ? this.props.catId : '';
-        var filteredItems = getFilteredPosts(doctorpost, { cat });
-        return filteredItems;
-    }
-    handlePageChange(pageNumber) {
-        this.setState({ activePage: pageNumber });
-    }
-    favoriteTrigger(item) {
-        this.setState({ favorite: item });
-        if (this.state.favorite === item) {
-            this.setState({ favorite: null })
-        }
-    }
-    render() {
-        const paginationData = this.state.data.slice((this.state.activePage - 1) * this.state.itemPerpage, this.state.activePage * this.state.itemPerpage).map((item, i) => {
-            return <div className="col-lg-6 col-md-6" key={i}>
-                <div className="sigma_team style-16">
-                    <div className="sigma_team-thumb">
-                        <img src={process.env.PUBLIC_URL + "/" + item.image} alt={item.name} />
-                        <div className="sigma_team-controls">
-                            <Link to="#" className={this.state.favorite === item ? 'active' : ''} onClick={(e) => this.favoriteTrigger(item)}>
-                                <i className="fal fa-heart" />
-                            </Link>
-                        </div>
-                    </div>
-                    <div className="sigma_team-body">
-                        <h5>
-                            <Link to={"/doctor-details/" + item.id}>{item.name}</Link>
-                        </h5>
-                        <div className="sigma_rating">
-                            {Rating(item.rating)}
-                            <span className="ml-3">({item.reviews.length})</span>
-                        </div>
-                        <div className="sigma_team-categories">
-                            <Link to={"/doctor-details/" + item.id} className="sigma_team-category">{item.specialist}</Link>
-                        </div>
-                        <div className="sigma_team-info">
-                            <span>
-                                <i className="fal fa-map-marker-alt" />
-                                {item.location}
-                            </span>
-                        </div>
-                        <Link to={"/doctor-details/" + item.id} className="sigma_btn btn-block btn-sm">View
-                            More</Link>
-                    </div>
-                </div>
-            </div>
-        });
-        return (
-            <div className="sidebar-style-9">
-                <div className="section section-padding">
-                    <div className="container">
-                        <div className="row">
-                            <div className="col-lg-4">
-                                <Sidebar />
-                            </div>
-                            <div className="col-lg-8">
-                                <div className="row">
-                                    {/* Data */}
-                                    {paginationData}
-                                    {/* Data */}
-                                </div>
-                                {/* Pagination */}
-                                <Pagination
-                                    activePage={this.state.activePage}
-                                    itemsCountPerPage={this.state.itemPerpage}
-                                    totalItemsCount={this.state.data.length}
-                                    pageRangeDisplayed={this.state.data.length}
-                                    onChange={this.handlePageChange.bind(this)}
-                                    innerClass="pagination"
-                                    activeClass="active"
-                                    itemClass="page-item"
-                                    linkClass="page-link"
-                                />
-                                {/* Pagination */}
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        );
-    }
-}
+// Default specialty images (cycle if needed)
+const specialtyImages = [
+  "https://img.icons8.com/doodle/96/000000/doctor-male.png",
+  "https://img.icons8.com/doodle/96/000000/stethoscope.png",
+  "https://img.icons8.com/doodle/96/000000/nurse-female.png",
+  "https://img.icons8.com/doodle/96/000000/health-checkup.png",
+  "https://img.icons8.com/doodle/96/000000/hospital-bed.png",
+];
+const DEFAULT_SPEC_IMG = "https://img.icons8.com/color/96/clinic.png";
 
-export default Content;
+const MedicalDepartments = () => {
+  const [departments, setDepartments] = useState([]);
+  const [specialties, setSpecialties] = useState([]);
+  const [selectedDept, setSelectedDept] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [specialtyLoading, setSpecialtyLoading] = useState(false);
+  const [error, setError] = useState("");
+  const navigate = useNavigate();
+
+  // Fetch departments
+  const fetchDepartments = useCallback(async () => {
+    setLoading(true);
+    try {
+      const response = await fetch("http://3.27.214.105/api/department/");
+      if (!response.ok) throw new Error("Failed to fetch departments");
+      const data = await response.json();
+      setDepartments(data.data || []);
+      setError("");
+    } catch {
+      setError("Could not load departments. Please try again.");
+    } finally {
+      setLoading(false);
+    }
+  }, []);
+
+  // Fetch specialties for selected department
+  const fetchSpecialties = useCallback(async (departmentId) => {
+    setSpecialtyLoading(true);
+    try {
+      const response = await fetch(
+        `http://3.27.214.105/api/specialty/?department=${departmentId}`
+      );
+      if (!response.ok) throw new Error("Failed to fetch specialties");
+      const data = await response.json();
+      setSpecialties(data.data || []);
+    } catch {
+      setSpecialties([]);
+    } finally {
+      setSpecialtyLoading(false);
+    }
+  }, []);
+
+  useEffect(() => {
+    fetchDepartments();
+  }, [fetchDepartments]);
+
+  // Department selection handler
+  const handleSelectDept = (dept, i) => {
+    if (selectedDept && selectedDept.id === dept.id) {
+      setSelectedDept(null);
+      setSpecialties([]);
+      return;
+    }
+    setSelectedDept(dept);
+    fetchSpecialties(dept.id);
+  };
+
+  // Icon assignment
+  const getIcon = (i) => deptIcons[i % deptIcons.length] || DEFAULT_ICON;
+
+  // Specialty image assignment
+  const getSpecImg = (i, imgUrl) =>
+    imgUrl ? imgUrl : specialtyImages[i % specialtyImages.length];
+
+  const onClickSpeclist = (item) => {
+    navigate("/doctor-list?specialty=" + item.id);
+  };
+
+  return (
+    <div className="mdc-root container-bg">
+      <h2 className="mdc-title">Browse All Departments</h2>
+      {error && (
+        <div className="mdc-alert">
+          <span>{error}</span>
+          <button onClick={fetchDepartments} className="mdc-btn mdc-btn-alert">
+            Retry
+          </button>
+        </div>
+      )}
+
+      {/* Department Row: Centered with margin */}
+      <div className="mdc-horizontal-container">
+        <div
+          className="mdc-horizontal-scroll"
+          style={{ justifyContent: loading ? "center" : "start" }}
+        >
+          {loading ? (
+            <div className="mdc-loading">Loading...</div>
+          ) : (
+            departments.map((dept, i) => (
+              <div
+                key={dept.id}
+                className={`mdc-hcard ${
+                  selectedDept && selectedDept.id === dept.id
+                    ? "mdc-hcard-selected"
+                    : ""
+                }`}
+                onClick={() => handleSelectDept(dept, i)}
+                style={{ animationDelay: `${i * 50}ms` }}
+              >
+                <div className="mdc-hcard-icon">{getIcon(i)}</div>
+                <div className="mdc-hcard-info">
+                  <div className="mdc-hcard-name">{dept.name}</div>
+                  <div className="mdc-hcard-code">{dept.code}</div>
+                  <span
+                    className={`mdc-badge ${
+                      dept.is_active ? "mdc-badge-active" : "mdc-badge-inactive"
+                    }`}
+                  >
+                    {dept.is_active ? "Active" : "Inactive"}
+                  </span>
+                </div>
+              </div>
+            ))
+          )}
+        </div>
+        {/* Info message if no department selected */}
+        {!selectedDept && !loading && (
+          <div className="mdc-info-msg">
+            <span>ℹ️ Please select a department to view its specialties.</span>
+          </div>
+        )}
+      </div>
+
+      {/* Specialties Section */}
+      <div
+        className={`mdc-specialty-section ${
+          selectedDept ? "mdc-specialty-section-show" : ""
+        }`}
+      >
+        {selectedDept && (
+          <>
+            <div className="mdc-specialty-header">
+              <span>
+                {selectedDept.name} Specialties
+              </span>
+              <button
+                className="mdc-btn mdc-btn-close"
+                onClick={() => {
+                  setSelectedDept(null);
+                  setSpecialties([]);
+                }}
+              >
+                ×
+              </button>
+            </div>
+            {specialtyLoading ? (
+              <div className="mdc-loading-sm">Loading specialties...</div>
+            ) : specialties.length ? (
+              <div className="mdc-specialty-grid">
+                {specialties.map((spec, i) => (
+                  <div
+                    className="mdc-specialty-card"
+                    key={spec.id}
+                    style={{ animationDelay: `${i * 60}ms` }}
+                    onClick={() => onClickSpeclist(spec)}
+                  >
+                    <div className="mdc-specialty-imgwrap">
+                      <img
+                        src={spec.image_url || getSpecImg(i, spec.image_url)}
+                        alt={spec.description}
+                        className="mdc-specialty-img"
+                        onError={(e) => {
+                          e.target.onerror = null;
+                          e.target.src = DEFAULT_SPEC_IMG;
+                        }}
+                      />
+                    </div>
+                    <div className="mdc-specialty-title">
+                      {spec.description}
+                    </div>
+                    <div className="mdc-specialty-meta">
+                      <span className="mdc-specialty-code">{spec.code}</span>
+                      <span
+                        className={`mdc-badge ${
+                          spec.is_active
+                            ? "mdc-badge-active"
+                            : "mdc-badge-inactive"
+                        }`}
+                      >
+                        {spec.is_active ? "Active" : "Inactive"}
+                      </span>
+                    </div>
+                    <div className="mdc-specialty-dates">
+                      <span>Start: {spec.start_date}</span>
+                      {spec.end_date && <span>End: {spec.end_date}</span>}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <div className="mdc-empty">No specialties available.</div>
+            )}
+          </>
+        )}
+      </div>
+    </div>
+  );
+};
+
+export default MedicalDepartments;

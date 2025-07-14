@@ -1,14 +1,8 @@
 [
     {
         "id":1,
-        "image":"assets/img/banner-1.jpg",
-        "subtitle":"Quality healthcare at affordable rates, anytime, anywhere.",
-        "title":"Find The Best <br> Doctor Near By You."
-    },
-    {
-        "id":2,
-       "image":"assets/img/banner-2.jpg",
-        "subtitle":"Quality healthcare at affordable rates, anytime, anywhere.",
-        "title":"Find The Best <br> Doctor Near By You."
+        "image":"assets/img/ban1.jpeg",
+        "subtitle":"Find the best doctor near by you",
+        "title":"India’s First & No.1 Comprehensive Healthcare Network Under One Roof"
     }
 ]

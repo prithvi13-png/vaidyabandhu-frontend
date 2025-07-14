@@ -14,25 +14,25 @@
         {
         "id":3,
         "title":"Network of Health Warriors",
-        "icon":"flaticon-heartbeat",
+        "icon":"flaticon-doctor",
         "text":"Doctors & hospitals committed to helping people."
     },
     {
         "id":4,
         "title":"Pan Karnataka Coverage",
-        "icon":"flaticon-group",
+        "icon":"flaticon-hospital",
         "text":"Services available across the state."
     },
         {
         "id":5,
         "title":"Seamless Healthcare Experience",
-        "icon":"flaticon-heartbeat",
+        "icon":"flaticon-team",
         "text":"One-stop solution for all medical needs."
     },
     {
         "id":6,
         "title":"₹49 Membership Card ",
-        "icon":"flaticon-group",
-        "text":"Unlocks up to 40% discounts on medical services."
+        "icon":"fas fa-id-card",
+        "text":"Unlocks 10% to 40% discounts on medical services."
     }
 ]
