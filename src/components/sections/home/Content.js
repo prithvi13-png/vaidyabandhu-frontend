@@ -16,6 +16,7 @@ import HealthcareReality from './HealthcareReality';
 import MembershipCardBenefits from './MembershipCardBenefits';
 import FAQSection from './FAQSection';
 import DoctorsComponent from './DoctorsComponent';
+import ClientTestimonials from './Client';
 
 class Content extends Component {
     render() {
@@ -39,6 +40,7 @@ class Content extends Component {
                 <DoctorsComponent/>
                 <ClientLogosCarousel/>
                   <Testimonials />
+                  <ClientTestimonials/>
               <FAQSection/>
                 {/* <div className="container-fluid p-0">
                     <Galleryslider />

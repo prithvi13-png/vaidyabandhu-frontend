@@ -20,7 +20,7 @@ const MembershipCardBenefits = () => {
   ];
 
   // Placeholder image for the membership card
-  const membershipCardImage = "assets/img/m.png";
+  const membershipCardImage = "assets/img/vb.png";
 
   return (
     <div
