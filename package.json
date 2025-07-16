@@ -4,6 +4,7 @@
   "private": true,
   "homepage": ".",
   "dependencies": {
+    "@hookform/resolvers": "^5.1.1",
     "@testing-library/jest-dom": "^6.4.2",
     "@testing-library/react": "^14.2.1",
     "@testing-library/user-event": "^14.5.2",
@@ -19,16 +20,19 @@
     "react-dom": "^18.3.1",
     "react-google-recaptcha": "^3.1.0",
     "react-helmet-async": "^2.0.5",
+    "react-hook-form": "^7.60.0",
     "react-js-pagination": "^3.0.3",
     "react-otp-input": "^3.1.1",
     "react-router-dom": "^6.22.3",
     "react-scripts": "^5.0.1",
     "react-scroll": "^1.9.0",
     "react-slick": "^0.30.2",
+    "react-tooltip": "^5.29.1",
     "react-visibility-sensor": "^5.1.1",
     "slick-carousel": "^1.8.1",
     "sonner": "^2.0.6",
-    "web-vitals": "^3.5.2"
+    "web-vitals": "^3.5.2",
+    "yup": "^1.6.1"
   },
   "scripts": {
     "start": "react-scripts start",
