@@ -14,7 +14,7 @@ import { useNavigate } from "react-router-dom";
 
 const DoctorLogin = () => {
     const { loading, control, login, checkISAuthenticated } =
-    useLogin({ request: 'admin/user/login/', navPath: '/dashboard' });
+    useLogin({ request: 'admin/user/login/', navPath: '/doc-slots' });
 
   const navigate = useNavigate();
 
@@ -22,7 +22,7 @@ const DoctorLogin = () => {
 
   useEffect(() => {
     if (checkISAuthenticated()) {
-      navigate('/dashboard');
+      navigate('/doc-slots');
     }
   }, []);
 
