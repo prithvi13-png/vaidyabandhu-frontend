@@ -1626,7 +1626,7 @@ table td {
 
 table th {
   font-weight: 500;
-  color: var(--thm-secondary);
+  color: var(--thm-secondary) !important;
   font-size: 16px;
   border: 1px solid var(--thm-border);
 }
@@ -17031,4 +17031,31 @@ td.remove button span {
     margin-right: 0;
     margin-bottom: 20px;
   }
+}
+
+.outline-primary {
+  background: #fff !important;
+  color: #000000b5 !important;
+  border-color: #d2d0d0 !important;
+}
+
+
+/* Make thead stick to the top of the table container */
+.appointment-scrollable-table-container > div {
+  max-height: 400px;
+  overflow-y: auto;
+  overflow-x: auto;
+  width: 100%;
+}
+
+.appointment-scrollable-table-container > div table {
+  margin-bottom: 0;
+}
+
+.appointment-scrollable-table-container > div thead th {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  background: #f8f9fa; /* Match your table head bg */
+  box-shadow: 0 2px 2px -2px #dee2e6;
 }

@@ -31,7 +31,7 @@ const LeftSidebar = () => {
   const [expanded, setExpanded] = useState(true);
 
   return (
-    <div className={`sidebar ${expanded ? "expanded" : "collapsed"}`}>
+    <div className={`sidebar pt-3 ${expanded ? "expanded" : "collapsed"}`}>
       <div className="sidebar-logo mb-4">
         <img
           src="/assets/img/logoo.png"
