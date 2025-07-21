@@ -23,6 +23,8 @@ const Appointment = React.lazy(() => import("./components/pages/Appointment"));
 const Clinicgrid = React.lazy(() => import("./components/pages/Clinicgrid"));
 const Cliniclist = React.lazy(() => import("./components/pages/Cliniclist"));
 const Clinicdetails = React.lazy(() => import("./components/pages/Clinicdetails"));
+const ClinicListdetails = React.lazy(() => import("./components/pages/ClinicListdetails"));
+
 // Doctors
 const Doctorgrid = React.lazy(() => import("./components/pages/Doctorgrid"));
 const Doctorlist = React.lazy(() => import("./components/pages/Doctorlist"));
@@ -80,9 +82,9 @@ function App() {
               {/* Clinics */}
               <Route path="/clinic/cat/:catId" element={<Clinicgrid key={window.location.pathname} />} />
               <Route path="/clinic-grid" element={<Clinicgrid />} />
+              <Route path="/clinic-details/:id" element={<ClinicListdetails key={window.location.pathname} />} />
               <Route path="/clinic-list" element={<Cliniclist />} />
               <Route path="/clinic-details/:id" element={<Clinicdetails key={window.location.pathname} />} />
-              
               {/* Doctors */}
               <Route path="/doctor/cat/:catId" element={<Doctorgrid key={window.location.pathname} />} />
               <Route path="/doctor-grid" element={<Doctorgrid />} />

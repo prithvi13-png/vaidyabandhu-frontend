@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback } from "react";
 // import { useHistory } from "react-router-dom";/
-import { useNavigate } from 'react-router-dom';
-import '../../../assets/css/speciality.css'
+import { useNavigate } from "react-router-dom";
+import "../../../assets/css/speciality.css";
 // Emoji icons for departments
 const deptIcons = [
   "🩺",
@@ -130,7 +130,21 @@ const MedicalDepartments = () => {
                 onClick={() => handleSelectDept(dept, i)}
                 style={{ animationDelay: `${i * 50}ms` }}
               >
-                <div className="mdc-hcard-icon">{getIcon(i)}</div>
+                <div className="mdc-hcard-icon">
+                  {dept?.image ? (
+                    <img
+                      src={dept.image}
+                      alt={dept.name}
+                      className="mdc-specialty-img"
+                      onError={(e) => {
+                        e.target.onerror = null;
+                        e.target.src = DEFAULT_SPEC_IMG;
+                      }}
+                    />
+                  ) : (
+                    getIcon(i)
+                  )}
+                </div>
                 <div className="mdc-hcard-info">
                   <div className="mdc-hcard-name">{dept.name}</div>
                   <div className="mdc-hcard-code">{dept.code}</div>
@@ -163,9 +177,7 @@ const MedicalDepartments = () => {
         {selectedDept && (
           <>
             <div className="mdc-specialty-header">
-              <span>
-                {selectedDept.name} Specialties
-              </span>
+              <span>{selectedDept.name} Specialties</span>
               <button
                 className="mdc-btn mdc-btn-close"
                 onClick={() => {
@@ -189,7 +201,7 @@ const MedicalDepartments = () => {
                   >
                     <div className="mdc-specialty-imgwrap">
                       <img
-                        src={spec.image_url || getSpecImg(i, spec.image_url)}
+                        src={spec.image || getSpecImg(i, spec.image_url)}
                         alt={spec.description}
                         className="mdc-specialty-img"
                         onError={(e) => {
