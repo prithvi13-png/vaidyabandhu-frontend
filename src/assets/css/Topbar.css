@@ -61,3 +61,55 @@
   padding: 6px 10px;
   border-radius: 24px;
 }
+
+.project-section {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+
+  .project-label {
+    font-weight: 500;
+    color: #5a5a5a;
+    white-space: nowrap;
+    margin-right: 8px;
+  }
+
+  .project-select {
+    min-width: 200px;
+
+    .react-select__control {
+      border: 1px solid #e3e6ef;
+      border-radius: 4px;
+      height: 38px;
+      min-height: 38px;
+      box-shadow: none;
+
+      &:hover {
+        border-color: #c7c7c7;
+      }
+
+      &--is-focused {
+        border-color: #6c5ce7;
+        box-shadow: 0 0 0 1px #6c5ce7;
+      }
+    }
+
+    .react-select__value-container {
+      padding: 0 12px;
+    }
+
+    .react-select__single-value {
+      color: #333;
+      font-size: 14px;
+    }
+
+    .react-select__indicator-separator {
+      display: none;
+    }
+
+    .react-select__dropdown-indicator {
+      color: #999;
+      padding: 0 8px;
+    }
+  }
+}

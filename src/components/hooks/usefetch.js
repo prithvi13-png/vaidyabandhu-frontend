@@ -2,36 +2,16 @@ import { useState, useEffect, useCallback } from 'react';
 import axiosInstance from '../../api/axiosInstance';
 import { responseError } from '../utiles/responseError';
 
-interface RequestOptions<P = unknown, Q = unknown> {
-  params?: P;
-  payload?: Q;
-}
-
-interface UseFetchOptions<P = unknown, Q = unknown> {
-  method?: 'GET' | 'POST' | 'PUT' | 'DELETE' | 'PATCH';
-  request?: string | ((options: RequestOptions<P, Q>) => Promise<unknown>);
-  params?: P;
-  payload?: Q;
-  dontCall?: boolean;
-}
-
-interface UseFetchResult<T> {
-  data: T | null;
-  loading: boolean;
-  error: Error | null;
-  refetch: () => Promise<T | void>;
-}
-
-export const useFetch = <T = unknown, P = unknown, Q = unknown>({
+export const useFetch = ({
   method = 'GET',
   request,
-  params = {} as P,
-  payload = {} as Q,
+  params = {},
+  payload = {},
   dontCall = false,
-}: UseFetchOptions<P, Q>): UseFetchResult<T> => {
-  const [data, setData] = useState<T | null>(null);
-  const [loading, setLoading] = useState<boolean>(false);
-  const [error, setError] = useState<Error | null>(null);
+} = {}) => {
+  const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
 
   const fetchData = useCallback(async () => {
     if (!request) {
@@ -48,8 +28,8 @@ export const useFetch = <T = unknown, P = unknown, Q = unknown>({
 
       if (typeof request === 'function') {
         response = await request({ params, payload });
-        setData(response as T);
-        return response as T;
+        setData(response);
+        return response;
       }
 
       const config = { params };
@@ -74,7 +54,7 @@ export const useFetch = <T = unknown, P = unknown, Q = unknown>({
       }
 
       setData(response.data);
-      return response.data as T;
+      return response.data;
 
     } catch (err) {
       const cleanedError = responseError(err);
@@ -89,6 +69,7 @@ export const useFetch = <T = unknown, P = unknown, Q = unknown>({
     if (!dontCall && request) {
       fetchData();
     }
+    // eslint-disable-next-line
   }, [fetchData, dontCall, request]);
 
   return {
