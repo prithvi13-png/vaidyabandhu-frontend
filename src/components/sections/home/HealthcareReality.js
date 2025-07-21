@@ -82,51 +82,56 @@ const HealthcareReality = () => {
         {/* Main Heading */}
         <h2
           style={{
-            fontSize: "clamp(22px, 5vw, 36px)", // Responsive font size
-            fontWeight: "800",
-            color: "#004d4f",
-            marginBottom: "1px",
-            lineHeight: "1.2",
-            opacity: animated ? 1 : 0,
-            transform: animated ? "translateY(0)" : "translateY(30px)",
-            transition: "opacity 0.8s ease-out, transform 0.8s ease-out",
-          }}
-        >
-          The Reality of Modern Healthcare
+          fontSize: "clamp(24px, 4vw, 32px)",
+          fontWeight: 800,
+          color: "#004d4f",
+          textAlign: "center",
+          marginBottom: "8px",
+          lineHeight: "1.3"
+        }}>
+
+          The Reality of <span style={{ color: "#007a7e" }}>Modern Healthcare </span>
         </h2>
 
-        {/* Subtitle/Intro Paragraph */}
-        <p
-          style={{
-            fontSize: "clamp(16px, 2.5vw, 20px)", // Responsive font size
-            color: "#4a5568",
-            lineHeight: "1.5",
-            fontWeight: "400",
-            marginBottom: "10px",
-            opacity: animated ? 1 : 0,
-            transform: animated ? "translateY(0)" : "translateY(30px)",
-            transition: "opacity 0.8s ease-out 0.2s, transform 0.8s ease-out 0.2s",
-          }}
-        >
-          In today’s world, quality healthcare is becoming increasingly expensive.
-        </p>
 
-        {/* Combined Key Challenges Section (now the main paragraph) */}
-        <div
-          style={{
-            opacity: animated ? 1 : 0,
-            transform: animated ? "translateY(0)" : "translateY(20px)",
-            transition: "opacity 0.8s ease-out 0.4s, transform 0.8s ease-out 0.4s",
-            padding: "0 10px", // Slight horizontal padding for text blocks
-            textAlign: "left", // Ensure text is left-aligned
-          }}
-        >
-          <p style={{ fontSize: "clamp(15px, 2vw, 17px)", color: "#5a6778", lineHeight: "1.7" }}>
-            Many families struggle to arrange funds for medical emergencies, surgeries, and long-term treatments.
-            The fear of high hospital bills, confusion in choosing the right doctor, and lack of financial support
-            often lead to delayed treatments, worsening health conditions, or even loss of life.
-          </p>
-        </div>
+        {/* Subtitle/Intro Paragraph */}
+<p
+  style={{
+    fontSize: "clamp(16px, 2.5vw, 20px)", // Responsive font size
+    color: "#4a5568",
+    lineHeight: "1.5",
+    fontWeight: "400",
+    marginBottom: "10px",
+    opacity: animated ? 1 : 0,
+    transform: animated ? "translateY(0)" : "translateY(30px)",
+    transition: "opacity 0.8s ease-out 0.2s, transform 0.8s ease-out 0.2s",
+  }}
+>
+  In today’s world, quality healthcare is becoming increasingly expensive.
+</p>
+
+{/* Combined Key Challenges Section (now the main paragraph) */}
+<div
+  style={{
+    opacity: animated ? 1 : 0,
+    transform: animated ? "translateY(0)" : "translateY(20px)",
+    transition: "opacity 0.8s ease-out 0.4s, transform 0.8s ease-out 0.4s",
+    padding: "0 10px", // Slight horizontal padding for text blocks
+    textAlign: "left", // Ensure text is left-aligned
+  }}
+>
+  <p
+    style={{
+      fontSize: "clamp(16px, 2.5vw, 20px)", // Same responsive font size
+      color: "#4a5568", // Same color
+      lineHeight: "1.7",
+    }}
+  >
+    Many families struggle to arrange funds for medical emergencies, surgeries, and long-term treatments.
+    The fear of high hospital bills, confusion in choosing the right doctor, and lack of financial support
+    often lead to delayed treatments, worsening health conditions, or even loss of life.
+  </p>
+</div>
       </div>
 
       {/* Keyframes for the floating background circles */}

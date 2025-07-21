@@ -139,11 +139,12 @@ const FAQSection = () => {
             fontSize: "clamp(16px, 2.5vw, 20px)",
             color: "#4a5568",
             lineHeight: "1.4",
-            fontWeight: "500",
+            fontWeight: "400",
+            fontFamily: "'Inter', sans-serif",
             marginBottom: "30px",
             opacity: animated ? 1 : 0,
             transform: animated ? "translateY(0)" : "translateY(30px)",
-            transition: "opacity 0.8s ease-out 0.2s, transform 0.8s ease-out 0.2s",
+            transition: "opacity 0.8s ease-out 0.3s, transform 0.8s ease-out 0.3s"
           }}
         >
           Find quick answers to common questions about Vaidya Bandhu's services, membership, and benefits.

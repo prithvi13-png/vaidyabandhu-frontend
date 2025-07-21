@@ -7,6 +7,7 @@ import Galleryslider from '../../layouts/Galleryslider';
 import LeadershipInline from './Leadership';
 import OurStory from './Ourstory';
 import WhoCanBenefit from './Benifit';
+import '../../../assets/css/about.css';
 
 class Content extends Component {
     render() {

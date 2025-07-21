@@ -4,20 +4,30 @@ import whyus from "../../../data/whyus.json";
 class Whyus extends Component {
   render() {
     return (
-      <div className="row">
+      <div className="row" style={{ paddingTop: "80px" }}> {/* Added padding-top */}
         <div className="col-lg-5 order-2 order-lg-1">
           <div className="sigma_about style-21">
-            <div className="section-title">
-              <h3
+            <div className="section-title" style={{ marginBottom: "40px" }}>
+              <h2
+                style={{
+                  fontSize: "clamp(24px, 4vw, 32px)",
+                  fontWeight: 800,
+                  color: "#fff",
+                  textAlign: "center",
+                  marginBottom: "8px",
+                  lineHeight: "1.3",
+                }}
+              >
+                Why Choose VaidyaBandhu?
+              </h2>
+              {/* <h3
                 className="title text-white"
                 style={{ fontSize: "2.8rem", fontWeight: "800" }}
               >
                 Why Choose VaidyaBandhu?
-              </h3>
+              </h3> */}
             </div>
             <div className="sigma_about-content">
-              {/* <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. It is a long established fact that a reader
-                                will be Lorem ipsum dolor sit amet consectetur.</p> */}
               {/* Data */}
               {whyus.slice(0, 6).map((item, i) => (
                 <div className="sigma_info style-15" key={i}>
