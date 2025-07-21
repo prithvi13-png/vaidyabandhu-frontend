@@ -16,18 +16,18 @@ const ProfileDropdown = () => {
 	const navigate = useNavigate()
 	const logout = () => {
 		navigate('/logout')
-	}
+	}	
 	return (
 		<Dropdown>
 			<DropdownToggle as="a" className="nav-link nav-user d-flex align-items-center" role="button">
 				<div className="d-flex align-items-center">
 					<User className="thumb-sm" />
 					<div>
-						<small className="d-none d-md-block font-11">
-							{user?.roles?.role_name}
-						</small>
+						{/* <small className="d-none d-md-block font-11">
+							{user?.user_type}
+						</small> */}
 						<span className="d-none d-md-block fw-semibold font-12">
-							{user?.first_name} <i className="mdi mdi-chevron-down" />
+							{user?.full_name} <i className="mdi mdi-chevron-down" />
 						</span>
 					</div>
 				</div>
