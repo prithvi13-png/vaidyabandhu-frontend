@@ -1,113 +1,65 @@
-import React, { useState, useEffect } from 'react'
-import { Tooltip } from 'react-tooltip'
-import { useLocation, useNavigate } from 'react-router-dom'
-import { ArrowLeft, ArrowRight, LayoutDashboard } from 'lucide-react'
-import { useUserContext } from '../../context/userContext'
+import { NavLink } from "react-router-dom";
+import {
+  LayoutDashboard,
+  ChevronLeft,
+  ChevronRight,
+  BetweenHorizontalEnd,
+  Waypoints,
+} from "lucide-react";
+import { useState } from "react";
+import "../../../assets/css/LeftSidebar.css"; // or use Tailwind
 
-// Add placeholder logos - replace with your actual logo imports
-const newLogo = '/path/to/your/logo.png'
-const milesLogoWithoutText = '/path/to/your/logo-small.png'
-
-const icons = {
-	dashboard: {
-		icon: <LayoutDashboard />,
-		label: 'Dashboard',
-		url: '/dashboard',
-		// permissionKey:'dashboard_all_permission'
-	},
-}
+const menuItems = [
+  {
+    name: "Dashboard",
+    path: "/dashboard",
+    icon: <LayoutDashboard size={20} />,
+  },
+  {
+    name: "Slots",
+    path: "/doc-slots",
+    icon: <BetweenHorizontalEnd size={20} />,
+  },
+  {
+    name: "Appointment",
+    path: "/doc-appointment",
+    icon: <Waypoints size={20} />,
+  },
+];
 
 const LeftSidebar = () => {
-	const [selectedKey, setSelectedKey] = useState(null)
-	const location = useLocation()
-	const navigate = useNavigate()
-	const { user, setUser } = useUserContext()
-	
-	// Use user's isExpanded state if available, otherwise default to false
-	const isExpanded = user?.isExpanded || false
+  const [expanded, setExpanded] = useState(true);
 
-	useEffect(() => {
-		// Get the first segment of the pathname to determine which tab is selected
-		const pathSegment = location.pathname.split('/')[1] || 'dashboard'
-		setSelectedKey(pathSegment)
-	}, [location])
+  return (
+    <div className={`sidebar ${expanded ? "expanded" : "collapsed"}`}>
+      <div className="sidebar-logo mb-4">
+        <img
+          src="/assets/img/logoo.png"
+          alt="Logo"
+          width={expanded ? 200 : 32}
+        />
+      </div>
+      <nav className="sidebar-menu">
+        {menuItems.map((item) => (
+          <NavLink
+            to={item.path}
+            key={item.name}
+            className={({ isActive }) =>
+              `sidebar-item ${isActive ? "active" : ""}`
+            }
+          >
+            <span className="sidebar-icon">{item.icon}</span>
+            {expanded && <span className="sidebar-label">{item.name}</span>}
+          </NavLink>
+        ))}
+      </nav>
+      <div className="sidebar-bottom">
+        <button className="collapse-btn" onClick={() => setExpanded((e) => !e)}>
+          {expanded ? <ChevronLeft size={18} /> : <ChevronRight size={18} />}
+        </button>
+      </div>
+    </div>
+  );
+};
 
-	const toggleExpand = () => {
-		const newExpandedState = !isExpanded
-		if (user) {
-			setUser({ ...user, isExpanded: newExpandedState })
-		}
-	}
-
-	const handleNavigation = (url) => {
-		navigate(url)
-	}
-
-	const filteredIcons = Object.keys(icons).reduce((acc, key) => {
-		const iconData = icons[key]
-		if (
-			user?.permissionsObj?.[iconData?.permissionKey] ||
-			key === 'dashboard'
-		) {
-			acc[key] = iconData
-		}
-		return acc
-	}, {})
-
-	return (
-		<div
-			className={`left-sidebar ${isExpanded ? 'expanded' : ''} blue_theme_side_bar_bg`}>
-			{/* Logo Section */}
-			<div
-				className="logo-section"
-				onClick={() =>
-					handleNavigation(
-						user?.user_type === 'Vendor' ? '/vendorsDashboard' : '/dashboard'
-					)
-				}>
-				{isExpanded ? (
-					<img src={newLogo} alt="Logo" />
-				) : (
-					<img src={milesLogoWithoutText} alt="Logo" />
-				)}
-			</div>
-
-			{/* Icon Section */}
-			<nav className="icon-section">
-				{Object.entries(filteredIcons).map(([key, { icon, label, url }]) => (
-					<div
-						key={key}
-						className={`icon-wrapper ${selectedKey === key ? 'selected' : ''}`}
-						onClick={() => handleNavigation(url)}
-						data-tooltip-id={`tooltip-${key}`}>
-						<div className="icon">{icon}</div>
-						{isExpanded && (
-							<span
-								className={`icon-label ${selectedKey === key ? 'selected' : ''}`}>
-								{label}
-							</span>
-						)}
-						{!isExpanded && (
-							<Tooltip
-								id={`tooltip-${key}`}
-								place="right"
-								content={label}
-							/>
-						)}
-					</div>
-				))}
-			</nav>
-
-			{/* Expand/Collapse Button */}
-			<div className="expand-button hide-phone" onClick={toggleExpand}>
-				{isExpanded ? (
-					<ArrowLeft title="Collapse" />
-				) : (
-					<ArrowRight title="Expand" />
-				)}
-			</div>
-		</div>
-	)
-}
-
-export default LeftSidebar
+export default LeftSidebar;

@@ -5,7 +5,7 @@ const axiosInstance = axios.create({
   //   baseURL: 'https://healthcare-uat.miles-api.com/api',
   headers: {
     // 'Content-Type': 'application/json',
-    "Access-Control-Allow-Origin": "*",
+    // "Access-Control-Allow-Origin": "*",
   },
 });
 

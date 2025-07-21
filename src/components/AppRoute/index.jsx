@@ -1,15 +1,12 @@
-// AppRoute.js
-import { useAuthContext } from "../context/useAuthContext";
-import PrivateRoutes from "./PrivateRoutes";
-import PublicRoute from "./PublicRoute";
+import PrivateRoutes from './PrivateRoutes';
+import PublicRoute from './PublicRoute';
 
-const AppRoute = () => {
-  const auth = useAuthContext();
-
-  return [
-    ...PublicRoute(), // Always include public routes
-    ...(auth?.isAuthenticated ? PrivateRoutes() : []) // Only include private routes if authenticated
+export function getAppRoutes(auth) {
+  const routes = [
+    ...PublicRoute(),
   ];
-};
-
-export default AppRoute;
+  if (auth?.checkISAuthenticated()) {
+    routes.push(PrivateRoutes()); // NOT spread
+  }
+  return routes;
+}

@@ -7,11 +7,11 @@ import {
 } from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom'
 import { User } from 'lucide-react';
+import { useAuthContext } from '../../../context';
 
-import { useUserContext } from '../../../context/userContext'
 
 const ProfileDropdown = () => {
-	const { user } = useUserContext()
+	const { user } = useAuthContext()
 
 	const navigate = useNavigate()
 	const logout = () => {
@@ -19,7 +19,7 @@ const ProfileDropdown = () => {
 	}
 	return (
 		<Dropdown>
-			<DropdownToggle as="a" className="nav-link nav-user" role="button">
+			<DropdownToggle as="a" className="nav-link nav-user d-flex align-items-center" role="button">
 				<div className="d-flex align-items-center">
 					<User className="thumb-sm" />
 					<div>

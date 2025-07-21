@@ -2,8 +2,8 @@ import React, { useState, useRef, useEffect } from 'react'
 import { validateSessionAPI } from '@/api/validationApi'
 import TooltipComponent from '@/common/TooltipComponent'
 import { responseError } from '@/common/utiles/responseError'
-import { useUserContext } from '@/context/userContext'
 import { toast } from 'sonner'
+import { useAuthContext } from '../../../context'
 
 // Types
 type StatusValue = 'online' | 'offline'
@@ -136,7 +136,7 @@ const StatusToggle = () => {
   const dropdownRef = useRef(null)
   
   // Context
-  const { user, setUser } = useUserContext()
+  const { user, setUser } = useAuthContext()
 
   // Find the current status object from options
   const currentStatus = STATUS_OPTIONS.find(option => option.value === status) || STATUS_OPTIONS[0]

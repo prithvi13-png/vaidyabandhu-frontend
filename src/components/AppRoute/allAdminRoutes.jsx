@@ -11,12 +11,12 @@ const doctorRoutes = [
 		element: <Dashboard />,
 	},
 	{
-		path: '/appointments',
+		path: '/doc-appointment',
 		name: 'Appointments',
 		element: <Appointments />,
 	},
 	{
-		path: '/slots',
+		path: "/doc-slots",
 		name: 'Slots',
 		element: <Slots />,
 	},

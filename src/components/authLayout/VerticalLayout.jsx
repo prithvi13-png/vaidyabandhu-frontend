@@ -1,10 +1,8 @@
-// import ExpireSessionModal from '@/components/expire-session-modal'
-
 import { Suspense, lazy, useEffect } from "react";
 import { useThemeContext } from "../context/useThemeContext";
-import { UserProvider, useUserContext } from "../context/userContext";
 import useViewport from "../hooks/useViewPort";
 import Preloader from "../common/Preloader";
+import { useAuthContext } from "../context";
 const Topbar = lazy(() => import("./TopNavBar"));
 const LeftSidebar = lazy(() => import("./LeftSidebar"));
 
@@ -38,38 +36,33 @@ const VerticalLayout = ({ children }) => {
   }, [width, updateSideNavMode]);
 
   return (
-    <UserProvider>
-      <OverallSection>
-        <Suspense fallback={<Preloader />}>{children}</Suspense>
-      </OverallSection>
-    </UserProvider>
+    <OverallSection>
+      <Suspense fallback={<Preloader />}>{children}</Suspense>
+    </OverallSection>
   );
 };
 
 const OverallSection = ({ children }) => {
-  const { user } = useUserContext();
+  const { user } = useAuthContext();
 
   if (!user) return <div>Loading...</div>;
 
   return (
-    <>
+    <section className="h-100 d-flex">
       <Suspense fallback={<div />}>
         <LeftSidebar />
       </Suspense>
+      <div
+      className={`page-content-tab ${
+        user?.isExpanded ? "page-content-tab-extend" : ""
+      }`}
+      >
       <Suspense fallback={<div />}>
         <Topbar />
       </Suspense>
-      <div className="page-wrapper">
-        <div
-          className={`page-content-tab ${
-            user?.isExpanded ? "page-content-tab-extend" : ""
-          }`}
-        >
-          <div className="container-fluid h-100">{children}</div>
+          <div className="container-fluid" style={{ height: 'calc(100% - 60px)'}}>{children}</div>
         </div>
-      </div>
-      {/* {user?.roles?.role_name && user?.roles?.role_name !== 'Vendor' && <ExpireSessionModal />} */}
-    </>
+    </section>
   );
 };
 

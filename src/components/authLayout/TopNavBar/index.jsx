@@ -1,24 +1,17 @@
-import { useUserContext } from "../../context/userContext";
+import "../../../assets/css/Topbar.css";
 import ProfileDropdown from "./components/ProfileDropdown";
 
-const TopNavbar = () => {
-  const { user } = useUserContext();
-
+const Topbar = ({ user }) => {
   return (
-    <div className="topbar">
-      <nav
-        className={`navbar-custom ${
-          user?.isExpanded ? "navbar-custom-left" : ""
-        }`}
-        id="navbar-custom"
-      >
-        {/* Right side items */}
+    <header className="topbar">
+      <div />
+      <div className="topbar-right">
         <div className="topbar-nav-right">
           <ProfileDropdown />
         </div>
-      </nav>
-    </div>
+      </div>
+    </header>
   );
 };
 
-export default TopNavbar;
+export default Topbar;
