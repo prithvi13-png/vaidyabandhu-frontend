@@ -59,7 +59,7 @@ class Contactform extends Contacthelper {
 
         const inputStyle = {
             width: '100%',
-            padding: '15px 20px',
+            padding: '20px 20px',
             border: `1px solid ${this.borderColor}`,
             borderRadius: '10px',
             fontSize: '1rem',
