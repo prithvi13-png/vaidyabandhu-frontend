@@ -39,7 +39,7 @@ class Contactform extends Contacthelper {
             fontSize: '2.8rem',
             fontWeight: '800',
             color: this.darkText,
-            marginBottom: '40px',
+            marginBottom: '10px',
             lineHeight: '1.2',
             textAlign: 'center', // Assuming 'centered' class implies this
         };
@@ -58,7 +58,7 @@ class Contactform extends Contacthelper {
         };
 
         const inputStyle = {
-            width: '100%',
+            width: '120%',
             padding: '20px 20px',
             border: `1px solid ${this.borderColor}`,
             borderRadius: '10px',
@@ -94,7 +94,7 @@ class Contactform extends Contacthelper {
         return (
             <div className="section pt-0" style={sectionStyle}>
                 <div className="container">
-                  <div className="section-title centered" style={{ paddingTop: '30px' }}>
+                  <div className="section-title centered" style={{ paddingTop: '0px' }}>
   <span style={subtitleStyle}>Connect With Us</span>
   <h3 style={titleStyle}>Let's Talk!</h3>
 </div>

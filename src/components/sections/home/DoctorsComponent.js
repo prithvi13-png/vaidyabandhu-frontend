@@ -145,7 +145,6 @@ const DoctorsComponent = () => {
           color: "#4a5568",
           lineHeight: "1.4",
           fontWeight: "400",
-          fontFamily: "'Inter', sans-serif",
           marginBottom: "20px",
           opacity: animated ? 1 : 0,
           transform: animated ? "translateY(0)" : "translateY(30px)",
@@ -457,10 +456,10 @@ const DoctorsComponent = () => {
               min-width: unset !important;
               width: 100% !important;
             }
-            h2 { fontSize: clamp(30px, 6vw, 40px) !important; }
-            p { fontSize: clamp(15px, 2.5vw, 18px) !important; }
-            h3 { fontSize: clamp(18px, 3vw, 22px) !important; }
-            h4 { fontSize: clamp(18px, 3vw, 22px) !important; }
+            h2 { font-size: clamp(30px, 6vw, 40px) !important; }
+            p { font-size: clamp(15px, 2.5vw, 18px) !important; }
+            h3 { font-size: clamp(18px, 3vw, 22px) !important; }
+            h4 { font-size: clamp(18px, 3vw, 22px) !important; }
           }
 
           @media (max-width: 480px) {
@@ -470,13 +469,13 @@ const DoctorsComponent = () => {
             div[style*="max-width: 900px"] { /* Detail view max-width */
               padding: 20px !important;
             }
-            h2 { fontSize: clamp(28px, 7vw, 36px) !important; }
-            p { fontSize: clamp(14px, 3vw, 16px) !important; }
-            h3 { fontSize: clamp(16px, 4vw, 20px) !important; }
-            h4 { fontSize: clamp(16px, 4vw, 20px) !important; }
+            h2 { font-size: clamp(28px, 7vw, 36px) !important; }
+            p { font-size: clamp(14px, 3vw, 16px) !important; }
+            h3 { font-size: clamp(16px, 4vw, 20px) !important; }
+            h4 { font-size: clamp(16px, 4vw, 20px) !important; }
             button {
               padding: 8px 15px !important;
-              fontSize: 14px !important;
+              font-size: 14px !important;
             }
           }
         `}

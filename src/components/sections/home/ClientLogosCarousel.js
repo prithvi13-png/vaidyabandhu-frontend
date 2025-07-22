@@ -51,17 +51,17 @@ const ClientLogosCarousel = () => {
       >
         Our Valued <span style={{ color: "#007a7e" }}>Partners & Clients</span>
       </h2>
-      <p style={{
-          fontSize: "clamp(16px, 2.5vw, 20px)",
+      <p
+        style={{
+          fontSize: "18px",
           color: "#4a5568",
-          lineHeight: "1.4",
-          fontWeight: "400",
-          fontFamily: "'Inter', sans-serif",
           maxWidth: "800px",
           margin: "0 auto 40px",
+          lineHeight: "1.7",
+          fontWeight: "500",
           opacity: animated ? 1 : 0,
           transform: animated ? "translateY(0)" : "translateY(20px)",
-          transition: "opacity 0.8s ease-out 0.2s, transform 0.8s ease-out 0.2s" // Slight delay
+          transition: "opacity 0.8s ease-out 0.2s, transform 0.8s ease-out 0.2s", // Slight delay
         }}
       >
         We are proud to collaborate with leading organizations and serve a diverse range of clients,

@@ -2,260 +2,336 @@ import React, { useEffect, useState } from "react";
 
 const MembershipCardBenefits = () => {
   const [animated, setAnimated] = useState(false);
-  const [hoveredBenefitIndex, setHoveredBenefitIndex] = useState(null);
+  const [hoveredBenefitIndex, setHoveredBenefitIndex] = useState(null); // State to track hovered benefit item
 
   useEffect(() => {
+    // Trigger animation after component mounts with a slight delay
     const timer = setTimeout(() => setAnimated(true), 200);
     return () => clearTimeout(timer);
   }, []);
 
   const benefits = [
-    "10% to 40% discount on surgeries, treatments, and diagnostic tests",
-    "Valid across Karnataka at our partner hospitals and diagnostic centers",
-    "One-time payment of ₹49 – No hidden charges",
-    "Card delivered to your address after registration",
-    "Easy renewal after 1 year (auto-renewal if unused)"
+    "10% to 40% discount on surgeries, treatments, and diagnostic tests.",
+    "10% to 40% discounts on surgeries, treatments, and diagnostics",
+    "Valid across Karnataka at our partner hospitals and diagnostic centers.",
+    "One-time payment of ₹49 – No hidden charges.",
+    "Card delivered to your address after registration.",
+    "Easy renewal after 1 year (If card is not used for 1 year, it will auto-renew).",
   ];
 
+  // Placeholder image for the membership card
   const membershipCardImage = "assets/img/mm.png";
 
   return (
-    <div className="membership-benefits" style={{
-      padding: "60px 30px",
-      background: "linear-gradient(135deg, #e0f7fa 0%, #ffffff 100%)",
-      fontFamily: "'Inter', sans-serif",
-      position: "relative",
-      overflow: "hidden"
-    }}>
-      {/* Background elements */}
-      <div style={{
-        position: "absolute",
-        top: "10%",
-        right: "5%",
-        width: "min(180px, 15vw)",
-        height: "min(180px, 15vw)",
-        backgroundColor: "rgba(0, 122, 126, 0.08)",
-        borderRadius: "50%",
-        filter: "blur(30px)",
-        animation: "floatShape1 10s infinite ease-in-out",
-        opacity: animated ? 1 : 0,
-        transition: "opacity 1s ease-out",
-        zIndex: 0,
-      }}></div>
-
-      <div style={{
-        maxWidth: "1400px",
-        margin: "0 auto",
+    <div
+      style={{
+        padding: "40px 20px",
+        background: "linear-gradient(135deg, #e0f7fa 0%, #ffffff 100%)", // Light, inviting gradient
+        textAlign: "center", // Overall text alignment for the section
+        overflow: "hidden",
+        fontFamily: "'Inter', sans-serif",
         position: "relative",
-        zIndex: 1,
-        padding: "0 20px"
-      }}>
-        {/* Header */}
-        <h2 style={{
-          fontSize: "clamp(28px, 5vw, 40px)",
-          fontWeight: 800,
+      }}
+    >
+      {/* Decorative background elements */}
+      <div
+        style={{
+          position: "absolute",
+          top: "10%",
+          right: "5%",
+          width: "min(120px, 12vw)",
+          height: "min(120px, 12vw)",
+          backgroundColor: "rgba(0, 122, 126, 0.05)",
+          borderRadius: "50%",
+          filter: "blur(25px)",
+          animation: "floatShape1 10s infinite ease-in-out",
+          opacity: animated ? 1 : 0,
+          transition: "opacity 1s ease-out",
+          zIndex: 0,
+        }}
+      ></div>
+      <h2
+        style={{
+          fontSize: "clamp(22px, 5vw, 36px)",
+          fontWeight: "800",
           color: "#004d4f",
-          textAlign: "center",
-          marginBottom: "20px",
-          lineHeight: "1.3"
-        }}>
-          ₹49 Membership Card – <span style={{ color: "#007a7e" }}>Unlock Healthcare Discounts!</span>
-        </h2>
+          marginBottom: "5px",
+          lineHeight: "1.2",
+          opacity: animated ? 1 : 0,
+          transform: animated ? "translateY(0)" : "translateY(30px)",
+          transition: "opacity 0.8s ease-out, transform 0.8s ease-out",
+        }}
+      >
+        ₹49 Membership Card –{" "}
+        <span style={{ color: "#007a7e" }}>Unlock Healthcare Discounts!</span>
+      </h2>
 
-        <p style={{
+      {/* Introductory Paragraph */}
+      <p
+        style={{
           fontSize: "clamp(16px, 2.5vw, 20px)",
           color: "#4a5568",
-          textAlign: "center",
-          maxWidth: "800px",
-          margin: "0 auto 10px",
           lineHeight: "1.4",
-          fontFamily: "'Inter', sans-serif",
-          fontWeight: "400"
-        }}>
-          To make affordable healthcare accessible to all, we offer a ₹49 membership card, valid for 1 year.
-        </p>
+          fontWeight: "400",
+          marginBottom: "10px", // Adjusted margin
+          opacity: animated ? 1 : 0,
+          transform: animated ? "translateY(0)" : "translateY(30px)",
+          transition:
+            "opacity 0.8s ease-out 0.2s, transform 0.8s ease-out 0.2s",
+        }}
+      >
+        To make affordable healthcare accessible to all, we offer a ₹49
+        membership card, valid for 1 year.
+      </p>
+      <div
+        style={{
+          position: "absolute",
+          bottom: "10%",
+          left: "5%",
+          width: "min(150px, 15vw)",
+          height: "min(150px, 15vw)",
+          backgroundColor: "rgba(0, 122, 126, 0.03)",
+          borderRadius: "50%",
+          filter: "blur(30px)",
+          animation: "floatShape2 12s infinite ease-in-out",
+          opacity: animated ? 1 : 0,
+          transition: "opacity 1s ease-out",
+          zIndex: 0,
+        }}
+      ></div>
 
-        {/* Content Container */}
-        <div className="content-wrapper" style={{
+      <div
+        style={{
+          width: "90%",
+          maxWidth: "1200px",
+          margin: "0 auto",
+          position: "relative",
+          zIndex: 1,
           display: "flex",
-          flexDirection: "row",
-          alignItems: "center",
-          justifyContent: "center",
-          gap: "20px",
-          marginTop: "0",
-          width: "100%"
-        }}>
-          {/* Image - Centered and properly sized */}
-          <div style={{
-            width: "100%",
+          flexWrap: "wrap",
+          justifyContent: "space-between",
+          alignItems: "flex-start", // ✅ changed from "center" to "flex-start" to eliminate image-text spacing
+          gap: "20px", // reasonable spacing
+        }}
+      >
+        {/* Image Section */}
+        <div
+          style={{
             maxWidth: "500px",
-            padding: "20px",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center"
-          }}>
-            <img
-              src={membershipCardImage}
-              alt="Membership Card"
-              style={{
-                width: "100%",
-                maxWidth: "450px",
-                height: "auto",
-                borderRadius: "16px",
-                boxShadow: "0 20px 40px rgba(0, 122, 126, 0.2)",
-                border: "3px solid #007a7e",
-                display: "block"
-              }}
-              onError={(e) => {
-                e.target.onerror = null;
-                e.target.src = "https://placehold.co/400x250?text=Card+Image";
-              }}
-            />
-          </div>
+            textAlign: "center",
+            opacity: animated ? 1 : 0,
+            transform: animated
+              ? "translateY(0) scale(1)"
+              : "translateY(30px) scale(0.95)",
+            transition:
+              "opacity 0.8s ease-out 0.2s, transform 0.8s ease-out 0.2s",
+            order: 1,
+            paddingBottom: "0px",
+            marginBottom: "0px",
+          }}
+        >
+          <img
+            src={membershipCardImage}
+            alt="Vaidya Bandhu Membership Card"
+            style={{
+              width: "100%",
+              maxWidth: "400px",
+              height: "auto",
+              borderRadius: "15px",
+              boxShadow: "0 15px 30px rgba(0, 122, 126, 0.2)",
+              border: "3px solid #007a7e",
+              display: "block",
+              margin: "0 auto",
+              marginBottom: "0px", // ✅ ensure no bottom spacing
+              padding: "0px", // ✅ just in case
+            }}
+            onError={(e) => {
+              e.target.onerror = null;
+              e.target.src =
+                "https://placehold.co/500x300/CCCCCC/666666?text=Card+Image+Error";
+            }}
+          />
+        </div>
 
-          {/* Benefits List - Tightly spaced */}
-          <div style={{
+        {/* Text Content Section */}
+        <div
+          style={{
             flex: "1 1 500px",
-            minWidth: "320px",
-            maxWidth: "600px",
-            padding: "20px"
-          }}>
-            <div style={{
+            maxWidth: "500px",
+            textAlign: "left",
+            order: 2,
+            marginTop: "0px",
+            paddingTop: "0px",
+          }}
+        >
+          <div
+            style={{
               display: "flex",
               flexDirection: "column",
-              gap: "8px"
-            }}>
-              {benefits.map((benefit, index) => (
+              gap: "4px",
+              textAlign: "left",
+              maxWidth: "100%",
+            }}
+          >
+            {benefits.map((benefit, index) => (
+              <div
+                key={index}
+                style={{
+                  marginTop: "6px",
+                  display: "flex",
+                  alignItems: "flex-start",
+                  padding: "10px 6px 6px 6px", // ✅ more padding only on top
+                  borderBottom: "1px solid rgba(0, 122, 126, 0.1)",
+                  opacity: animated ? 1 : 0,
+                  transform: animated ? "translateY(0)" : "translateY(20px)",
+                  transitionDelay: `${0.6 + index * 0.1}s`,
+                  transition: `opacity 0.8s ease-out ${
+                    0.6 + index * 0.1
+                  }s, transform 0.8s ease-out ${
+                    0.6 + index * 0.1
+                  }s, background 0.3s ease-in-out, transform 0.3s ease-in-out`,
+                  cursor: "pointer",
+                  background:
+                    hoveredBenefitIndex === index
+                      ? "rgba(0, 122, 126, 0.05)"
+                      : "transparent",
+                  borderRadius: "8px",
+                  ...(hoveredBenefitIndex === index && {
+                    transform: "translateX(5px)",
+                  }),
+                }}
+                onMouseEnter={() => setHoveredBenefitIndex(index)}
+                onMouseLeave={() => setHoveredBenefitIndex(null)}
+              >
                 <div
-                  key={index}
                   style={{
-                    display: "flex",
-                    alignItems: "flex-start",
-                    padding: "12px 16px",
-                    borderRadius: "12px",
-                    background: hoveredBenefitIndex === index ? "rgba(0, 122, 126, 0.08)" : "transparent",
-                    transition: "all 0.3s ease",
-                    borderBottom: "1px solid rgba(0, 122, 126, 0.15)",
-                    transform: hoveredBenefitIndex === index ? "translateX(10px)" : "translateX(0)",
-                  }}
-                  onMouseEnter={() => setHoveredBenefitIndex(index)}
-                  onMouseLeave={() => setHoveredBenefitIndex(null)}
-                >
-                  <div style={{
-                    width: "28px",
-                    height: "28px",
+                    width: "35px",
+                    height: "35px",
                     borderRadius: "50%",
                     background: "#007a7e",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
-                    marginRight: "14px",
+                    marginRight: "15px",
+                    boxShadow: "0 2px 8px rgba(0, 122, 126, 0.2)",
                     flexShrink: 0,
-                    boxShadow: "0 4px 8px rgba(0, 122, 126, 0.2)"
-                  }}>
-                    <span style={{ color: "#fff", fontSize: "16px" }}>✔</span>
-                  </div>
-                  <p style={{
-                    margin: 0,
-                    fontSize: "clamp(16px, 2.5vw, 22px)",
-                    color: "#4a5568",
-                    lineHeight: "1.6"
-                  }}>
-                    {benefit}
-                  </p>
+                    transition: "transform 0.3s ease-in-out",
+                    ...(hoveredBenefitIndex === index && {
+                      transform: "scale(1.1)",
+                    }),
+                  }}
+                >
+                  <span
+                    style={{
+                      color: "#ffffff",
+                      fontSize: "18px",
+                      lineHeight: "1",
+                    }}
+                  >
+                    ✔
+                  </span>
                 </div>
-              ))}
-            </div>
+                <p
+                  style={{
+                    fontSize: "clamp(16px, 2vw, 18px)",
+                    color: "#4a5568",
+                    lineHeight: "1.4",
+                    margin: 0,
+                  }}
+                >
+                  {benefit}
+                </p>
+              </div>
+            ))}
           </div>
         </div>
       </div>
 
+      {/* Keyframes for the floating background shapes */}
       <style>
         {`
           @keyframes floatShape1 {
-            0%, 100% { transform: translate(0, 0) rotate(0deg); }
-            50% { transform: translate(20px, 20px) rotate(8deg); }
+            0% { transform: translate(0, 0) rotate(0deg); }
+            50% { transform: translate(20px, 20px) rotate(5deg); }
+            100% { transform: translate(0, 0) rotate(0deg); }
+          }
+          @keyframes floatShape2 {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            50% { transform: translate(-20px, -20px) rotate(-5deg); }
+            100% { transform: translate(0, 0) rotate(0deg); }
           }
 
-          .membership-benefits {
-            --content-max-width: 1200px;
-          }
-          
-          @media (min-width: 769px) {
-            .membership-benefits > div > div:last-child {
-              display: flex !important;
-              flex-direction: row !important;
-              align-items: center !important;
-              justify-content: center !important;
-              gap: 30px !important;
+          /* Responsive adjustments using media queries */
+          @media (max-width: 992px) { /* Adjust for tablet/smaller desktop */
+            div[style*="width: 90%"] { /* Main content wrapper */
+              flex-direction: column !important; /* Stack image and text vertically */
+              gap: 50px !important; /* Gap when stacked */
             }
-            div[style*="maxWidth: 500px"],
-            div[style*="maxWidth: 600px"] {
-              max-width: calc(var(--content-max-width) / 2) !important;
+            div[style*="flex: 1 1 400px"] { /* Image section */
+              max-width: 80% !important; /* Wider image on smaller screens */
+              order: 1 !important; /* Keep image first when stacked */
+            }
+            div[style*="flex: 1 1 500px"] { /* Text content section */
+              max-width: 95% !important; /* Wider text content */
+              order: 2 !important; /* Keep text second when stacked */
+            }
+            h2 {
+              text-align: center !important; /* Center heading when stacked */
+            }
+            p[style*="font-size: clamp(16px, 2.5vw, 20px)"] {
+              text-align: center !important; /* Center intro paragraph when stacked */
+            }
+            h3 {
+              text-align: center !important; /* Center benefits heading when stacked */
             }
           }
-          
+
           @media (max-width: 768px) {
-            .content-wrapper {
-              flex-direction: column !important;
-              gap: 0 !important;
+            div[style*="padding: 80px 20px"] { /* Section padding */
+              padding: 60px 15px !important;
             }
-            .membership-benefits {
-              padding: 25px 15px !important;
+            div[style*="width: 90%"] { /* Main content wrapper */
+              width: 95% !important;
             }
-            .membership-benefits > div {
-              padding: 0 10px !important;
+            div[style*="flex-direction: column"] { /* Benefits section gap */
+              gap: 15px !important;
             }
-            .membership-benefits h2 {
-              margin-bottom: 15px !important;
+            div[style*="width: 35px"] { /* Checkmark container size */
+              width: 30px !important;
+              height: 30px !important;
             }
-            .membership-benefits p {
-              margin-bottom: 15px !important;
+            span[style*="font-size: 20px"] { /* Checkmark size */
+              font-size: 18px !important;
             }
-            div[style*="minWidth: 320px"] {
-              min-width: 100% !important;
-              padding: 10px !important;
+            div[style*="padding: 15px 0"] { /* Benefit items padding */
+              padding: 12px 15px !important;
             }
           }
-          
+
           @media (max-width: 480px) {
-            .membership-benefits {
-              padding: 15px 10px !important;
+            div[style*="padding: 80px 20px"] { /* Section padding */
+              padding: 40px 10px !important;
             }
-            .membership-benefits > div {
-              padding: 0 5px !important;
+            div[style*="width: 90%"] { /* Main content wrapper */
+              width: 100% !important;
+              padding: 0 10px;
+              box-sizing: border-box;
             }
-            .content-wrapper {
-              gap: 0 !important;
-              margin: 0 !important;
+            div[style*="flex-direction: column"] { /* Benefits section gap */
+              gap: 10px !important;
             }
-            div[style*="minWidth: 320px"] {
-              min-width: 100% !important;
-              padding: 5px !important;
+            div[style*="width: 35px"] { /* Checkmark container size */
+              width: 28px !important;
+              height: 28px !important;
             }
-            div[style*="gap: 8px"] {
-              gap: 4px !important;
+            span[style*="font-size: 20px"] { /* Checkmark size */
+              font-size: 16px !important;
             }
-            div[style*="padding: 12px 16px"] {
-              padding: 8px 10px !important;
+            div[style*="padding: 15px 20px"] { /* Benefit items padding */
+              padding: 10px 12px !important;
             }
-            .membership-benefits img {
-              max-width: 100% !important;
-              margin: 0 !important;
-            }
-            .membership-benefits p {
-              font-size: 15px !important;
-              line-height: 1.4 !important;
-              margin-bottom: 10px !important;
-            }
-            div[style*="marginRight: 14px"] {
-              margin-right: 8px !important;
-              width: 24px !important;
-              height: 24px !important;
-            }
-            div[style*="flex: 0 1 500px"],
-            div[style*="flex: 1 1 500px"] {
-              flex: 0 1 100% !important;
+            div[style*="flex: 1 1 400px"] { /* Image section */
+              max-width: 90% !important; /* Even wider image on mobile */
             }
           }
         `}

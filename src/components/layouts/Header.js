@@ -76,7 +76,10 @@ const useNavHelper = () => {
 };
 
 const Header = (props) => {
-  const { navMethod, toggleNav } = useNavHelper();
+  const {
+    navMethod,
+    toggleNav,
+  } = useNavHelper();
   const [userPhone, setUserPhone] = useState(null);
 
   useEffect(() => {
@@ -175,12 +178,7 @@ const Header = (props) => {
                   <img
                     src={process.env.PUBLIC_URL + "/assets/img/logoo.png"}
                     alt="logo"
-                    style={{
-                      borderRadius: "20px",
-                      width: "180px", // default desktop size
-                      height: "auto",
-                      maxWidth: "100%", // prevents overflow
-                    }}
+                    style={{ borderRadius: "20px" }}
                   />
                 </Link>
               </div>
@@ -271,22 +269,6 @@ const Header = (props) => {
           </div>
         </div>
       </header>
-      <style>
-  {`
-    @media (max-width: 768px) {
-      .sigma_logo-wrapper img[src*="logoo.png"] {
-        width: 120px !important;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .sigma_logo-wrapper img[src*="logoo.png"] {
-        width: 140px !important;
-      }
-    }
-  `}
-</style>
-
     </Fragment>
   );
 };
