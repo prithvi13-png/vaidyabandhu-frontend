@@ -4,29 +4,38 @@ import ProfileDropdown from "./components/ProfileDropdown";
 import Select from "react-select";
 import { isNotEmptyArray } from "../../utiles/utils";
 import { useAuthContext } from "../../context";
-import { useMemo } from "react";
+import { useMemo, useEffect } from "react";
 
 const Topbar = () => {
   const { user, setUser } = useAuthContext();
-  console.log({ user });
+
+  // Build hospitalList for the select dropdown
   const hospitalList = useMemo(() => {
-    let data = [];
     if (isNotEmptyArray(user?.hospital)) {
-      data = user.hospital.map((el) => ({
+      return user.hospital.map((el) => ({
         ...el,
         label: el.description,
         value: el.id,
       }));
-      if (!user?.selectedHostiptal) {
-        setUser({ ...user, selectedHostiptal: data[0] });
-      }
     }
-    return data;
+    return [];
   }, [user?.hospital]);
+
+  // This will set the default selected hospital (first one) after render if not already set
+  useEffect(() => {
+    if (
+      isNotEmptyArray(hospitalList) &&
+      (!user?.selectedHostiptal || !hospitalList.some(h => h.id === user.selectedHostiptal.id))
+    ) {
+      setUser({ ...user, selectedHostiptal: hospitalList[0] });
+    }
+    // eslint-disable-next-line
+  }, [user, setUser, hospitalList]);
 
   const onChangeProject = (val) => {
     setUser({ ...user, selectedHostiptal: val });
   };
+
   return (
     <header className="topbar">
       <div>
