@@ -6,71 +6,143 @@ import DateRangeFilter2 from "../common/DateRangeFilter2";
 import { dateFormat } from "../utiles/dateFormat";
 import { addSlotApi, updateSlotApi } from "../../api/slotApi";
 import { getDateRange } from "../common/DateRangeFilter2/utils";
+import { Button, Col, Form, Row } from "react-bootstrap";
 
 // --- Slot Modal (unchanged) ---
+function getLocalTimeString(isoDateTime) {
+  const date = new Date(isoDateTime);
+  return date
+    .toLocaleTimeString([], { hour: "2-digit", minute: "2-digit", hour12: false });
+}
+
+function getLocalDateString(isoDateTime) {
+  const date = new Date(isoDateTime);
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, "0");
+  const day = String(date.getDate()).padStart(2, "0");
+  return `${year}-${month}-${day}`;
+}
+
+const DURATION_OPTIONS = [
+  { label: "15 min", value: 15 },
+  { label: "20 min", value: 20 },
+  { label: "30 min", value: 30 },
+  { label: "45 min", value: 45 },
+  { label: "1 hr", value: 60 },
+];
+
 const SlotFormModal = ({ show, onHide, onSaved, user, slot = null, title }) => {
   const [formData, setFormData] = useState({
+    start_date: "",
     start_time: "",
+    end_date: "",
     end_time: "",
+    duration: 15,
   });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const [validationMsg, setValidationMsg] = useState("");
 
   useEffect(() => {
     if (slot) {
-      // Convert UTC to local time for editing
-      const startTime = new Date(slot.start_time);
-      const endTime = new Date(slot.end_time);
       setFormData({
-        start_time: startTime.toISOString().slice(0, 16),
-        end_time: endTime.toISOString().slice(0, 16),
+        start_date: getLocalDateString(slot.start_time),
+        start_time: getLocalTimeString(slot.start_time),
+        end_date: getLocalDateString(slot.end_time),
+        end_time: getLocalTimeString(slot.end_time),
+        duration: Math.round(
+          (new Date(slot.end_time) - new Date(slot.start_time)) / (1000 * 60)
+        ),
       });
     } else {
-      // Default to next hour for new slots
       const now = new Date();
       const nextHour = new Date(now.getTime() + 60 * 60 * 1000);
-      const hourAfter = new Date(nextHour.getTime() + 30 * 60 * 1000);
+      const endTime = new Date(nextHour.getTime() + 30 * 60 * 1000);
       setFormData({
-        start_time: nextHour.toISOString().slice(0, 16),
-        end_time: hourAfter.toISOString().slice(0, 16),
+        start_date: nextHour.toISOString().slice(0, 10),
+        start_time: nextHour.toTimeString().slice(0, 5),
+        end_date: nextHour.toISOString().slice(0, 10),
+        end_time: endTime.toTimeString().slice(0, 5),
+        duration: 30,
       });
     }
   }, [slot]);
 
+  // Validation helper
+  const validateFields = () => {
+    if (!formData.start_date || !formData.end_date || !formData.start_time || !formData.end_time) {
+      setValidationMsg(""); // Don't show anything until user fills everything
+      return false;
+    }
+
+    const startDate = new Date(`${formData.start_date}T${formData.start_time}`);
+    const endDate = new Date(`${formData.end_date}T${formData.end_time}`);
+
+    if (formData.start_date > formData.end_date) {
+      setValidationMsg("Start date cannot be after end date.");
+      return false;
+    }
+    if (
+      formData.start_date === formData.end_date &&
+      formData.start_time >= formData.end_time
+    ) {
+      setValidationMsg("For the same day, start time must be before end time.");
+      return false;
+    }
+    if (startDate >= endDate) {
+      setValidationMsg("Slot start must be before slot end.");
+      return false;
+    }
+    setValidationMsg("");
+    return true;
+  };
+
+  useEffect(() => {
+    validateFields();
+    // eslint-disable-next-line
+  }, [formData.start_date, formData.end_date, formData.start_time, formData.end_time]);
+
+  const handleChange = (field, value) => {
+    setFormData((prev) => ({
+      ...prev,
+      [field]: value,
+    }));
+  };
+
+  const handleDurationChange = (e) => {
+    handleChange("duration", Number(e.target.value));
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setLoading(true);
     setError("");
+    if (!validateFields()) return;
 
+    setLoading(true);
     try {
       const payload = {
         doctor: user?.id,
         hospital: user?.selectedHostiptal?.id,
-        start_time: new Date(formData.start_time).toISOString(),
-        end_time: new Date(formData.end_time).toISOString(),
+        start_date: formData.start_date,
+        start_time: formData.start_time,
+        end_date: formData.end_date,
+        end_time: formData.end_time,
+        duration: formData.duration,
       };
+      if (slot) payload.id = slot.id;
 
-      if (slot) {
-        payload.id = slot.id;
-      }
+      // Replace with your API call:
+      const response = slot
+        ? await updateSlotApi(payload)
+        : await addSlotApi(payload);
 
-      const request = slot ? updateSlotApi : addSlotApi;
-      const response = await request(payload);
-
-      if (!response.ok) {
-        throw new Error("Failed to save slot");
-      }
-
+      if (!response.ok) throw new Error("Failed to save slot");
       onSaved();
     } catch (err) {
       setError(err.message || "Something went wrong");
     } finally {
       setLoading(false);
     }
-  };
-
-  const handleChange = (field, value) => {
-    setFormData((prev) => ({ ...prev, [field]: value }));
   };
 
   if (!show) return null;
@@ -99,46 +171,90 @@ const SlotFormModal = ({ show, onHide, onSaved, user, slot = null, title }) => {
                   {error}
                 </div>
               )}
-              <div className="mb-3">
-                <label htmlFor="start_time" className="form-label">
-                  Start Time
-                </label>
-                <input
-                  type="datetime-local"
-                  className="form-control"
-                  id="start_time"
-                  value={formData.start_time}
-                  onChange={(e) => handleChange("start_time", e.target.value)}
+              <Row>
+                <Col md={6}>
+                  <Form.Group className="mb-3">
+                    <Form.Label>Start Date</Form.Label>
+                    <Form.Control
+                      type="date"
+                      value={formData.start_date}
+                      onChange={(e) => handleChange("start_date", e.target.value)}
+                      required
+                    />
+                  </Form.Group>
+                </Col>
+                <Col md={6}>
+                  <Form.Group className="mb-3">
+                    <Form.Label>Start Time</Form.Label>
+                    <Form.Control
+                      type="time"
+                      value={formData.start_time}
+                      onChange={(e) => handleChange("start_time", e.target.value)}
+                      required
+                    />
+                  </Form.Group>
+                </Col>
+              </Row>
+              <Row>
+                <Col md={6}>
+                  <Form.Group className="mb-3">
+                    <Form.Label>End Date</Form.Label>
+                    <Form.Control
+                      type="date"
+                      value={formData.end_date}
+                      onChange={(e) => handleChange("end_date", e.target.value)}
+                      required
+                    />
+                  </Form.Group>
+                </Col>
+                <Col md={6}>
+                  <Form.Group className="mb-3">
+                    <Form.Label>End Time</Form.Label>
+                    <Form.Control
+                      type="time"
+                      value={formData.end_time}
+                      onChange={(e) => handleChange("end_time", e.target.value)}
+                      required
+                    />
+                  </Form.Group>
+                </Col>
+              </Row>
+              <Form.Group className="mb-3">
+                <Form.Label>Duration</Form.Label>
+                <Form.Select
+                  value={formData.duration}
+                  onChange={handleDurationChange}
                   required
-                />
-              </div>
-              <div className="mb-3">
-                <label htmlFor="end_time" className="form-label">
-                  End Time
-                </label>
-                <input
-                  type="datetime-local"
-                  className="form-control"
-                  id="end_time"
-                  value={formData.end_time}
-                  onChange={(e) => handleChange("end_time", e.target.value)}
-                  required
-                />
-              </div>
+                >
+                  {DURATION_OPTIONS.map((opt) => (
+                    <option key={opt.value} value={opt.value}>
+                      {opt.label}
+                    </option>
+                  ))}
+                </Form.Select>
+                <Form.Text muted>
+                  Choose the intended duration for this slot.
+                </Form.Text>
+              </Form.Group>
+              {validationMsg && (
+                <div className="alert alert-warning py-2 my-2" style={{ fontSize: 14 }}>
+                  {validationMsg}
+                </div>
+              )}
             </div>
             <div className="modal-footer">
-              <button
+              <Button
                 type="button"
-                className="btn btn-secondary"
+                variant="secondary"
                 onClick={onHide}
                 disabled={loading}
               >
                 Cancel
-              </button>
-              <button
+              </Button>
+              <Button
                 type="submit"
-                className="btn btn-primary"
-                disabled={loading}
+                variant="primary"
+                disabled={loading || !!validationMsg}
               >
                 {loading && (
                   <span
@@ -147,7 +263,7 @@ const SlotFormModal = ({ show, onHide, onSaved, user, slot = null, title }) => {
                   ></span>
                 )}
                 {slot ? "Update Slot" : "Create Slot"}
-              </button>
+              </Button>
             </div>
           </form>
         </div>
@@ -155,6 +271,7 @@ const SlotFormModal = ({ show, onHide, onSaved, user, slot = null, title }) => {
     </div>
   );
 };
+
 
 // --- SlotManager UI ---
 const SlotManager = ({ dateFilter, showCreateModal, setShowCreateModal }) => {
