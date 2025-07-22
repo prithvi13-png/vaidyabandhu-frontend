@@ -69,7 +69,7 @@ export const useFetch = ({
       fetchData();
     }
     // eslint-disable-next-line
-  }, [fetchData, dontCall, request]);
+  }, [dontCall, request]);
 
   return {
     data,
