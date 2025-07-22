@@ -2,7 +2,6 @@ import React, { Component } from "react";
 
 class Breadcrumbs extends Component {
    render() {
-    console 
        return (
            <div
                className="sigma_subheader style-5 bg-gray"
