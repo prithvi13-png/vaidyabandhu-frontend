@@ -3,6 +3,7 @@ import { useNavigate  } from "react-router-dom";
 
 import { Modal, Button, Form, Spinner } from "react-bootstrap";
 import OTPInput from "react-otp-input";
+import "../../assets/css/MembershipModal.css"; // Custom CSS for styling
 
 const MembershipModal = () => {
   const [show, setShow] = useState(false);
@@ -297,7 +298,7 @@ const MembershipModal = () => {
               </div>
             </Form>
           )}
-        </Modal.Body>   
+        </Modal.Body>
       </Modal>
     </>
   );

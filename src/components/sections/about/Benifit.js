@@ -1,11 +1,15 @@
 import React, { useState, useEffect } from "react";
 
 const WhoCanBenefit = () => {
-  const [itemsVisible, setItemsVisible] = useState({});
-  const [animated, setAnimated] = useState(false);
+  const [itemsVisible, setItemsVisible] = useState({}); // State to manage visibility of each item
+  const [animated, setAnimated] = useState(false); // State for overall section animation
+  const [hoveredHeading, setHoveredHeading] = useState(false); // State for heading underline hover
 
   useEffect(() => {
+    // Trigger overall section animation
     const sectionTimer = setTimeout(() => setAnimated(true), 200);
+
+    // Trigger animation for each list item with a staggered delay
     const itemTimers = [];
     [
       "Patients who need affordable treatments & surgeries",
@@ -15,32 +19,36 @@ const WhoCanBenefit = () => {
     ].forEach((item, index) => {
       const timer = setTimeout(() => {
         setItemsVisible((prev) => ({ ...prev, [index]: true }));
-      }, 600 + index * 150);
+      }, 600 + index * 150); // Staggered delay for each item, after section animation starts
       itemTimers.push(timer);
     });
 
     return () => {
+      // Clear all timers on component unmount
       clearTimeout(sectionTimer);
       itemTimers.forEach((timer) => clearTimeout(timer));
     };
   }, []);
 
+  const baseTransition = "all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94)"; // Smoother transition
+
   return (
     <section
       style={{
-        padding: "30px 20px 20px",
-        background: "linear-gradient(135deg, #e0f7fa 0%, #ffffff 100%)",
-        fontFamily: "'Inter', sans-serif",
-        color: "#4a5568",
+        padding: "40px 20px" /* Generous padding for section */,
+        background:
+          "linear-gradient(135deg, #e0f7fa 0%, #ffffff 100%)" /* Light, inviting gradient */,
+        fontFamily: "'Inter', sans-serif" /* Consistent font */,
+        color: "#4a5568" /* Soft dark gray for main text */,
         lineHeight: "1.4",
         overflow: "hidden",
-        position: "relative",
-        opacity: animated ? 1 : 0,
-        transform: animated ? "translateY(0)" : "translateY(30px)",
+        position: "relative", // For absolute positioned background elements
+        opacity: animated ? 1 : 0, // Section fade-in
+        transform: animated ? "translateY(0)" : "translateY(30px)", // Section slide-up
         transition: `opacity 0.8s ease-out, transform 0.8s ease-out`,
       }}
     >
-      {/* Decorative background shapes */}
+      {/* Decorative background elements */}
       <div
         style={{
           position: "absolute",
@@ -54,7 +62,7 @@ const WhoCanBenefit = () => {
           animation: "floatShape1 10s infinite ease-in-out",
           zIndex: 0,
         }}
-      />
+      ></div>
       <div
         style={{
           position: "absolute",
@@ -68,57 +76,81 @@ const WhoCanBenefit = () => {
           animation: "floatShape2 12s infinite ease-in-out",
           zIndex: 0,
         }}
-      />
+      ></div>
 
       <div
         className="container"
         style={{
-          maxWidth: "1200px",
+          maxWidth: "1200px", // Adjusted max-width for two columns
           margin: "0 auto",
           padding: "0 10px",
-          position: "relative",
+          position: "relative", // Ensures content is above background elements
           zIndex: 1,
         }}
       >
-        <h2 className="benefit-heading">
-          Who Can <span className="highlight">Benefit</span>?
-        </h2>
+        {/* Centered H2 Title */}
+       <h2
+  style={{
+    fontSize: "clamp(32px, 4.5vw, 38px)",
+    fontWeight: 800,
+    color: "#004d4f",
+    position: "relative",
+    paddingBottom: "10px",
+    textAlign: "center",
+    marginBottom: "0", // ✅ GAP REMOVED
+    transition: baseTransition,
+  }}
+  onMouseEnter={() => setHoveredHeading(true)}
+  onMouseLeave={() => setHoveredHeading(false)}
+>
+  Who Can <span style={{ color: "#007a7e" }}>Benefit</span>?
+</h2>
+
 
         <div className="who-flex-wrap">
-          {/* Image */}
+          {/* Left Column: Image */}
           <div
-            className="benefit-image"
             style={{
-              maxWidth: "45%",
+              maxWidth: "50%", // Max 50% width on larger screens
+              textAlign: "center",
               opacity: animated ? 1 : 0,
-              transform: animated ? "translateX(0)" : "translateX(-50px)",
+              transform: animated ? "translateX(0)" : "translateX(-50px)", // Slide in from left
               transition: `opacity 0.8s ease-out 0.2s, transform 0.8s ease-out 0.2s`,
             }}
           >
             <img
-              src="assets/img/ms.jpg"
+              src="assets/img/ms.jpg" // Placeholder image
               alt="People benefiting from healthcare"
               style={{
-                width: "100%",
+                maxWidth: "200%",
+                maxHeight: "100%",
                 height: "auto",
-                borderRadius: "20px",
-                boxShadow: "0 15px 40px rgba(0, 122, 126, 0.15)",
+                borderRadius: "20px", // Rounded corners for the image
+                boxShadow: "0 15px 40px rgba(0, 122, 126, 0.15)", // Soft shadow
+                transition: baseTransition,
+                ...(animated && { transform: "scale(1)" }), // Ensure it's not scaled down initially
               }}
             />
           </div>
 
-          {/* Text Content */}
+          {/* Right Column: Content */}
           <div
-            className="benefit-text"
             style={{
-              // flex: "1 1 500px",
-              maxWidth: "50%",
+              flex: "1 1 500px", // Flexible width, minimum 500px
+              maxWidth: "50%", // Max 50% width on larger screens
               opacity: animated ? 1 : 0,
-              transform: animated ? "translateX(0)" : "translateX(50px)",
+              transform: animated ? "translateX(0)" : "translateX(50px)", // Slide in from right
               transition: `opacity 0.8s ease-out 0.2s, transform 0.8s ease-out 0.2s`,
             }}
           >
-            <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
+            <ul
+              style={{
+                listStyle: "none",
+                padding: 0,
+                margin: 0,
+                paddingTop: "25px",
+              }}
+            >
               {[
                 "Patients who need affordable treatments & surgeries",
                 "Families looking for trusted doctors & hospitals",
@@ -128,24 +160,44 @@ const WhoCanBenefit = () => {
                 <li
                   key={index}
                   style={{
-                    marginBottom: "15px",
-                    padding: "15px 25px 15px 30px",
+                    marginBottom: "20px",
                     fontSize: "clamp(17px, 2.2vw, 19px)",
+                    color: "#4a5568",
+                    display: "flex",
+                    alignItems: "flex-start",
                     backgroundColor: "#FFFFFF",
+                    padding: "20px 30px 20px 40px", // ✅ Left padding increased from 30px → 40px
                     borderRadius: "15px",
-                    borderLeft: "6px solid #007a7e",
-                    transition: "all 0.3s ease",
+                    boxShadow: itemsVisible[index]
+                      ? "0 8px 20px rgba(0, 122, 126, 0.08)"
+                      : "none",
+                    borderLeft: `6px solid #007a7e`,
+                    transition: `transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out, opacity 0.6s ease-out, transform 0.6s ease-out`,
                     opacity: itemsVisible[index] ? 1 : 0,
                     transform: itemsVisible[index]
                       ? "translateY(0)"
                       : "translateY(30px)",
                   }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.transform =
+                      "translateY(-8px) scale(1.02)";
+                    e.currentTarget.style.boxShadow =
+                      "0 18px 40px rgba(0, 122, 126, 0.2)";
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.transform = "translateY(0) scale(1)";
+                    e.currentTarget.style.boxShadow =
+                      "0 8px 20px rgba(0, 122, 126, 0.08)";
+                  }}
                 >
                   <span
                     style={{
-                      marginRight: "15px",
+                      marginRight: "20px",
                       color: "#007a7e",
-                      fontSize: "1.6rem",
+                      fontSize: "1.8rem",
+                      lineHeight: "1",
+                      flexShrink: 0,
+                      marginTop: "3px", // ✅ Keeps tick vertically aligned better
                     }}
                   >
                     ✔
@@ -158,6 +210,7 @@ const WhoCanBenefit = () => {
         </div>
       </div>
 
+      {/* Keyframes for floating background shapes */}
       <style>
         {`
           @keyframes floatShape1 {
@@ -171,76 +224,97 @@ const WhoCanBenefit = () => {
             100% { transform: translate(0, 0) rotate(0deg); }
           }
 
-          .who-flex-wrap {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: flex-start;
-            gap: 20px;
-            justify-content: center;
-          }
-
+          /* Responsive adjustments */
           @media (max-width: 992px) {
-            .who-flex-wrap {
-              flex-direction: column;
-              gap: 20px !important;
+            div[style*="display: flex"][style*="flex-wrap: wrap"] { /* Main container */
+              flex-direction: column !important; /* Stack columns */
+              gap: 50px !important; /* Adjust gap when stacked */
             }
-            .benefit-image, 
-            .benefit-text {
-              max-width: 100% !important;
-              width: 100%;
+            div[style*="flex: 1 1 400px"], div[style*="flex: 1 1 500px"] { /* Columns */
+              max-width: 100% !important; /* Take full width when stacked */
+              text-align: center !important; /* Center image and content */
             }
-            .benefit-image {
-              padding: 0;
+            h2[style*="text-align: center"] { /* Section title */
+              text-align: center !important; /* Ensure it's centered when stacked */
             }
-            .benefit-image img {
-              max-width: 100%;
-              margin: 0 auto;
+            h2 span[style*="left: 50%"] { /* Underline position */
+                left: 50% !important;
+                transform: translateX(-50%) !important;
             }
           }
 
           @media (max-width: 768px) {
-            section {
-              padding: 30px 15px 15px !important;
+            section[style*="padding: 80px 20px"] { /* Main section padding */
+              padding: 60px 15px !important;
             }
-            li {
-              margin-bottom: 12px !important;
-              padding: 12px 20px !important;
+            h2[style*="font-size: clamp(32px, 4.5vw, 40px)"] { /* Section title */
+              font-size: clamp(28px, 5.5vw, 36px) !important;
+              padding-bottom: 15px !important;
+              margin-bottom: 30px !important;
+            }
+            h2 span[style*="bottom: 12px"] { /* Underline position */
+                bottom: 8px !important;
+            }
+            h2 span[style*="bottom: 0"] { /* Underline position */
+                bottom: -2px !important;
+            }
+            ul li { /* List item */
+              padding: 15px 20px !important;
+              margin-bottom: 20px !important;
+              font-size: clamp(16px, 2.8vw, 18px) !important;
+            }
+            ul li span { /* Checkmark */
+              font-size: 1.6rem !important;
+              margin-right: 15px !important;
             }
           }
-/* Base (Desktop + Mobile) */
-.benefit-heading {
-  font-size: clamp(32px, 4.5vw, 38px);
-  font-weight: 800;
-  color: #004d4f;
-  text-align: center;
-  margin-bottom: 15px;
+
+       .who-flex-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 30px;
 }
 
-.highlight {
-  color: #007a7e;
+/* Disable flex on mobile */
+@media (max-width: 992px) {
+  .who-flex-wrap {
+    display: block !important;
+  }
 }
 
-/* ✅ Mobile only */
 @media (max-width: 480px) {
-  section {
-    padding: 25px 10px 10px !important;
+  section[style*="padding: 80px 20px"] {
+    padding: 40px 10px !important;
   }
 
-  .benefit-heading {
-    font-size: 32px !important;
+  h2[style*="font-size: clamp(32px, 4.5vw, 40px)"] {
+    font-size: clamp(24px, 7vw, 30px) !important;
+    padding-bottom: 12px !important;
+    margin-bottom: 25px !important;
   }
 
-  li {
-    padding: 10px 14px !important;
-    font-size: clamp(16px, 4.5vw, 18px) !important;
+  h2 span[style*="bottom: 12px"] {
+    bottom: 6px !important;
+    width: 70px !important;
   }
 
-  .benefit-container {
-    gap: 20px !important;
+  h2 span[style*="bottom: 0"] {
+    bottom: -4px !important;
+    width: 40px !important;
+  }
+
+  ul li {
+    padding: 0px 15px !important;
+    margin-bottom: 15px !important;
+    font-size: clamp(15px, 3.5vw, 17px) !important;
+  }
+
+  ul li span {
+    font-size: 1.4rem !important;
+    margin-right: 10px !important;
   }
 }
-
-
 
         `}
       </style>

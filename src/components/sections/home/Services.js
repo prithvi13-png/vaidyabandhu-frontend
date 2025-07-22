@@ -16,11 +16,11 @@ const services = [
   {
     icon: "flaticon-stethoscope",
     title: "Get 10% cashback ",
-    points: [
-      "Submit your hospital or medical bills within 7 days via WhatsApp or email.",
-      "Receive 10% cashback directly credited to your bank.",
-      "Valid on surgeries, treatments, and diagnostic services from our partner network.",
-    ],
+   points: [
+    "Submit your hospital or medical bills within 7 days via WhatsApp or email.",
+    "Receive 10% cashback directly credited to your bank.",
+    "Valid on surgeries, treatments, and diagnostic services from our partner network.",
+  ],
   },
   {
     icon: "flaticon-doctor",
@@ -31,7 +31,7 @@ const services = [
       "Seamless treatment process – from consultation to recovery.",
     ],
   },
-  {
+    {
     icon: "flaticon-stethoscope",
     title: "Consult a Doctor – Free Medical Advice",
     points: [
@@ -68,7 +68,7 @@ const services = [
     ],
   },
   {
-    icon: "flaticon-hospital",
+   icon: "flaticon-hospital",
     title: "Second Opinions from Experts",
     points: [
       "Not sure about a diagnosis? Get a second opinion.",
@@ -96,13 +96,12 @@ const ServicesPreview = () => {
   };
 
   const subHeadingStyle = {
-    fontSize: "clamp(16px, 2.5vw, 20px)",
+    fontSize: "18px",
     color: "#4a5568",
     maxWidth: "800px",
     margin: "0 auto 60px",
     lineHeight: "1.4",
-    fontFamily: "'Inter', sans-serif",
-    fontWeight: "400",
+    fontWeight: "300",
   };
 
   const cardBaseStyle = {
@@ -124,10 +123,8 @@ const ServicesPreview = () => {
 
   const cardEntranceAnimation = (idx) => ({
     opacity: animated ? 1 : 0,
-    transform: animated
-      ? "translateY(0) scale(1)"
-      : "translateY(30px) scale(0.95)",
-    // Swiper handles slide transitions, so individual card entrance delay is removed here
+    transform: animated ? "translateY(0) scale(1)" : "translateY(30px) scale(0.95)",
+    transitionDelay: `${idx * 0.1}s`, // Staggered delay for entrance
   });
 
   const iconContainerStyle = {
@@ -176,24 +173,23 @@ const ServicesPreview = () => {
 
   return (
     <div style={sectionStyle}>
-      <h2
-        style={{
-          fontSize: "clamp(24px, 4vw, 32px)",
-          fontWeight: 800,
-          color: "#004d4f",
-          textAlign: "center",
-          marginBottom: "8px",
-          lineHeight: "1.3",
-        }}
-      >
-        Our <span style={{ color: "#007a7e" }}>Services</span>
+      <h2 style={headingStyle}>
+        Our Services
+        <span style={{
+          content: '""',
+          position: "absolute",
+          left: "50%",
+          // bottom: "-10px",
+          // transform: "translateX(-50%)",
+          width: "80px",
+          height: "4px",
+          // background: "#007a7e",
+          borderRadius: "2px",
+        }}></span>
       </h2>
-
       <p style={subHeadingStyle}>
-        At Vaidya Bandhu, we are committed to providing a wide range of medical
-        services designed to meet your every need. From expert consultations to
-        significant savings on treatments, discover how we make healthcare
-        accessible.
+        At Vaidya Bandhu, we are committed to providing a wide range of medical services designed to meet your every need.
+        From expert consultations to significant savings on treatments, discover how we make healthcare accessible.
       </p>
 
       {/* Swiper Carousel Integration */}
@@ -222,10 +218,25 @@ const ServicesPreview = () => {
         }}
       >
         {services.map((service, idx) => (
-          <SwiperSlide key={idx}>
-            <Link
-              to={`/services/${service.title.toLowerCase().replace(/[^a-z0-9]/g, '-')}`}
-              style={{ textDecoration: "none", color: "inherit" }}
+          <Link
+            to={`/services/${service.title.toLowerCase().replace(/[^a-z0-9]/g, '-')}`}
+            key={idx}
+            style={{ textDecoration: "none", color: "inherit" }}
+          >
+            <div
+              style={{
+                ...cardBaseStyle,
+                ...cardEntranceAnimation(idx),
+                // Hover effects
+                ...(hoveredCard === idx && {
+                  transform: "translateY(-8px) scale(1.02)",
+                  boxShadow: "0 25px 50px rgba(0, 122, 126, 0.35)", // Stronger shadow
+                  background: "linear-gradient(135deg, #f0ffff 0%, #ffffff 100%)", // Subtle background shift
+                  borderBottom: "4px solid #007a7e", // Primary color border
+                }),
+              }}
+              onMouseEnter={() => setHoveredCard(idx)}
+              onMouseLeave={() => setHoveredCard(null)}
             >
               <div
                 style={{
@@ -242,57 +253,28 @@ const ServicesPreview = () => {
                 onMouseEnter={() => setHoveredCard(idx)}
                 onMouseLeave={() => setHoveredCard(null)}
               >
-                <div
-                  style={{
-                    ...iconContainerStyle,
-                    ...(hoveredCard === idx && {
-                      transform: "scale(1.15) rotate(5deg)", // Icon grows and rotates
-                      backgroundColor: "#CCF5F5",
-                      boxShadow: "0 8px 20px rgba(0, 122, 126, 0.25)", // Enhanced icon shadow on hover
-                    }),
-                  }}
-                >
-                  <i className={service.icon} style={iconStyle}></i>
-                </div>
-                <h4
-                  style={{
-                    ...titleStyle,
-                    ...(hoveredCard === idx && {
-                      transform: "translateY(-5px)",
-                      color: "#005f62",
-                    }),
-                  }}
-                >
-                  {service.title}
-                </h4>
-                <ul style={listStyle}>
-                  {service.points.map((point, pIdx) => (
-                    <li
-                      style={{
-                        ...listItemStyle,
-                        // Staggered fade/slide in for list items on card load
-                        opacity: animated ? 1 : 0,
-                        transform: animated ? "translateY(0)" : "translateY(10px)",
-                        transitionDelay: `${idx * 0.1 + pIdx * 0.05}s`, // Staggered delay per item
-                      }}
-                      key={pIdx}
-                    >
-                      <span
-                        style={{
-                          marginRight: "8px",
-                          color: "#007a7e",
-                          fontWeight: "bold",
-                        }}
-                      >
-                        •
-                      </span>
-                      {point}
-                    </li>
-                  ))}
-                </ul>
+                <i className={service.icon} style={iconStyle}></i>
               </div>
-            </Link>
-          </SwiperSlide>
+              <h4
+                style={{
+                  ...titleStyle,
+                  ...(hoveredCard === idx && {
+                    transform: "translateY(-3px)", // Title "bounces" up slightly
+                  }),
+                }}
+              >
+                {service.title}
+              </h4>
+              <ul style={listStyle}>
+                {service.points.map((point, pIdx) => (
+                  <li style={listItemStyle} key={pIdx}>
+                    <span style={{ marginRight: "8px", color: "#007a7e", fontWeight: "bold" }}>•</span>
+                    {point}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </Link>
         ))}
       </Swiper>
     </div>

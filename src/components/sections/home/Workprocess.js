@@ -45,7 +45,7 @@ const Workprocess = () => {
     <div
       style={{
         background: "linear-gradient(135deg, #e0f7fa 0%, #ffffff 100%)", // Softer, more inviting gradient
-       padding: "80px 20px", // Increased padding
+        padding: "40px 20px", // Increased padding
         position: "relative",
         overflow: "hidden",
         fontFamily: "'Inter', sans-serif", // Modern font (assuming it's imported or fallback)
@@ -82,17 +82,8 @@ const Workprocess = () => {
         }}
       ></div>
 
-      <div style={{ textAlign: "center", marginBottom: 20, zIndex: 1, position: "relative" }}>
-          {/* <h2 style={{
-          fontSize: "clamp(24px, 4vw, 32px)",
-          fontWeight: 800,
-          color: "#004d4f",
-          textAlign: "center",
-          marginBottom: "8px",
-          lineHeight: "1.3"
-        }}>
-          How Vaidya Bandhu <span style={{ color: "#007a7e" }}>Works</span>
-        </h2> */}
+      <div style={{ textAlign: "center", marginBottom: 60, zIndex: 1, position: "relative" }}>
+       
         <h2
           style={{
             fontSize: 36, // Larger, more impactful heading
@@ -103,20 +94,18 @@ const Workprocess = () => {
              marginTop: 60,
           }}
         >
-          How Vaidya Bandhu <span style={{ color: "#007a7e" }}>Works</span>
+          How Vaidya Bandhu Works<br /> 
         </h2>
-        <p style={{
-          fontSize: "clamp(16px, 2.5vw, 20px)",
-          color: "#4a5568",
-          lineHeight: "1.4",
-          fontWeight: "400",
-          fontFamily: "'Inter', sans-serif",
-          maxWidth: "800px",
-          margin: "0 auto 40px",
-          opacity: animated ? 1 : 0,
-          transform: animated ? "translateY(0)" : "translateY(30px)",
-          transition: "opacity 0.8s ease-out 0.2s, transform 0.8s ease-out 0.2s",
-        }}>
+        <p
+          style={{
+            color: "#4a5568",
+            maxWidth: 750, // Increased max-width
+            margin: "0 auto",
+            fontSize: 18, // Slightly larger body text
+            lineHeight: 1.4,
+            fontWeight: "400", // Lighter font-weight for body
+          }}
+        >
           At Vaidya Bandhu, we believe in making quality healthcare simple, affordable, and accessible for everyone.
           Discover our straightforward process to unlock a world of health benefits.
         </p>
