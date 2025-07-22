@@ -15,7 +15,6 @@ export const useFetch = ({
 
   const fetchData = useCallback(async () => {
     if (!request) {
-      // eslint-disable-next-line no-console
       console.warn('useFetch: No request provided, skipping API call.');
       return;
     }
@@ -58,12 +57,12 @@ export const useFetch = ({
 
     } catch (err) {
       const cleanedError = responseError(err);
-      setError(typeof cleanedError === 'string' ? new Error(cleanedError) : cleanedError);
-      throw cleanedError;
+      setError(typeof cleanedError === 'string' ? cleanedError : (cleanedError?.message || "Unknown error"));
+      return null;
     } finally {
       setLoading(false);
     }
-  }, [method, request, JSON.stringify(params), JSON.stringify(payload)]);
+  }, [method, request, params, payload]); // <-- params & payload added here
 
   useEffect(() => {
     if (!dontCall && request) {
