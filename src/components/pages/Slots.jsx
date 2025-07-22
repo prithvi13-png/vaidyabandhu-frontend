@@ -507,7 +507,6 @@ const Slots = () => {
   const onClear = () => {
     setDateFilter({ date_from: "", date_to: "" });
   };
-  console.log({ dateFilter });
 
   return (
     <div style={{ minHeight: "100%", background: "#f6f8fb" }}>
