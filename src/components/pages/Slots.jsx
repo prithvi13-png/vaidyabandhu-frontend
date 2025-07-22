@@ -509,7 +509,7 @@ const Slots = () => {
   };
 
   return (
-    <div style={{ minHeight: "100%", background: "#f6f8fb" }}>
+    <div style={{ minHeight: "100%" }}>
       <div className="container-fluid py-4">
         <div className="mx-auto" style={{ maxWidth: 1200 }}>
           <header

@@ -60,7 +60,7 @@ const OverallSection = ({ children }) => {
       <Suspense fallback={<div />}>
         <Topbar />
       </Suspense>
-          <div className="container-fluid" style={{ height: 'calc(100vh - 60px)'}}>{children}</div>
+          <div className="container-fluid container-bg" style={{ height: 'calc(100vh - 60px)'}}>{children}</div>
         </div>
     </section>
   );

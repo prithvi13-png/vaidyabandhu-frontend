@@ -99,7 +99,7 @@ const Appointments = () => {
     <Container
       fluid
       className="py-2 px-4"
-      style={{ backgroundColor: "#f8f9fa", minHeight: "calc(100%)" }}
+      style={{ minHeight: "calc(100%)" }}
     >
       <Row className="mb-4">
         <Col>
