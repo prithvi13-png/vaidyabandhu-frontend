@@ -12,11 +12,11 @@ const HowToBecomeMember = () => {
   }, []);
 
   const sectionStyle = {
-    padding: '80px 20px', // Generous padding for section
+    padding: '40px 20px', // Generous padding for section
     background: 'linear-gradient(135deg, #f5fdfd 0%, #e0f7fa 100%)', // Light, calming gradient
-    fontFamily: "'Inter', sans-serif", // Consistent font
+    fontFamily: "'poppins', sans-serif", // Consistent font
     color: '#4a5568', // Soft dark gray for main text
-    lineHeight: '1.6',
+    lineHeight: '1.4',
     overflow: 'hidden',
     position: 'relative', // Parent for absolute positioned background elements
     textAlign: 'center', // Center align text content
@@ -24,22 +24,24 @@ const HowToBecomeMember = () => {
   };
 
   const headingStyle = {
-    fontSize: 'clamp(28px, 4.5vw, 40px)', // Larger, responsive title size
+    fontSize: 'clamp(22px, 4.5vw, 36px)', // Larger, responsive title size
     fontWeight: 800, // Bolder
     color: '#002a2c', // Dark teal for headings
     marginBottom: '15px', // More space below title
     lineHeight: '1.3',
+      fontFamily: "'poppins', sans-serif",
     opacity: animated ? 1 : 0, // Fade in
     transform: animated ? "translateY(0)" : "translateY(-20px)", // Slide in from top
     transition: "opacity 1s ease-out, transform 1s ease-out",
   };
 
   const subHeadingStyle = {
-    fontSize: 'clamp(18px, 2.5vw, 22px)', // Responsive font size
+    fontSize: 'clamp(18px, 2.5vw, 19px)', // Responsive font size
     color: '#4a5568',
     maxWidth: '900px',
-    margin: '0 auto 60px', // More space below subheading
-    lineHeight: '1.6',
+    fontFamily: 'poppins',
+    margin: '0 auto 20px', // More space below subheading
+    lineHeight: '1.4',
     fontWeight: '400',
     opacity: animated ? 1 : 0,
     transform: animated ? "translateY(0)" : "translateY(30px)", // Slide in from bottom
@@ -49,9 +51,10 @@ const HowToBecomeMember = () => {
   const stepsContainerStyle = {
     display: 'flex',
     flexDirection: 'column', // Always column for the main layout
-    gap: '50px', // Increased space between step items for visual separation
+    gap: '0px', // Increased space between step items for visual separation
     maxWidth: '800px', // Max width for the steps content
     margin: '0 auto',
+     fontFamily: 'poppins',
     padding: '0 10px', // Padding for content within the container
     position: 'relative',
     zIndex: 1, // Ensure steps are above background elements
@@ -61,6 +64,7 @@ const HowToBecomeMember = () => {
   // Line connector between steps (simulated with absolute positioning)
   const connectorLineStyle = {
     position: 'absolute',
+     fontFamily: 'poppins',
     left: '40px', // Aligned with the center of the number circles (10px container padding + 30px half-width of number)
     top: '30px', // Start near the top of the first number
     bottom: '30px', // End near the bottom of the last number
@@ -73,6 +77,7 @@ const HowToBecomeMember = () => {
 
   const stepItemStyle = {
     display: 'flex',
+     fontFamily: 'poppins',
     alignItems: 'flex-start', // Align icon and text at the top
     position: 'relative',
     padding: '15px 0', // Reduced vertical padding, no horizontal padding on the block itself
@@ -88,10 +93,11 @@ const HowToBecomeMember = () => {
     height: '60px', // Larger number circle
     minWidth: '60px',
     borderRadius: '50%',
+     fontFamily: 'poppins',
     background: 'linear-gradient(135deg, #007a7e, #004d4f)',
     color: '#ffffff',
-    fontSize: '28px', // Larger font for numbers
-    fontWeight: 'bold',
+    fontSize: '26px', // Larger font for numbers
+    fontWeight: 'semibold',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
@@ -103,6 +109,7 @@ const HowToBecomeMember = () => {
 
   const stepContentStyle = {
     flexGrow: 1,
+     fontFamily: 'poppins',
     paddingLeft: '10px', // Add some padding to the text content itself
     borderLeft: '2px solid rgba(0, 122, 126, 0.2)', // Subtle left border for content block
     paddingBottom: '10px', // Small padding at bottom of content
@@ -112,6 +119,7 @@ const HowToBecomeMember = () => {
   const stepTitleStyle = {
     fontSize: 'clamp(22px, 2.8vw, 26px)', // Slightly larger title
     fontWeight: 700,
+     fontFamily: 'poppins',
     color: '#002a2c',
     marginBottom: '8px', // Reduced margin
     lineHeight: '1.3',
@@ -121,10 +129,12 @@ const HowToBecomeMember = () => {
     fontSize: 'clamp(16px, 2.2vw, 18px)',
     color: '#5a6778',
     lineHeight: '1.6',
+     fontFamily: 'poppins',
   };
 
   const buttonContainerStyle = {
     marginTop: '60px',
+     fontFamily: 'poppins',
     opacity: animated ? 1 : 0,
     transform: animated ? "translateY(0)" : "translateY(30px)",
     transition: "opacity 0.8s ease-out 1.5s, transform 0.8s ease-out 1.5s",
@@ -138,6 +148,7 @@ const HowToBecomeMember = () => {
           position: "absolute",
           top: "10%",
           left: "8%",
+           fontFamily: 'poppins',
           width: "min(120px, 12vw)",
           height: "min(120px, 12vw)",
           backgroundColor: "rgba(0, 122, 126, 0.06)",
@@ -154,6 +165,7 @@ const HowToBecomeMember = () => {
           position: "absolute",
           bottom: "10%",
           right: "8%",
+           fontFamily: 'poppins',
           width: "min(150px, 15vw)",
           height: "min(150px, 15vw)",
           backgroundColor: "rgba(0, 122, 126, 0.04)",
@@ -170,6 +182,7 @@ const HowToBecomeMember = () => {
           position: "absolute",
           top: "30%",
           right: "20%",
+           fontFamily: 'poppins',
           width: "min(80px, 8vw)",
           height: "min(80px, 8vw)",
           backgroundColor: "rgba(0, 122, 126, 0.07)",
@@ -188,6 +201,7 @@ const HowToBecomeMember = () => {
           position: "absolute",
           top: "60%",
           left: "15%",
+           fontFamily: 'poppins',
           width: "min(100px, 10vw)",
           height: "min(100px, 10vw)",
           backgroundColor: "rgba(0, 122, 126, 0.03)",
@@ -206,6 +220,7 @@ const HowToBecomeMember = () => {
           position: "absolute",
           bottom: "5%",
           left: "5%",
+           fontFamily: 'poppins',
           width: "min(250px, 25vw)",
           height: "min(250px, 25vw)",
           backgroundColor: "rgba(0, 122, 126, 0.02)",
@@ -230,7 +245,7 @@ const HowToBecomeMember = () => {
         }}
       >
         <h2 style={headingStyle}>
-          How to Become a <span style={{ color: '#007a7e' }}>Member</span>
+          How to Become a <span style={{ color: '#007a7e',  fontFamily: "'poppins', sans-serif" }}>Member</span>
         </h2>
         <p style={subHeadingStyle}>
           Joining Vaidya Bandhu is simple and straightforward. Follow these easy steps to unlock a year of exclusive healthcare benefits.
@@ -319,30 +334,7 @@ const HowToBecomeMember = () => {
           {/* Replace with your actual MembershipModal component */}
           {/* <MembershipModal /> */}
           {/* Placeholder button for preview */}
-          <button
-            style={{
-              background: 'linear-gradient(to right, #007a7e, #004d4f)',
-              color: '#ffffff',
-              border: 'none',
-              padding: '15px 35px',
-              borderRadius: '8px',
-              fontSize: '18px',
-              fontWeight: '600',
-              cursor: 'pointer',
-              boxShadow: '0 8px 20px rgba(0, 122, 126, 0.3)',
-              transition: 'all 0.3s ease',
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.transform = 'translateY(-3px) scale(1.02)';
-              e.currentTarget.style.boxShadow = '0 12px 25px rgba(0, 122, 126, 0.45)';
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.transform = 'translateY(0) scale(1)';
-              e.currentTarget.style.boxShadow = '0 8px 20px rgba(0, 122, 126, 0.3)';
-            }}
-          >
-            Join Now
-          </button>
+      
         </div>
       </div>
     </section>

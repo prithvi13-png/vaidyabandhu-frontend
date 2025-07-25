@@ -13,7 +13,7 @@ const MembershipCardBenefits = () => {
     "10%–40% Discounts on Services: Reduce costs for surgeries, treatments, and diagnostic tests at healthcare partners.",
     "Get 10% Cashback: Send your bill to Vaidya Bandhu via WhatsApp or Email. Cashback will be credited to your account within 7 working days.",
     "Statewide Karnataka Coverage: Valid at affiliated doctors, hospitals, and labs for easy access.",
-    "Vaidya Bandhu Card – Just ₹49/-, Unlimited Savings & Care for 365 Days.",
+    "Vaidya Bandhu Card – Just ₹49/- Unlimited Savings & Care for 365 Days.",
     "Immediate Activation: Get your digital card instantly via website or app.",
        "Effortless Auto-Renewal: Unused memberships renew automatically after one year.",
     "Complimentary Medical Advice from 9 AM to 6 PM via Our Helpline",
@@ -25,9 +25,9 @@ const MembershipCardBenefits = () => {
 
   return (
     <div className="membership-benefits" style={{
-      padding: "60px 30px",
+      padding: "40px 20px",
       background: "linear-gradient(135deg, #e0f7fa 0%, #ffffff 100%)",
-      fontFamily: "'Inter', sans-serif",
+      fontFamily: "'poppins', sans-serif",
       position: "relative",
       overflow: "hidden"
     }}>
@@ -58,24 +58,27 @@ const MembershipCardBenefits = () => {
         <h2 style={{
           fontSize: "clamp(28px, 5vw, 36px)",
           fontWeight: 800,
+            fontFamily: "'poppins', sans-serif",
           color: "#004d4f",
           textAlign: "center",
           marginBottom: "20px",
           lineHeight: "1.3"
         }}>
-         Big Savings. Full Support. Just ₹49/Year - <br/><span style={{ color: "#007a7e" }}>Vaidya Bandhu Card: Key to
+         Big Savings. Full Support. Just ₹49/Year <br/><span style={{ color: "#007a7e",   fontFamily: "'poppins', sans-serif", }}>Vaidya Bandhu Card: Key to
 Affordable Healthcare in India.</span>
         </h2>
 
         <p style={{
-          fontSize: "clamp(16px, 2.5vw, 18px)",
+          fontSize: "clamp(16px, 2.5vw, 19px)",
           color: "#4a5568",
-          textAlign: "center",
-          maxWidth: "800px",
-          margin: "0 auto 10px",
           lineHeight: "1.4",
-           fontFamily: "'Poppins', sans-serif",
-          fontWeight: "400"
+          fontWeight: "400",
+          fontFamily: "'Poppins', sans-serif",
+          maxWidth: "1100px",
+          margin: "0 auto 0px",
+          opacity: animated ? 1 : 0,
+          transform: animated ? "translateY(0)" : "translateY(30px)",
+          transition: "opacity 0.8s ease-out 0.2s, transform 0.8s ease-out 0.2s",
         }}>
         Join Vaidya Bandhu for just ₹49/year and unlock trusted medical care and perks—now in
 Karnataka, coming soon to pan India.
@@ -159,13 +162,13 @@ Karnataka, coming soon to pan India.
                     flexShrink: 0,
                     boxShadow: "0 4px 8px rgba(0, 122, 126, 0.2)"
                   }}>
-                    <span style={{ color: "#fff", fontSize: "16px" }}>✔</span>
+                    <span style={{ color: "#fff", fontSize: "14px" }}>✔</span>
                   </div>
                   <p style={{
                     margin: 0,
                     fontSize: "clamp(16px, 2.5vw, 18px)",
                     color: "#4a5568",
-                    lineHeight: "1.6"
+                    lineHeight: "1.4"
                   }}>
                     {benefit}
                   </p>

@@ -16,9 +16,8 @@ const LeadershipInline = () => {
   return (
     <section
       style={{
-        paddingTop: '140px',
-        /* Generous padding for section */
-
+        paddingTop: '180px',
+        paddingBottom: '40px',
         background: 'linear-gradient(135deg, #e0f7fa 0%, #ffffff 100%)', /* Light, inviting gradient */
         fontFamily: "'Inter', sans-serif", /* Consistent font */
         color: '#4a5568', /* Soft dark gray for main text */
@@ -97,40 +96,12 @@ const LeadershipInline = () => {
                 paddingBottom: '20px', // More space for underline
                 textAlign: 'center',
                 marginBottom: '25px', // More space below title
+                fontFamily: "'Poppins', sans-serif"
               }}
             >
               Message from the <span style={{ color: '#007a7e' }}>Founder</span>, Managing Director & CEO
               {/* Custom underline effect: double line */}
-              <span
-                style={{
-                  content: '""',
-                  position: 'absolute',
-                  bottom: '12px',
-                  left: '50%',
-                  transform: 'translateX(-50%)',
-                  width: '90px',
-                  height: '4px', // Thicker line
-                  backgroundColor: '#007a7e', /* Primary teal accent */
-                  borderRadius: '2px',
-                  transition: baseTransition,
-                  ...(hoveredSection === 'ceo' && { width: '120px' }), // Expand on hover
-                }}
-              ></span>
-              <span
-                style={{
-                  content: '""',
-                  position: 'absolute',
-                  bottom: '0',
-                  left: '50%',
-                  transform: 'translateX(-50%)',
-                  width: '60px',
-                  height: '4px', // Thicker line
-                  backgroundColor: 'rgba(0, 122, 126, 0.6)', /* Lighter primary teal accent */
-                  borderRadius: '2px',
-                  transition: baseTransition,
-                  ...(hoveredSection === 'ceo' && { width: '80px' }), // Expand on hover
-                }}
-              ></span>
+
             </h2>
 
             {/* Dr. Ajith Ramaswamy's Photo and Name/Designation Container */}
@@ -167,6 +138,7 @@ const LeadershipInline = () => {
                     opacity: animated ? 1 : 0,
                     transform: animated ? "translateY(0)" : "translateY(15px)",
                     transition: `opacity 0.7s ease-out 0.4s, transform 0.7s ease-out 0.4s`,
+                    fontFamily: "'Poppins', sans-serif"
                   }}
                 >
                   Dr. Ajith Ramaswamy
@@ -176,10 +148,11 @@ const LeadershipInline = () => {
                     color: '#5a6778',
                     marginBottom: '0', /* Remove bottom margin here as it's handled by parent gap */
                     fontSize: 'clamp(15px, 1.8vw, 17px)',
-                    fontStyle: 'italic',
+                    // fontStyle: 'italic',
                     opacity: animated ? 1 : 0,
                     transform: animated ? "translateY(0)" : "translateY(15px)",
                     transition: `opacity 0.7s ease-out 0.5s, transform 0.7s ease-out 0.5s`,
+                    fontFamily: "'Poppins', sans-serif"
                   }}
                 >
                   Founder, Managing Director & CEO – Vaidya Bandhu
@@ -188,25 +161,26 @@ const LeadershipInline = () => {
             </div>
 
             <p style={{
+              fontFamily: "'Poppins', sans-serif",
               marginBottom: '15px', fontSize: 'clamp(16px, 2vw, 18px)', color: '#4a5568',
               opacity: animated ? 1 : 0, transform: animated ? "translateY(0)" : "translateY(15px)", transition: `opacity 0.7s ease-out 0.6s, transform 0.7s ease-out 0.6s`,
             }}>
               At Vaidya Bandhu, our vision is rooted in a powerful belief - Quality healthcare is not a privilege, but a fundamental right. As the Founder, Managing Director & CEO, my mission is to ensure that every individual, regardless of their financial background, has access to affordable, compassionate, and quality medical care.
             </p>
             <p style={{
-              marginBottom: '15px', fontSize: 'clamp(16px, 2vw, 18px)', color: '#4a5568',
+              marginBottom: '15px', fontSize: 'clamp(16px, 2vw, 18px)', color: '#4a5568', fontFamily: "'Poppins', sans-serif",
               opacity: animated ? 1 : 0, transform: animated ? "translateY(0)" : "translateY(15px)", transition: `opacity 0.7s ease-out 0.7s, transform 0.7s ease-out 0.7s`,
             }}>
               The seeds of Vaidya Bandhu were sown during a profoundly moving experience where I witnessed families struggle to afford life-saving treatment. That moment left a lasting impact on me - and sparked a deep resolve to challenge the status quo. I knew something had to change.
             </p>
             <p style={{
-              marginBottom: '15px', fontSize: 'clamp(16px, 2vw, 18px)', color: '#4a5568',
+              marginBottom: '15px', fontSize: 'clamp(16px, 2vw, 18px)', color: '#4a5568', fontFamily: "'Poppins', sans-serif",
               opacity: animated ? 1 : 0, transform: animated ? "translateY(0)" : "translateY(15px)", transition: `opacity 0.7s ease-out 0.8s, transform 0.7s ease-out 0.8s`,
             }}>
               When I met Mr. Subhashith Shetty, a like-minded entrepreneur and journalist, our shared vision of accessible healthcare aligned seamlessly. Together, we founded Vaidya Bandhu — not just as a platform, but as a movement committed to reducing the financial burden of healthcare. Our initiative offers 10% to 40% discounts on surgeries, diagnostics, and medical treatments — making quality healthcare significantly more affordable.
             </p>
             <p style={{
-              marginBottom: '15px', fontSize: 'clamp(16px, 2vw, 18px)', color: '#4a5568',
+              marginBottom: '15px', fontSize: 'clamp(16px, 2vw, 18px)', color: '#4a5568', fontFamily: "'Poppins', sans-serif",
               opacity: animated ? 1 : 0, transform: animated ? "translateY(0)" : "translateY(15px)", transition: `opacity 0.7s ease-out 0.9s, transform 0.7s ease-out 0.9s`,
             }}>
               But our mission goes beyond discounts. For patients facing extreme financial hardship, we are committed to offering free surgeries, with a target of 25 free surgeries in our first year - because care should never be denied due to cost.
@@ -226,6 +200,7 @@ const LeadershipInline = () => {
                 opacity: animated ? 1 : 0,
                 transform: animated ? "translateY(0)" : "translateY(20px)",
                 transition: `opacity 0.8s ease-out 1.0s, transform 0.8s ease-out 1.0s`,
+                fontFamily: "'Poppins', sans-serif",
               }}
             >
               Vaidya Bandhu is more than an organization. It is a promise. A promise to support patients, guide families, and stand beside every individual during their most vulnerable times. We are here to make healthcare not just accessible, but human again.
@@ -240,6 +215,7 @@ const LeadershipInline = () => {
                 opacity: animated ? 1 : 0,
                 transform: animated ? "translateY(0)" : "translateY(20px)",
                 transition: `opacity 0.8s ease-out 1.2s, transform 0.8s ease-out 1.2s`,
+                fontFamily: "'Poppins', sans-serif",
               }}
             >
               Thank you for believing in our mission. We are here to help, and we are here to make a difference.
@@ -271,39 +247,11 @@ const LeadershipInline = () => {
                 paddingBottom: '20px',
                 textAlign: 'center',
                 marginBottom: '25px',
+                fontFamily: "'Poppins', sans-serif",
               }}
             >
               Message from the <span style={{ color: '#007a7e' }}>Founder</span>, Director & COO
-              <span
-                style={{
-                  content: '""',
-                  position: 'absolute',
-                  bottom: '12px',
-                  left: '50%',
-                  transform: 'translateX(-50%)',
-                  width: '90px',
-                  height: '4px',
-                  backgroundColor: '#007a7e',
-                  borderRadius: '2px',
-                  transition: baseTransition,
-                  ...(hoveredSection === 'coo' && { width: '120px' }),
-                }}
-              ></span>
-              <span
-                style={{
-                  content: '""',
-                  position: 'absolute',
-                  bottom: '0',
-                  left: '50%',
-                  transform: 'translateX(-50%)',
-                  width: '60px',
-                  height: '4px',
-                  backgroundColor: 'rgba(0, 122, 126, 0.6)',
-                  borderRadius: '2px',
-                  transition: baseTransition,
-                  ...(hoveredSection === 'coo' && { width: '80px' }),
-                }}
-              ></span>
+
             </h2>
 
             {/* Dr. Subhashith Shetty's Photo and Name/Designation Container */}
@@ -336,6 +284,7 @@ const LeadershipInline = () => {
                     opacity: animated ? 1 : 0,
                     transform: animated ? "translateY(0)" : "translateY(15px)",
                     transition: `opacity 0.7s ease-out 1.0s, transform 0.7s ease-out 1.0s`,
+                    fontFamily: "'Poppins', sans-serif",
                   }}
                 >
                   Mr. Subhashith Shetty
@@ -345,7 +294,8 @@ const LeadershipInline = () => {
                     color: '#5a6778',
                     marginBottom: '0',
                     fontSize: 'clamp(15px, 1.8vw, 17px)',
-                    fontStyle: 'italic',
+                    // fontStyle: 'italic',
+                    fontFamily: "'Poppins', sans-serif",
                     opacity: animated ? 1 : 0,
                     transform: animated ? "translateY(0)" : "translateY(15px)",
                     transition: `opacity 0.7s ease-out 1.1s, transform 0.7s ease-out 1.1s`,
@@ -357,31 +307,31 @@ const LeadershipInline = () => {
             </div>
 
             <p style={{
-              marginBottom: '15px', fontSize: 'clamp(16px, 2vw, 18px)', color: '#4a5568',
+              marginBottom: '15px', fontSize: 'clamp(16px, 2vw, 18px)', color: '#4a5568', fontFamily: "'Poppins', sans-serif",
               opacity: animated ? 1 : 0, transform: animated ? "translateY(0)" : "translateY(15px)", transition: `opacity 0.7s ease-out 1.2s, transform 0.7s ease-out 1.2s`,
             }}>
               At Vaidya Bandhu, our mission is simple but transformative - to make healthcare accessible, affordable, and trustworthy for everyone. As a Founder and COO, I am deeply committed to ensuring that every patient receives the best care possible, supported by a team that puts people above profit.
             </p>
             <p style={{
-              marginBottom: '15px', fontSize: 'clamp(16px, 2vw, 18px)', color: '#4a5568',
+              marginBottom: '15px', fontSize: 'clamp(16px, 2vw, 18px)', color: '#4a5568', fontFamily: "'Poppins', sans-serif",
               opacity: animated ? 1 : 0, transform: animated ? "translateY(0)" : "translateY(15px)", transition: `opacity 0.7s ease-out 1.3s, transform 0.7s ease-out 1.3s`,
             }}>
               The journey began when a close acquaintance of mine was admitted to a leading corporate hospital. What was expected to be a ₹10 lakh bill ballooned to ₹33 lakh after complications. Insurance covered only a portion, and despite exhausting all options - friends, family, loans - they received no financial relief from the hospital. Even a basic 10% discount could have eased their pain, but it never came.
             </p>
             <p style={{
-              marginBottom: '15px', fontSize: 'clamp(16px, 2vw, 18px)', color: '#4a5568',
+              marginBottom: '15px', fontSize: 'clamp(16px, 2vw, 18px)', color: '#4a5568', fontFamily: "'Poppins', sans-serif",
               opacity: animated ? 1 : 0, transform: animated ? "translateY(0)" : "translateY(15px)", transition: `opacity 0.7s ease-out 1.4s, transform 0.7s ease-out 1.4s`,
             }}>
               It was heartbreaking, and more importantly, it was avoidable. If they had reached out earlier, I could have directed them to a hospital through our network that offers the same quality care at significantly reduced rates.
             </p>
             <p style={{
-              marginBottom: '15px', fontSize: 'clamp(16px, 2vw, 18px)', color: '#4a5568',
+              marginBottom: '15px', fontSize: 'clamp(16px, 2vw, 18px)', color: '#4a5568', fontFamily: "'Poppins', sans-serif",
               opacity: animated ? 1 : 0, transform: animated ? "translateY(0)" : "translateY(15px)", transition: `opacity 0.7s ease-out 1.5s, transform 0.7s ease-out 1.5s`,
             }}>
               This experience stayed with me. I shared it with Dr. Ajith, whose compassionate nature and healthcare expertise made him the perfect partner to bring this idea to life. Together, we founded Vaidya Bandhu - a platform committed to bridging the gap between affordability and quality healthcare.
             </p>
             <p style={{
-              marginBottom: '15px', fontSize: 'clamp(16px, 2vw, 18px)', color: '#4a5568',
+              marginBottom: '15px', fontSize: 'clamp(16px, 2vw, 18px)', color: '#4a5568', fontFamily: "'Poppins', sans-serif",
               opacity: animated ? 1 : 0, transform: animated ? "translateY(0)" : "translateY(15px)", transition: `opacity 0.7s ease-out 1.5s, transform 0.7s ease-out 1.5s`,
             }}>
               Along with offering 10% to 40% discounts on medical treatments and diagnostics, we are committed to providing 25 free surgeries in our first year to patients who are in dire financial need. Because for us, it’s not just about discounts - it’s about dignity, access, and saving lives.
@@ -402,6 +352,7 @@ const LeadershipInline = () => {
                 opacity: animated ? 1 : 0,
                 transform: animated ? "translateY(0)" : "translateY(20px)",
                 transition: `opacity 0.8s ease-out 1.6s, transform 0.8s ease-out 1.6s`,
+                fontFamily: "'Poppins', sans-serif",
               }}
             >
               Today, many people feel that healthcare is no longer about care, but about commerce. But that’s not the whole truth. Not every doctor is chasing profit. Not every hospital is built for business. There are still many who chose this noble profession to heal, to serve, and to stand by those in need. At Vaidya Bandhu, we’re here to prove that healthcare can be ethical, affordable, and full of heart.
@@ -416,6 +367,7 @@ const LeadershipInline = () => {
                 opacity: animated ? 1 : 0,
                 transform: animated ? "translateY(0)" : "translateY(20px)",
                 transition: `opacity 0.8s ease-out 1.8s, transform 0.8s ease-out 1.8s`,
+                fontFamily: "'Poppins', sans-serif",
               }}
             >
               Thank you for trusting Vaidya Bandhu. We are here to stand by your side - every step of the way.

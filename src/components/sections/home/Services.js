@@ -188,27 +188,60 @@ const ServicesPreview = () => {
   };
 
   const listItemStyle = {
-    fontSize: "15px",
+    fontSize: "16px",
     color: "#5a6778",
-    lineHeight: "1.7",
+    fontFamily: "poppins",
+    lineHeight: "1.4",
     marginBottom: "10px",
     position: "relative",
   };
 
   return (
     <div style={sectionStyle}>
-      {/* Re-integrated the original h2 with the underline span */}
-      <h2 style={mainHeadingStyle}>
-        Our Services
-        {/* <span style={mainHeadingUnderlineStyle}></span> */}
-      </h2>
+      
+         <h2
+          style={{
+            fontSize: "clamp(24px, 4vw, 32px)",
+            fontWeight: 800,
+            color: "#004d4f",
+            textAlign: "center",
+            marginBottom: "8px",
+            lineHeight: "1.3",
+          }}
+        >
+          Our{" "}
+          <span style={{ color: "#007a7e" }}>Services</span>
+        </h2>
 
-      <p style={subHeadingStyle}>
-        Vaidya Bandhu offers dependable healthcare services, including expert doctor consultations and
-        big discounts on treatments, tests, and surgeries. Making quality healthcare simple, ethical,
-        accessible, and affordable for everyone, everywhere, anytime.
-      </p>
+        {/* Subtitle/Intro Paragraph */}
+      <div
+  style={{
+    maxWidth: "1100px",
+    margin: "0 auto 60px", // centers it and adds bottom spacing
+    padding: "0 16px",     // for small screen padding
+    opacity: animated ? 1 : 0,
+    transform: animated ? "translateY(0)" : "translateY(30px)",
+    transition: "opacity 0.8s ease-out 0.2s, transform 0.8s ease-out 0.2s",
+  }}
+>
+  <p
+    style={{
+      fontSize: "clamp(16px, 2.5vw, 19px)",
+      color: "#4a5568",
+      lineHeight: "1.4",
+      fontWeight: "400",
+      fontFamily: "'Poppins', sans-serif",
+      textAlign: "center",
+    }}
+  >
+    Vaidya Bandhu offers dependable healthcare services, including expert doctor consultations and
+    big discounts on treatments, tests, and surgeries. Making quality healthcare simple, ethical,
+    accessible, and affordable for everyone, everywhere, anytime.
+  </p>
+</div>
 
+        
+    
       {/* Swiper Carousel Integration */}
       <Swiper
         modules={[Pagination, Autoplay]} // Removed Navigation module

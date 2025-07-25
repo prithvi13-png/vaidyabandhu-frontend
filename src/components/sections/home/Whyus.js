@@ -67,15 +67,15 @@ class Whyus extends Component {
                 }}
               >
                 Why Choose VaidyaBandhu?
-                
+
               </h2>
-                 <p >
-  Ready to Get Started?<br/>
-Empower your health journey—join VaidyaBandhu for trusted, smarter care.
-     </p>
+          <p style={{ marginLeft: '24px' }}>
+    Ready to Get Started?<br />
+    Empower your health journey join VaidyaBandhu for trusted, smarter care.
+</p>
             </div>
             <div className="sigma_about-content">
-              
+
               {/* Data */}
               {whyus.slice(0, 6).map((item, i) => (
                 <div className="sigma_info style-15" key={i}>

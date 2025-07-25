@@ -127,8 +127,9 @@ const DoctorsComponent = () => {
     <>
       <h2
         style={{
-          fontSize: "clamp(36px, 5vw, 38px)",
+          fontSize: "clamp(36px, 5vw, 32px)",
           fontWeight: "800",
+             fontFamily: "'Poppins', sans-serif",
           color: "#004d4f",
           marginBottom: "10px",
           lineHeight: "1.2",
@@ -139,18 +140,18 @@ const DoctorsComponent = () => {
       >
         Meet Our <span style={{ color: "#007a7e" }}>Expert Doctors</span>
       </h2>
-      <p
-        style={{
+       <p style={{
           fontSize: "clamp(16px, 2.5vw, 20px)",
           color: "#4a5568",
           lineHeight: "1.4",
           fontWeight: "400",
-          marginBottom: "20px",
+          fontFamily: "'Poppins', sans-serif",
+          maxWidth: "1100px",
+          margin: "0 auto 40px",
           opacity: animated ? 1 : 0,
           transform: animated ? "translateY(0)" : "translateY(30px)",
           transition: "opacity 0.8s ease-out 0.2s, transform 0.8s ease-out 0.2s",
-        }}
-      >
+        }}>
       Consult trusted doctors, verified specialists anytime, anywhere across Karnataka. 
       </p>
 

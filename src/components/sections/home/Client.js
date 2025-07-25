@@ -1,12 +1,28 @@
 import React, { Component } from 'react';
 
+
 class ClientTestimonials extends Component {
   render() {
     return (
       <div className="section section-padding">
         <div className="container">
           <div className="section-title centered">
-            <h3 className="title">Your Health, Our Priority – Hear From Our Members</h3>
+            {/* <h3 className="title">Your Health, Our Priority – Hear From Our Members</h3> */}
+            <h2
+              style={{
+                fontSize: "clamp(36px, 5vw, 32px)",
+                fontWeight: "800",
+                fontFamily: "'Poppins', sans-serif",
+                color: "#004d4f",
+                marginBottom: "10px",
+                lineHeight: "1.2",
+                // opacity: animated ? 1 : 0,
+                // transform: animated ? "translateY(0)" : "translateY(30px)",
+                // transition: "opacity 0.8s ease-out, transform 0.8s ease-out",
+              }}
+            >
+              Your Health, Our Priority<br /> <span style={{ color: "#007a7e" }}> Hear From Our Members</span>
+            </h2>
           </div>
           <div className="row">
             {/* Review 1 */}

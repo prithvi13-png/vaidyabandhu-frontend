@@ -83,8 +83,9 @@ const Banner = () => {
                   className="title text-white"
                   style={{
                     color: "#ffffff",
+                    fontFamily: "poppins",
                     fontWeight: "700", // Extra bold
-                    fontSize: "clamp(2.8rem, 4.5vw, 2.2rem)", // Larger, more dynamic font size
+                    fontSize: "clamp(1.2rem, 4.5vw, 2rem)", // Larger, more dynamic font size
                     marginBottom: "20px",
                     letterSpacing: "1px", // Added letter spacing
                     textShadow: "2px 2px 8px rgba(0,0,0,0.5)", // Text shadow for depth
@@ -102,6 +103,7 @@ const Banner = () => {
                   style={{
                     color: "#e0f7fa", // Light teal for subtitle
                     fontWeight: "600",
+                    fontFamily: "poppins",
                     fontSize: "clamp(1.6rem, 3.2vw, 2.2rem)", // Slightly larger subtitle
                     marginBottom: "35px", // Increased margin below subtitle
                     textShadow: "1px 1px 5px rgba(0,0,0,0.3)",

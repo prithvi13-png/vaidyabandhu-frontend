@@ -89,28 +89,38 @@ const WhoCanBenefit = () => {
         }}
       >
         {/* Centered H2 Title */}
-       <h2
-  style={{
-    fontSize: "clamp(32px, 4.5vw, 38px)",
-    fontWeight: 800,
-    color: "#004d4f",
-    position: "relative",
-    paddingBottom: "10px",
-    textAlign: "center",
-    marginBottom: "0", // ✅ GAP REMOVED
-    transition: baseTransition,
-  }}
-  onMouseEnter={() => setHoveredHeading(true)}
-  onMouseLeave={() => setHoveredHeading(false)}
->
-  Who Can <span style={{ color: "#007a7e" }}>Benefit</span>?
-</h2>
+        <h2
+          style={{
+            fontSize: "clamp(32px, 4.5vw, 36px)",
+            fontWeight: 800,
+            color: "#004d4f",
+            position: "relative",
+            paddingBottom: "10px",
+            textAlign: "center",
+            marginBottom: "0", // ✅ GAP REMOVED
+            transition: baseTransition,
+          }}
+          onMouseEnter={() => setHoveredHeading(true)}
+          onMouseLeave={() => setHoveredHeading(false)}
+        >
+          Who Can <span style={{ color: "#007a7e", fontFamily: "'Poppins', sans-serif" }}>Benefit</span>?
+        </h2>
 
-
-        <div className="who-flex-wrap">
+        <div
+          className="who-flex-wrap"
+          style={{
+            display: "flex",
+            flexWrap: "wrap", // Allow wrapping on smaller screens
+            alignItems: "center",
+            justifyContent: "center", // Center items when wrapped
+            gap: "30px",
+            marginTop: "10px", // Space below the heading
+          }}
+        >
           {/* Left Column: Image */}
           <div
             style={{
+              flex: "1 1 400px", // Flexible width, minimum 400px basis
               maxWidth: "50%", // Max 50% width on larger screens
               textAlign: "center",
               opacity: animated ? 1 : 0,
@@ -119,11 +129,10 @@ const WhoCanBenefit = () => {
             }}
           >
             <img
-              src="assets/img/ms.jpg" // Placeholder image
+              src="https://placehold.co/600x400/007a7e/ffffff?text=People+Benefiting" // Placeholder image
               alt="People benefiting from healthcare"
               style={{
-                maxWidth: "200%",
-                maxHeight: "100%",
+                maxWidth: "100%", // Corrected: Image scales within its container
                 height: "auto",
                 borderRadius: "20px", // Rounded corners for the image
                 boxShadow: "0 15px 40px rgba(0, 122, 126, 0.15)", // Soft shadow
@@ -136,7 +145,7 @@ const WhoCanBenefit = () => {
           {/* Right Column: Content */}
           <div
             style={{
-              flex: "1 1 500px", // Flexible width, minimum 500px
+              flex: "1 1 500px", // Flexible width, minimum 500px basis
               maxWidth: "50%", // Max 50% width on larger screens
               opacity: animated ? 1 : 0,
               transform: animated ? "translateX(0)" : "translateX(50px)", // Slide in from right
@@ -162,6 +171,7 @@ const WhoCanBenefit = () => {
                   style={{
                     marginBottom: "20px",
                     fontSize: "clamp(17px, 2.2vw, 19px)",
+                    fontFamily: "'Poppins', sans-serif",
                     color: "#4a5568",
                     display: "flex",
                     alignItems: "flex-start",
@@ -226,13 +236,19 @@ const WhoCanBenefit = () => {
 
           /* Responsive adjustments */
           @media (max-width: 992px) {
-            div[style*="display: flex"][style*="flex-wrap: wrap"] { /* Main container */
-              flex-direction: column !important; /* Stack columns */
+            .who-flex-wrap {
+              flex-direction: column !important; /* Stack columns vertically */
               gap: 50px !important; /* Adjust gap when stacked */
             }
-            div[style*="flex: 1 1 400px"], div[style*="flex: 1 1 500px"] { /* Columns */
+            .who-flex-wrap > div { /* Direct children of who-flex-wrap (image and content columns) */
               max-width: 100% !important; /* Take full width when stacked */
               text-align: center !important; /* Center image and content */
+            }
+            .who-flex-wrap > div:first-child { /* Image column specifically */
+                order: 0; /* Ensure image is first (on top) when stacked */
+            }
+            .who-flex-wrap > div:last-child { /* Content column specifically */
+                order: 1; /* Ensure content is second (below image) when stacked */
             }
             h2[style*="text-align: center"] { /* Section title */
               text-align: center !important; /* Ensure it's centered when stacked */
@@ -269,53 +285,33 @@ const WhoCanBenefit = () => {
             }
           }
 
-       .who-flex-wrap {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 30px;
-}
-
-/* Disable flex on mobile */
-@media (max-width: 992px) {
-  .who-flex-wrap {
-    display: block !important;
-  }
-}
-
-@media (max-width: 480px) {
-  section[style*="padding: 80px 20px"] {
-    padding: 40px 10px !important;
-  }
-
-  h2[style*="font-size: clamp(32px, 4.5vw, 40px)"] {
-    font-size: clamp(24px, 7vw, 30px) !important;
-    padding-bottom: 12px !important;
-    margin-bottom: 25px !important;
-  }
-
-  h2 span[style*="bottom: 12px"] {
-    bottom: 6px !important;
-    width: 70px !important;
-  }
-
-  h2 span[style*="bottom: 0"] {
-    bottom: -4px !important;
-    width: 40px !important;
-  }
-
-  ul li {
-    padding: 0px 15px !important;
-    margin-bottom: 15px !important;
-    font-size: clamp(15px, 3.5vw, 17px) !important;
-  }
-
-  ul li span {
-    font-size: 1.4rem !important;
-    margin-right: 10px !important;
-  }
-}
-
+          @media (max-width: 480px) {
+            section[style*="padding: 80px 20px"] {
+              padding: 40px 10px !important;
+            }
+            h2[style*="font-size: clamp(32px, 4.5vw, 40px)"] {
+              font-size: clamp(24px, 7vw, 30px) !important;
+              padding-bottom: 12px !important;
+              margin-bottom: 25px !important;
+            }
+            h2 span[style*="bottom: 12px"] {
+              bottom: 6px !important;
+              width: 70px !important;
+            }
+            h2 span[style*="bottom: 0"] {
+              bottom: -4px !important;
+              width: 40px !important;
+            }
+            ul li {
+              padding: 0px 15px !important;
+              margin-bottom: 15px !important;
+              font-size: clamp(15px, 3.5vw, 17px) !important;
+            }
+            ul li span {
+              font-size: 1.4rem !important;
+              margin-right: 10px !important;
+            }
+          }
         `}
       </style>
     </section>

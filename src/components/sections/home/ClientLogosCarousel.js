@@ -38,10 +38,11 @@ const ClientLogosCarousel = () => {
       {/* Section Heading */}
       <h2
         style={{
-          fontSize: "38px",
+          fontSize: "32px",
           fontWeight: "800",
           color: "#004d4f",
           marginBottom: "10px",
+              fontFamily: "'Poppins', sans-serif",
           position: "relative",
           display: "inline-block",
           opacity: animated ? 1 : 0,
@@ -51,19 +52,18 @@ const ClientLogosCarousel = () => {
       >
         Our Valued - <span style={{ color: "#007a7e" }}>United by Trust, Guided by Care.</span>
       </h2>
-      <p
-        style={{
-          fontSize: "18px",
+      <p style={{
+          fontSize: "clamp(16px, 2.5vw, 20px)",
           color: "#4a5568",
-          maxWidth: "800px",
+          lineHeight: "1.4",
+          fontWeight: "400",
+          fontFamily: "'Poppins', sans-serif",
+          maxWidth: "1100px",
           margin: "0 auto 40px",
-          lineHeight: "1.7",
-          fontWeight: "500",
           opacity: animated ? 1 : 0,
-          transform: animated ? "translateY(0)" : "translateY(20px)",
-          transition: "opacity 0.8s ease-out 0.2s, transform 0.8s ease-out 0.2s", // Slight delay
-        }}
-      >
+          transform: animated ? "translateY(0)" : "translateY(30px)",
+          transition: "opacity 0.8s ease-out 0.2s, transform 0.8s ease-out 0.2s",
+        }}>
     At Vaidya Bandhu, our trusted bonds with caring doctors, leading hospitals, and diagnostic
 centers ensure ethical, affordable, and high-quality healthcare, delivered through seamless
 consultations, discounted diagnostics, cost-effective Surgeries, and treatments.

@@ -18,7 +18,7 @@ const OurStory = () => {
       style={{
         padding: '40px 10px', /* Generous padding for section */
         background: 'linear-gradient(135deg, #e0f7fa 0%, #ffffff 100%)', /* Light, inviting gradient */
-        fontFamily: "'Inter', sans-serif", /* Consistent font */
+        fontFamily: "'poppins', sans-serif", /* Consistent font */
         color: '#4a5568', /* Soft dark gray for main text */
         lineHeight: '1.4', // Adjusted for better readability
         overflow: 'hidden',
@@ -88,13 +88,14 @@ const OurStory = () => {
           >
             <h2
               style={{
-                fontSize: 'clamp(24px, 4.5vw, 38px)', /* Larger, responsive title size */
+                fontSize: 'clamp(24px, 4.5vw, 36px)', /* Larger, responsive title size */
                 fontWeight: 800, // Bolder
                 color: '#004d4f', /* Dark teal for headings */
                 position: 'relative',
                 paddingBottom: '10px', // More space for underline
                 textAlign: 'center',
-                marginBottom: '10px', // More space below title
+                marginBottom: '10px', 
+                fontFamily: 'poppins',// More space below title
               }}
             >
               Our <span style={{ color: '#007a7e' }}>Story</span>
@@ -106,6 +107,7 @@ const OurStory = () => {
               style={{
                 fontSize: 'clamp(17px, 2.2vw, 19px)',
                 color: '#4a5568',
+                 fontFamily: 'poppins',
                 marginBottom: '20px',
                 opacity: animated ? 1 : 0,
                 transform: animated ? "translateY(0)" : "translateY(20px)",
@@ -119,6 +121,7 @@ const OurStory = () => {
               style={{
                 fontSize: 'clamp(17px, 2.2vw, 19px)',
                 color: '#4a5568',
+                 fontFamily: 'poppins',
                 opacity: animated ? 1 : 0,
                 transform: animated ? "translateY(0)" : "translateY(20px)",
                 transition: `opacity 0.8s ease-out 0.6s, transform 0.8s ease-out 0.6s`,
@@ -135,6 +138,7 @@ const OurStory = () => {
               padding: '40px',
               backgroundColor: '#FFFFFF',
               borderRadius: '20px',
+               fontFamily: 'poppins',
               border: '1px solid rgba(0, 77, 79, 0.1)',
               boxShadow: hoveredSection === 'vision' ? '0 25px 60px rgba(0, 77, 79, 0.25)' : '0 12px 35px rgba(0, 77, 79, 0.12)',
               transition: baseTransition,
@@ -147,9 +151,10 @@ const OurStory = () => {
           >
             <h2
               style={{
-                fontSize: 'clamp(32px, 4.5vw, 38px)',
+                fontSize: 'clamp(32px, 4.5vw, 36px)',
                 fontWeight: 800,
                 color: '#004d4f',
+                 fontFamily: 'poppins',
                 position: 'relative',
                 paddingBottom: '10px',
                 textAlign: 'center',
@@ -162,8 +167,9 @@ const OurStory = () => {
             <p
               style={{
                 fontWeight: 600,
+                 fontFamily: 'poppins',
                 color: '#007a7e', // Bright teal accent for vision statement
-                fontSize: 'clamp(20px, 3vw, 22px)', /* Larger font size for vision statement */
+                fontSize: 'clamp(20px, 3vw, 19px)', /* Larger font size for vision statement */
                 textAlign: 'center',
                 padding: '10px 20px', /* More padding for emphasis */
                 backgroundColor: 'rgba(0, 122, 126, 0.05)', /* Subtle background highlight */
@@ -199,8 +205,9 @@ inclusivity.
           >
             <h2
               style={{
-                fontSize: 'clamp(32px, 4.5vw, 38px)',
+                fontSize: 'clamp(32px, 4.5vw, 36px)',
                 fontWeight: 800,
+                 fontFamily: 'poppins',
                 color: '#004d4f',
                 position: 'relative',
                 paddingBottom: '10px',
@@ -217,8 +224,9 @@ inclusivity.
                 fontSize: 'clamp(17px, 2.2vw, 19px)',
                 color: '#4a5568',
                 textAlign: 'center',
-                maxWidth: '800px',
+                maxWidth: '1100px',
                 margin: '0 auto 25px',
+                 fontFamily: 'poppins',
               }}
             >
 At Vaidya Bandhu, we empower patients with timely medical guidance, seamless access to trusted
@@ -290,6 +298,7 @@ hospitals, and compassionate care at every step of their healthcare journey.
                         fontSize: 'clamp(16px, 2vw, 18px)', /* Font for list items */
                         color: '#4a5568',
                         display: 'flex',
+                         fontFamily: 'poppins',
                         alignItems: 'flex-start',
                         padding: '15px 25px', /* Padding for list items */
                         backgroundColor: 'rgba(0, 122, 126, 0.03)', /* Subtle teal background for each list item */

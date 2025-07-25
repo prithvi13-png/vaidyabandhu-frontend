@@ -45,9 +45,10 @@ const Workprocess = () => {
     <div
       style={{
         background: "linear-gradient(135deg, #e0f7fa 0%, #ffffff 100%)", // Softer, more inviting gradient
-       padding: "80px 20px", // Increased padding
+       padding: "40px 20px", // Increased padding
         position: "relative",
         overflow: "hidden",
+        marginBottom: "10px !important", 
         fontFamily: "'Inter', sans-serif", // Modern font (assuming it's imported or fallback)
       }}
       id="how-it-works"
@@ -95,12 +96,12 @@ const Workprocess = () => {
         </h2> */}
         <h2
           style={{
-            fontSize: 36, // Larger, more impactful heading
+            fontSize: 32, // Larger, more impactful heading
             fontWeight: "700",
             color: "#004d4f",
             // margin: "20px 0 25px", // Adjusted margins
             lineHeight: 1.2,
-             marginTop: 70,
+             marginTop: 50,
           }}
         >
          How Vaidya Bandhu Works:<br/>  <span style={{ color: "#007a7e" }}>Easy Access to Affordable Healthcare
@@ -112,7 +113,7 @@ Services in India</span>
           lineHeight: "1.4",
           fontWeight: "400",
           fontFamily: "'Poppins', sans-serif",
-          maxWidth: "800px",
+          maxWidth: "1100px",
           margin: "0 auto 40px",
           opacity: animated ? 1 : 0,
           transform: animated ? "translateY(0)" : "translateY(30px)",
