@@ -45,7 +45,10 @@ class Searchform extends Component {
                     color: '#4a5568',
                 }}
             >
-                <div className="container" style={{ maxWidth: '1000px', margin: '0 auto' }}>
+<div
+  className="container"
+  style={{ maxWidth: '1000px', margin: '0 auto', paddingTop: '70px' }}
+>
                     <div className="sigma_cta style-13">
                         <form onSubmit={this.handleSubmit}>
                             <div

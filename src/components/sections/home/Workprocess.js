@@ -14,29 +14,29 @@ const Workprocess = () => {
   const steps = [
     {
       icon: "fas fa-id-card",
-      title: "Step 1: Get Your ₹49 Membership Card",
+      title: "Step 1: Get the Vaidya Bandhu Card for ₹49",
       points: [
-        "Fill out the membership form (Name, Address, Phone).",
-        "Pay ₹49 (valid for 1 year).",
-        "Get your Membership Card instantly through our Website or App."
+        "Fill out the form with name, address, phone number, etc",
+        "Big Savings. Full Support. Just ₹49/Year on Vaidya Bandhu Card",
+        "Receive your digital card instantly via website or app."
       ]
     },
     {
       icon: "flaticon-hospital",
       title: "Step 2: Access Quality Healthcare",
       points: [
-        "Call or email us with your medical concern.",
-        "Consult top doctors from our network.",
-        "Get 10%–40% discounts on surgeries, treatments & Diagnostics."
+        "Contact us by call, WhatsApp, or email about your concerns",
+        "Consult top doctors in our network.",
+        "Avail 10%–40% discounts on surgeries, treatments, and diagnostics."
       ]
     },
     {
       icon: "flaticon-doctor",
-      title: "Step 3: Complete Healthcare Support",
+      title: "Step 3: Full Healthcare Support",
       points: [
-        "Free medical advice from experts.",
-        "Best treatment plans and guidance.",
-        "Priority help for critical cases."
+        "Get free medical advice from an experts.",
+        "We are with you even after treatment, with follow-ups, recovery tips, and ongoing guidance.",
+        "Priority assistance for critical cases."
       ]
     }
   ];
@@ -45,9 +45,10 @@ const Workprocess = () => {
     <div
       style={{
         background: "linear-gradient(135deg, #e0f7fa 0%, #ffffff 100%)", // Softer, more inviting gradient
-        padding: "40px 20px", // Increased padding
+       padding: "40px 20px", // Increased padding
         position: "relative",
         overflow: "hidden",
+        marginBottom: "10px !important", 
         fontFamily: "'Inter', sans-serif", // Modern font (assuming it's imported or fallback)
       }}
       id="how-it-works"
@@ -82,32 +83,45 @@ const Workprocess = () => {
         }}
       ></div>
 
-      <div style={{ textAlign: "center", marginBottom: 60, zIndex: 1, position: "relative" }}>
-       
+      <div style={{ textAlign: "center", marginBottom: 20, zIndex: 1, position: "relative" }}>
+          {/* <h2 style={{
+          fontSize: "clamp(24px, 4vw, 32px)",
+          fontWeight: 800,
+          color: "#004d4f",
+          textAlign: "center",
+          marginBottom: "8px",
+          lineHeight: "1.3"
+        }}>
+          How Vaidya Bandhu <span style={{ color: "#007a7e" }}>Works</span>
+        </h2> */}
         <h2
           style={{
-            fontSize: 36, // Larger, more impactful heading
+            fontSize: 32, // Larger, more impactful heading
             fontWeight: "700",
             color: "#004d4f",
             // margin: "20px 0 25px", // Adjusted margins
             lineHeight: 1.2,
-             marginTop: 60,
+             marginTop: 50,
           }}
         >
-          How Vaidya Bandhu Works<br /> 
+         How Vaidya Bandhu Works:<br/>  <span style={{ color: "#007a7e" }}>Easy Access to Affordable Healthcare
+Services in India</span>
         </h2>
-        <p
-          style={{
-            color: "#4a5568",
-            maxWidth: 750, // Increased max-width
-            margin: "0 auto",
-            fontSize: 18, // Slightly larger body text
-            lineHeight: 1.4,
-            fontWeight: "400", // Lighter font-weight for body
-          }}
-        >
-          At Vaidya Bandhu, we believe in making quality healthcare simple, affordable, and accessible for everyone.
-          Discover our straightforward process to unlock a world of health benefits.
+        <p style={{
+          fontSize: "clamp(16px, 2.5vw, 20px)",
+          color: "#4a5568",
+          lineHeight: "1.4",
+          fontWeight: "400",
+          fontFamily: "'Poppins', sans-serif",
+          maxWidth: "1100px",
+          margin: "0 auto 40px",
+          opacity: animated ? 1 : 0,
+          transform: animated ? "translateY(0)" : "translateY(30px)",
+          transition: "opacity 0.8s ease-out 0.2s, transform 0.8s ease-out 0.2s",
+        }}>
+        At Vaidya Bandhu we simplify your search for the right doctors, hospitals, and diagnostic centers
+near you. Just call or WhatsApp us, and we’ll guide you to quality, affordable care, quickly and
+effortlessly
         </p>
       </div>
 

@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import MembershipModal from '../../layouts/MembershipModal';
+import React, { useEffect, useState } from "react";
+import MembershipModal from "../../layouts/MembershipModal";
 
 // Updated dummy workprocess data with 3 steps and new content
 const dummyWorkprocess = [
@@ -33,7 +33,6 @@ const dummyWorkprocess = [
   },
 ];
 
-
 const Workprocess = () => {
   const [animated, setAnimated] = useState(false);
   const [hoveredStep, setHoveredStep] = useState(null);
@@ -50,7 +49,7 @@ const Workprocess = () => {
       style={{
         padding: "40px 20px",
         background: "linear-gradient(135deg, #f5fdfd 0%, #e0f7fa 100%)", // Light, calming gradient
-        fontFamily: "'Inter', sans-serif",
+        fontFamily: "'poppins', sans-serif",
         color: "#4a5568",
         overflow: "hidden",
         position: "relative",
@@ -90,28 +89,39 @@ const Workprocess = () => {
         }}
       ></div>
 
-      <div className="container" style={{ maxWidth: "1200px", margin: "0 auto", position: "relative", zIndex: 1 }}>
+      <div
+        className="container"
+        style={{
+          maxWidth: "1200px",
+          margin: "0 auto",
+          position: "relative",
+          zIndex: 1,
+        }}
+      >
         <div
           style={{
-            display: "flex",
+            // display: "flex",
             flexWrap: "wrap",
             alignItems: "center",
             marginBottom: "30px",
             gap: "20px", // Gap for responsive wrapping
           }}
         >
-          <div style={{ flex: "1 1 300px" }}> {/* col-lg-5 equivalent */}
-            <div className="section-title"
+          <div style={{ flex: "1 1 300px" }}>
+            {" "}
+            {/* col-lg-5 equivalent */}
+            <div
+              className="section-title"
               style={{
                 opacity: animated ? 1 : 0,
                 transform: animated ? "translateY(0)" : "translateY(30px)",
                 transition: "opacity 0.8s ease-out, transform 0.8s ease-out",
               }}
             >
-             
               <h3
                 style={{
-                  fontSize: "clamp(36px, 5vw, 38px)",
+                  fontSize: "clamp(36px, 5vw, 36px)",
+                      fontFamily: "'Poppins', sans-serif",
                   fontWeight: "800",
                   color: "#004d4f",
                   marginBottom: "0",
@@ -120,25 +130,33 @@ const Workprocess = () => {
               >
                 How it Works?
               </h3>
+              
             </div>
           </div>
-          <div style={{ flex: "1 1 300px" }}> {/* col-lg-4 equivalent */}
+          <div style={{ flex: "1 1 300px" }}>
+            {" "}
+            {/* col-lg-4 equivalent */}
             <p
               style={{
-                fontSize: "clamp(16px, 2.5vw, 18px)",
+                fontSize: "clamp(16px, 2.5vw, 19px)",
                 color: "#4a5568",
                 lineHeight: "1.4",
+                    fontFamily: "'Poppins', sans-serif",
                 marginBottom: "0",
                 opacity: animated ? 1 : 0,
                 transform: animated ? "translateY(0)" : "translateY(30px)",
-                transition: "opacity 0.8s ease-out 0.2s, transform 0.8s ease-out 0.2s",
+                transition:
+                  "opacity 0.8s ease-out 0.2s, transform 0.8s ease-out 0.2s",
               }}
             >
-              At Vaidya Bandhu, we make quality healthcare simple, affordable, and accessible. Here’s how you can benefit from our services
+              At Vaidya Bandhu, we make quality healthcare simple, affordable,
+              and accessible. Here’s how you can benefit from our services
             </p>
           </div>
-          <div style={{ flex: "1 1 auto", textAlign: "right" }}> {/* col-lg-3 equivalent */}
-          <MembershipModal />
+          <div style={{ flex: "1 1 auto", textAlign: "right" }}>
+            {" "}
+            {/* col-lg-3 equivalent */}
+            <MembershipModal />
           </div>
         </div>
 
@@ -155,7 +173,10 @@ const Workprocess = () => {
               style={{
                 background: "#ffffff",
                 borderRadius: "16px",
-                boxShadow: hoveredStep === i ? "0 18px 40px rgba(0, 122, 126, 0.2)" : "0 8px 20px rgba(0, 122, 126, 0.08)",
+                boxShadow:
+                  hoveredStep === i
+                    ? "0 18px 40px rgba(0, 122, 126, 0.2)"
+                    : "0 8px 20px rgba(0, 122, 126, 0.08)",
                 overflow: "hidden",
                 padding: "30px",
                 textAlign: "left",
@@ -198,7 +219,12 @@ const Workprocess = () => {
                     transition: baseTransition,
                     ...(hoveredStep === i && { transform: "scale(1.1)" }), // Image scales on hover
                   }}
-                  onError={(e) => { e.target.onerror = null; e.target.src=`https://placehold.co/60x60/CCCCCC/666666?text=${i+1}`; }}
+                  onError={(e) => {
+                    e.target.onerror = null;
+                    e.target.src = `https://placehold.co/60x60/CCCCCC/666666?text=${
+                      i + 1
+                    }`;
+                  }}
                 />
               </div>
               <h5
@@ -206,6 +232,7 @@ const Workprocess = () => {
                   fontSize: "clamp(20px, 2.5vw, 22px)",
                   fontWeight: "700",
                   color: "#004d4f",
+                      fontFamily: "'Poppins', sans-serif",
                   marginBottom: "15px",
                   lineHeight: "1.3",
                   transition: baseTransition,
@@ -217,18 +244,28 @@ const Workprocess = () => {
                 style={{
                   paddingLeft: "20px",
                   marginBottom: "0",
-                  flexGrow: 1, // Allows list to fill space
+                  marginTop: "0",
+                      fontFamily: "'Poppins', sans-serif",
+                  flexGrow: 1,
                   color: "#5a6778",
                   fontSize: "clamp(15px, 1.8vw, 16px)",
-                  lineHeight: "1.6",
+                  lineHeight: "1.3", // Tightest line spacing
                 }}
               >
                 {item.points.map((point, j) => (
-                  <li key={j} style={{ marginBottom: "8px", listStyle: "disc" }}>
+                  <li
+                    key={j}
+                    style={{
+                      margin: "0", // No margin at all
+                      listStyle: "disc",
+                          fontFamily: "'Poppins', sans-serif",
+                    }}
+                  >
                     {point}
                   </li>
                 ))}
               </ul>
+
               <span
                 className="steps"
                 style={{
@@ -237,6 +274,7 @@ const Workprocess = () => {
                   color: "rgba(0, 77, 79, 0.1)", // Faded step number
                   position: "absolute",
                   bottom: "15px",
+                      fontFamily: "'Poppins', sans-serif",
                   right: "20px",
                   zIndex: 0,
                   transition: baseTransition,
@@ -248,11 +286,13 @@ const Workprocess = () => {
               >
                 Step {i + 1}
               </span>
-              <span className="pulsive-dot"
+              <span
+                className="pulsive-dot"
                 style={{
                   position: "absolute",
                   top: "20px",
                   right: "20px",
+                      fontFamily: "'Poppins', sans-serif",
                   width: "15px",
                   height: "15px",
                   borderRadius: "50%",
@@ -260,7 +300,7 @@ const Workprocess = () => {
                   boxShadow: "0 0 0 0 rgba(0, 122, 126, 0.7)",
                   animation: "pulse 2s infinite",
                   zIndex: 1,
-                  display: hoveredStep === i ? 'block' : 'none', // Show only on hover
+                  display: hoveredStep === i ? "block" : "none", // Show only on hover
                 }}
               />
             </div>

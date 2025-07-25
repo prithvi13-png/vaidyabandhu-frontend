@@ -8,7 +8,22 @@ class Testimonials extends Component {
             <div className="section section-padding">
                 <div className="container">
                     <div className="section-title centered">
-                        <h3 className="title">What Our Doctors Say</h3>
+                        {/* <h3 className="title">What Our Doctors Say</h3> */}
+                        <h2
+        style={{
+          fontSize: "clamp(36px, 5vw, 32px)",
+          fontWeight: "800",
+             fontFamily: "'Poppins', sans-serif",
+          color: "#004d4f",
+          marginBottom: "10px",
+          lineHeight: "1.2",
+        //   opacity: animated ? 1 : 0,
+        //   transform: animated ? "translateY(0)" : "translateY(30px)",
+        //   transition: "opacity 0.8s ease-out, transform 0.8s ease-out",
+        }}
+      >
+      What Our { " " }<span style={{ color: "#007a7e" }}>Doctors Say</span>
+      </h2>
                     </div>
                     <div className="row">
                         {/* Data */}

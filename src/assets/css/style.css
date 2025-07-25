@@ -286,7 +286,7 @@ body {
 
 .section {
   position: relative;
-  padding: 60px 0;
+  padding: 10px 0;
 }
 
 /* .section.section-padding {
@@ -327,6 +327,7 @@ body {
   font-size: 38px;
   line-height: 1;
   position: relative;
+  
 }
 
 .section-title .subtitle {
@@ -1626,7 +1627,7 @@ table td {
 
 table th {
   font-weight: 500;
-  color: var(--thm-secondary);
+  color: var(--thm-secondary) !important;
   font-size: 16px;
   border: 1px solid var(--thm-border);
 }
@@ -1723,8 +1724,8 @@ table img {
   display: block;
   padding: 20px;
   color: var(--thm-secondary);
-  font-weight: 500;
-  font-family: var(--thm-font);
+  font-weight: 600;
+  font-family: poppins;
   position: relative;
   font-size: 16px;
 }
@@ -2254,7 +2255,8 @@ body
   align-items: center;
   color: var(--thm-secondary);
   font-size: 14px;
-  font-weight: 400;
+  font-weight: 600;
+  font-family: poppins;
 }
 
 .sigma_header .sigma_header-top-links li select {
@@ -14162,7 +14164,7 @@ hr {
 .sigma_counter-wrapper.style-5.margin-negative {
   z-index: 2;
   position: relative;
-  margin: 80px 0 -200px;
+  margin: 20px 0 -200px;
 }
 .sigma_counter.style-5 {
   text-align: center;
@@ -14377,7 +14379,7 @@ hr {
 }
 
 .modal-body {
-  padding: 40px;
+  padding: 20px;
 }
 
 .modal-lg {
@@ -15109,7 +15111,7 @@ hr {
   }
   .sigma_about.style-14 .sigma_about-image-1 {
     right: 0;
-    margin-bottom: 50px;
+    margin-bottom: 30px;
   }
 
   /* About style 15 */
@@ -15152,7 +15154,7 @@ hr {
 
   /* Team Style 10 */
   .sigma_team.style-10 {
-    margin-bottom: 50px;
+    margin-bottom: 30px;
   }
 
   /* Accordion Style 1 */
@@ -17031,4 +17033,31 @@ td.remove button span {
     margin-right: 0;
     margin-bottom: 20px;
   }
+}
+
+.outline-primary {
+  background: #fff !important;
+  color: #000000b5 !important;
+  border-color: #d2d0d0 !important;
+}
+
+
+/* Make thead stick to the top of the table container */
+.appointment-scrollable-table-container > div {
+  max-height: 400px;
+  overflow-y: auto;
+  overflow-x: auto;
+  width: 100%;
+}
+
+.appointment-scrollable-table-container > div table {
+  margin-bottom: 0;
+}
+
+.appointment-scrollable-table-container > div thead th {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  background: #f8f9fa; /* Match your table head bg */
+  box-shadow: 0 2px 2px -2px #dee2e6;
 }
