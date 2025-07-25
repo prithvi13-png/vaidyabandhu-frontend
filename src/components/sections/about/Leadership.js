@@ -16,8 +16,8 @@ const LeadershipInline = () => {
   return (
     <section
       style={{
-       paddingTop: '140px',
- /* Generous padding for section */
+        paddingTop: '140px',
+        /* Generous padding for section */
 
         background: 'linear-gradient(135deg, #e0f7fa 0%, #ffffff 100%)', /* Light, inviting gradient */
         fontFamily: "'Inter', sans-serif", /* Consistent font */
@@ -136,76 +136,80 @@ const LeadershipInline = () => {
             {/* Dr. Ajith Ramaswamy's Photo and Name/Designation Container */}
             <div style={{ display: 'flex', alignItems: 'center', gap: '20px', marginBottom: '20px', flexDirection: 'row' }}> {/* Changed to row */}
               <img
- src={process.env.PUBLIC_URL + "/assets/img/ajith.jpg"}
-  alt="Dr. Ajith Ramaswamy"
-  style={{
-    width: '150px',
-    height: '150px',
-    borderRadius: '50%',
-    objectFit: 'cover',
-    objectPosition: 'center 15%', // shifts image focus downward
-    border: '4px solid #007a7e',
-    boxShadow: '0 8px 20px rgba(0, 77, 79, 0.2)',
-    transition: baseTransition,
-    ...(hoveredSection === 'ceo' && { transform: 'scale(1.05)' }),
-    flexShrink: 0,
-    marginTop: '2px',
-  }}
-  onError={(e) => {
-    e.target.onerror = null;
-    e.target.src = "https://placehold.co/150x150/CCCCCC/666666?text=Dr+Img";
-  }}
-/>
+                src={process.env.PUBLIC_URL + "/assets/img/ajith.jpg"}
+                alt="Dr. Ajith Ramaswamy"
+                style={{
+                  width: '150px',
+                  height: '150px',
+                  borderRadius: '50%',
+                  objectFit: 'cover',
+                  objectPosition: 'center 15%', // shifts image focus downward
+                  border: '4px solid #007a7e',
+                  boxShadow: '0 8px 20px rgba(0, 77, 79, 0.2)',
+                  transition: baseTransition,
+                  ...(hoveredSection === 'ceo' && { transform: 'scale(1.05)' }),
+                  flexShrink: 0,
+                  marginTop: '2px',
+                }}
+                onError={(e) => {
+                  e.target.onerror = null;
+                  e.target.src = "https://placehold.co/150x150/CCCCCC/666666?text=Dr+Img";
+                }}
+              />
 
-                <div style={{ flexGrow: 1, textAlign: 'left' }}> {/* Container for name and designation */}
-                    <h3
-                    style={{
-                        fontSize: 'clamp(20px, 2.5vw, 24px)',
-                        fontWeight: 600,
-                        color: '#007a7e', /* Accent color for names */
-                        marginBottom: '8px',
-                        opacity: animated ? 1 : 0,
-                        transform: animated ? "translateY(0)" : "translateY(15px)",
-                        transition: `opacity 0.7s ease-out 0.4s, transform 0.7s ease-out 0.4s`,
-                    }}
-                    >
-                    Dr. Ajith Ramaswamy
-                    </h3>
-                    <h5
-                    style={{
-                        color: '#5a6778',
-                        marginBottom: '0', /* Remove bottom margin here as it's handled by parent gap */
-                        fontSize: 'clamp(15px, 1.8vw, 17px)',
-                        fontStyle: 'italic',
-                        opacity: animated ? 1 : 0,
-                        transform: animated ? "translateY(0)" : "translateY(15px)",
-                        transition: `opacity 0.7s ease-out 0.5s, transform 0.7s ease-out 0.5s`,
-                    }}
-                    >
-                    Founder, Managing Director & CEO – Vaidya Bandhu
-                    </h5>
-                </div>
+              <div style={{ flexGrow: 1, textAlign: 'left' }}> {/* Container for name and designation */}
+                <h3
+                  style={{
+                    fontSize: 'clamp(20px, 2.5vw, 24px)',
+                    fontWeight: 600,
+                    color: '#007a7e', /* Accent color for names */
+                    marginBottom: '8px',
+                    opacity: animated ? 1 : 0,
+                    transform: animated ? "translateY(0)" : "translateY(15px)",
+                    transition: `opacity 0.7s ease-out 0.4s, transform 0.7s ease-out 0.4s`,
+                  }}
+                >
+                  Dr. Ajith Ramaswamy
+                </h3>
+                <h5
+                  style={{
+                    color: '#5a6778',
+                    marginBottom: '0', /* Remove bottom margin here as it's handled by parent gap */
+                    fontSize: 'clamp(15px, 1.8vw, 17px)',
+                    fontStyle: 'italic',
+                    opacity: animated ? 1 : 0,
+                    transform: animated ? "translateY(0)" : "translateY(15px)",
+                    transition: `opacity 0.7s ease-out 0.5s, transform 0.7s ease-out 0.5s`,
+                  }}
+                >
+                  Founder, Managing Director & CEO – Vaidya Bandhu
+                </h5>
+              </div>
             </div>
 
-            <p style={{ marginBottom: '15px', fontSize: 'clamp(16px, 2vw, 18px)', color: '#4a5568',
-                opacity: animated ? 1 : 0, transform: animated ? "translateY(0)" : "translateY(15px)", transition: `opacity 0.7s ease-out 0.6s, transform 0.7s ease-out 0.6s`,
+            <p style={{
+              marginBottom: '15px', fontSize: 'clamp(16px, 2vw, 18px)', color: '#4a5568',
+              opacity: animated ? 1 : 0, transform: animated ? "translateY(0)" : "translateY(15px)", transition: `opacity 0.7s ease-out 0.6s, transform 0.7s ease-out 0.6s`,
             }}>
-     At Vaidya Bandhu, our vision is rooted in a powerful belief - Quality healthcare is not a privilege, but a fundamental right. As the Founder, Managing Director & CEO, my mission is to ensure that every individual, regardless of their financial background, has access to affordable, compassionate, and quality medical care.
+              At Vaidya Bandhu, our vision is rooted in a powerful belief - Quality healthcare is not a privilege, but a fundamental right. As the Founder, Managing Director & CEO, my mission is to ensure that every individual, regardless of their financial background, has access to affordable, compassionate, and quality medical care.
             </p>
-            <p style={{ marginBottom: '15px', fontSize: 'clamp(16px, 2vw, 18px)', color: '#4a5568',
-                opacity: animated ? 1 : 0, transform: animated ? "translateY(0)" : "translateY(15px)", transition: `opacity 0.7s ease-out 0.7s, transform 0.7s ease-out 0.7s`,
+            <p style={{
+              marginBottom: '15px', fontSize: 'clamp(16px, 2vw, 18px)', color: '#4a5568',
+              opacity: animated ? 1 : 0, transform: animated ? "translateY(0)" : "translateY(15px)", transition: `opacity 0.7s ease-out 0.7s, transform 0.7s ease-out 0.7s`,
             }}>
-The seeds of Vaidya Bandhu were sown during a profoundly moving experience where I witnessed families struggle to afford life-saving treatment. That moment left a lasting impact on me - and sparked a deep resolve to challenge the status quo. I knew something had to change.
+              The seeds of Vaidya Bandhu were sown during a profoundly moving experience where I witnessed families struggle to afford life-saving treatment. That moment left a lasting impact on me - and sparked a deep resolve to challenge the status quo. I knew something had to change.
             </p>
-            <p style={{ marginBottom: '15px', fontSize: 'clamp(16px, 2vw, 18px)', color: '#4a5568',
-                opacity: animated ? 1 : 0, transform: animated ? "translateY(0)" : "translateY(15px)", transition: `opacity 0.7s ease-out 0.8s, transform 0.7s ease-out 0.8s`,
+            <p style={{
+              marginBottom: '15px', fontSize: 'clamp(16px, 2vw, 18px)', color: '#4a5568',
+              opacity: animated ? 1 : 0, transform: animated ? "translateY(0)" : "translateY(15px)", transition: `opacity 0.7s ease-out 0.8s, transform 0.7s ease-out 0.8s`,
             }}>
-When I met Mr. Subhashith Shetty, a like-minded entrepreneur and journalist, our shared vision of accessible healthcare aligned seamlessly. Together, we founded Vaidya Bandhu — not just as a platform, but as a movement committed to reducing the financial burden of healthcare. Our initiative offers 10% to 40% discounts on surgeries, diagnostics, and medical treatments — making quality healthcare significantly more affordable.
+              When I met Mr. Subhashith Shetty, a like-minded entrepreneur and journalist, our shared vision of accessible healthcare aligned seamlessly. Together, we founded Vaidya Bandhu — not just as a platform, but as a movement committed to reducing the financial burden of healthcare. Our initiative offers 10% to 40% discounts on surgeries, diagnostics, and medical treatments — making quality healthcare significantly more affordable.
             </p>
-            <p style={{ marginBottom: '15px', fontSize: 'clamp(16px, 2vw, 18px)', color: '#4a5568',
-                opacity: animated ? 1 : 0, transform: animated ? "translateY(0)" : "translateY(15px)", transition: `opacity 0.7s ease-out 0.9s, transform 0.7s ease-out 0.9s`,
+            <p style={{
+              marginBottom: '15px', fontSize: 'clamp(16px, 2vw, 18px)', color: '#4a5568',
+              opacity: animated ? 1 : 0, transform: animated ? "translateY(0)" : "translateY(15px)", transition: `opacity 0.7s ease-out 0.9s, transform 0.7s ease-out 0.9s`,
             }}>
-    But our mission goes beyond discounts. For patients facing extreme financial hardship, we are committed to offering free surgeries, with a target of 25 free surgeries in our first year - because care should never be denied due to cost.
+              But our mission goes beyond discounts. For patients facing extreme financial hardship, we are committed to offering free surgeries, with a target of 25 free surgeries in our first year - because care should never be denied due to cost.
             </p>
             <p
               style={{
@@ -224,7 +228,7 @@ When I met Mr. Subhashith Shetty, a like-minded entrepreneur and journalist, our
                 transition: `opacity 0.8s ease-out 1.0s, transform 0.8s ease-out 1.0s`,
               }}
             >
-Vaidya Bandhu is more than an organization. It is a promise. A promise to support patients, guide families, and stand beside every individual during their most vulnerable times. We are here to make healthcare not just accessible, but human again.
+              Vaidya Bandhu is more than an organization. It is a promise. A promise to support patients, guide families, and stand beside every individual during their most vulnerable times. We are here to make healthcare not just accessible, but human again.
             </p>
             <p
               style={{
@@ -238,7 +242,7 @@ Vaidya Bandhu is more than an organization. It is a promise. A promise to suppor
                 transition: `opacity 0.8s ease-out 1.2s, transform 0.8s ease-out 1.2s`,
               }}
             >
-       Thank you for believing in our mission. We are here to help, and we are here to make a difference.
+              Thank you for believing in our mission. We are here to help, and we are here to make a difference.
             </p>
           </div>
 
@@ -304,81 +308,86 @@ Vaidya Bandhu is more than an organization. It is a promise. A promise to suppor
 
             {/* Dr. Subhashith Shetty's Photo and Name/Designation Container */}
             <div style={{ display: 'flex', alignItems: 'center', gap: '20px', marginBottom: '20px', flexDirection: 'row' }}> {/* Changed to row */}
-                <img
-                    src={process.env.PUBLIC_URL + "/assets/img/Subhashith.jpeg"}
-  alt="Dr. Ajith Ramaswamy"
-  style={{
-    width: '150px',
-    height: '150px',
-    borderRadius: '50%',
-    objectFit: 'cover',
-    objectPosition: 'center 15%', // shifts image focus downward
-    border: '4px solid #007a7e',
-    boxShadow: '0 8px 20px rgba(0, 77, 79, 0.2)',
-    transition: baseTransition,
-    ...(hoveredSection === 'ceo' && { transform: 'scale(1.05)' }),
-    flexShrink: 0,
-    marginTop: '2px',
-  }}
-                    onError={(e) => { e.target.onerror = null; e.target.src="https://placehold.co/150x150/CCCCCC/666666?text=Dr+Img"; }}
-                />
-                <div style={{ flexGrow: 1, textAlign: 'left' }}> {/* Container for name and designation */}
-                    <h3
-                    style={{
-                        fontSize: 'clamp(20px, 2.5vw, 24px)',
-                        fontWeight: 600,
-                        color: '#007a7e',
-                        marginBottom: '8px',
-                        opacity: animated ? 1 : 0,
-                        transform: animated ? "translateY(0)" : "translateY(15px)",
-                        transition: `opacity 0.7s ease-out 1.0s, transform 0.7s ease-out 1.0s`,
-                    }}
-                    >
-                    Mr. Subhashith Shetty
-                    </h3>
-                    <h5
-                    style={{
-                        color: '#5a6778',
-                        marginBottom: '0',
-                        fontSize: 'clamp(15px, 1.8vw, 17px)',
-                        fontStyle: 'italic',
-                        opacity: animated ? 1 : 0,
-                        transform: animated ? "translateY(0)" : "translateY(15px)",
-                        transition: `opacity 0.7s ease-out 1.1s, transform 0.7s ease-out 1.1s`,
-                    }}
-                    >
-                    Founder, Director & COO – Vaidya Bandhu
-                    </h5>
-                </div>
+              <img
+                src={process.env.PUBLIC_URL + "/assets/img/Subhashith.jpeg"}
+                alt="Dr. Ajith Ramaswamy"
+                style={{
+                  width: '150px',
+                  height: '150px',
+                  borderRadius: '50%',
+                  objectFit: 'cover',
+                  objectPosition: 'center 15%', // shifts image focus downward
+                  border: '4px solid #007a7e',
+                  boxShadow: '0 8px 20px rgba(0, 77, 79, 0.2)',
+                  transition: baseTransition,
+                  ...(hoveredSection === 'ceo' && { transform: 'scale(1.05)' }),
+                  flexShrink: 0,
+                  marginTop: '2px',
+                }}
+                onError={(e) => { e.target.onerror = null; e.target.src = "https://placehold.co/150x150/CCCCCC/666666?text=Dr+Img"; }}
+              />
+              <div style={{ flexGrow: 1, textAlign: 'left' }}> {/* Container for name and designation */}
+                <h3
+                  style={{
+                    fontSize: 'clamp(20px, 2.5vw, 24px)',
+                    fontWeight: 600,
+                    color: '#007a7e',
+                    marginBottom: '8px',
+                    opacity: animated ? 1 : 0,
+                    transform: animated ? "translateY(0)" : "translateY(15px)",
+                    transition: `opacity 0.7s ease-out 1.0s, transform 0.7s ease-out 1.0s`,
+                  }}
+                >
+                  Mr. Subhashith Shetty
+                </h3>
+                <h5
+                  style={{
+                    color: '#5a6778',
+                    marginBottom: '0',
+                    fontSize: 'clamp(15px, 1.8vw, 17px)',
+                    fontStyle: 'italic',
+                    opacity: animated ? 1 : 0,
+                    transform: animated ? "translateY(0)" : "translateY(15px)",
+                    transition: `opacity 0.7s ease-out 1.1s, transform 0.7s ease-out 1.1s`,
+                  }}
+                >
+                  Founder, Director & COO – Vaidya Bandhu
+                </h5>
+              </div>
             </div>
 
-            <p style={{ marginBottom: '15px', fontSize: 'clamp(16px, 2vw, 18px)', color: '#4a5568',
-                opacity: animated ? 1 : 0, transform: animated ? "translateY(0)" : "translateY(15px)", transition: `opacity 0.7s ease-out 1.2s, transform 0.7s ease-out 1.2s`,
+            <p style={{
+              marginBottom: '15px', fontSize: 'clamp(16px, 2vw, 18px)', color: '#4a5568',
+              opacity: animated ? 1 : 0, transform: animated ? "translateY(0)" : "translateY(15px)", transition: `opacity 0.7s ease-out 1.2s, transform 0.7s ease-out 1.2s`,
             }}>
-At Vaidya Bandhu, our mission is simple but transformative - to make healthcare accessible, affordable, and trustworthy for everyone. As a Founder and COO, I am deeply committed to ensuring that every patient receives the best care possible, supported by a team that puts people above profit.
+              At Vaidya Bandhu, our mission is simple but transformative - to make healthcare accessible, affordable, and trustworthy for everyone. As a Founder and COO, I am deeply committed to ensuring that every patient receives the best care possible, supported by a team that puts people above profit.
             </p>
-            <p style={{ marginBottom: '15px', fontSize: 'clamp(16px, 2vw, 18px)', color: '#4a5568',
-                opacity: animated ? 1 : 0, transform: animated ? "translateY(0)" : "translateY(15px)", transition: `opacity 0.7s ease-out 1.3s, transform 0.7s ease-out 1.3s`,
+            <p style={{
+              marginBottom: '15px', fontSize: 'clamp(16px, 2vw, 18px)', color: '#4a5568',
+              opacity: animated ? 1 : 0, transform: animated ? "translateY(0)" : "translateY(15px)", transition: `opacity 0.7s ease-out 1.3s, transform 0.7s ease-out 1.3s`,
             }}>
-The journey began when a close acquaintance of mine was admitted to a leading corporate hospital. What was expected to be a ₹10 lakh bill ballooned to ₹33 lakh after complications. Insurance covered only a portion, and despite exhausting all options - friends, family, loans - they received no financial relief from the hospital. Even a basic 10% discount could have eased their pain, but it never came.
+              The journey began when a close acquaintance of mine was admitted to a leading corporate hospital. What was expected to be a ₹10 lakh bill ballooned to ₹33 lakh after complications. Insurance covered only a portion, and despite exhausting all options - friends, family, loans - they received no financial relief from the hospital. Even a basic 10% discount could have eased their pain, but it never came.
             </p>
-            <p style={{ marginBottom: '15px', fontSize: 'clamp(16px, 2vw, 18px)', color: '#4a5568',
-                opacity: animated ? 1 : 0, transform: animated ? "translateY(0)" : "translateY(15px)", transition: `opacity 0.7s ease-out 1.4s, transform 0.7s ease-out 1.4s`,
+            <p style={{
+              marginBottom: '15px', fontSize: 'clamp(16px, 2vw, 18px)', color: '#4a5568',
+              opacity: animated ? 1 : 0, transform: animated ? "translateY(0)" : "translateY(15px)", transition: `opacity 0.7s ease-out 1.4s, transform 0.7s ease-out 1.4s`,
             }}>
-It was heartbreaking, and more importantly, it was avoidable. If they had reached out earlier, I could have directed them to a hospital through our network that offers the same quality care at significantly reduced rates.
+              It was heartbreaking, and more importantly, it was avoidable. If they had reached out earlier, I could have directed them to a hospital through our network that offers the same quality care at significantly reduced rates.
             </p>
-            <p style={{ marginBottom: '15px', fontSize: 'clamp(16px, 2vw, 18px)', color: '#4a5568',
-                opacity: animated ? 1 : 0, transform: animated ? "translateY(0)" : "translateY(15px)", transition: `opacity 0.7s ease-out 1.5s, transform 0.7s ease-out 1.5s`,
+            <p style={{
+              marginBottom: '15px', fontSize: 'clamp(16px, 2vw, 18px)', color: '#4a5568',
+              opacity: animated ? 1 : 0, transform: animated ? "translateY(0)" : "translateY(15px)", transition: `opacity 0.7s ease-out 1.5s, transform 0.7s ease-out 1.5s`,
             }}>
-This experience stayed with me. I shared it with Dr. Ajith, whose compassionate nature and healthcare expertise made him the perfect partner to bring this idea to life. Together, we founded Vaidya Bandhu - a platform committed to bridging the gap between affordability and quality healthcare.
+              This experience stayed with me. I shared it with Dr. Ajith, whose compassionate nature and healthcare expertise made him the perfect partner to bring this idea to life. Together, we founded Vaidya Bandhu - a platform committed to bridging the gap between affordability and quality healthcare.
             </p>
-              <p style={{ marginBottom: '15px', fontSize: 'clamp(16px, 2vw, 18px)', color: '#4a5568',
-                opacity: animated ? 1 : 0, transform: animated ? "translateY(0)" : "translateY(15px)", transition: `opacity 0.7s ease-out 1.5s, transform 0.7s ease-out 1.5s`,
+            <p style={{
+              marginBottom: '15px', fontSize: 'clamp(16px, 2vw, 18px)', color: '#4a5568',
+              opacity: animated ? 1 : 0, transform: animated ? "translateY(0)" : "translateY(15px)", transition: `opacity 0.7s ease-out 1.5s, transform 0.7s ease-out 1.5s`,
             }}>
-Along with offering 10% to 40% discounts on medical treatments and diagnostics, we are committed to providing 25 free surgeries in our first year to patients who are in dire financial need. Because for us, it’s not just about discounts - it’s about dignity, access, and saving lives.
+              Along with offering 10% to 40% discounts on medical treatments and diagnostics, we are committed to providing 25 free surgeries in our first year to patients who are in dire financial need. Because for us, it’s not just about discounts - it’s about dignity, access, and saving lives.
             </p>
-          
-                <p
+
+            <p
               style={{
                 fontWeight: 700,
                 color: '#007a7e', /* Use primary teal for key statements */
@@ -395,9 +404,9 @@ Along with offering 10% to 40% discounts on medical treatments and diagnostics, 
                 transition: `opacity 0.8s ease-out 1.6s, transform 0.8s ease-out 1.6s`,
               }}
             >
-Today, many people feel that healthcare is no longer about care, but about commerce. But that’s not the whole truth. Not every doctor is chasing profit. Not every hospital is built for business. There are still many who chose this noble profession to heal, to serve, and to stand by those in need. At Vaidya Bandhu, we’re here to prove that healthcare can be ethical, affordable, and full of heart.
+              Today, many people feel that healthcare is no longer about care, but about commerce. But that’s not the whole truth. Not every doctor is chasing profit. Not every hospital is built for business. There are still many who chose this noble profession to heal, to serve, and to stand by those in need. At Vaidya Bandhu, we’re here to prove that healthcare can be ethical, affordable, and full of heart.
             </p>
-              <p
+            <p
               style={{
                 fontWeight: 700,
                 color: '#004d4f', /* A deeper, calming teal for assurance */
@@ -409,7 +418,7 @@ Today, many people feel that healthcare is no longer about care, but about comme
                 transition: `opacity 0.8s ease-out 1.8s, transform 0.8s ease-out 1.8s`,
               }}
             >
-     Thank you for trusting Vaidya Bandhu. We are here to stand by your side - every step of the way.
+              Thank you for trusting Vaidya Bandhu. We are here to stand by your side - every step of the way.
             </p>
           </div>
         </div>

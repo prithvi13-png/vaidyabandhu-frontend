@@ -1,10 +1,9 @@
-import React, { useEffect, useState } from 'react'; // Fixed: Changed '=>' to 'from'
-import MembershipModal from '../../layouts/MembershipModal';
+import React, { useEffect, useState } from 'react';
+// Assuming MembershipModal is imported correctly and handles its own logic/styling
+// import MembershipModal from '../../layouts/MembershipModal'; // Uncomment if needed
 
 const HowToBecomeMember = () => {
   const [animated, setAnimated] = useState(false);
-  // const [hoveredButton, setHoveredButton] = useState(false);
-  const [hoveredHeading, setHoveredHeading] = useState(false);
 
   useEffect(() => {
     // Trigger entrance animation after component mounts
@@ -12,50 +11,209 @@ const HowToBecomeMember = () => {
     return () => clearTimeout(timer);
   }, []);
 
-  // Unified, smoother transition for hover effects and animations
-  const baseTransition = "all 0.5s cubic-bezier(0.23, 1, 0.32, 1)";
+  const sectionStyle = {
+    padding: '80px 20px', // Generous padding for section
+    background: 'linear-gradient(135deg, #f5fdfd 0%, #e0f7fa 100%)', // Light, calming gradient
+    fontFamily: "'Inter', sans-serif", // Consistent font
+    color: '#4a5568', // Soft dark gray for main text
+    lineHeight: '1.6',
+    overflow: 'hidden',
+    position: 'relative', // Parent for absolute positioned background elements
+    textAlign: 'center', // Center align text content
+    minHeight: '600px',
+  };
+
+  const headingStyle = {
+    fontSize: 'clamp(28px, 4.5vw, 40px)', // Larger, responsive title size
+    fontWeight: 800, // Bolder
+    color: '#002a2c', // Dark teal for headings
+    marginBottom: '15px', // More space below title
+    lineHeight: '1.3',
+    opacity: animated ? 1 : 0, // Fade in
+    transform: animated ? "translateY(0)" : "translateY(-20px)", // Slide in from top
+    transition: "opacity 1s ease-out, transform 1s ease-out",
+  };
+
+  const subHeadingStyle = {
+    fontSize: 'clamp(18px, 2.5vw, 22px)', // Responsive font size
+    color: '#4a5568',
+    maxWidth: '900px',
+    margin: '0 auto 60px', // More space below subheading
+    lineHeight: '1.6',
+    fontWeight: '400',
+    opacity: animated ? 1 : 0,
+    transform: animated ? "translateY(0)" : "translateY(30px)", // Slide in from bottom
+    transition: "opacity 0.8s ease-out 0.4s, transform 0.8s ease-out 0.4s", // Staggered animation
+  };
+
+  const stepsContainerStyle = {
+    display: 'flex',
+    flexDirection: 'column', // Always column for the main layout
+    gap: '50px', // Increased space between step items for visual separation
+    maxWidth: '800px', // Max width for the steps content
+    margin: '0 auto',
+    padding: '0 10px', // Padding for content within the container
+    position: 'relative',
+    zIndex: 1, // Ensure steps are above background elements
+    textAlign: 'left', // Align text within steps to the left
+  };
+
+  // Line connector between steps (simulated with absolute positioning)
+  const connectorLineStyle = {
+    position: 'absolute',
+    left: '40px', // Aligned with the center of the number circles (10px container padding + 30px half-width of number)
+    top: '30px', // Start near the top of the first number
+    bottom: '30px', // End near the bottom of the last number
+    width: '2px', // Thinner line
+    background: 'linear-gradient(to bottom, #007a7e, #004d4f)', // Gradient line
+    zIndex: 0, // Behind the step items
+    opacity: animated ? 0.7 : 0, // Fade in with animation
+    transition: 'opacity 1s ease-out 0.8s',
+  };
+
+  const stepItemStyle = {
+    display: 'flex',
+    alignItems: 'flex-start', // Align icon and text at the top
+    position: 'relative',
+    padding: '15px 0', // Reduced vertical padding, no horizontal padding on the block itself
+    // Removed background, boxShadow, borderRadius, borderLeft
+    opacity: 0, // Hidden by default, animated in
+    transform: 'translateY(50px)', // Slide up from bottom
+    transition: 'opacity 0.8s ease-out, transform 0.8s ease-out', // Keep transitions
+    zIndex: 1, // Ensure step items are above the connector line
+  };
+
+  const stepNumberStyle = {
+    width: '60px', // Larger number circle
+    height: '60px', // Larger number circle
+    minWidth: '60px',
+    borderRadius: '50%',
+    background: 'linear-gradient(135deg, #007a7e, #004d4f)',
+    color: '#ffffff',
+    fontSize: '28px', // Larger font for numbers
+    fontWeight: 'bold',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginRight: '30px', // More space between number and text
+    boxShadow: '0 6px 20px rgba(0, 122, 126, 0.3)', // Softer shadow
+    flexShrink: 0,
+    transition: 'all 0.3s ease', // For hover effect
+  };
+
+  const stepContentStyle = {
+    flexGrow: 1,
+    paddingLeft: '10px', // Add some padding to the text content itself
+    borderLeft: '2px solid rgba(0, 122, 126, 0.2)', // Subtle left border for content block
+    paddingBottom: '10px', // Small padding at bottom of content
+    paddingTop: '5px', // Small padding at top of content to align with number
+  };
+
+  const stepTitleStyle = {
+    fontSize: 'clamp(22px, 2.8vw, 26px)', // Slightly larger title
+    fontWeight: 700,
+    color: '#002a2c',
+    marginBottom: '8px', // Reduced margin
+    lineHeight: '1.3',
+  };
+
+  const stepDescriptionStyle = {
+    fontSize: 'clamp(16px, 2.2vw, 18px)',
+    color: '#5a6778',
+    lineHeight: '1.6',
+  };
+
+  const buttonContainerStyle = {
+    marginTop: '60px',
+    opacity: animated ? 1 : 0,
+    transform: animated ? "translateY(0)" : "translateY(30px)",
+    transition: "opacity 0.8s ease-out 1.5s, transform 0.8s ease-out 1.5s",
+  };
 
   return (
-    <section
-      style={{
-        padding: '40px 20px', /* Generous padding for section */
-        background: 'linear-gradient(135deg, #f5fdfd 0%, #e0f7fa 100%)', /* Light, calming gradient */
-        fontFamily: "'Inter', sans-serif", /* Consistent font */
-        color: '#4a5568', /* Soft dark gray for main text */
-        lineHeight: '1.4',
-        overflow: 'hidden',
-        position: 'relative', // For absolute positioned background elements
-        opacity: animated ? 1 : 0, // Section fade-in
-        transform: animated ? "translateY(0)" : "translateY(30px)", // Section slide-up
-        transition: `opacity 0.8s ease-out, transform 0.8s ease-out`,
-      }}
-    >
+    <section style={sectionStyle}>
       {/* Decorative background elements */}
       <div
         style={{
           position: "absolute",
-          top: "15%",
-          left: "10%",
-          width: "min(100px, 10vw)",
-          height: "min(100px, 10vw)",
-          backgroundColor: "rgba(0, 122, 126, 0.05)", // Teal accent with transparency
+          top: "10%",
+          left: "8%",
+          width: "min(120px, 12vw)",
+          height: "min(120px, 12vw)",
+          backgroundColor: "rgba(0, 122, 126, 0.06)",
           borderRadius: "50%",
-          filter: "blur(20px)",
-          animation: "floatShape1 10s infinite ease-in-out",
+          filter: "blur(30px)",
+          animation: "driftRotate1 15s infinite ease-in-out alternate",
+          opacity: animated ? 1 : 0,
+          transition: "opacity 1s ease-out",
           zIndex: 0,
         }}
       ></div>
       <div
         style={{
           position: "absolute",
-          bottom: "15%",
-          right: "10%",
-          width: "min(130px, 13vw)",
-          height: "min(130px, 13vw)",
-          backgroundColor: "rgba(0, 122, 126, 0.03)", // Lighter teal accent with transparency
+          bottom: "10%",
+          right: "8%",
+          width: "min(150px, 15vw)",
+          height: "min(150px, 15vw)",
+          backgroundColor: "rgba(0, 122, 126, 0.04)",
+          borderRadius: "50%",
+          filter: "blur(35px)",
+          animation: "driftRotate2 18s infinite ease-in-out alternate-reverse",
+          opacity: animated ? 1 : 0,
+          transition: "opacity 1s ease-out",
+          zIndex: 0,
+        }}
+      ></div>
+      <div
+        style={{
+          position: "absolute",
+          top: "30%",
+          right: "20%",
+          width: "min(80px, 8vw)",
+          height: "min(80px, 8vw)",
+          backgroundColor: "rgba(0, 122, 126, 0.07)",
           borderRadius: "50%",
           filter: "blur(25px)",
-          animation: "floatShape2 12s infinite ease-in-out",
+          animation: "driftRotate3 12s infinite ease-in-out alternate",
+          opacity: animated ? 1 : 0,
+          transition: "opacity 1s ease-out",
+          zIndex: 0,
+        }}
+      ></div>
+
+      {/* New: Square/Diamond shape */}
+      <div
+        style={{
+          position: "absolute",
+          top: "60%",
+          left: "15%",
+          width: "min(100px, 10vw)",
+          height: "min(100px, 10vw)",
+          backgroundColor: "rgba(0, 122, 126, 0.03)",
+          transform: "rotate(45deg)",
+          filter: "blur(20px)",
+          animation: "diagonalMove 14s infinite ease-in-out alternate",
+          opacity: animated ? 1 : 0,
+          transition: "opacity 1s ease-out",
+          zIndex: 0,
+        }}
+      ></div>
+
+      {/* New: Larger, more subtle blob shape (simulated with border-radius) */}
+      <div
+        style={{
+          position: "absolute",
+          bottom: "5%",
+          left: "5%",
+          width: "min(250px, 25vw)",
+          height: "min(250px, 25vw)",
+          backgroundColor: "rgba(0, 122, 126, 0.02)",
+          borderRadius: "30% 70% 70% 30% / 30% 30% 70% 70%",
+          filter: "blur(40px)",
+          animation: "pulseScale 20s infinite ease-in-out alternate",
+          opacity: animated ? 1 : 0,
+          transition: "opacity 1s ease-out",
           zIndex: 0,
         }}
       ></div>
@@ -63,135 +221,130 @@ const HowToBecomeMember = () => {
       <div
         className="container"
         style={{
-          maxWidth: '1250px', /* Optimal width for text content */
+          maxWidth: '1250px',
           margin: '0 auto',
           padding: '0 10px',
-          position: 'relative', // Ensures content is above background elements
+          position: 'relative',
           zIndex: 1,
-          textAlign: 'center', // Center align content
+          textAlign: 'center',
         }}
       >
-        <h2
-          style={{
-            fontSize: 'clamp(22px, 4.5vw, 38px)', /* Larger, responsive title size */
-            fontWeight: 800, // Bolder
-            color: '#004d4f', /* Dark teal for headings */
-            position: 'relative',
-            paddingBottom: '20px', // More space for underline
-            marginBottom: '15px', // More space below title
-            transition: baseTransition,
-          }}
-          onMouseEnter={() => setHoveredHeading(true)}
-          onMouseLeave={() => setHoveredHeading(false)}
-        >
+        <h2 style={headingStyle}>
           How to Become a <span style={{ color: '#007a7e' }}>Member</span>
-          {/* Custom double underline effect for elegance */}
-        
         </h2>
+        <p style={subHeadingStyle}>
+          Joining Vaidya Bandhu is simple and straightforward. Follow these easy steps to unlock a year of exclusive healthcare benefits.
+        </p>
 
-        <div
-          style={{
-            backgroundColor: '#FFFFFF', /* Pure white background for content card */
-            borderRadius: '20px', /* More rounded corners */
-            boxShadow: '0 12px 35px rgba(0, 77, 79, 0.12)', // Soft shadow
-            padding: '40px', /* Generous padding inside the card */
-            opacity: animated ? 1 : 0,
-            transform: animated ? "translateY(0)" : "translateY(30px)",
-            transition: `opacity 0.8s ease-out 0.4s, transform 0.8s ease-out 0.4s`,
-          }}
-        >
-          <p
+        <div style={stepsContainerStyle}>
+          {/* Connector Line (positioned relative to stepsContainer) */}
+          <div style={connectorLineStyle}></div>
+
+          {/* Step 1 */}
+          <div
             style={{
-              fontSize: 'clamp(18px, 2.2vw, 20px)', /* Slightly larger font for main content */
-              color: '#4a5568',
-              marginBottom: '25px',
-              lineHeight: '1.7',
+              ...stepItemStyle,
+              transitionDelay: '0.6s',
+              opacity: animated ? 1 : 0,
+              transform: animated ? "translateY(0)" : "translateY(50px)",
+            }}
+            onMouseEnter={(e) => {
+              // No box shadow on item, but number can still animate
+              e.currentTarget.querySelector('div').style.transform = 'scale(1.1) rotate(5deg)'; // Number icon hover
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.querySelector('div').style.transform = 'scale(1) rotate(0deg)'; // Number icon reset
             }}
           >
-            To become a member, simply fill out the membership form with your details
-            (<strong style={{ color: '#007a7e' }}>name, address, phone number</strong>; PAN & Aadhaar - optional),
-            make a payment of <strong style={{ color: '#007a7e' }}>&#8377;49</strong>, and your membership card will be
-            delivered to your address. Your membership is valid for <strong style={{ color: '#007a7e' }}>1 year</strong>,
-            and upon expiration, you can easily renew it.
-          </p>
+            <div style={stepNumberStyle}>1</div>
+            <div style={stepContentStyle}>
+              <h3 style={stepTitleStyle}>Step 1: Fill out the Membership Form</h3>
+              <p style={stepDescriptionStyle}>
+                Enter your name, address, phone number. PAN & Aadhaar are optional.
+              </p>
+            </div>
+          </div>
 
-          <MembershipModal />
+          {/* Step 2 */}
+          <div
+            style={{
+              ...stepItemStyle,
+              transitionDelay: '0.9s',
+              opacity: animated ? 1 : 0,
+              transform: animated ? "translateY(0)" : "translateY(50px)",
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.querySelector('div').style.transform = 'scale(1.1) rotate(5deg)';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.querySelector('div').style.transform = 'scale(1) rotate(0deg)';
+            }}
+          >
+            <div style={stepNumberStyle}>2</div>
+            <div style={stepContentStyle}>
+              <h3 style={stepTitleStyle}>Step 2: Make a One-Time Payment</h3>
+              <p style={stepDescriptionStyle}>
+                Pay just <strong style={{ color: '#007a7e' }}>&#8377;49</strong> to activate your membership and access all benefits for a full year. Renew it after a year.
+              </p>
+            </div>
+          </div>
 
+          {/* Step 3 */}
+          <div
+            style={{
+              ...stepItemStyle,
+              transitionDelay: '1.2s',
+              opacity: animated ? 1 : 0,
+              transform: animated ? "translateY(0)" : "translateY(50px)",
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.querySelector('div').style.transform = 'scale(1.1) rotate(5deg)';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.querySelector('div').style.transform = 'scale(1) rotate(0deg)';
+            }}
+          >
+            <div style={stepNumberStyle}>3</div>
+            <div style={stepContentStyle}>
+              <h3 style={stepTitleStyle}>Step 3: Receive Your Membership Card</h3>
+              <p style={stepDescriptionStyle}>
+                Your personalized membership card will be delivered directly to your address, granting you access to all benefits.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* Membership Modal Button (assuming it's a component that renders a button) */}
+        <div style={buttonContainerStyle}>
+          {/* Replace with your actual MembershipModal component */}
+          {/* <MembershipModal /> */}
+          {/* Placeholder button for preview */}
+          <button
+            style={{
+              background: 'linear-gradient(to right, #007a7e, #004d4f)',
+              color: '#ffffff',
+              border: 'none',
+              padding: '15px 35px',
+              borderRadius: '8px',
+              fontSize: '18px',
+              fontWeight: '600',
+              cursor: 'pointer',
+              boxShadow: '0 8px 20px rgba(0, 122, 126, 0.3)',
+              transition: 'all 0.3s ease',
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.transform = 'translateY(-3px) scale(1.02)';
+              e.currentTarget.style.boxShadow = '0 12px 25px rgba(0, 122, 126, 0.45)';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.transform = 'translateY(0) scale(1)';
+              e.currentTarget.style.boxShadow = '0 8px 20px rgba(0, 122, 126, 0.3)';
+            }}
+          >
+            Join Now
+          </button>
         </div>
       </div>
-
-      {/* Keyframes for the floating background shapes */}
-      <style>
-        {`
-          @keyframes floatShape1 {
-            0% { transform: translate(0, 0) rotate(0deg); }
-            50% { transform: translate(20px, 20px) rotate(5deg); }
-            100% { transform: translate(0, 0) rotate(0deg); }
-          }
-          @keyframes floatShape2 {
-            0% { transform: translate(0, 0) rotate(0deg); }
-            50% { transform: translate(-20px, -20px) rotate(-5deg); }
-            100% { transform: translate(0, 0) rotate(0deg); }
-          }
-
-          /* Responsive adjustments */
-          @media (max-width: 768px) {
-            section[style*="padding: 80px 20px"] { /* Main section padding */
-              padding: 60px 15px !important;
-            }
-            h2[style*="font-size: clamp(32px, 4.5vw, 40px)"] { /* Section title */
-              font-size: clamp(28px, 5.5vw, 36px) !important;
-              padding-bottom: 15px !important;
-              margin-bottom: 30px !important;
-            }
-            h2 span[style*="bottom: 12px"] { /* Underline position */
-                bottom: 8px !important;
-            }
-            h2 span[style*="bottom: 0"] { /* Underline position */
-                bottom: -2px !important;
-            }
-            div[style*="padding: 40px"] { /* Content card padding */
-              padding: 30px !important;
-            }
-            p[style*="font-size: clamp(18px, 2.2vw, 20px)"] { /* Paragraph font size */
-              font-size: clamp(16px, 2.8vw, 18px) !important;
-            }
-            a[href="/appointment"] { /* Button padding and font size */
-              padding: 12px 25px !important;
-              font-size: clamp(16px, 2.5vw, 18px) !important;
-            }
-          }
-
-          @media (max-width: 480px) {
-            section[style*="padding: 80px 20px"] { /* Main section padding */
-              padding: 40px 10px !important;
-            }
-            h2[style*="font-size: clamp(32px, 4.5vw, 40px)"] { /* Section title */
-              font-size: clamp(24px, 7vw, 30px) !important;
-              padding-bottom: 12px !important;
-              margin-bottom: 25px !important;
-            }
-            h2 span[style*="bottom: 12px"] { /* Underline position */
-                bottom: 6px !important;
-                width: 70px !important;
-            }
-            h2 span[style*="bottom: 0"] { /* Underline position */
-                bottom: -4px !important;
-                width: 40px !important;
-            }
-            div[style*="padding: 40px"] { /* Content card padding */
-              padding: 20px !important;
-            }
-            p[style*="font-size: clamp(18px, 2.2vw, 20px)"] { /* Paragraph font size */
-              font-size: clamp(15px, 3.5vw, 17px) !important;
-            }
-            a[href="/appointment"] { /* Button padding and font size */
-              padding: 10px 20px !important;
-              font-size: clamp(15px, 3vw, 17px) !important;
-            }
-          }
-        `}
-      </style>
     </section>
   );
 };

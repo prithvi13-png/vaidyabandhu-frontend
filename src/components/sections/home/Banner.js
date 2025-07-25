@@ -8,13 +8,13 @@ const dummyBannerData = [
     // Using a direct placeholder image URL for static environment
     image: "assets/img/ban1.jpeg",
     title:
-      "India’s First & No.1 Comprehensive Healthcare Network Under One Roof", // Main title
+      "India's Premier All-in-One Healthcare Ecosystem – Seamless Access to Top Doctors, Hospitals,and Diagnostics", // Main title
     benefits: [
-      "10% to 40% discounts on surgeries, treatments, and diagnostics",
-      "10% CASHBACK BENEFIT - Submit bill/invoice within 7 days via WhatsApp/email - Get 10% cashback credited to your account",
-      "Free surgeries for the needy through our social impact programs",
-      "Free medical guidance from 9 AM to 6 PM via our helpline",
-      "Personal support in choosing the right doctor, hospital, or diagnostic service",
+      "Save 10% to 40% on surgeries, treatments, and diagnostics Services.",
+      "Get 10% Cashback: Send your bill to Vaidya Bandhu via WhatsApp or Email. Cashback will be credited to your account within 7 working days.",
+      "Free surgeries available for those in need through our social programs.",
+      "Call our helpline from 9 AM to 6 PM for free medical advice.",
+      "We help you choose the right doctor, hospital, or diagnostic center.",
     ],
   },
 ];

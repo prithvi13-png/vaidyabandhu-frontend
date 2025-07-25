@@ -151,7 +151,7 @@ const DoctorsComponent = () => {
           transition: "opacity 0.8s ease-out 0.2s, transform 0.8s ease-out 0.2s",
         }}
       >
-        Discover our team of highly qualified and experienced healthcare professionals dedicated to your well-being.
+      Consult trusted doctors, verified specialists anytime, anywhere across Karnataka. 
       </p>
 
       <div

@@ -49,7 +49,7 @@ const ClientLogosCarousel = () => {
           transition: "opacity 0.8s ease-out, transform 0.8s ease-out",
         }}
       >
-        Our Valued <span style={{ color: "#007a7e" }}>Partners & Clients</span>
+        Our Valued - <span style={{ color: "#007a7e" }}>United by Trust, Guided by Care.</span>
       </h2>
       <p
         style={{
@@ -64,8 +64,9 @@ const ClientLogosCarousel = () => {
           transition: "opacity 0.8s ease-out 0.2s, transform 0.8s ease-out 0.2s", // Slight delay
         }}
       >
-        We are proud to collaborate with leading organizations and serve a diverse range of clients,
-        building strong relationships based on trust and mutual success.
+    At Vaidya Bandhu, our trusted bonds with caring doctors, leading hospitals, and diagnostic
+centers ensure ethical, affordable, and high-quality healthcare, delivered through seamless
+consultations, discounted diagnostics, cost-effective Surgeries, and treatments.
       </p>
 
       {/* Carousel Container */}

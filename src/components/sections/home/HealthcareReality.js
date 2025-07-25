@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 
 const HealthcareReality = () => {
   const [animated, setAnimated] = useState(false);
@@ -12,7 +12,6 @@ const HealthcareReality = () => {
   return (
     <div
       style={{
-        marginTop: "-10px",
         padding: "40px 20px",
         background: "linear-gradient(135deg, #fdfefe 0%, #e8f5e9 100%)", // Very light, calming gradient
         textAlign: "center",
@@ -83,17 +82,16 @@ const HealthcareReality = () => {
         {/* Main Heading */}
         <h2
           style={{
-            fontSize: "clamp(22px, 5vw, 36px)", // Responsive font size
-            fontWeight: "800",
+            fontSize: "clamp(24px, 4vw, 32px)",
+            fontWeight: 800,
             color: "#004d4f",
-            marginBottom: "1px",
-            lineHeight: "1.2",
-            opacity: animated ? 1 : 0,
-            transform: animated ? "translateY(0)" : "translateY(30px)",
-            transition: "opacity 0.8s ease-out, transform 0.8s ease-out",
+            textAlign: "center",
+            marginBottom: "8px",
+            lineHeight: "1.3",
           }}
         >
-          The Reality of Modern Healthcare
+          The Reality of{" "}
+          <span style={{ color: "#007a7e" }}>Modern Healthcare </span>
         </h2>
 
         {/* Subtitle/Intro Paragraph */}
@@ -103,13 +101,15 @@ const HealthcareReality = () => {
             color: "#4a5568",
             lineHeight: "1.5",
             fontWeight: "400",
+            fontFamily: "'Poppins', sans-serif", // Ensure Poppins is applied globally
             marginBottom: "10px",
             opacity: animated ? 1 : 0,
             transform: animated ? "translateY(0)" : "translateY(30px)",
-            transition: "opacity 0.8s ease-out 0.2s, transform 0.8s ease-out 0.2s",
+            transition:
+              "opacity 0.8s ease-out 0.2s, transform 0.8s ease-out 0.2s",
           }}
         >
-          In today’s world, quality healthcare is becoming increasingly expensive.
+      Accessing quality healthcare today is becoming unaffordable for many.
         </p>
 
         {/* Combined Key Challenges Section (now the main paragraph) */}
@@ -117,15 +117,24 @@ const HealthcareReality = () => {
           style={{
             opacity: animated ? 1 : 0,
             transform: animated ? "translateY(0)" : "translateY(20px)",
-            transition: "opacity 0.8s ease-out 0.4s, transform 0.8s ease-out 0.4s",
+            transition:
+              "opacity 0.8s ease-out 0.4s, transform 0.8s ease-out 0.4s",
             padding: "0 10px", // Slight horizontal padding for text blocks
             textAlign: "left", // Ensure text is left-aligned
           }}
         >
-          <p style={{ fontSize: "clamp(15px, 2vw, 17px)", color: "#5a6778", lineHeight: "1.7" }}>
-            Many families struggle to arrange funds for medical emergencies, surgeries, and long-term treatments.
-            The fear of high hospital bills, confusion in choosing the right doctor, and lack of financial support
-            often lead to delayed treatments, worsening health conditions, or even loss of life.
+          <p
+            style={{
+              fontSize: "clamp(16px, 2.5vw, 20px)", // Same responsive font size
+              fontFamily: "'Poppins', sans-serif", // Ensure Poppins is applied globally
+
+              color: "#4a5568", // Same color
+              lineHeight: "1.5",
+            }}
+          >
+           Thousands of families face financial burden during medical emergencies, surgeries, and chronic
+treatments. Rising hospital costs, difficulty finding the right doctors, and limited financial support
+often result in health complications or even preventable loss of life.
           </p>
         </div>
       </div>

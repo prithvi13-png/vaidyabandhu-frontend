@@ -1,32 +1,105 @@
 import React, { Component } from "react";
-import whyus from "../../../data/whyus.json";
+
+// Import Poppins font
+// import '@fontsource/poppins/300.css';
+// import '@fontsource/poppins/400.css';
+// import '@fontsource/poppins/500.css';
+// import '@fontsource/poppins/600.css';
+// import '@fontsource/poppins/700.css';
+// import '@fontsource/poppins/800.css';
+
+// Dummy data for whyus since the import was removed
+const whyus = [
+  {
+    icon: "flaticon-doctor",
+    title: "Affordable Healthcare for All",
+    text: "Get cost-effective medical treatments without compromising quality"
+  },
+  {
+    icon: "flaticon-hospital",
+    title: "Top Doctors Across Specialties",
+    text: "Consult experienced specialists in cardiology, orthopedics, oncology, and 70+ departments."
+  },
+  {
+    icon: "flaticon-stethoscope",
+    title: "Trusted Network of Health Warriors",
+    text: "Partnered with hospitals and doctors dedicated to patient-first care."
+  },
+  {
+    icon: "flaticon-clipboard",
+    title: "Available Across Karnataka",
+    text: "Access services anywhere in the state - urban or rural."
+  },
+  {
+    icon: "flaticon-heart",
+    title: "₹49 Membership Benefits",
+    text: "Unlock 10%–40% discounts on surgeries, treatments and diagnostics."
+  },
+  {
+    icon: "flaticon-call",
+    title: "24/7 Helpline",
+    text: "Free medical advice and assistance available whenever you need it."
+  }
+];
 
 class Whyus extends Component {
   render() {
     return (
-      <div className="row">
+      <div
+        className="row"
+        style={{
+          paddingTop: "80px",
+          fontFamily: "'Poppins', sans-serif" // Apply Poppins to all text in this section
+        }}
+      >
         <div className="col-lg-5 order-2 order-lg-1">
           <div className="sigma_about style-21">
-            <div className="section-title">
-              <h3
-                className="title text-white"
-                style={{ fontSize: "2.8rem", fontWeight: "800" }}
+            <div className="section-title" style={{ marginBottom: "40px" }}>
+              <h2
+                style={{
+                  fontSize: "clamp(24px, 4vw, 32px)",
+                  fontWeight: 800,
+                  color: "#fff",
+                  textAlign: "center",
+                  marginBottom: "8px",
+                  lineHeight: "1.3",
+                  fontFamily: "'Poppins', sans-serif" // Added Poppins
+                }}
               >
                 Why Choose VaidyaBandhu?
-              </h3>
+                
+              </h2>
+                 <p >
+  Ready to Get Started?<br/>
+Empower your health journey—join VaidyaBandhu for trusted, smarter care.
+     </p>
             </div>
             <div className="sigma_about-content">
-              {/* <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. It is a long established fact that a reader
-                                will be Lorem ipsum dolor sit amet consectetur.</p> */}
+              
               {/* Data */}
               {whyus.slice(0, 6).map((item, i) => (
                 <div className="sigma_info style-15" key={i}>
                   <div className="sigma_info-title">
                     <i className={"sigma_info-icon " + item.icon} />
                   </div>
-                  <div className="sigma_info-description">
-                    <h5>{item.title}</h5>
-                    <p>{item.text}</p>
+                  <div
+                    className="sigma_info-description"
+                    style={{ fontFamily: "'Poppins', sans-serif" }} // Added Poppins
+                  >
+                    <h5
+                      style={{
+                        fontFamily: "'Poppins', sans-serif" // Added Poppins
+                      }}
+                    >
+                      {item.title}
+                    </h5>
+                    <p
+                      style={{
+                        fontFamily: "'Poppins', sans-serif" // Added Poppins
+                      }}
+                    >
+                      {item.text}
+                    </p>
                   </div>
                 </div>
               ))}

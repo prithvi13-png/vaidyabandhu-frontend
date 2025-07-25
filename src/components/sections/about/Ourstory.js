@@ -175,7 +175,9 @@ const OurStory = () => {
                 transition: `opacity 0.8s ease-out 0.8s, transform 0.8s ease-out 0.8s`,
               }}
             >
-              To create a nationwide ecosystem where patients are respected, doctors are honoured, and care comes before commerce.
+To create a nationwide ecosystem where patients are respected, doctors are honored, and care
+comes before commerce. VaidyaBandhu empowers patients by upholding privacy, reliability, and
+inclusivity. 
             </p>
           </div>
 
@@ -219,7 +221,8 @@ const OurStory = () => {
                 margin: '0 auto 25px',
               }}
             >
-              To empower patients with timely medical guidance, trusted hospital access, and compassionate support throughout their healthcare journey.
+At Vaidya Bandhu, we empower patients with timely medical guidance, seamless access to trusted
+hospitals, and compassionate care at every step of their healthcare journey.
             </p>
 
 
@@ -273,12 +276,12 @@ const OurStory = () => {
 
                 <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
                   {[
-                    'Provide 10 - 40% discounts on surgeries, treatments, and diagnostics.',
-                    'Offer free medical guidance to help people make informed decisions.',
-                    '10% CASHBACK BENEFIT - Submit bill/invoice within 7 days via WhatsApp/email  - Get 10% cashback credited to your account.',
-                    'Connect patients with top doctors in every medical department.',
-                    'Support underprivileged patients by arranging free surgeries.',
-                    'Expand our network of hospitals & diagnostic centers across India.',
+                    '10–40% off on surgeries, treatments & diagnostics',
+                    'Free medical guidance for informed decisions)',
+                    'Get 10% Cashback: Send your bill to Vaidya Bandhu via WhatsApp or Email. Cashback will be credited to your account within 7 working days.',
+                    'Top doctors across all specialties and everywhere',
+                    'Free surgeries for the needy through our social impact programs.',
+                    ' Personalized support in selecting the Ideal Doctor, Hospital, or Diagnostic Centers.',
                   ].map((item, index) => (
                     <li
                       key={index}
