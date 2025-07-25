@@ -26,7 +26,7 @@ const Footer = () => {
                 background: "linear-gradient(135deg, #003d3f 0%, #001a1b 100%)", // Dark, inviting gradient
                 paddingTop: "60px", // Adjusted padding
                 paddingBottom: "0",
-                fontFamily: "'Inter', sans-serif",
+                fontFamily: "'poppins', sans-serif",
                 color: "#a0aec0", // Default light text color for dark background
                 overflow: "hidden",
                 position: "relative",
@@ -40,6 +40,7 @@ const Footer = () => {
                     position: "absolute",
                     top: "5%",
                     left: "0%",
+                     fontFamily: "'poppins', sans-serif",
                     width: "min(100px, 10vw)",
                     height: "min(100px, 10vw)",
                     backgroundColor: "rgba(0, 122, 126, 0.1)", // Slightly more visible on dark
@@ -54,6 +55,7 @@ const Footer = () => {
                     position: "absolute",
                     bottom: "5%",
                     right: "0%",
+                     fontFamily: "'poppins', sans-serif",
                     width: "min(120px, 12vw)",
                     height: "min(120px, 12vw)",
                     backgroundColor: "rgba(0, 122, 126, 0.08)", // Slightly more visible on dark
@@ -65,7 +67,7 @@ const Footer = () => {
             ></div>
 
 
-            <div className="container" style={{ maxWidth: "1200px", margin: "0 auto", position: "relative", zIndex: 1 }}>
+            <div className="container" style={{ maxWidth: "1200px", margin: "0 auto", fontFamily: "'poppins', sans-serif", position: "relative", zIndex: 1 }}>
                 <div
                     style={{
                         display: "flex",
@@ -84,6 +86,7 @@ const Footer = () => {
                             display: "flex",
                             alignItems: "flex-start",
                             gap: "15px",
+                             fontFamily: "'poppins', sans-serif",
                             textAlign: "left",
                             flex: "1 1 280px", // Responsive sizing
                             maxWidth: "350px",
@@ -94,6 +97,7 @@ const Footer = () => {
                                 width: "50px",
                                 height: "50px",
                                 borderRadius: "50%",
+                                 fontFamily: "'poppins', sans-serif",
                                 background: "#007a7e", // Accent color for icons
                                 display: "flex",
                                 alignItems: "center",
@@ -108,8 +112,8 @@ const Footer = () => {
                             </svg>
                         </div>
                         <div>
-                            <p style={{ margin: "0", fontSize: "16px", color: "#a0aec0" }}>Our Address</p>
-                            <p style={{ margin: "0", fontSize: "18px", fontWeight: "bold", color: "#e2e8f0" }}>Bengaluru - 560078</p>
+                            <p style={{ margin: "0", fontFamily: "'poppins', sans-serif", fontSize: "16px", color: "#a0aec0" }}>Our Address</p>
+                            <p style={{ margin: "0",  fontFamily: "'poppins', sans-serif", fontSize: "18px", fontWeight: "bold", color: "#e2e8f0" }}>Bengaluru - 560078</p>
                         </div>
                     </div>
 
@@ -122,12 +126,14 @@ const Footer = () => {
                             textAlign: "left",
                             flex: "1 1 280px",
                             maxWidth: "350px",
+                             fontFamily: "'poppins', sans-serif",
                         }}
                     >
                         <div
                             style={{
                                 width: "50px",
                                 height: "50px",
+                                 fontFamily: "'poppins', sans-serif",
                                 borderRadius: "50%",
                                 background: "#007a7e", // Accent color for icons
                                 display: "flex",
@@ -142,8 +148,8 @@ const Footer = () => {
                             </svg>
                         </div>
                         <div>
-                            <p style={{ margin: "0", fontSize: "16px", color: "#a0aec0" }}>Call Us - Helpline</p>
-                            <p style={{ margin: "0", fontSize: "18px", fontWeight: "bold", color: "#e2e8f0" }}>+91 8535853589</p>
+                            <p style={{ margin: "0", fontFamily: "'poppins', sans-serif", fontSize: "16px", color: "#a0aec0" }}>Call Us - Helpline</p>
+                            <p style={{ margin: "0", fontFamily: "'poppins', sans-serif", fontSize: "18px", fontWeight: "bold", color: "#e2e8f0" }}>+91 8535853589</p>
                         </div>
                     </div>
 
@@ -153,6 +159,7 @@ const Footer = () => {
                             display: "flex",
                             alignItems: "flex-start",
                             gap: "15px",
+                             fontFamily: "'poppins', sans-serif",
                             textAlign: "left",
                             flex: "1 1 280px",
                             maxWidth: "350px",
@@ -162,6 +169,7 @@ const Footer = () => {
                             style={{
                                 width: "50px",
                                 height: "50px",
+                                 fontFamily: "'poppins', sans-serif",
                                 borderRadius: "50%",
                                 background: "#007a7e", // Accent color for icons
                                 display: "flex",
@@ -177,8 +185,8 @@ const Footer = () => {
                             </svg>
                         </div>
                         <div>
-                            <p style={{ margin: "0", fontSize: "16px", color: "#a0aec0" }}>Our Mail</p>
-                            <p style={{ margin: "0", fontSize: "18px", fontWeight: "bold", color: "#e2e8f0" }}>support@vaidyabandhu.com</p>
+                            <p style={{ margin: "0", fontFamily: "'poppins', sans-serif", fontSize: "16px", color: "#a0aec0" }}>Our Mail</p>
+                            <p style={{ margin: "0", fontFamily: "'poppins', sans-serif", fontSize: "18px", fontWeight: "bold", color: "#e2e8f0" }}>support@vaidyabandhu.com</p>
                         </div>
                     </div>
                 </div>
@@ -203,14 +211,15 @@ const Footer = () => {
                      
                         {/* Our Services */}
                         <div>
-                            <h5 style={{ fontSize: "20px", fontWeight: "700", color: "#e2e8f0", marginBottom: "20px" }}>Our Services</h5>
-                            <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
+                            <h5 style={{ fontSize: "20px", fontFamily: "'poppins', sans-serif", fontWeight: "700", color: "#e2e8f0", marginBottom: "20px" }}>Our Services</h5>
+                            <ul style={{ listStyle: "none", fontFamily: "'poppins', sans-serif", padding: 0, margin: 0 }}>
                                 {dummyServiceblock.map((item, i) => (
                                     <li key={i} style={{ marginBottom: "10px" }}>
                                         <a
                                             href={item.path} // Placeholder link
                                             style={{
                                                 fontSize: "15px",
+                                                 fontFamily: "'poppins', sans-serif",
                                                 color: "#cbd5e0", // Lighter link color
                                                 textDecoration: "none",
                                                 transition: baseTransition,
@@ -227,14 +236,15 @@ const Footer = () => {
 
                         {/* Useful Links */}
                         <div>
-                            <h5 style={{ fontSize: "20px", fontWeight: "700", color: "#e2e8f0", marginBottom: "20px" }}>Useful Links</h5>
-                            <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
+                            <h5 style={{ fontSize: "20px", fontFamily: "'poppins', sans-serif", fontWeight: "700", color: "#e2e8f0", marginBottom: "20px" }}>Useful Links</h5>
+                            <ul style={{ listStyle: "none", fontFamily: "'poppins', sans-serif", padding: 0, margin: 0 }}>
                                 {[{ title: "Home", path: "/" }, { title: "About Us", path: "/about" }, { title: "Doctors", path: "/doctor-list" }, { title: "Diagnostics", path: "/clinic-list" }, { title: "Contact Us", path: "/contact" },].map((item, i) => (
                                     <li key={i} style={{ marginBottom: "10px" }}>
                                         <a
                                             href={item.path} // Placeholder link
                                             style={{
                                                 fontSize: "15px",
+                                                 fontFamily: "'poppins', sans-serif",
                                                 color: "#cbd5e0", // Lighter link color
                                                 textDecoration: "none",
                                                 transition: baseTransition,
@@ -251,7 +261,7 @@ const Footer = () => {
 
                         {/* Subscribe Form */}
                         <div>
-                            <h5 style={{ fontSize: "20px", fontWeight: "700",  padding: "12px 15px", color: "#e2e8f0", marginBottom: "0px" }}>Subscribe</h5>
+                            <h5 style={{ fontSize: "20px", fontFamily: "'poppins', sans-serif", fontWeight: "700",  padding: "12px 15px", color: "#e2e8f0", marginBottom: "0px" }}>Subscribe</h5>
                             <form>
                                 <input
                                     type="email"
@@ -262,6 +272,7 @@ const Footer = () => {
                                         width: "100%",
                                         padding: "12px 15px",
                                         borderRadius: "8px",
+                                         fontFamily: "'poppins', sans-serif",
                                         border: "1px solid rgba(0, 122, 126, 0.5)", // More visible border
                                         marginBottom: "10px",
                                         fontSize: "15px",
@@ -278,6 +289,7 @@ const Footer = () => {
                                         background: "#007a7e",
                                         color: "#ffffff",
                                         border: "none",
+                                         fontFamily: "'poppins', sans-serif",
                                          background: "linear-gradient(to right, #007a7e, #004d4f)",
                                         borderRadius: "8px",
                                         cursor: "pointer",
@@ -291,7 +303,7 @@ const Footer = () => {
                                 >
                                     Subscribe
                                 </button>
-                                <p style={{ fontSize: "14px", lineHeight: "1.5", color: "#cbd5e0", marginTop: "15px", marginBottom: "0" }}>
+                                <p style={{ fontSize: "14px", fontFamily: "'poppins', sans-serif", lineHeight: "1.5", color: "#cbd5e0", marginTop: "15px", marginBottom: "0" }}>
                                     Get The Latest Updates via email. Any time you may unsubscribe
                                 </p>
                             </form>
@@ -305,6 +317,7 @@ const Footer = () => {
                         borderTop: "1px solid rgba(0, 122, 126, 0.2)", // Lighter border for contrast
                         marginTop: "0px",
                         display: "flex",
+                         fontFamily: "'poppins', sans-serif",
                         flexWrap: "wrap",
                         alignItems: "center",
                         justifyContent: "space-between",
@@ -314,9 +327,9 @@ const Footer = () => {
                         transition: `opacity 0.8s ease-out 0.6s, transform 0.8s ease-out 0.6s`,
                     }}
                 >
-                    <div style={{ fontSize: "14px", color: "#cbd5e0", textAlign: "left", flex: "1 1 300px" }}>
+                    <div style={{ fontSize: "14px", fontFamily: "'poppins', sans-serif", color: "#cbd5e0", textAlign: "left", flex: "1 1 300px" }}>
                         <p style={{ margin: "0", lineHeight: "1.6" }}>
-                            © <a href="#" style={{ color: "white", textDecoration: "none" }}>2025</a> Vaidya Bandhu – All Rights Reserved. <br />
+                            © <a href="#" style={{ color: "white", fontFamily: "'poppins', sans-serif", textDecoration: "none" }}>2025</a> Vaidya Bandhu – All Rights Reserved. <br />
                             This website and its content are the intellectual property of <strong>MyCompanyon Healthcare Pvt Ltd</strong>. <br />
                             Unauthorized use is strictly prohibited under <strong>Copyright Act, 1957</strong>.
                         </p>
