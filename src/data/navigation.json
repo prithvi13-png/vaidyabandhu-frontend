@@ -1,33 +1,33 @@
 [
    {
   "id": 1,
-  "linkText": "HOME",
+  "linkText": "Home",
   "link": "/"
 },
   {
   "id": 2,
   "link": "/about",
-                "linkText": "ABOUT US"
+                "linkText": "About Us"
 },
   {
   "id": 3,
    "link": "/doctor-list",
-                "linkText": "DOCTORS"
+                "linkText": "Doctors"
 },
  {
   "id": 4,
    "link": "/doctor-grid",
-                "linkText": "SPECIALITIES"
+                "linkText": "Specialities"
 },
   {
   "id": 5,
    "link": "/clinic-list",
-                "linkText": "DIAGNOSTICS"
+                "linkText": "Diagnostics"
 },
 
  {
   "id": 6,
    "link": "/services",
-                "linkText": "OUR SERVICES"
+                "linkText": "Our Services"
 }
 ]
