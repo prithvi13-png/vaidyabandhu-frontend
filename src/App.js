@@ -47,6 +47,9 @@ const Doctordetails = React.lazy(() =>
 const Contact = React.lazy(() => import("./components/pages/Contact"));
 const Errorpage = React.lazy(() => import("./components/pages/Errorpage"));
 
+const HospitalList = React.lazy(()=> import('./components/pages/HospitalList'));
+
+
 // Scroll to top on route change
 function ScrollToTop({ children }) {
   const location = useLocation();
@@ -131,6 +134,8 @@ function AppRoutes() {
 
       <Route path="/contact" element={<Contact />} />
       <Route path="/basic-details" element={<BasicDetail />} />
+
+      <Route path="/hospital-list" element={<HospitalList />} />
 
       {/* Dynamically generated routes based on auth */}
       {getAppRoutes(auth)}

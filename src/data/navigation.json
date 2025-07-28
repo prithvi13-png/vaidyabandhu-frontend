@@ -19,6 +19,11 @@
    "link": "/doctor-grid",
                 "linkText": "Specialities"
 },
+{
+  "id": 4,
+   "link": "/hospital-list",
+                "linkText": "Hospitals"
+},
   {
   "id": 5,
    "link": "/clinic-list",
