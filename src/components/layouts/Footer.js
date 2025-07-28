@@ -240,7 +240,7 @@ const Footer = () => {
                         <div>
                             <h5 style={{ fontSize: "20px", fontFamily: "'poppins', sans-serif", fontWeight: "700", color: "#e2e8f0", marginBottom: "20px" }}>Useful Links</h5>
                             <ul style={{ listStyle: "none", fontFamily: "'poppins', sans-serif", padding: 0, margin: 0 }}>
-                                {[{ title: "Home", path: "/" }, { title: "About Us", path: "/about" }, { title: "Doctors", path: "/doctor-list" }, { title: "Diagnostics", path: "/clinic-list" }, { title: "Contact Us", path: "/contact" },].map((item, i) => (
+                                {[{ title: "Home", path: "/" }, { title: "About Us", path: "/about" }, { title: "Doctors", path: "/doctor-list" }, { title: "Specialities", path: "/doctor-grid" }, { title: "Hospitals", path: "/hospital-list" }, { title: "Diagnostics", path: "/clinic-list" }, { title: "Contact Us", path: "/contact" },].map((item, i) => (
                                     <li key={i} style={{ marginBottom: "10px" }}>
                                         <a
                                             href={item.path} // Placeholder link
