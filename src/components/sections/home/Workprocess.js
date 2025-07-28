@@ -18,8 +18,8 @@ const Workprocess = () => {
       points: [
         "Fill out the form with name, address, phone number, etc",
         "Big Savings. Full Support. Just ₹49/Year on Vaidya Bandhu Card",
-        "Receive your digital card instantly via website or app."
-      ]
+        "Receive your digital card instantly via website or app.",
+      ],
     },
     {
       icon: "flaticon-hospital",
@@ -27,8 +27,8 @@ const Workprocess = () => {
       points: [
         "Contact us by call, WhatsApp, or email about your concerns",
         "Consult top doctors in our network.",
-        "Avail 10%–40% discounts on surgeries, treatments, and diagnostics."
-      ]
+        "Avail 10%–40% discounts on surgeries, treatments, and diagnostics.",
+      ],
     },
     {
       icon: "flaticon-doctor",
@@ -36,19 +36,19 @@ const Workprocess = () => {
       points: [
         "Get free medical advice from an experts.",
         "We are with you even after treatment, with follow-ups, recovery tips, and ongoing guidance.",
-        "Priority assistance for critical cases."
-      ]
-    }
+        "Priority assistance for critical cases.",
+      ],
+    },
   ];
 
   return (
     <div
       style={{
         background: "linear-gradient(135deg, #e0f7fa 0%, #ffffff 100%)", // Softer, more inviting gradient
-       padding: "40px 20px", // Increased padding
+        padding: "40px 20px", // Increased padding
         position: "relative",
         overflow: "hidden",
-        marginBottom: "10px !important", 
+        marginBottom: "10px !important",
         fontFamily: "'Inter', sans-serif", // Modern font (assuming it's imported or fallback)
       }}
       id="how-it-works"
@@ -83,8 +83,15 @@ const Workprocess = () => {
         }}
       ></div>
 
-      <div style={{ textAlign: "center", marginBottom: 20, zIndex: 1, position: "relative" }}>
-          {/* <h2 style={{
+      <div
+        style={{
+          textAlign: "center",
+          marginBottom: 20,
+          zIndex: 1,
+          position: "relative",
+        }}
+      >
+        {/* <h2 style={{
           fontSize: "clamp(24px, 4vw, 32px)",
           fontWeight: 800,
           color: "#004d4f",
@@ -96,32 +103,40 @@ const Workprocess = () => {
         </h2> */}
         <h2
           style={{
-            fontSize: 32, // Larger, more impactful heading
-            fontWeight: "700",
+            fontSize: 34, // Larger, more impactful heading
+            fontWeight: "800",
+            fontFamily: "'Poppins', sans-serif",
             color: "#004d4f",
             // margin: "20px 0 25px", // Adjusted margins
             lineHeight: 1.2,
-             marginTop: 50,
+            marginTop: 50,
           }}
         >
-         How Vaidya Bandhu Works:<br/>  <span style={{ color: "#007a7e" }}>Easy Access to Affordable Healthcare
-Services in India</span>
+          How Vaidya Bandhu Works:
+          <br />{" "}
+          <span style={{ color: "#007a7e" }}>
+            Easy Access to Affordable Healthcare Services in India
+          </span>
         </h2>
-        <p style={{
-          fontSize: "clamp(16px, 2.5vw, 20px)",
-          color: "#4a5568",
-          lineHeight: "1.4",
-          fontWeight: "400",
-          fontFamily: "'Poppins', sans-serif",
-          maxWidth: "1100px",
-          margin: "0 auto 40px",
-          opacity: animated ? 1 : 0,
-          transform: animated ? "translateY(0)" : "translateY(30px)",
-          transition: "opacity 0.8s ease-out 0.2s, transform 0.8s ease-out 0.2s",
-        }}>
-        At Vaidya Bandhu we simplify your search for the right doctors, hospitals, and diagnostic centers
-near you. Just call or WhatsApp us, and we’ll guide you to quality, affordable care, quickly and
-effortlessly
+        <p
+          style={{
+            fontSize: "clamp(16px, 2.5vw, 22px)",
+            color: "#4a5568",
+            lineHeight: "1.4",
+            fontWeight: "400",
+            fontFamily: "'Poppins', sans-serif",
+            maxWidth: "1100px",
+            margin: "0 auto 40px",
+            opacity: animated ? 1 : 0,
+            transform: animated ? "translateY(0)" : "translateY(30px)",
+            transition:
+              "opacity 0.8s ease-out 0.2s, transform 0.8s ease-out 0.2s",
+          }}
+        >
+          At Vaidya Bandhu we simplify your search for the right doctors,
+          hospitals, and diagnostic centers near you. Just call or WhatsApp us,
+          and we’ll guide you to quality, affordable care, quickly and
+          effortlessly
         </p>
       </div>
 
@@ -150,9 +165,13 @@ effortlessly
               display: "flex",
               flexDirection: "column",
               justifyContent: "flex-start", // Align content to the top
-              borderBottom: `5px solid ${["#007a7e", "#4CAF50", "#FFC107"][idx % 3]}`, // Dynamic border color
+              borderBottom: `5px solid ${
+                ["#007a7e", "#4CAF50", "#FFC107"][idx % 3]
+              }`, // Dynamic border color
               opacity: animated ? 1 : 0,
-              transform: animated ? "translateY(0) scale(1)" : "translateY(20px) scale(0.95)",
+              transform: animated
+                ? "translateY(0) scale(1)"
+                : "translateY(20px) scale(0.95)",
               transition: `all 0.8s ease-out ${idx * 0.15}s`, // Staggered animation
               position: "relative",
               overflow: "hidden", // For the pseudo-element overlay
@@ -206,22 +225,23 @@ effortlessly
             </h4>
             <ul
               style={{
-                padding: "0 10px", // Inner padding for points
+                padding: "0 10px",
                 listStyleType: "none",
-                fontSize: 16, // Larger font for points
+                fontSize: 18, // Changed from 16 to 18px
                 color: "#4a5568",
-                lineHeight: 1.4, // Increased line height for readability
-                textAlign: "left", // Align points to the left
-                flexGrow: 1, // Allows the ul to take available space
+                lineHeight: 1.5, // Slightly increased for better spacing with larger font
+                textAlign: "left",
+                flexGrow: 1,
                 position: "relative",
                 zIndex: 1,
+                fontFamily: "'Poppins', sans-serif", // Optional: ensure Poppins font consistency
               }}
             >
               {step.points.map((point, i) => (
                 <li
                   key={i}
                   style={{
-                    marginBottom: 1,
+                    marginBottom: 8, // Improved spacing between points
                     display: "flex",
                     alignItems: "flex-start",
                   }}
@@ -230,7 +250,7 @@ effortlessly
                     style={{
                       marginRight: 10,
                       color: "#007a7e",
-                      fontSize: 18, // Larger bullet point
+                      fontWeight: "bold",
                     }}
                   >
                     •

@@ -16,7 +16,7 @@ const HealthcareReality = () => {
         background: "linear-gradient(135deg, #fdfefe 0%, #e8f5e9 100%)", // Very light, calming gradient
         textAlign: "center",
         overflow: "hidden",
-        fontFamily: "'Inter', sans-serif",
+        fontFamily: "'Poppins', sans-serif",
         position: "relative",
       }}
     >
@@ -82,12 +82,13 @@ const HealthcareReality = () => {
         {/* Main Heading */}
         <h2
           style={{
-            fontSize: "clamp(24px, 4vw, 32px)",
+            fontSize: "clamp(24px, 4vw, 34px)",
             fontWeight: 800,
             color: "#004d4f",
             textAlign: "center",
             marginBottom: "8px",
             lineHeight: "1.3",
+            fontFamily: "'Poppins', sans-serif",
           }}
         >
           The Reality of{" "}
@@ -97,7 +98,7 @@ const HealthcareReality = () => {
         {/* Subtitle/Intro Paragraph */}
         <p
           style={{
-            fontSize: "clamp(16px, 2.5vw, 20px)", // Responsive font size
+            fontSize: "clamp(16px, 2.5vw, 22px)", // Responsive font size
             color: "#4a5568",
             lineHeight: "1.5",
             fontWeight: "400",
@@ -109,7 +110,7 @@ const HealthcareReality = () => {
               "opacity 0.8s ease-out 0.2s, transform 0.8s ease-out 0.2s",
           }}
         >
-      Accessing quality healthcare today is becoming unaffordable for many.
+          Accessing quality healthcare today is becoming unaffordable for many.
         </p>
 
         {/* Combined Key Challenges Section (now the main paragraph) */}
@@ -125,16 +126,18 @@ const HealthcareReality = () => {
         >
           <p
             style={{
-              fontSize: "clamp(16px, 2.5vw, 20px)", // Same responsive font size
+              fontSize: "clamp(16px, 2.5vw, 22px)", // Same responsive font size
               fontFamily: "'Poppins', sans-serif", // Ensure Poppins is applied globally
 
               color: "#4a5568", // Same color
               lineHeight: "1.5",
             }}
           >
-           Thousands of families face financial burden during medical emergencies, surgeries, and chronic
-treatments. Rising hospital costs, difficulty finding the right doctors, and limited financial support
-often result in health complications or even preventable loss of life.
+            Thousands of families face financial burden during medical
+            emergencies, surgeries, and chronic treatments. Rising hospital
+            costs, difficulty finding the right doctors, and limited financial
+            support often result in health complications or even preventable
+            loss of life.
           </p>
         </div>
       </div>

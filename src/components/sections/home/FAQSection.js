@@ -1,46 +1,58 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState, useRef } from "react";
 
 const faqs = [
   {
     question: "What is Vaidya Bandhu?",
-    answer: "Vaidya Bandhu is a healthcare foundation that connects patients to highly experienced doctors and healthcare professionals. We offer 10% to 40% discounts on surgeries, treatments, and diagnostic services, along with free medical advice available. Our mission is to make healthcare affordable and accessible to everyone, while maintaining the highest standards of care."
+    answer:
+      "Vaidya Bandhu is a healthcare foundation that connects patients to highly experienced doctors and healthcare professionals. We offer 10% to 40% discounts on surgeries, treatments, and diagnostic services, along with free medical advice available. Our mission is to make healthcare affordable and accessible to everyone, while maintaining the highest standards of care.",
   },
   {
     question: "How do I become a member of Vaidya Bandhu?",
-    answer: "To become a member, simply fill out the membership form with your name, address, and contact details. PAN and Aadhaar are optional. Once you pay the ₹49 membership fee, your membership card will be sent to your address, which is valid for 1 year. After 1 year, you will need to renew your membership."
+    answer:
+      "To become a member, simply fill out the membership form with your name, address, and contact details. PAN and Aadhaar are optional. Once you pay the ₹49 membership fee, your membership card will be sent to your address, which is valid for 1 year. After 1 year, you will need to renew your membership.",
   },
   {
-    question: "How can I avail 10% to 40% discount on surgeries, treatments, and diagnostics?",
-    answer: "Once you become a member, you can avail of the discounts by calling or emailing Vaidya Bandhu to book your appointments. Your membership card will be required for confirmation and to apply the discount."
+    question:
+      "How can I avail 10% to 40% discount on surgeries, treatments, and diagnostics?",
+    answer:
+      "Once you become a member, you can avail of the discounts by calling or emailing Vaidya Bandhu to book your appointments. Your membership card will be required for confirmation and to apply the discount.",
   },
   {
-    question: "Are there any specific doctors or treatments covered by Vaidya Bandhu?",
-    answer: "Vaidya Bandhu covers a wide range of specialties, including Orthopedics, Cardiology, Neurology, Urology, Gastroenterology, and many more. Our doctors specialize in various treatments and surgeries, and our membership gives you access to affordable healthcare services in all these departments."
+    question:
+      "Are there any specific doctors or treatments covered by Vaidya Bandhu?",
+    answer:
+      "Vaidya Bandhu covers a wide range of specialties, including Orthopedics, Cardiology, Neurology, Urology, Gastroenterology, and many more. Our doctors specialize in various treatments and surgeries, and our membership gives you access to affordable healthcare services in all these departments.",
   },
   {
     question: "Can I use my membership at partner diagnostic centers?",
-    answer: "Yes, our membership is valid at partner diagnostic centers across Karnataka. By showing your membership card, you can receive discounts on diagnostic services such as X-rays, MRIs, CT scans, and blood tests."
+    answer:
+      "Yes, our membership is valid at partner diagnostic centers across Karnataka. By showing your membership card, you can receive discounts on diagnostic services such as X-rays, MRIs, CT scans, and blood tests.",
   },
   {
     question: "What if I need emergency medical assistance?",
-    answer: "Vaidya Bandhu offers free medical advice. If you need urgent help, you can reach out to us immediately, and our health warriors (doctors and partners) will guide you through the necessary steps and provide assistance."
+    answer:
+      "Vaidya Bandhu offers free medical advice. If you need urgent help, you can reach out to us immediately, and our health warriors (doctors and partners) will guide you through the necessary steps and provide assistance.",
   },
   {
     question: "Can I consult with a doctor online through Vaidya Bandhu?",
-    answer: "Yes, we provide online consultations with experienced doctors. You can book an appointment via phone or email and get professional advice from the comfort of your home."
+    answer:
+      "Yes, we provide online consultations with experienced doctors. You can book an appointment via phone or email and get professional advice from the comfort of your home.",
   },
   {
     question: "Are the treatments and surgeries covered by insurance?",
-    answer: "We recommend checking with your insurance provider regarding coverage. While Vaidya Bandhu offers affordable care, the specific coverage for treatments and surgeries will depend on your insurance policy."
+    answer:
+      "We recommend checking with your insurance provider regarding coverage. While Vaidya Bandhu offers affordable care, the specific coverage for treatments and surgeries will depend on your insurance policy.",
   },
   {
     question: "How can I contact Vaidya Bandhu for further inquiries?",
-    answer: "You can reach us via email or phone. Our contact details are available on the ‘Contact Us’ page of our website. We are here to assist you with any questions you may have!"
+    answer:
+      "You can reach us via email or phone. Our contact details are available on the ‘Contact Us’ page of our website. We are here to assist you with any questions you may have!",
   },
   {
     question: "Where is Vaidya Bandhu located?",
-    answer: "Vaidya Bandhu currently operates across Karnataka with a network of doctors, healthcare centers, and partner diagnostic services. We are expanding our services and aim to reach more locations soon."
-  }
+    answer:
+      "Vaidya Bandhu currently operates across Karnataka with a network of doctors, healthcare centers, and partner diagnostic services. We are expanding our services and aim to reach more locations soon.",
+  },
 ];
 
 const FAQSection = () => {
@@ -120,11 +132,12 @@ const FAQSection = () => {
         {/* Main Heading */}
         <h2
           style={{
-            fontSize: "clamp(36px, 5vw, 38px)",
+            fontSize: "clamp(36px, 5vw, 34px)",
             fontWeight: "800",
             color: "#004d4f",
             marginBottom: "10px",
             lineHeight: "1.2",
+             fontFamily: "'Poppins', sans-serif",
             opacity: animated ? 1 : 0,
             transform: animated ? "translateY(0)" : "translateY(30px)",
             transition: "opacity 0.8s ease-out, transform 0.8s ease-out",
@@ -136,17 +149,20 @@ const FAQSection = () => {
         {/* Subtitle/Intro Paragraph */}
         <p
           style={{
-            fontSize: "clamp(16px, 2.5vw, 20px)",
+            fontSize: "clamp(16px, 2.5vw, 22px)",
             color: "#4a5568",
             lineHeight: "1.4",
             fontWeight: "500",
             marginBottom: "30px",
+            fontFamily: "'Poppins', sans-serif",
             opacity: animated ? 1 : 0,
             transform: animated ? "translateY(0)" : "translateY(30px)",
-            transition: "opacity 0.8s ease-out 0.2s, transform 0.8s ease-out 0.2s",
+            transition:
+              "opacity 0.8s ease-out 0.2s, transform 0.8s ease-out 0.2s",
           }}
         >
-          Find quick answers to common questions about Vaidya Bandhu's services, membership, and benefits.
+          Find quick answers to common questions about Vaidya Bandhu's services,
+          membership, and benefits.
         </p>
 
         {/* FAQ List */}
@@ -166,7 +182,10 @@ const FAQSection = () => {
                 style={{
                   background: "#ffffff",
                   borderRadius: "12px",
-                  boxShadow: hoveredQuestionIndex === index ? "0 12px 16px rgba(0, 122, 126, 0.12)" : "0 8px 20px rgba(0, 122, 126, 0.07)", // Enhanced shadow on hover
+                  boxShadow:
+                    hoveredQuestionIndex === index
+                      ? "0 12px 16px rgba(0, 122, 126, 0.12)"
+                      : "0 8px 20px rgba(0, 122, 126, 0.07)", // Enhanced shadow on hover
                   overflow: "hidden", // Important for height transition
                   opacity: animated ? 1 : 0,
                   transform: animated ? "translateY(0)" : "translateY(20px)",
@@ -183,7 +202,11 @@ const FAQSection = () => {
                     alignItems: "center",
                     padding: "20px 25px",
                     cursor: "pointer",
-                    background: isOpen ? "#e6fffa" : (hoveredQuestionIndex === index ? "#f0fafa" : "#ffffff"), // Highlight open and hovered
+                    background: isOpen
+                      ? "#e6fffa"
+                      : hoveredQuestionIndex === index
+                      ? "#f0fafa"
+                      : "#ffffff", // Highlight open and hovered
                     borderBottom: isOpen ? "2px solid #007a7e" : "none", // Thicker border when open
                     transition: "background 0.3s ease, border-bottom 0.3s ease",
                   }}
@@ -212,7 +235,7 @@ const FAQSection = () => {
                     }}
                   >
                     {/* Using a more modern arrow icon (could be SVG or FontAwesome if available) */}
-                    {isOpen ? '▲' : '▼'}
+                    {isOpen ? "▲" : "▼"}
                   </span>
                 </div>
 
@@ -221,7 +244,7 @@ const FAQSection = () => {
                   style={{
                     // When open, set to a very large height to ensure all content is visible.
                     // When closed, set to 0. This allows smooth transition.
-                    maxHeight: isOpen ? '9999px' : '0px',
+                    maxHeight: isOpen ? "9999px" : "0px",
                     overflow: "hidden",
                     transition: "max-height 0.5s ease-in-out",
                     padding: isOpen ? "0 25px 20px" : "0 25px", // Adjust padding when open

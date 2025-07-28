@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 
 // Sample client logos data - replace with your actual logo paths
 const clientLogos = [
@@ -38,11 +38,11 @@ const ClientLogosCarousel = () => {
       {/* Section Heading */}
       <h2
         style={{
-          fontSize: "32px",
+          fontSize: "34px",
           fontWeight: "800",
           color: "#004d4f",
           marginBottom: "10px",
-              fontFamily: "'Poppins', sans-serif",
+          fontFamily: "'Poppins', sans-serif",
           position: "relative",
           display: "inline-block",
           opacity: animated ? 1 : 0,
@@ -50,10 +50,14 @@ const ClientLogosCarousel = () => {
           transition: "opacity 0.8s ease-out, transform 0.8s ease-out",
         }}
       >
-        Our Valued - <span style={{ color: "#007a7e" }}>United by Trust, Guided by Care.</span>
+        Our Valued -{" "}
+        <span style={{ color: "#007a7e" }}>
+          United by Trust, Guided by Care.
+        </span>
       </h2>
-      <p style={{
-          fontSize: "clamp(16px, 2.5vw, 20px)",
+      <p
+        style={{
+          fontSize: "clamp(16px, 2.5vw, 22px)",
           color: "#4a5568",
           lineHeight: "1.4",
           fontWeight: "400",
@@ -62,11 +66,14 @@ const ClientLogosCarousel = () => {
           margin: "0 auto 40px",
           opacity: animated ? 1 : 0,
           transform: animated ? "translateY(0)" : "translateY(30px)",
-          transition: "opacity 0.8s ease-out 0.2s, transform 0.8s ease-out 0.2s",
-        }}>
-    At Vaidya Bandhu, our trusted bonds with caring doctors, leading hospitals, and diagnostic
-centers ensure ethical, affordable, and high-quality healthcare, delivered through seamless
-consultations, discounted diagnostics, cost-effective Surgeries, and treatments.
+          transition:
+            "opacity 0.8s ease-out 0.2s, transform 0.8s ease-out 0.2s",
+        }}
+      >
+        At Vaidya Bandhu, our trusted bonds with caring doctors, leading
+        hospitals, and diagnostic centers ensure ethical, affordable, and
+        high-quality healthcare, delivered through seamless consultations,
+        discounted diagnostics, cost-effective Surgeries, and treatments.
       </p>
 
       {/* Carousel Container */}
@@ -75,8 +82,10 @@ consultations, discounted diagnostics, cost-effective Surgeries, and treatments.
           width: "100%",
           overflow: "hidden",
           position: "relative",
-          maskImage: "linear-gradient(to right, transparent, black 10%, black 90%, transparent)", // Fading edges
-          WebkitMaskImage: "linear-gradient(to right, transparent, black 10%, black 90%, transparent)", // For Webkit browsers
+          maskImage:
+            "linear-gradient(to right, transparent, black 10%, black 90%, transparent)", // Fading edges
+          WebkitMaskImage:
+            "linear-gradient(to right, transparent, black 10%, black 90%, transparent)", // For Webkit browsers
         }}
       >
         <div
@@ -101,7 +110,8 @@ consultations, discounted diagnostics, cost-effective Surgeries, and treatments.
                 justifyContent: "center",
                 margin: "0 20px", // Spacing between logos
                 filter: "grayscale(100%)", // Grayscale by default
-                transition: "filter 0.3s ease-in-out, transform 0.3s ease-in-out",
+                transition:
+                  "filter 0.3s ease-in-out, transform 0.3s ease-in-out",
                 cursor: "pointer",
               }}
               onMouseEnter={(e) => {
@@ -121,7 +131,11 @@ consultations, discounted diagnostics, cost-effective Surgeries, and treatments.
                   maxHeight: "100%",
                   objectFit: "contain", // Ensure image fits without distortion
                 }}
-                onError={(e) => { e.target.onerror = null; e.target.src="https://placehold.co/150x80/CCCCCC/666666?text=Logo+Error"; }} // Fallback for broken images
+                onError={(e) => {
+                  e.target.onerror = null;
+                  e.target.src =
+                    "https://placehold.co/150x80/CCCCCC/666666?text=Logo+Error";
+                }} // Fallback for broken images
               />
             </div>
           ))}

@@ -120,8 +120,8 @@ const Workprocess = () => {
             >
               <h3
                 style={{
-                  fontSize: "clamp(36px, 5vw, 36px)",
-                      fontFamily: "'Poppins', sans-serif",
+                  fontSize: "clamp(36px, 5vw, 34px)",
+                  fontFamily: "'Poppins', sans-serif",
                   fontWeight: "800",
                   color: "#004d4f",
                   marginBottom: "0",
@@ -130,7 +130,6 @@ const Workprocess = () => {
               >
                 How it Works?
               </h3>
-              
             </div>
           </div>
           <div style={{ flex: "1 1 300px" }}>
@@ -138,10 +137,10 @@ const Workprocess = () => {
             {/* col-lg-4 equivalent */}
             <p
               style={{
-                fontSize: "clamp(16px, 2.5vw, 19px)",
+                fontSize: "clamp(16px, 2.5vw, 22px)",
                 color: "#4a5568",
                 lineHeight: "1.4",
-                    fontFamily: "'Poppins', sans-serif",
+                fontFamily: "'Poppins', sans-serif",
                 marginBottom: "0",
                 opacity: animated ? 1 : 0,
                 transform: animated ? "translateY(0)" : "translateY(30px)",
@@ -232,7 +231,7 @@ const Workprocess = () => {
                   fontSize: "clamp(20px, 2.5vw, 22px)",
                   fontWeight: "700",
                   color: "#004d4f",
-                      fontFamily: "'Poppins', sans-serif",
+                  fontFamily: "'Poppins', sans-serif",
                   marginBottom: "15px",
                   lineHeight: "1.3",
                   transition: baseTransition,
@@ -245,10 +244,10 @@ const Workprocess = () => {
                   paddingLeft: "20px",
                   marginBottom: "0",
                   marginTop: "0",
-                      fontFamily: "'Poppins', sans-serif",
+                  fontFamily: "'Poppins', sans-serif",
                   flexGrow: 1,
                   color: "#5a6778",
-                  fontSize: "clamp(15px, 1.8vw, 16px)",
+                  fontSize: "clamp(15px, 1.8vw, 18px)",
                   lineHeight: "1.3", // Tightest line spacing
                 }}
               >
@@ -258,7 +257,7 @@ const Workprocess = () => {
                     style={{
                       margin: "0", // No margin at all
                       listStyle: "disc",
-                          fontFamily: "'Poppins', sans-serif",
+                      fontFamily: "'Poppins', sans-serif",
                     }}
                   >
                     {point}
@@ -274,7 +273,7 @@ const Workprocess = () => {
                   color: "rgba(0, 77, 79, 0.1)", // Faded step number
                   position: "absolute",
                   bottom: "15px",
-                      fontFamily: "'Poppins', sans-serif",
+                  fontFamily: "'Poppins', sans-serif",
                   right: "20px",
                   zIndex: 0,
                   transition: baseTransition,
@@ -292,7 +291,7 @@ const Workprocess = () => {
                   position: "absolute",
                   top: "20px",
                   right: "20px",
-                      fontFamily: "'Poppins', sans-serif",
+                  fontFamily: "'Poppins', sans-serif",
                   width: "15px",
                   height: "15px",
                   borderRadius: "50%",

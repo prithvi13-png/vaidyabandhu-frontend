@@ -13,33 +13,33 @@ const whyus = [
   {
     icon: "flaticon-doctor",
     title: "Affordable Healthcare for All",
-    text: "Get cost-effective medical treatments without compromising quality"
+    text: "Get cost-effective medical treatments without compromising quality",
   },
   {
     icon: "flaticon-hospital",
     title: "Top Doctors Across Specialties",
-    text: "Consult experienced specialists in cardiology, orthopedics, oncology, and 70+ departments."
+    text: "Consult experienced specialists in cardiology, orthopedics, oncology, and 70+ departments.",
   },
   {
     icon: "flaticon-stethoscope",
     title: "Trusted Network of Health Warriors",
-    text: "Partnered with hospitals and doctors dedicated to patient-first care."
+    text: "Partnered with hospitals and doctors dedicated to patient-first care.",
   },
   {
     icon: "flaticon-clipboard",
     title: "Available Across Karnataka",
-    text: "Access services anywhere in the state - urban or rural."
+    text: "Access services anywhere in the state - urban or rural.",
   },
   {
     icon: "flaticon-heart",
     title: "₹49 Membership Benefits",
-    text: "Unlock 10%–40% discounts on surgeries, treatments and diagnostics."
+    text: "Unlock 10%–40% discounts on surgeries, treatments and diagnostics.",
   },
   {
     icon: "flaticon-call",
     title: "24/7 Helpline",
-    text: "Free medical advice and assistance available whenever you need it."
-  }
+    text: "Free medical advice and assistance available whenever you need it.",
+  },
 ];
 
 class Whyus extends Component {
@@ -49,7 +49,7 @@ class Whyus extends Component {
         className="row"
         style={{
           paddingTop: "80px",
-          fontFamily: "'Poppins', sans-serif" // Apply Poppins to all text in this section
+          fontFamily: "'Poppins', sans-serif", // Apply Poppins to all text in this section
         }}
       >
         <div className="col-lg-5 order-2 order-lg-1">
@@ -57,25 +57,31 @@ class Whyus extends Component {
             <div className="section-title" style={{ marginBottom: "40px" }}>
               <h2
                 style={{
-                  fontSize: "clamp(24px, 4vw, 32px)",
+                  fontSize: "clamp(24px, 4vw, 34px)",
                   fontWeight: 800,
                   color: "#fff",
                   textAlign: "center",
                   marginBottom: "8px",
                   lineHeight: "1.3",
-                  fontFamily: "'Poppins', sans-serif" // Added Poppins
+                  fontFamily: "'Poppins', sans-serif", // Added Poppins
                 }}
               >
                 Why Choose VaidyaBandhu?
-
               </h2>
-          <p style={{ marginLeft: '24px' }}>
-    Ready to Get Started?<br />
-    Empower your health journey join VaidyaBandhu for trusted, smarter care.
+            <p 
+  style={{ 
+    marginLeft: "24px", 
+    fontSize: "18px",
+    lineHeight: "1.5",
+    fontFamily: "'Poppins', sans-serif" /* Optional: keep font consistent */
+  }}
+>
+  Ready to Get Started?
+  <br />
+  Empower your health journey join VaidyaBandhu for trusted, smarter care.
 </p>
             </div>
             <div className="sigma_about-content">
-
               {/* Data */}
               {whyus.slice(0, 6).map((item, i) => (
                 <div className="sigma_info style-15" key={i}>
@@ -88,14 +94,14 @@ class Whyus extends Component {
                   >
                     <h5
                       style={{
-                        fontFamily: "'Poppins', sans-serif" // Added Poppins
+                        fontFamily: "'Poppins', sans-serif", // Added Poppins
                       }}
                     >
                       {item.title}
                     </h5>
                     <p
                       style={{
-                        fontFamily: "'Poppins', sans-serif" // Added Poppins
+                        fontFamily: "'Poppins', sans-serif", // Added Poppins
                       }}
                     >
                       {item.text}

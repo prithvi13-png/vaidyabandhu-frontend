@@ -188,7 +188,7 @@ const ServicesPreview = () => {
   };
 
   const listItemStyle = {
-    fontSize: "16px",
+    fontSize: "18px",
     color: "#5a6778",
     fontFamily: "poppins",
     lineHeight: "1.4",
@@ -201,12 +201,13 @@ const ServicesPreview = () => {
       
          <h2
           style={{
-            fontSize: "clamp(24px, 4vw, 32px)",
+            fontSize: "clamp(24px, 4vw, 34px)",
             fontWeight: 800,
             color: "#004d4f",
             textAlign: "center",
             marginBottom: "8px",
             lineHeight: "1.3",
+            fontFamily: "'Poppins', sans-serif",
           }}
         >
           Our{" "}
@@ -226,7 +227,7 @@ const ServicesPreview = () => {
 >
   <p
     style={{
-      fontSize: "clamp(16px, 2.5vw, 19px)",
+      fontSize: "clamp(16px, 2.5vw, 22px)",
       color: "#4a5568",
       lineHeight: "1.4",
       fontWeight: "400",

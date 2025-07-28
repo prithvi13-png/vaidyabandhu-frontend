@@ -1,18 +1,13 @@
 import React, { Component } from 'react';
 import testimonials from "../../../data/testimonials.json";
-import { getAuthor } from "../../../helper/helper"
+import { getAuthor } from "../../../helper/helper";
 
 class Testimonials extends Component {
-
     render() {
         return (
             <div className="section section-padding pt-0">
                 <div className="container">
                     <div className="section-title centered">
-                        {/* <span className="subtitle">Client Testimonials</span> */}
-                        {/* <h3 className="title" style={{ marginTop: '40px' }}>
-  What Our Doctors Say
-</h3> */}
                         <h2
                             style={{
                                 fontSize: "36px",
@@ -23,35 +18,86 @@ class Testimonials extends Component {
                                 fontFamily: "'Poppins', sans-serif",
                                 position: "relative",
                                 display: "inline-block",
-                                //   opacity: animated ? 1 : 0,
-                                //   transform: animated ? "translateY(0)" : "translateY(20px)",
-                                //   transition: "opacity 0.8s ease-out, transform 0.8s ease-out",
                             }}
                         >
                             What Our <span style={{ color: "#007a7e" }}>Doctors Say</span>
                         </h2>
-
                     </div>
                     <div className="row">
                         {/* Data */}
                         {testimonials.slice(0, 2).map((item, i) => (
                             <div className="col-md-6" key={i}>
                                 {getAuthor(item.author).map((author, i) => (
-                                    <div className="sigma_testimonial style-13 text-left bg-white" key={i}>
-                                        <div className="sigma_author-info">
-                                            <div className="sigma_testimonial-thumb mr-4">
-                                                <img src={process.env.PUBLIC_URL + "/" + author.image} alt={author.name} />
-                                                <span className="fas fa-quote-left sigma_testimonial-icon" />
+                                    <div
+                                        className="sigma_testimonial style-13 text-left bg-white"
+                                        key={i}
+                                        style={{
+                                            padding: "20px",
+                                            borderRadius: "8px",
+                                            boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
+                                            marginBottom: "20px",
+                                        }}
+                                    >
+                                        <div
+                                            className="sigma_author-info"
+                                            style={{
+                                                display: "flex",
+                                                alignItems: "center",
+                                                gap: "16px",
+                                            }}
+                                        >
+                                            <div
+                                                className="sigma_testimonial-thumb"
+                                                style={{
+                                                    width: "60px",
+                                                    height: "60px",
+                                                    overflow: "hidden",
+                                                    borderRadius: "50%",
+                                                    border: "2px solid #007a7e",
+                                                }}
+                                            >
+                                                <img
+                                                    src={process.env.PUBLIC_URL + "/" + author.image}
+                                                    alt={author.name}
+                                                    style={{
+                                                        width: "100%",
+                                                        height: "100%",
+                                                        objectFit: "cover",
+                                                    }}
+                                                />
                                             </div>
                                             <div className="sigma_author-block">
-                                                <h5>
+                                                <h5
+                                                    style={{
+                                                        margin: 0,
+                                                        fontFamily: "'Poppins', sans-serif",
+                                                        fontWeight: 600,
+                                                    }}
+                                                >
                                                     {author.name}
                                                 </h5>
-                                                <span className="sigma_testimonial-category">{author.specialist}</span>
+                                                <span
+                                                    className="sigma_testimonial-category"
+                                                    style={{
+                                                        color: "#5a6778",
+                                                        fontFamily: "'Poppins', sans-serif",
+                                                        fontSize: "14px",
+                                                    }}
+                                                >
+                                                    {author.specialist}
+                                                </span>
                                             </div>
                                         </div>
-                                        <div className="sigma_testimonial-body">
-                                            <p className="mb-0">"{item.comment}"</p>
+                                        <div
+                                            className="sigma_testimonial-body"
+                                            style={{
+                                                marginTop: "16px",
+                                                fontFamily: "'Poppins', sans-serif",
+                                            }}
+                                        >
+                                            <p className="mb-0" style={{ fontStyle: "italic", color: "#4a5568" }}>
+                                                "{item.comment}"
+                                            </p>
                                         </div>
                                     </div>
                                 ))}
