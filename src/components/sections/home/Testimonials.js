@@ -39,10 +39,30 @@ class Testimonials extends Component {
                       <span className="fas fa-quote-left sigma_testimonial-icon" />
                     </div>
                     <div className="sigma_testimonial-body">
-                      <p>"{item.comment.slice(0, 124)}"</p>
+                      <p
+                        style={{
+                          fontFamily: "'Poppins', sans-serif",
+                          color: "#007a7e",
+                        }}
+                      >
+                        "{item.comment.slice(0, 124)}"
+                      </p>
                       <div className="sigma_author-block">
-                        <h5>{author.name}</h5>
-                        <span className="sigma_testimonial-category">
+                        <h5
+                          style={{
+                            fontFamily: "'Poppins', sans-serif",
+                            color: "#004d4f", // Doctor's name color
+                          }}
+                        >
+                          {author.name}
+                        </h5>
+                        <span
+                          className="sigma_testimonial-category"
+                          style={{
+                            fontFamily: "'Poppins', sans-serif",
+                            color: "#6c757d", // Specialty color
+                          }}
+                        >
                           {author.specialist}
                         </span>
                       </div>

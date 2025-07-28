@@ -136,7 +136,7 @@ const FAQSection = () => {
             fontWeight: "800",
             color: "#004d4f",
             marginBottom: "10px",
-            lineHeight: "1.2",
+            lineHeight: "1.3",
              fontFamily: "'Poppins', sans-serif",
             opacity: animated ? 1 : 0,
             transform: animated ? "translateY(0)" : "translateY(30px)",
@@ -151,7 +151,7 @@ const FAQSection = () => {
           style={{
             fontSize: "clamp(16px, 2.5vw, 22px)",
             color: "#4a5568",
-            lineHeight: "1.4",
+            lineHeight: "1.5",
             fontWeight: "500",
             marginBottom: "30px",
             fontFamily: "'Poppins', sans-serif",

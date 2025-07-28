@@ -224,6 +224,7 @@ const DoctorsComponent = () => {
               style={{
                 fontSize: "clamp(20px, 2.5vw, 24px)",
                 fontWeight: "700",
+                fontFamily: "'Poppins', sans-serif",
                 color: "#004d4f",
                 marginBottom: "5px",
                 transition: "color 0.3s ease",
@@ -240,6 +241,7 @@ const DoctorsComponent = () => {
                 color: "#007a7e",
                 fontWeight: "600",
                 margin: "0 0 10px",
+                fontFamily: "'Poppins', sans-serif",
               }}
             >
               {doctor.specialty}
@@ -264,6 +266,7 @@ const DoctorsComponent = () => {
             cursor: "pointer",
             fontSize: "18px",
             fontWeight: "600",
+            fontFamily: "'Poppins', sans-serif",
             marginTop: "50px", // Space above the button
             transition: "background 0.3s ease, transform 0.2s ease",
             boxShadow: "0 4px 10px rgba(0, 122, 126, 0.2)",
@@ -496,7 +499,7 @@ const DoctorsComponent = () => {
         background: "linear-gradient(135deg, #e0f7fa 0%, #ffffff 100%)",
         textAlign: "center",
         overflow: "hidden",
-        fontFamily: "'Inter', sans-serif",
+        fontFamily: "'Poppins', sans-serif",
         position: "relative",
       }}
     >
