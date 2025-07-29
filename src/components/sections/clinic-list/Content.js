@@ -59,7 +59,7 @@ const DiagnosticCentersApp = () => {
     setErrorAddresses(null);
     try {
       const response = await fetch(
-        "http://54.226.229.230/api/diagnostic/addresses"
+        "https://dev.vaidyabandhu.com/api/diagnostic/addresses"
       );
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
@@ -79,7 +79,7 @@ const DiagnosticCentersApp = () => {
     setErrorServices(null);
     try {
       const response = await fetch(
-        "http://54.226.229.230/api/diagnostic/diagnostic-category?pagination=false"
+        "https://dev.vaidyabandhu.com/api/diagnostic/diagnostic-category?pagination=false"
       );
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
@@ -111,7 +111,7 @@ const DiagnosticCentersApp = () => {
         });
 
         const response = await fetch(
-          `http://54.226.229.230/api/diagnostic/list-center?${params}`
+          `https://dev.vaidyabandhu.com/api/diagnostic/list-center?${params}`
         );
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);

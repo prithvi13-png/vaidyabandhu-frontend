@@ -82,7 +82,7 @@ const Content = () => {
       if (sortBy) params.append("sort", sortBy);
 
       const queryString = params.toString();
-      const url = `http://54.226.229.230/api/doctors/${
+      const url = `https://dev.vaidyabandhu.com/api/doctors/${
         queryString ? `?${queryString}` : ""
       }`;
 
@@ -108,7 +108,7 @@ const Content = () => {
 
   const fetchSpecialties = useCallback(async () => {
     try {
-      const response = await axios.get("http://54.226.229.230/api/specialty/");
+      const response = await axios.get("https://dev.vaidyabandhu.com/api/specialty/");
       setSpecialties(response.data.data || []);
     } catch (error) {
       console.error("Error fetching specialties:", error);
@@ -118,7 +118,7 @@ const Content = () => {
   const fetchLocations = useCallback(async () => {
     try {
       // Assuming there's an endpoint for locations
-      const response = await axios.get("http://54.226.229.230/api/locations/");
+      const response = await axios.get("https://dev.vaidyabandhu.com/api/locations/");
       setLocations(response.data.data || []);
     } catch (error) {
       console.error("Error fetching locations:", error);
