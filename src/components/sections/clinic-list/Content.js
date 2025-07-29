@@ -59,7 +59,7 @@ const DiagnosticCentersApp = () => {
     setErrorAddresses(null);
     try {
       const response = await fetch(
-        "http://3.27.214.105/api/diagnostic/addresses"
+        "http://54.226.229.230/api/diagnostic/addresses"
       );
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
@@ -79,7 +79,7 @@ const DiagnosticCentersApp = () => {
     setErrorServices(null);
     try {
       const response = await fetch(
-        "http://3.27.214.105/api/diagnostic/diagnostic-category?pagination=false"
+        "http://54.226.229.230/api/diagnostic/diagnostic-category?pagination=false"
       );
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
@@ -111,7 +111,7 @@ const DiagnosticCentersApp = () => {
         });
 
         const response = await fetch(
-          `http://3.27.214.105/api/diagnostic/list-center?${params}`
+          `http://54.226.229.230/api/diagnostic/list-center?${params}`
         );
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);

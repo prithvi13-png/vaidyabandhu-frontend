@@ -22,7 +22,7 @@ const DiagnosticCenterDetail = () => {
     setError(null);
     try {
       const response = await fetch(
-        `http://3.27.214.105/api/diagnostic/list-center/${id}`
+        `http://54.226.229.230/api/diagnostic/list-center/${id}`
       );
       if (!response.ok) throw new Error("Error fetching center details");
       const data = await response.json();

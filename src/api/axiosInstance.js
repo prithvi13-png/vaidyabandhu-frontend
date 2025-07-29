@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const axiosInstance = axios.create({
-  baseURL: `http://3.27.214.105/api/`,
+  baseURL: `http://54.226.229.230/api/`,
   //   baseURL: 'https://healthcare-uat.miles-api.com/api',
   headers: {
     // 'Content-Type': 'application/json',

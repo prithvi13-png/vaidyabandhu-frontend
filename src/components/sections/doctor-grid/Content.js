@@ -43,7 +43,7 @@ const MedicalDepartments = () => {
   const fetchDepartments = useCallback(async () => {
     setLoading(true);
     try {
-      const response = await fetch("http://3.27.214.105/api/department/");
+      const response = await fetch("http://54.226.229.230/api/department/");
       if (!response.ok) throw new Error("Failed to fetch departments");
       const data = await response.json();
       setDepartments(data.data || []);
@@ -60,7 +60,7 @@ const MedicalDepartments = () => {
     setSpecialtyLoading(true);
     try {
       const response = await fetch(
-        `http://3.27.214.105/api/specialty/?department=${departmentId}`
+        `http://54.226.229.230/api/specialty/?department=${departmentId}`
       );
       if (!response.ok) throw new Error("Failed to fetch specialties");
       const data = await response.json();
