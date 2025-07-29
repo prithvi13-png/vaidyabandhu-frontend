@@ -1,8 +1,7 @@
 import axios from "axios";
 
 const axiosInstance = axios.create({
-  baseURL: `http://54.226.229.230/api/`,
-  //   baseURL: 'https://healthcare-uat.miles-api.com/api',
+  baseURL: `https://dev.vaidyabandhu.com/api/`,
   headers: {
     // 'Content-Type': 'application/json',
     // "Access-Control-Allow-Origin": "*",
