@@ -274,8 +274,6 @@ const FAQSection = () => {
           })}
         </div>
       </div>
-
-      {/* Keyframes for the floating background shapes */}
       <style>
         {`
           @keyframes floatShape1 {
