@@ -134,6 +134,7 @@ const FAQSection = () => {
           style={{
             fontSize: "clamp(36px, 5vw, 34px)",
             fontWeight: "800",
+            fontFamily: "poppins",
             color: "#004d4f",
             marginBottom: "10px",
             lineHeight: "1.3",
@@ -151,10 +152,11 @@ const FAQSection = () => {
           style={{
             fontSize: "clamp(16px, 2.5vw, 22px)",
             color: "#4a5568",
+              fontFamily: "poppins",
             lineHeight: "1.5",
             fontWeight: "500",
             marginBottom: "30px",
-            fontFamily: "'Poppins', sans-serif",
+            // fontFamily: "'Poppins', sans-serif",
             opacity: animated ? 1 : 0,
             transform: animated ? "translateY(0)" : "translateY(30px)",
             transition:
@@ -217,6 +219,7 @@ const FAQSection = () => {
                       fontSize: "clamp(18px, 2.5vw, 20px)",
                       fontWeight: "600",
                       color: "#004d4f",
+                        fontFamily: "poppins",
                       margin: 0,
                       flexGrow: 1,
                       textAlign: "left",
@@ -228,6 +231,7 @@ const FAQSection = () => {
                     style={{
                       fontSize: "16px", // Slightly larger arrow
                       color: "#007a7e",
+                        fontFamily: "poppins",
                       transform: isOpen ? "rotate(180deg)" : "rotate(0deg)",
                       transition: "transform 0.3s ease",
                       marginLeft: "15px",
@@ -256,6 +260,7 @@ const FAQSection = () => {
                     style={{
                       fontSize: "clamp(15px, 2vw, 17px)",
                       color: "#5a6778",
+                        fontFamily: "poppins",
                       lineHeight: "1.7",
                       margin: 0,
                       paddingTop: "15px", // Space from top of answer area

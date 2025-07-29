@@ -28,11 +28,5 @@
   "id": 5,
    "link": "/clinic-list",
                 "linkText": "Diagnostics"
-},
-
- {
-  "id": 6,
-   "link": "/services",
-                "linkText": "Our Services"
 }
 ]
