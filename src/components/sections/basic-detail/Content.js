@@ -164,7 +164,7 @@ const VaidyaBandhuForm = () => {
     setIsSubmitting(true);
 
     try {
-      const response = await fetch("https://dev.vaidyabandhu.com/api/users/2/", {
+      const response = await fetch("https://stage.vaidyabandhu.com/api/users/2/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -205,10 +205,10 @@ const VaidyaBandhuForm = () => {
         </div>
 
         <div className="text-center mb-5">
-          <h1 className="display-4 mb-2">
+          <h1 className="display-4 mb-2 " style={{ fontFamily: 'Poppins' }}>
             {languagesType[selectedLanguage].title}
           </h1>
-          <p className="lead secondary-color mb-4">
+          <p className="lead secondary-color mb-4" style={{ fontFamily: 'Poppins' }}>
             {languagesType[selectedLanguage].subtitle}
           </p>
         </div>
@@ -217,13 +217,13 @@ const VaidyaBandhuForm = () => {
           <Col md={4}>
             <Card className="mb-4 shadow-lg">
               <Card.Body>
-                <h4 className="h4 mb-4">
+                <h4 className="h4 mb-4" style={{ fontFamily: 'Poppins' }}>
                   <Star className="h-6 w-6 text-yellow-500 mr-1" />{" "}
                   {languagesType[selectedLanguage].membershipBenefits}
                 </h4>
                 <ul className="list-unstyled">
                   {benefits.map((benefit, index) => (
-                    <li key={index} className="d-flex align-items-start mb-2">
+                    <li key={index} className="d-flex align-items-start mb-2" style={{ fontFamily: 'Poppins' }}>
                       <Check className="h-5 w-5 text-success mt-0.5 flex-shrink-0" />
                       <span className="ml-2">{benefit}</span>
                     </li>
@@ -234,7 +234,7 @@ const VaidyaBandhuForm = () => {
 
             <Card className="mb-4 shadow-lg">
               <Card.Body>
-                <h2 className="h4 mb-4">
+                <h2 className="h4 mb-4" style={{ fontFamily: 'Poppins' }}>
                   <CreditCard className="h-6 w-6 secondary-color mr-2" />{" "}
                   {languagesType[selectedLanguage].membershipCharges}
                 </h2>
@@ -245,10 +245,10 @@ const VaidyaBandhuForm = () => {
                   >
                     ₹49
                   </div>
-                  <div className="text-lg opacity-90">
+                  <div className="text-lg opacity-90" style={{ fontFamily: 'Poppins' }}>
                     {languagesType[selectedLanguage].validFor}
                   </div>
-                  <div className="text-sm mt-2 opacity-80">
+                  <div className="text-sm mt-2 opacity-80" style={{ fontFamily: 'Poppins' }}>
                     {languagesType[selectedLanguage].instantCard}
                   </div>
                 </div>
@@ -259,7 +259,7 @@ const VaidyaBandhuForm = () => {
           <Col md={8}>
             <Card className="bg-white rounded-xl shadow-lg p-6 mb-4">
               <Card.Body>
-                <h2 className="h4 mb-6 secondary-color flex items-center">
+                <h2 className="h4 mb-6 secondary-color flex items-center" style={{ fontFamily: 'Poppins' }}>
                   <MapPin className="h-6 w-6 text-blue-500 mr-2" />{" "}
                   {languagesType[selectedLanguage].personalDetails}
                 </h2>
@@ -563,15 +563,15 @@ const VaidyaBandhuForm = () => {
           <Col>
             <Card>
               <Card.Body>
-                <h2 className="h4 mb-4">
+                <h2 className="h4 mb-4" style={{ fontFamily: 'Poppins' }}>
                   <Shield className="h-6 w-6 mr-2" />{" "}
                   {languagesType[selectedLanguage].termsConditions}
                 </h2>
                 <ul className="list-unstyled">
                   {termsConditions.map((term, index) => (
-                    <li key={index} className="d-flex align-items-start mb-2">
+                    <li key={index} className="d-flex align-items-start mb-2" style={{ fontFamily: 'Poppins' }}>
                       <AlertCircle className="h-5 w-5 text-orange-500 mt-0.5 flex-shrink-0" />
-                      <span className="ml-2">{term}</span>
+                      <span className="ml-4" style={{ fontFamily: 'Poppins' }}>{term}</span>
                     </li>
                   ))}
                 </ul>

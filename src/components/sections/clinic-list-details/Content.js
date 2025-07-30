@@ -22,7 +22,7 @@ const DiagnosticCenterDetail = () => {
     setError(null);
     try {
       const response = await fetch(
-        `https://dev.vaidyabandhu.com/api/diagnostic/list-center/${id}`
+        `https://stage.vaidyabandhu.com/api/diagnostic/list-center/${id}`
       );
       if (!response.ok) throw new Error("Error fetching center details");
       const data = await response.json();

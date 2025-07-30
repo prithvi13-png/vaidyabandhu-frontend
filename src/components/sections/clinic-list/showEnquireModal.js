@@ -70,7 +70,7 @@ const ShowEnquireModal = ({ show, onClose, setShowSuccessMessage, token }) => {
     setErrors({});
 
     try {
-      const response = await fetch("https://dev.vaidyabandhu.com/api/enquiry", {
+      const response = await fetch("https://stage.vaidyabandhu.com/api/enquiry", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

@@ -39,7 +39,7 @@ const MembershipModal = () => {
     setIsLoading(true);
 
     try {
-      const response = await fetch("https://dev.vaidyabandhu.com/api/users/login/", {
+      const response = await fetch("https://stage.vaidyabandhu.com/api/users/login/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -93,7 +93,7 @@ const MembershipModal = () => {
 
     try {
       const response = await fetch(
-        "https://dev.vaidyabandhu.com/api/users/verify_login_otp/",
+        "https://stage.vaidyabandhu.com/api/users/verify_login_otp/",
         {
           method: "POST",
           headers: {
@@ -144,7 +144,7 @@ const MembershipModal = () => {
     setErrors({}); // Clear errors
 
     try {
-      const response = await fetch("https://dev.vaidyabandhu.com/api/users/login/", {
+      const response = await fetch("https://stage.vaidyabandhu.com/api/users/login/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -240,7 +240,7 @@ const MembershipModal = () => {
           )}
 
           {step === 2 && (
-            <Form style={{ minHeight: "200px" }}>
+            <Form style={{ minHeight: "200px"  }}>
               <Form.Group controlId="formOtp" className="mb-3 text-center">
                 <Form.Label>Enter OTP sent to {mobileNumber}</Form.Label>
                 <div className="d-flex justify-content-center mb-3">
@@ -256,6 +256,7 @@ const MembershipModal = () => {
                       padding: "0px",
                       textAlign: "center",
                       fontSize: "18px",
+                      fontFamily: "poppins",
                       border: "2px solid #ced4da",
                       borderRadius: "5px",
                       outline: "none",
