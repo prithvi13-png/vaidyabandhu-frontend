@@ -1,35 +1,37 @@
-import React, { Component, Fragment } from 'react';
+import React from 'react';
 import { Helmet } from "react-helmet-async";
-import Header from '../layouts/Headertwo';
 import Breadcrumbs from '../layouts/Breadcrumbs';
 import Footer from '../layouts/Footer';
 import Content from '../sections/blog/Content';
+import { useParams } from 'react-router-dom'; // To get the params from the URL
+import Header from '../layouts/Header';
 
 const pagelocation = "Blog Grid";
 
-class Blog extends Component {
-    render() {
-        return (
-            <Fragment>
-                <Helmet>
-                    <title>VaidyaBandhu - Doctors Appointment Booking - React Template | {pagelocation}</title>
-                    <meta
-                        name="description"
-                        content="#"
-                    />
-                </Helmet>
-                <Header />
-                <Breadcrumbs breadcrumb={{ pagename: pagelocation }} />
-                <Content
-                    catId={this.props.match.params.catId}
-                    tagId={this.props.match.params.tagId}
-                    authorId={this.props.match.params.authorId}
-                    query={this.props.match.params.query}
-                />
-                <Footer />
-            </Fragment>
-        );
-    }
-}
+const Blog = () => {
+  // Using useParams hook to get the dynamic parameters from the URL
+  const { catId, tagId, authorId, query } = useParams();
+
+  return (
+    <>
+      <Helmet>
+        <title>VaidyaBandhu - Doctors Appointment Booking - React Template | {pagelocation}</title>
+        <meta
+          name="description"
+          content="#"
+        />
+      </Helmet>
+      <Header />
+      <Breadcrumbs breadcrumb={{ pagename: pagelocation }} />
+      <Content
+        catId={catId}
+        tagId={tagId}
+        authorId={authorId}
+        query={query}
+      />
+      <Footer />
+    </>
+  );
+};
 
 export default Blog;

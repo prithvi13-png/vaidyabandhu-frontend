@@ -123,6 +123,7 @@ function AppRoutes() {
 
       <Route path="/doctor-grid" element={<Doctorgrid />} />
       <Route path="/doctor-list" element={<Doctorlist />} />
+      <Route path="/doctor-list/:id" element={<Doctorlist />} />
       <Route
         path="/doctor/cat/:catId"
         element={<Doctorgrid key={window.location.pathname} />}

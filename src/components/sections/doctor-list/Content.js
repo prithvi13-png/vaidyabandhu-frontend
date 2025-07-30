@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import Pagination from "react-js-pagination";
 import axios from "axios";
 import { useLocation } from "react-router-dom";
@@ -15,7 +15,8 @@ const Content = () => {
   const { search } = useLocation();
   const params = new URLSearchParams(search);
   const specialtyParam = params.get("specialty");
-
+ const { id } = useParams();  // Get the doctor ID from the URL
+ 
   // Filter states
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedSpecialties, setSelectedSpecialties] = useState(
@@ -80,6 +81,7 @@ const Content = () => {
       if (selectedRating) params.append("rating", selectedRating);
       if (selectedGender) params.append("gender", selectedGender);
       if (sortBy) params.append("sort", sortBy);
+      if (id) params.append("hostital_id", id);
 
       const queryString = params.toString();
       const url = `https://stage.vaidyabandhu.com/api/doctors/${
@@ -104,6 +106,7 @@ const Content = () => {
     selectedRating,
     selectedGender,
     sortBy,
+    id
   ]);
 
   const fetchSpecialties = useCallback(async () => {
