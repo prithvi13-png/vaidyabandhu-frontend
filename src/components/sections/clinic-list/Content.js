@@ -21,17 +21,20 @@ import {
 import { Spinner } from "react-bootstrap";
 import ShowEnquireModal from "./showEnquireModal";
 import { useNavigate } from "react-router-dom";
-import { toast } from 'sonner';
+import { toast } from "sonner";
+import { useFetch } from "../../hooks/usefetch";
+import { isNotEmptyArray } from "../../utiles/utils";
 
 const DiagnosticCentersApp = () => {
   // State management
-  const [diagnosticCenters, setDiagnosticCenters] = useState([]);
+  // const [diagnosticCenters, setDiagnosticCenters] = useState([]);
   const [addresses, setAddresses] = useState([]);
-  const [services, setServices] = useState([]);
   const [selectedAddress, setSelectedAddress] = useState("");
   const [selectedServices, setSelectedServices] = useState([]);
   const [selectedSubServices, setSelectedSubServices] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
+  const [debouncedSearchTerm, setDebouncedSearchTerm] = useState(searchTerm);
+
   const [currentPage, setCurrentPage] = useState(1);
   const [showEnquireModal, setShowEnquireModal] = useState(false);
 
@@ -41,17 +44,57 @@ const DiagnosticCentersApp = () => {
 
   // Loading and error states
   const [loadingAddresses, setLoadingAddresses] = useState(false);
-  const [loadingServices, setLoadingServices] = useState(false);
-  const [loadingCenters, setLoadingCenters] = useState(false);
+  // const [loadingCenters, setLoadingCenters] = useState(false);
   const [errorAddresses, setErrorAddresses] = useState(null);
-  const [errorServices, setErrorServices] = useState(null);
-  const [errorCenters, setErrorCenters] = useState(null);
+  // const [errorCenters, setErrorCenters] = useState(null);
   const navigate = useNavigate();
 
   const token = localStorage.getItem("token");
-  const itemsPerPage = 6;
+  const itemsPerPage = 5;
   const defaultImage =
     "https://images.unsplash.com/photo-1551601651-2a8555f1a136?w=400&h=300&fit=crop";
+
+  // Using useFetch hook to fetch diagnostic categories
+  const {
+    data: services,
+    loading: loadingServices,
+    error: errorServices,
+    refetch: fetchServices,
+  } = useFetch({
+    method: "GET",
+    request: "diagnostic/diagnostic-category",
+    params: {
+      pagination: false,
+    },
+  });
+
+  // Using useFetch for API call
+  const {
+    data: diagnosticCenters,
+    loading: loadingCenters,
+    error: errorCenters,
+    refetch: refreshListApi,
+  } = useFetch({
+    method: "GET",
+    request: "diagnostic/list-center",
+    params: {
+      page_count: itemsPerPage.toString(),
+      page: currentPage.toString(),
+      search: debouncedSearchTerm.trim(),
+      address: selectedAddress,
+      services: selectedServices.join(","),
+      sub_services: selectedSubServices.join(","),
+    },
+  });
+
+  // Debounce search input
+  useEffect(() => {
+    const timeoutId = setTimeout(() => {
+      setDebouncedSearchTerm(searchTerm);
+    }, 500); // Adjust delay (500ms) as needed
+
+    return () => clearTimeout(timeoutId); // Cleanup on each keystroke
+  }, [searchTerm]);
 
   // Optimized API calls with error handling
   const fetchAddresses = useCallback(async () => {
@@ -74,91 +117,9 @@ const DiagnosticCentersApp = () => {
     }
   }, []);
 
-  const fetchServices = useCallback(async () => {
-    setLoadingServices(true);
-    setErrorServices(null);
-    try {
-      const response = await fetch(
-        "https://stage.vaidyabandhu.com/api/diagnostic/diagnostic-category?pagination=false"
-      );
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-      const result = await response.json();
-      if (result?.data && result.data.length > 0) {
-        setServices(result.data);
-      }
-    } catch (error) {
-      console.error("Error fetching services:", error);
-      setErrorServices("Failed to load services. Please try again.");
-    } finally {
-      setLoadingServices(false);
-    }
-  }, []);
-
-  const fetchDiagnosticCenters = useCallback(
-    async (page = 1, search = "") => {
-      setLoadingCenters(true);
-      setErrorCenters(null);
-      try {
-        const params = new URLSearchParams({
-          page_count: itemsPerPage.toString(),
-          page: page.toString(),
-          search: search,
-          address: selectedAddress,
-          services: selectedServices.join(","),
-          sub_services: selectedSubServices.join(","),
-        });
-
-        const response = await fetch(
-          `https://stage.vaidyabandhu.com/api/diagnostic/list-center?${params}`
-        );
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        const result = await response.json();
-
-        if (result?.data && result.data.length > 0) {
-          setDiagnosticCenters(result.data);
-          setTotalCenters(
-            result.pagination_data?.total_count || result.data.length
-          );
-        } else {
-          setDiagnosticCenters([]);
-          setTotalCenters(0);
-        }
-      } catch (error) {
-        console.error("Error fetching diagnostic centers:", error);
-        setErrorCenters("Failed to load diagnostic centers. Please try again.");
-        setDiagnosticCenters([]);
-        setTotalCenters(0);
-      } finally {
-        setLoadingCenters(false);
-      }
-    },
-    [selectedAddress, selectedServices, selectedSubServices]
-  );
-
-  // Effects
-  useEffect(() => {
-    fetchAddresses();
-    fetchServices();
-  }, [fetchAddresses, fetchServices]);
-
-  useEffect(() => {
-    const debounceTimer = setTimeout(() => {
-      fetchDiagnosticCenters(currentPage, searchTerm);
-    }, 300);
-
-    return () => clearTimeout(debounceTimer);
-  }, [
-    currentPage,
-    searchTerm,
-    selectedAddress,
-    selectedServices,
-    selectedSubServices,
-    fetchDiagnosticCenters,
-  ]);
+  const handleSearchChange = (e) => {
+    setSearchTerm(e.target.value); // Set the search term
+  };
 
   // Handlers
   const handleServiceToggle = (service) => {
@@ -239,8 +200,12 @@ const DiagnosticCentersApp = () => {
 
   // Memoized values
   const totalPages = useMemo(
-    () => Math.ceil(totalCenters / itemsPerPage),
-    [totalCenters]
+    () =>
+      Math.ceil(
+        diagnosticCenters?.pagination_data?.total_count ||
+          diagnosticCenters?.data?.length / itemsPerPage
+      ),
+    [diagnosticCenters]
   );
   const hasActiveFilters = useMemo(
     () =>
@@ -300,12 +265,15 @@ const DiagnosticCentersApp = () => {
 
   const handleCopy = (e, text) => {
     // Try copying the text to clipboard
-    navigator.clipboard.writeText(text).then(() => {
-      toast.success(`${text} has been copied.`, { position: 'top-center'})
-      // Reset the "Copied!" message after 2 seconds
-    }).catch((err) => {
-      console.error('Failed to copy text: ', err);
-    });
+    navigator.clipboard
+      .writeText(text)
+      .then(() => {
+        toast.success(`${text} has been copied.`, { position: "top-center" });
+        // Reset the "Copied!" message after 2 seconds
+      })
+      .catch((err) => {
+        console.error("Failed to copy text: ", err);
+      });
     e.stopPropagation();
   };
 
@@ -344,7 +312,7 @@ const DiagnosticCentersApp = () => {
                   className="form-control form-control-lg ps-5 pe-4 border-0 shadow-sm"
                   placeholder="Search by center name or services..."
                   value={searchTerm}
-                  onChange={(e) => setSearchTerm(e.target.value)}
+                  onChange={handleSearchChange}
                   style={{
                     borderRadius: "16px",
                     fontSize: "16px",
@@ -356,16 +324,16 @@ const DiagnosticCentersApp = () => {
             <div className="col-lg-4 text-end d-none d-lg-block">
               <div className="text-white">
                 <div className="d-flex align-items-center justify-content-end mb-2">
-                  <CheckCircle className="me-1" size={20} />
                   <span>Verified Centers</span>
+                  <CheckCircle className="ms-1" size={20} />
                 </div>
                 <div className="d-flex align-items-center justify-content-end mb-2">
-                  <Shield className="me-1" size={20} />
                   <span>Accredited Labs</span>
+                  <Shield className="ms-1" size={20} />
                 </div>
                 <div className="d-flex align-items-center justify-content-end">
-                  <Clock className="me-1" size={20} />
                   <span>Quick Results</span>
+                  <Clock className="ms-1" size={20} />
                 </div>
               </div>
             </div>
@@ -476,60 +444,66 @@ const DiagnosticCentersApp = () => {
                         overflowY: "auto",
                       }}
                     >
-                      {services.map((service) => (
-                        <div
-                          key={service.id}
-                          className="mb-1 mb-2"
-                          style={{ borderBottom: "1px solid #00000012" }}
-                        >
-                          <div className="form-check">
-                            <input
-                              className="form-check-input"
-                              type="checkbox"
-                              id={`service-${service.id}`}
-                              checked={selectedServices.includes(service.id)}
-                              onChange={() => handleServiceToggle(service.id)}
-                            />
-                            <label
-                              className="form-check-label fw-medium"
-                              htmlFor={`service-${service.id}`}
-                            >
-                              {service.name}
-                            </label>
-                          </div>
+                      {isNotEmptyArray(services?.data) ? (
+                        services.data.map((service) => (
+                          <div
+                            key={service.id}
+                            className="mb-1 mb-2"
+                            style={{ borderBottom: "1px solid #00000012" }}
+                          >
+                            <div className="form-check">
+                              <input
+                                className="form-check-input"
+                                type="checkbox"
+                                id={`service-${service.id}`}
+                                checked={selectedServices.includes(service.id)}
+                                onChange={() => handleServiceToggle(service.id)}
+                              />
+                              <label
+                                className="form-check-label fw-medium"
+                                htmlFor={`service-${service.id}`}
+                              >
+                                {service.name}
+                              </label>
+                            </div>
 
-                          {/* Sub-services with Animation */}
-                          {selectedServices.includes(service.id) &&
-                            service.sub_category.length > 0 && (
-                              <div className="ms-4 mt-2 ml-3">
-                                {service.sub_category.map((subService) => (
-                                  <div
-                                    key={subService.id}
-                                    className="form-check mb-1"
-                                  >
-                                    <input
-                                      className="form-check-input"
-                                      type="checkbox"
-                                      id={`sub-service-${subService.id}`}
-                                      checked={selectedSubServices.includes(
-                                        subService.id
-                                      )}
-                                      onChange={() =>
-                                        handleSubServiceToggle(subService.id)
-                                      }
-                                    />
-                                    <label
-                                      className="form-check-label text-muted"
-                                      htmlFor={`sub-service-${subService.id}`}
+                            {/* Sub-services with Animation */}
+                            {selectedServices.includes(service.id) &&
+                              service.sub_category.length > 0 && (
+                                <div className="ms-4 mt-2 ml-3">
+                                  {service.sub_category.map((subService) => (
+                                    <div
+                                      key={subService.id}
+                                      className="form-check mb-1"
                                     >
-                                      {subService.name}
-                                    </label>
-                                  </div>
-                                ))}
-                              </div>
-                            )}
+                                      <input
+                                        className="form-check-input"
+                                        type="checkbox"
+                                        id={`sub-service-${subService.id}`}
+                                        checked={selectedSubServices.includes(
+                                          subService.id
+                                        )}
+                                        onChange={() =>
+                                          handleSubServiceToggle(subService.id)
+                                        }
+                                      />
+                                      <label
+                                        className="form-check-label text-muted"
+                                        htmlFor={`sub-service-${subService.id}`}
+                                      >
+                                        {subService.name}
+                                      </label>
+                                    </div>
+                                  ))}
+                                </div>
+                              )}
+                          </div>
+                        ))
+                      ) : (
+                        <div style={{ textAlign: "center" }}>
+                          No Service Found
                         </div>
-                      ))}
+                      )}
                     </div>
                   )}
                 </div>
@@ -542,11 +516,8 @@ const DiagnosticCentersApp = () => {
             {loadingCenters ? (
               <LoadingSpinner text="Finding diagnostic centers..." />
             ) : errorCenters ? (
-              <ErrorMessage
-                message={errorCenters}
-                onRetry={() => fetchDiagnosticCenters(currentPage, searchTerm)}
-              />
-            ) : diagnosticCenters.length === 0 ? (
+              <ErrorMessage message={errorCenters} onRetry={refreshListApi} />
+            ) : !isNotEmptyArray(diagnosticCenters?.data) ? (
               <EmptyState />
             ) : (
               <div>
@@ -555,7 +526,7 @@ const DiagnosticCentersApp = () => {
                   <div>
                     <h4 className="mb-1 secondary-color">Diagnostic Centers</h4>
                     <p className="text-muted mb-0">
-                      {diagnosticCenters.length} centers found
+                      {diagnosticCenters.data.length} centers found
                       {hasActiveFilters && " with your filters"}
                     </p>
                   </div>
@@ -566,7 +537,7 @@ const DiagnosticCentersApp = () => {
 
                 {/* Enhanced Centers Grid */}
                 <div className="row">
-                  {diagnosticCenters.map((center) => (
+                  {diagnosticCenters.data.map((center) => (
                     <div key={center.id} className="col-12 mb-4">
                       <div
                         className="card border-0 shadow-sm h-100 position-relative overflow-hidden"
@@ -633,7 +604,13 @@ const DiagnosticCentersApp = () => {
                                   <div className="d-flex align-items-center text-muted mb-2">
                                     <Phone size={16} className="me-2" />
                                     <span>{center.contact_number}</span>
-                                    <Copy size={16} style={{ marginLeft: '.5rem'}} onClick={(e) => handleCopy(e, center.contact_number)}  />
+                                    <Copy
+                                      size={16}
+                                      style={{ marginLeft: ".5rem" }}
+                                      onClick={(e) =>
+                                        handleCopy(e, center.contact_number)
+                                      }
+                                    />
                                   </div>
                                 </div>
 
@@ -671,16 +648,19 @@ const DiagnosticCentersApp = () => {
 
                               <div className="d-flex gap-2 mt-auto">
                                 <div className="d-flex">
-                                <button
-                                  className="btn btn-primary flex-fill me-2"
-                                  style={{ borderRadius: "8px", padding: '8px 36px' }}
-                                  onClick={(e) => {
-                                    e.stopPropagation();
-                                    handleEnquire(center);
-                                  }}
-                                >
-                                  Enquiry
-                                </button>
+                                  <button
+                                    className="btn btn-primary flex-fill me-2"
+                                    style={{
+                                      borderRadius: "8px",
+                                      padding: "8px 36px",
+                                    }}
+                                    onClick={(e) => {
+                                      e.stopPropagation();
+                                      handleEnquire(center);
+                                    }}
+                                  >
+                                    Enquiry
+                                  </button>
                                 </div>
                                 {/* <button
                                   className="btn text-white px-3 py-2"

@@ -117,7 +117,7 @@ const Content = () => {
     method: "GET",
     request: "doctors/",
     params: {
-      search: debouncedSearchTerm,
+      search: debouncedSearchTerm.trim(),
       specialties: selectedSpecialties.join(","),
       locations: selectedLocations.join(","),
       availability: selectedAvailability.join(","),

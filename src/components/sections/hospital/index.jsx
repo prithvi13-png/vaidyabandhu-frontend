@@ -44,7 +44,7 @@ const HospitalsPage = () => {
     method: "GET",
     request: "/hospital/",
     params: {
-      search: debouncedSearchTerm ?? "",
+      search: debouncedSearchTerm.trim() ?? "",
       page_count: 5,
       page: pageNo,
     },
