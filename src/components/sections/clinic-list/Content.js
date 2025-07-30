@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback, useMemo } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import {
   Search,
   MapPin,
@@ -18,7 +18,7 @@ import {
   Building,
   Copy,
 } from "lucide-react";
-import { Spinner } from "react-bootstrap";
+import { OverlayTrigger, Popover, Spinner } from "react-bootstrap";
 import ShowEnquireModal from "./showEnquireModal";
 import { useNavigate } from "react-router-dom";
 import { toast } from "sonner";
@@ -27,7 +27,6 @@ import { isNotEmptyArray } from "../../utiles/utils";
 
 const DiagnosticCentersApp = () => {
   // State management
-  // const [diagnosticCenters, setDiagnosticCenters] = useState([]);
   const [addresses, setAddresses] = useState([]);
   const [selectedAddress, setSelectedAddress] = useState("");
   const [selectedServices, setSelectedServices] = useState([]);
@@ -40,13 +39,7 @@ const DiagnosticCentersApp = () => {
 
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
   const [showMobileFilters, setShowMobileFilters] = useState(false);
-  const [totalCenters, setTotalCenters] = useState(0);
 
-  // Loading and error states
-  const [loadingAddresses, setLoadingAddresses] = useState(false);
-  // const [loadingCenters, setLoadingCenters] = useState(false);
-  const [errorAddresses, setErrorAddresses] = useState(null);
-  // const [errorCenters, setErrorCenters] = useState(null);
   const navigate = useNavigate();
 
   const token = localStorage.getItem("token");
@@ -96,26 +89,31 @@ const DiagnosticCentersApp = () => {
     return () => clearTimeout(timeoutId); // Cleanup on each keystroke
   }, [searchTerm]);
 
-  // Optimized API calls with error handling
-  const fetchAddresses = useCallback(async () => {
-    setLoadingAddresses(true);
-    setErrorAddresses(null);
-    try {
-      const response = await fetch(
-        "https://stage.vaidyabandhu.com/api/diagnostic/addresses"
-      );
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
+    // Fetch locations using useFetch
+    const {
+      data: locationsData,
+      loading: loadingAddresses,
+      error: locationsError,
+    } = useFetch({
+      method: "GET",
+      request: "https://stage.vaidyabandhu.com/api/locations/",
+    });
+  
+    useEffect(() => {
+      if (locationsData) {
+        setAddresses(locationsData.data || []);
       }
-      const data = await response.json();
-      setAddresses(data);
-    } catch (error) {
-      console.error("Error fetching addresses:", error);
-      setErrorAddresses("Failed to load locations. Please try again.");
-    } finally {
-      setLoadingAddresses(false);
-    }
-  }, []);
+      if (locationsError) {
+        console.error("Error fetching locations:", locationsError);
+        setAddresses([
+          { id: 'Delhi', name: "Delhi" },
+          { id: 'Mumbai', name: "Mumbai" },
+          { id: 'Bangalore', name: "Bangalore" },
+          { id: 'Chennai', name: "Chennai" },
+          { id: 'Hyderabad', name: "Hyderabad" },
+        ]);
+      }
+    }, [locationsData, locationsError]);
 
   const handleSearchChange = (e) => {
     setSearchTerm(e.target.value); // Set the search term
@@ -202,8 +200,8 @@ const DiagnosticCentersApp = () => {
   const totalPages = useMemo(
     () =>
       Math.ceil(
-        diagnosticCenters?.pagination_data?.total_count ||
-          diagnosticCenters?.data?.length / itemsPerPage
+       ( diagnosticCenters?.pagination_data?.total_count ||
+          diagnosticCenters?.data?.length) / itemsPerPage
       ),
     [diagnosticCenters]
   );
@@ -615,19 +613,7 @@ const DiagnosticCentersApp = () => {
                                 </div>
 
                                 {/* Services Tags */}
-                                <div className="mb-3">
-                                  <div className="d-flex flex-wrap gap-2">
-                                    {center.category.map((service) => (
-                                      <span
-                                        key={service.id}
-                                        className="badge bg-light text-dark border px-3 py-1 me-2 mb-2"
-                                        style={{ borderRadius: "20px" }}
-                                      >
-                                        {service.name}
-                                      </span>
-                                    ))}
-                                  </div>
-                                </div>
+                               <DiagnosticCenterCategories categories={isNotEmptyArray(center?.category) ? center.category : []} />
 
                                 {/* Features */}
                                 <div className="d-flex gap-3 mb-3">
@@ -765,6 +751,66 @@ const DiagnosticCentersApp = () => {
           </div>
         </div>
       )}
+    </div>
+  );
+};
+
+
+const DiagnosticCenterCategories = ({ categories }) => {
+  // Check if the category exists and get the first 6 items
+  const visibleCategories = categories.slice(0, 6); // Show only the first 6
+  const remainingCategories = categories.slice(6); // Get the remaining items
+
+  const renderPopover = () => (
+    <Popover id="popover-basic">
+      <Popover.Body>
+        <div className="d-flex flex-wrap gap-2">
+          {remainingCategories.map((service) => (
+            <span
+              key={service.id}
+              className="badge bg-light text-dark border px-3 py-1 me-2 mb-2"
+              style={{ borderRadius: "20px" }}
+            >
+              {service.name}
+            </span>
+          ))}
+        </div>
+      </Popover.Body>
+    </Popover>
+  );
+
+  return (
+    <div className="mb-3">
+      <div className="d-flex flex-wrap gap-2">
+        {isNotEmptyArray(visibleCategories) && visibleCategories.map((service) => (
+          <span
+            key={service.id}
+            className="badge bg-light text-dark border px-3 py-1 me-2 mb-2"
+            style={{ borderRadius: "20px" }}
+          >
+            {service.name}
+          </span>
+        ))}
+
+        {/* Show Popover if there are more than 6 items */}
+        {remainingCategories.length > 0 && (
+          <OverlayTrigger
+            trigger="hover"
+            placement="top"
+            overlay={renderPopover()}
+          >
+            <span
+              className="badge bg-light text-dark border px-3 py-1 me-2 mb-2"
+              style={{
+                borderRadius: "20px",
+                cursor: "pointer",
+              }}
+            >
+              +{remainingCategories.length} more
+            </span>
+          </OverlayTrigger>
+        )}
+      </div>
     </div>
   );
 };

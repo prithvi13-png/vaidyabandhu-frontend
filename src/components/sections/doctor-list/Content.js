@@ -98,11 +98,11 @@ const Content = () => {
     if (locationsError) {
       console.error("Error fetching locations:", locationsError);
       setLocations([
-        { id: 1, name: "Delhi" },
-        { id: 2, name: "Mumbai" },
-        { id: 3, name: "Bangalore" },
-        { id: 4, name: "Chennai" },
-        { id: 5, name: "Hyderabad" },
+        { id: "Delhi", name: "Delhi" },
+        { id: "Mumbai", name: "Mumbai" },
+        { id: "Bangalore", name: "Bangalore" },
+        { id: "Chennai", name: "Chennai" },
+        { id: "Hyderabad", name: "Hyderabad" },
       ]);
     }
   }, [locationsData, locationsError]);
