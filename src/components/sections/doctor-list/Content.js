@@ -1,24 +1,22 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import Pagination from "react-js-pagination";
-import axios from "axios";
 import { useLocation } from "react-router-dom";
+import { isNotEmptyArray } from "../../utiles/utils";
+import { useFetch } from "../../hooks/usefetch";
 
 const Content = () => {
-  const [departments, setDepartments] = useState([]); // Departments from API
-  const [specialties, setSpecialties] = useState([]); // Specialties for dropdown
   const [locations, setLocations] = useState([]); // Locations for dropdown
   const [activePage, setActivePage] = useState(1);
-  const [itemPerpage] = useState(3);
-  const [loader, setLoader] = useState(false);
-  const [error, setError] = useState(null);
+  const [itemPerpage] = useState(5);
   const { search } = useLocation();
   const params = new URLSearchParams(search);
   const specialtyParam = params.get("specialty");
- const { id } = useParams();  // Get the doctor ID from the URL
- 
+  const { id } = useParams(); // Get the doctor ID from the URL
+
   // Filter states
   const [searchTerm, setSearchTerm] = useState("");
+  const [debouncedSearchTerm, setDebouncedSearchTerm] = useState(searchTerm);
   const [selectedSpecialties, setSelectedSpecialties] = useState(
     specialtyParam ? [Number(specialtyParam)] : []
   );
@@ -64,67 +62,41 @@ const Content = () => {
   //   { value: "reviews", label: "Reviews" },
   // ];
 
-  // Memoize fetchDepartments to prevent unnecessary re-renders
-  const fetchDepartments = useCallback(async () => {
-    setLoader(true);
-    setError(null);
-    try {
-      // Build query parameters
-      const params = new URLSearchParams();
-      if (searchTerm) params.append("search", searchTerm);
-      if (selectedSpecialties.length > 0)
-        params.append("specialties", selectedSpecialties.join(","));
-      if (selectedLocations.length > 0)
-        params.append("locations", selectedLocations.join(","));
-      if (selectedAvailability.length > 0)
-        params.append("availability", selectedAvailability.join(","));
-      if (selectedRating) params.append("rating", selectedRating);
-      if (selectedGender) params.append("gender", selectedGender);
-      if (sortBy) params.append("sort", sortBy);
-      if (id) params.append("hostital_id", id);
+  // Debounce search input
+  useEffect(() => {
+    const timeoutId = setTimeout(() => {
+      setDebouncedSearchTerm(searchTerm);
+    }, 500); // Adjust delay (500ms) as needed
 
-      const queryString = params.toString();
-      const url = `https://stage.vaidyabandhu.com/api/doctors/${
-        queryString ? `?${queryString}` : ""
-      }`;
+    return () => clearTimeout(timeoutId); // Cleanup on each keystroke
+  }, [searchTerm]);
 
-      const response = await axios.get(url);
-      setDepartments(response.data.data);
-      setActivePage(1); // Reset to first page when filtering
-      setLoader(false);
-      console.log("Departments:", response.data.data);
-    } catch (error) {
-      setLoader(false);
-      setError("Failed to fetch doctors. Please try again.");
-      console.error("Error fetching departments:", error);
+  // Fetch specialties using useFetch
+  const {
+    data: specialtiesData,
+    loading: specialtiesLoading,
+    error: specialtiesError,
+  } = useFetch({
+    method: "GET",
+    request: "specialty/",
+  });
+
+  // Fetch locations using useFetch
+  const {
+    data: locationsData,
+    loading: locationsLoading,
+    error: locationsError,
+  } = useFetch({
+    method: "GET",
+    request: "https://stage.vaidyabandhu.com/api/locations/",
+  });
+
+  useEffect(() => {
+    if (locationsData) {
+      setLocations(locationsData.data || []);
     }
-  }, [
-    searchTerm,
-    selectedSpecialties,
-    selectedLocations,
-    selectedAvailability,
-    selectedRating,
-    selectedGender,
-    sortBy,
-    id
-  ]);
-
-  const fetchSpecialties = useCallback(async () => {
-    try {
-      const response = await axios.get("https://stage.vaidyabandhu.com/api/specialty/");
-      setSpecialties(response.data.data || []);
-    } catch (error) {
-      console.error("Error fetching specialties:", error);
-    }
-  }, []);
-
-  const fetchLocations = useCallback(async () => {
-    try {
-      // Assuming there's an endpoint for locations
-      const response = await axios.get("https://stage.vaidyabandhu.com/api/locations/");
-      setLocations(response.data.data || []);
-    } catch (error) {
-      console.error("Error fetching locations:", error);
+    if (locationsError) {
+      console.error("Error fetching locations:", locationsError);
       setLocations([
         { id: 1, name: "Delhi" },
         { id: 2, name: "Mumbai" },
@@ -133,18 +105,30 @@ const Content = () => {
         { id: 5, name: "Hyderabad" },
       ]);
     }
-  }, []);
+  }, [locationsData, locationsError]);
 
-  // Fetch departments and specialties on component mount
-  useEffect(() => {
-    fetchSpecialties();
-    fetchLocations();
-  }, [fetchSpecialties, fetchLocations]);
-
-  // Fetch departments when filters change
-  useEffect(() => {
-    fetchDepartments();
-  }, [fetchDepartments]);
+  // Fetch departments using useFetch
+  const {
+    data,
+    loading: loader,
+    error,
+    refetch,
+  } = useFetch({
+    method: "GET",
+    request: "doctors/",
+    params: {
+      search: debouncedSearchTerm,
+      specialties: selectedSpecialties.join(","),
+      locations: selectedLocations.join(","),
+      availability: selectedAvailability.join(","),
+      rating: selectedRating,
+      gender: selectedGender,
+      sort: sortBy,
+      page_count: itemPerpage,
+      page: activePage,
+      hostital_id: id,
+    },
+  });
 
   const handlePageChange = (pageNumber) => {
     setActivePage(pageNumber);
@@ -190,7 +174,6 @@ const Content = () => {
     setSortBy("");
     setSpecialtySearchTerm("");
     setLocationSearchTerm("");
-    setError(null);
   };
 
   const hasActiveFilters =
@@ -202,16 +185,8 @@ const Content = () => {
     selectedGender ||
     sortBy;
 
-  // Pagination logic
-  const indexOfLastItem = activePage * itemPerpage;
-  const indexOfFirstItem = indexOfLastItem - itemPerpage;
-  const currentDepartments = departments.slice(
-    indexOfFirstItem,
-    indexOfLastItem
-  );
-
   // Filter specialties based on search term
-  const filteredSpecialties = specialties.filter((specialty) =>
+  const filteredSpecialties = specialtiesData?.data?.filter((specialty) =>
     specialty.description
       .toLowerCase()
       .includes(specialtySearchTerm.toLowerCase())
@@ -228,7 +203,7 @@ const Content = () => {
 
     if (selectedSpecialties.length > 0) {
       selectedSpecialties.forEach((id) => {
-        const specialty = specialties.find((s) => s.id === id);
+        const specialty = specialtiesData?.data?.find((s) => s.id === id);
         if (specialty) {
           filters.push({ type: "specialty", id, label: specialty.description });
         }
@@ -517,7 +492,7 @@ const Content = () => {
                       </div>
                     </div>
                     <div style={{ maxHeight: "200px", overflowY: "auto" }}>
-                      {filteredSpecialties.length === 0 ? (
+                      {!isNotEmptyArray(filteredSpecialties) ? (
                         <p className="text-muted small">No specialties found</p>
                       ) : (
                         filteredSpecialties.map((specialty) => (
@@ -693,10 +668,7 @@ const Content = () => {
                 <div className="alert alert-danger text-center">
                   <h5>Error</h5>
                   <p>{error}</p>
-                  <button
-                    className="btn btn-primary mt-2"
-                    onClick={fetchDepartments}
-                  >
+                  <button className="btn btn-primary mt-2" onClick={refetch}>
                     Try Again
                   </button>
                 </div>
@@ -707,7 +679,7 @@ const Content = () => {
                   </div>
                   <p className="mt-3">Fetching doctor list...</p>
                 </div>
-              ) : departments.length === 0 ? (
+              ) : !isNotEmptyArray(data?.data) ? (
                 <div className="text-center py-5">
                   <h5>No doctors found</h5>
                   <p>
@@ -716,19 +688,23 @@ const Content = () => {
                 </div>
               ) : (
                 <>
-                  {currentDepartments.map((item) => (
+                  {data.data.map((item) => (
                     <div className="sigma_team style-17" key={item.id}>
                       <div className="row no-gutters">
                         <div className="col-md-3">
                           <div className="sigma_team-thumb">
-                            <img src={item.photo} alt={item.name} />
+                            <img
+                              src={item.photo}
+                              alt={item.full_name}
+                              style={{ maxHeight: "305px" }}
+                            />
                           </div>
                         </div>
                         <div className="col-md-5 col-sm-6">
                           <div className="sigma_team-body">
                             <h5>
                               <Link to={`/doctor-details/${item.id}`}>
-                                {item.name}
+                                {item.full_name}
                               </Link>
                             </h5>
                             <div className="sigma_team-categories">
@@ -764,14 +740,18 @@ const Content = () => {
                             <div className="sigma_team-info">
                               <span>
                                 <i className="fal fa-map-marker-alt" />
-                                {item.location || "Not specified"}
+                                {isNotEmptyArray(item?.hospital)
+                                  ? item.hospital
+                                      .map((el) => el.description)
+                                      .join(", ")
+                                  : "Not specified"}
                               </span>
                               <span>
                                 <i className="fal fa-award" />
                                 {item.experience} Yrs Experience
                               </span>
                               <span>
-                              <i className="fal fa-calendar" />
+                                <i className="fal fa-calendar" />
                                 {item.educational_degrees}
                               </span>
                             </div>
@@ -788,12 +768,12 @@ const Content = () => {
                   ))}
 
                   {/* Pagination */}
-                  {departments.length > itemPerpage && (
+                  {
                     <div className="d-flex justify-content-center mt-4">
                       <Pagination
                         activePage={activePage}
                         itemsCountPerPage={itemPerpage}
-                        totalItemsCount={departments.length}
+                        totalItemsCount={data.data.length}
                         pageRangeDisplayed={5}
                         onChange={handlePageChange}
                         innerClass="pagination"
@@ -802,7 +782,7 @@ const Content = () => {
                         linkClass="page-link"
                       />
                     </div>
-                  )}
+                  }
                 </>
               )}
             </div>
