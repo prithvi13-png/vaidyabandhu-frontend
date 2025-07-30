@@ -132,7 +132,7 @@ class Content extends Component {
                                             </div>
                                         </div>
                                         <div className="form-block d-flex">
-                                            <h4 className="mb-0 mr-4">Gender:</h4>
+                                            <h4 className="mb-0 me-4">Gender:</h4>
                                             <div className="d-flex align-items-center">
                                                 <input type="radio" id="radio" value={this.state.gender} onChange={this.gender} />
                                                 <label className="mb-0" htmlFor="radio">Male</label>

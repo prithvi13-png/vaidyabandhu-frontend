@@ -218,7 +218,7 @@ const VaidyaBandhuForm = () => {
             <Card className="mb-4 shadow-lg">
               <Card.Body>
                 <h4 className="h4 mb-4" style={{ fontFamily: 'Poppins' }}>
-                  <Star className="h-6 w-6 text-yellow-500 mr-1" />{" "}
+                  <Star className="h-6 w-6 text-yellow-500 me-1" />{" "}
                   {languagesType[selectedLanguage].membershipBenefits}
                 </h4>
                 <ul className="list-unstyled">
@@ -235,7 +235,7 @@ const VaidyaBandhuForm = () => {
             <Card className="mb-4 shadow-lg">
               <Card.Body>
                 <h2 className="h4 mb-4" style={{ fontFamily: 'Poppins' }}>
-                  <CreditCard className="h-6 w-6 secondary-color mr-2" />{" "}
+                  <CreditCard className="h-6 w-6 secondary-color me-2" />{" "}
                   {languagesType[selectedLanguage].membershipCharges}
                 </h2>
                 <div className="text-center">
@@ -260,7 +260,7 @@ const VaidyaBandhuForm = () => {
             <Card className="bg-white rounded-xl shadow-lg p-6 mb-4">
               <Card.Body>
                 <h2 className="h4 mb-6 secondary-color flex items-center" style={{ fontFamily: 'Poppins' }}>
-                  <MapPin className="h-6 w-6 text-blue-500 mr-2" />{" "}
+                  <MapPin className="h-6 w-6 text-blue-500 me-2" />{" "}
                   {languagesType[selectedLanguage].personalDetails}
                 </h2>
 
@@ -564,7 +564,7 @@ const VaidyaBandhuForm = () => {
             <Card>
               <Card.Body>
                 <h2 className="h4 mb-4" style={{ fontFamily: 'Poppins' }}>
-                  <Shield className="h-6 w-6 mr-2" />{" "}
+                  <Shield className="h-6 w-6 me-2" />{" "}
                   {languagesType[selectedLanguage].termsConditions}
                 </h2>
                 <ul className="list-unstyled">

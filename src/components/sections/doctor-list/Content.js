@@ -366,7 +366,7 @@ const Content = () => {
                   <div className="d-flex flex-wrap align-items-center">
                     <div className="d-flex flex-wrap align-items-center mb-2">
                       <h5
-                        className="mb-0 mr-3"
+                        className="mb-0 me-3"
                         style={{ fontSize: "16px", fontWeight: "600" }}
                       >
                         Filters
@@ -375,7 +375,7 @@ const Content = () => {
                       {/* Reset Button */}
                       {hasActiveFilters && (
                         <button
-                          className="btn btn-outline-secondary btn-sm mr-2"
+                          className="btn btn-outline-secondary btn-sm me-2"
                           onClick={handleReset}
                           style={{
                             borderRadius: "20px",
@@ -394,7 +394,7 @@ const Content = () => {
                       {activeFilters.map((filter, index) => (
                         <span
                           key={index}
-                          className="badge badge-light d-flex align-items-center mr-2 mb-2"
+                          className="badge badge-light d-flex align-items-center me-2 mb-2"
                           style={{
                             backgroundColor: "#f8f9fa",
                             border: "1px solid #dee2e6",

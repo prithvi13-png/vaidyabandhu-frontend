@@ -266,7 +266,7 @@ const DiagnosticCentersApp = () => {
   const ErrorMessage = ({ message, onRetry }) => (
     <div className="text-center py-5">
       <AlertCircle
-        className="mb-3 mr-1"
+        className="mb-3 me-1"
         size={48}
         style={{ color: "#ef4444" }}
       />
@@ -284,7 +284,7 @@ const DiagnosticCentersApp = () => {
   // Empty state component
   const EmptyState = () => (
     <div className="text-center py-5">
-      <Building className="mb-3 mr-1" size={64} style={{ color: "#6b7280" }} />
+      <Building className="mb-3 me-1" size={64} style={{ color: "#6b7280" }} />
       <h5 className="text-muted mb-3">No diagnostic centers found</h5>
       <p className="text-muted mb-4">
         Try adjusting your filters or search terms to find more results.
@@ -383,7 +383,7 @@ const DiagnosticCentersApp = () => {
                 onClick={() => setShowMobileFilters(!showMobileFilters)}
                 style={{ borderRadius: "12px" }}
               >
-                <Filter className=" mr-1" size={18} />
+                <Filter className=" me-1" size={18} />
                 Filters
                 {hasActiveFilters && (
                   <span className="badge bg-primary rounded-pill">
@@ -432,7 +432,7 @@ const DiagnosticCentersApp = () => {
                 {/* Location Filter */}
                 <div className="mb-4">
                   <label className="form-label fw-semibold d-flex align-items-center gap-2 secondary-color">
-                    <MapIcon className=" mr-1" size={18} />
+                    <MapIcon className=" me-1" size={18} />
                     Location
                   </label>
                   {loadingAddresses ? (
@@ -457,7 +457,7 @@ const DiagnosticCentersApp = () => {
                 {/* Services Filter */}
                 <div>
                   <label className="form-label fw-semibold d-flex align-items-center gap-2 secondary-color">
-                    <Shield className=" mr-1" size={18} />
+                    <Shield className=" me-1" size={18} />
                     Services
                   </label>
                   {loadingServices ? (
@@ -613,7 +613,7 @@ const DiagnosticCentersApp = () => {
                                   <div className="d-flex align-items-center">
                                     <Star
                                       size={16}
-                                      className="text-warning me-1 mr-1"
+                                      className="text-warning me-1 me-1"
                                       fill="currentColor"
                                     />
                                     <span className="fw-bold">
@@ -624,7 +624,7 @@ const DiagnosticCentersApp = () => {
 
                                 <div className="mb-3">
                                   <div className="d-flex align-items-center text-muted mb-2">
-                                    <MapPin size={16} className="me-2 mr-1" />
+                                    <MapPin size={16} className="me-2 me-1" />
                                     <span>
                                       {center.address}, {center.city} -{" "}
                                       {center.pincode}
@@ -643,7 +643,7 @@ const DiagnosticCentersApp = () => {
                                     {center.category.map((service) => (
                                       <span
                                         key={service.id}
-                                        className="badge bg-light text-dark border px-3 py-1 mr-2 mb-2"
+                                        className="badge bg-light text-dark border px-3 py-1 me-2 mb-2"
                                         style={{ borderRadius: "20px" }}
                                       >
                                         {service.name}
@@ -656,13 +656,13 @@ const DiagnosticCentersApp = () => {
                                 <div className="d-flex gap-3 mb-3">
                                   {center.home_collection && (
                                     <div className="d-flex align-items-center text-success">
-                                      <Home size={16} className="me-1 mr-1" />
+                                      <Home size={16} className="me-1 me-1" />
                                       <small>Home Collection</small>
                                     </div>
                                   )}
                                   {center.opening_hours === "24/7" && (
                                     <div className="d-flex align-items-center text-info">
-                                      <Clock size={16} className="me-1 mr-1" />
+                                      <Clock size={16} className="me-1 me-1" />
                                       <small>24/7 Available</small>
                                     </div>
                                   )}
@@ -672,7 +672,7 @@ const DiagnosticCentersApp = () => {
                               <div className="d-flex gap-2 mt-auto">
                                 <div className="d-flex">
                                 <button
-                                  className="btn btn-primary flex-fill mr-2"
+                                  className="btn btn-primary flex-fill me-2"
                                   style={{ borderRadius: "8px", padding: '8px 36px' }}
                                   onClick={(e) => {
                                     e.stopPropagation();
@@ -690,7 +690,7 @@ const DiagnosticCentersApp = () => {
                                     // Handle call action
                                   }}
                                 >
-                                  <Phone size={16} className=" mr-1" />
+                                  <Phone size={16} className=" me-1" />
                                 </button> */}
                               </div>
                             </div>
@@ -773,7 +773,7 @@ const DiagnosticCentersApp = () => {
             style={{ borderRadius: "16px" }}
           >
             <div className="d-flex align-items-center">
-              <CheckCircle className="me-3 mr-2" size={24} />
+              <CheckCircle className="me-3 me-2" size={24} />
               <div>
                 <h6 className="mb-1 fw-bold">Booking Confirmed!</h6>
                 <p className="mb-0 small">

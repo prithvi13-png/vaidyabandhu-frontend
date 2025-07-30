@@ -34,7 +34,9 @@
   animation: fadeInUp 0.42s cubic-bezier(0.39, 0.575, 0.565, 1) forwards;
 }
 .mdc-hcard {
-  min-width: 220px;
+  /* min-width: 220px; */
+  max-width: 400px;
+  width: 100%;
   background: #fff;
   border-radius: 1.4rem;
   box-shadow: 0 1px 12px #b7d6f54b;
@@ -72,7 +74,11 @@
   font-weight: bold;
   font-size: 1.07rem;
   color: #134080;
+  white-space: nowrap; /* Prevent wrapping */
+  overflow: hidden; /* Ensure no text overflows */
+  text-overflow: ellipsis; /* Display ellipsis (...) if text overflows */
 }
+
 .mdc-hcard-code {
   color: #97b5d2;
   font-size: 0.92rem;

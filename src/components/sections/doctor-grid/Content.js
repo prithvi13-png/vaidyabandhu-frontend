@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback } from "react";
-// import { useHistory } from "react-router-dom";/
 import { useNavigate } from "react-router-dom";
 import "../../../assets/css/speciality.css";
+
 // Emoji icons for departments
 const deptIcons = [
   "🩺",
