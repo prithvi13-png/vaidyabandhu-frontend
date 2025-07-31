@@ -27,7 +27,7 @@ const Footer = () => {
         background: "linear-gradient(135deg, #003d3f 0%, #001a1b 100%)", // Dark, inviting gradient
         paddingTop: "60px", // Adjusted padding
         paddingBottom: "0",
-        fontFamily: "'poppins', sans-serif",
+        fontFamily: "poppins",
         color: "#a0aec0", // Default light text color for dark background
         overflow: "hidden",
         position: "relative",
@@ -42,7 +42,7 @@ const Footer = () => {
           position: "absolute",
           top: "5%",
           left: "0%",
-          fontFamily: "'poppins', sans-serif",
+          fontFamily: "poppins",
           width: "min(100px, 10vw)",
           height: "min(100px, 10vw)",
           backgroundColor: "rgba(0, 122, 126, 0.1)", // Slightly more visible on dark
@@ -57,7 +57,7 @@ const Footer = () => {
           position: "absolute",
           bottom: "5%",
           right: "0%",
-          fontFamily: "'poppins', sans-serif",
+          fontFamily: "poppins",
           width: "min(120px, 12vw)",
           height: "min(120px, 12vw)",
           backgroundColor: "rgba(0, 122, 126, 0.08)", // Slightly more visible on dark
@@ -73,7 +73,7 @@ const Footer = () => {
         style={{
           maxWidth: "1200px",
           margin: "0 auto",
-          fontFamily: "'poppins', sans-serif",
+          fontFamily: "poppins",
           position: "relative",
           zIndex: 1,
         }}
@@ -96,7 +96,7 @@ const Footer = () => {
               display: "flex",
               alignItems: "flex-start",
               gap: "15px",
-              fontFamily: "'poppins', sans-serif",
+              fontFamily: "poppins",
               textAlign: "left",
               flex: "1 1 280px", // Responsive sizing
               maxWidth: "350px",
@@ -107,7 +107,7 @@ const Footer = () => {
                 width: "50px",
                 height: "50px",
                 borderRadius: "50%",
-                fontFamily: "'poppins', sans-serif",
+                fontFamily: "poppins",
                 background: "#007a7e", // Accent color for icons
                 display: "flex",
                 alignItems: "center",
@@ -136,7 +136,7 @@ const Footer = () => {
               <p
                 style={{
                   margin: "0",
-                  fontFamily: "'poppins', sans-serif",
+                  fontFamily: "poppins",
                   fontSize: "16px",
                   color: "#a0aec0",
                 }}
@@ -146,7 +146,7 @@ const Footer = () => {
               <p
                 style={{
                   margin: "0",
-                  fontFamily: "'poppins', sans-serif",
+                  fontFamily: "poppins",
                   fontSize: "18px",
                   fontWeight: "bold",
                   color: "#e2e8f0",
@@ -166,14 +166,14 @@ const Footer = () => {
               textAlign: "left",
               flex: "1 1 280px",
               maxWidth: "350px",
-              fontFamily: "'poppins', sans-serif",
+              fontFamily: "poppins",
             }}
           >
             <div
               style={{
                 width: "50px",
                 height: "50px",
-                fontFamily: "'poppins', sans-serif",
+                fontFamily: "poppins",
                 borderRadius: "50%",
                 background: "#007a7e", // Accent color for icons
                 display: "flex",
@@ -202,7 +202,7 @@ const Footer = () => {
               <p
                 style={{
                   margin: "0",
-                  fontFamily: "'poppins', sans-serif",
+                  fontFamily: "poppins",
                   fontSize: "16px",
                   color: "#a0aec0",
                 }}
@@ -212,7 +212,7 @@ const Footer = () => {
               <p
                 style={{
                   margin: "0",
-                  fontFamily: "'poppins', sans-serif",
+                  fontFamily: "poppins",
                   fontSize: "18px",
                   fontWeight: "bold",
                   color: "#e2e8f0",
@@ -229,7 +229,7 @@ const Footer = () => {
               display: "flex",
               alignItems: "flex-start",
               gap: "15px",
-              fontFamily: "'poppins', sans-serif",
+              fontFamily: "poppins",
               textAlign: "left",
               flex: "1 1 280px",
               maxWidth: "350px",
@@ -239,7 +239,7 @@ const Footer = () => {
               style={{
                 width: "50px",
                 height: "50px",
-                fontFamily: "'poppins', sans-serif",
+                fontFamily: "poppins",
                 borderRadius: "50%",
                 background: "#007a7e", // Accent color for icons
                 display: "flex",
@@ -269,7 +269,7 @@ const Footer = () => {
               <p
                 style={{
                   margin: "0",
-                  fontFamily: "'poppins', sans-serif",
+                  fontFamily: "poppins",
                   fontSize: "16px",
                   color: "#a0aec0",
                 }}
@@ -279,7 +279,7 @@ const Footer = () => {
               <p
                 style={{
                   margin: "0",
-                  fontFamily: "'poppins', sans-serif",
+                  fontFamily: "poppins",
                   fontSize: "18px",
                   fontWeight: "bold",
                   color: "#e2e8f0",
@@ -313,7 +313,7 @@ const Footer = () => {
               <h5
                 style={{
                   fontSize: "20px",
-                  fontFamily: "'poppins', sans-serif",
+                  fontFamily: "poppins",
                   fontWeight: "700",
                   color: "#e2e8f0",
                   marginBottom: "20px",
@@ -324,7 +324,7 @@ const Footer = () => {
               <ul
                 style={{
                   listStyle: "none",
-                  fontFamily: "'poppins', sans-serif",
+                  fontFamily: "poppins",
                   padding: 0,
                   margin: 0,
                 }}
@@ -335,7 +335,7 @@ const Footer = () => {
                       href="/services" // Redirect all links to /services
                       style={{
                         fontSize: "15px",
-                        fontFamily: "'poppins', sans-serif",
+                        fontFamily: "poppins",
                         color: "#cbd5e0", // Lighter link color
                         textDecoration: "none",
                         transition: baseTransition,
@@ -359,7 +359,7 @@ const Footer = () => {
               <h5
                 style={{
                   fontSize: "20px",
-                  fontFamily: "'poppins', sans-serif",
+                  fontFamily: "poppins",
                   fontWeight: "700",
                   color: "#e2e8f0",
                   marginBottom: "20px",
@@ -370,7 +370,7 @@ const Footer = () => {
               <ul
                 style={{
                   listStyle: "none",
-                  fontFamily: "'poppins', sans-serif",
+                  fontFamily: "poppins",
                   padding: 0,
                   margin: 0,
                 }}
@@ -389,7 +389,7 @@ const Footer = () => {
                       href={item.path} // Placeholder link
                       style={{
                         fontSize: "15px",
-                        fontFamily: "'poppins', sans-serif",
+                        fontFamily: "poppins",
                         color: "#cbd5e0", // Lighter link color
                         textDecoration: "none",
                         transition: baseTransition,
@@ -413,11 +413,12 @@ const Footer = () => {
               <h5
                 style={{
                   fontSize: "20px",
-                  fontFamily: "'poppins', sans-serif",
+                  fontFamily: "poppins",
                   fontWeight: "700",
                   padding: "12px 15px",
                   color: "#e2e8f0",
                   marginBottom: "0px",
+                  marginTop: "-12px",
                 }}
               >
                 Subscribe
@@ -432,7 +433,7 @@ const Footer = () => {
                     width: "100%",
                     padding: "12px 15px",
                     borderRadius: "8px",
-                    fontFamily: "'poppins', sans-serif",
+                    fontFamily: "poppins",
                     border: "1px solid rgba(0, 122, 126, 0.5)", // More visible border
                     marginBottom: "10px",
                     fontSize: "15px",
@@ -449,7 +450,7 @@ const Footer = () => {
                     background: "#007a7e",
                     color: "#ffffff",
                     border: "none",
-                    fontFamily: "'poppins', sans-serif",
+                    fontFamily: "poppins",
                     background: "linear-gradient(to right, #007a7e, #004d4f)",
                     borderRadius: "8px",
                     cursor: "pointer",
@@ -470,14 +471,14 @@ const Footer = () => {
                 <p
                   style={{
                     fontSize: "14px",
-                    fontFamily: "'poppins', sans-serif",
+                    fontFamily: "poppins",
                     lineHeight: "1.5",
                     color: "#cbd5e0",
                     marginTop: "15px",
                     marginBottom: "0",
                   }}
                 >
-                  Get The Latest Updates via email. Any time you may unsubscribe
+                  Get The Latest Updates via email. Any time you may unsubscribe.
                 </p>
               </form>
             </div>
@@ -490,7 +491,7 @@ const Footer = () => {
             borderTop: "1px solid rgba(0, 122, 126, 0.2)", // Lighter border for contrast
             marginTop: "0px",
             display: "flex",
-            fontFamily: "'poppins', sans-serif",
+            fontFamily: "poppins",
             flexWrap: "wrap",
             alignItems: "center",
             justifyContent: "space-between",
@@ -503,7 +504,7 @@ const Footer = () => {
           <div
             style={{
               fontSize: "14px",
-              fontFamily: "'poppins', sans-serif",
+              fontFamily: "poppins",
               color: "#cbd5e0",
               textAlign: "left",
               flex: "1 1 300px",
@@ -515,7 +516,7 @@ const Footer = () => {
                 href="#"
                 style={{
                   color: "white",
-                  fontFamily: "'poppins', sans-serif",
+                  fontFamily: "poppins",
                   textDecoration: "none",
                 }}
               >

@@ -31,7 +31,7 @@ const ClientLogosCarousel = () => {
         background: "linear-gradient(135deg, #f5fdfd 0%, #e0f7fa 100%)", // Light, calming gradient
         textAlign: "center",
         overflow: "hidden", // Hide overflowing content for the carousel effect
-        fontFamily: "'Inter', sans-serif",
+        fontFamily: "Poppins",
         position: "relative",
       }}
     >
@@ -42,7 +42,7 @@ const ClientLogosCarousel = () => {
           fontWeight: "800",
           color: "#004d4f",
           marginBottom: "10px",
-          fontFamily: "'Poppins', sans-serif",
+          fontFamily: "Poppins",
           position: "relative",
           display: "inline-block",
           opacity: animated ? 1 : 0,
@@ -59,9 +59,9 @@ const ClientLogosCarousel = () => {
         style={{
           fontSize: "clamp(16px, 2.5vw, 22px)",
           color: "#4a5568",
-          lineHeight: "1.4",
+          lineHeight: "1.3",
           fontWeight: "400",
-          fontFamily: "'Poppins', sans-serif",
+          fontFamily: "Poppins",
           maxWidth: "1100px",
           margin: "0 auto 40px",
           opacity: animated ? 1 : 0,

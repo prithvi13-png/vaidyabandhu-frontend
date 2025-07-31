@@ -31,9 +31,9 @@ const WhoCanBenefit = () => {
   return (
     <section
       style={{
-        padding: "40px 20px",
+        padding: "60px 20px",
         background: "linear-gradient(135deg, #e0f7fa 0%, #ffffff 100%)",
-        fontFamily: "'Poppins', sans-serif",
+        fontFamily: "Poppins",
         color: "#4a5568",
         lineHeight: "1.4",
         overflow: "hidden",
@@ -91,8 +91,8 @@ const WhoCanBenefit = () => {
             position: "relative",
             paddingBottom: "10px",
             textAlign: "center",
-            fontFamily: "'Poppins', sans-serif",
-            marginBottom: "0",
+            fontFamily: "Poppins",
+            marginBottom: "40px",
             transition: baseTransition,
           }}
           onMouseEnter={() => setHoveredHeading(true)}
@@ -105,19 +105,20 @@ const WhoCanBenefit = () => {
         <div
           className="who-flex-wrap"
           style={{
-            display: "flex", // This will be overridden on mobile
+            display: "flex",
             flexWrap: "wrap",
             alignItems: "center",
-            justifyContent: "center",
-            gap: "30px",
-            marginTop: "10px",
+            justifyContent: "space-between",
+            gap: "40px",
+            marginTop: "0",
           }}
         >
           {/* Image Column */}
           <div
+            className="image-column"
             style={{
-              flex: "1 1 400px",
-              maxWidth: "50%",
+              flex: "0 0 45%",
+              maxWidth: "45%",
               textAlign: "center",
               opacity: animated ? 1 : 0,
               transform: animated ? "translateX(0)" : "translateX(-50px)",
@@ -128,7 +129,7 @@ const WhoCanBenefit = () => {
               src="https://placehold.co/600x400/007a7e/ffffff?text=People+Benefiting"
               alt="People benefiting from healthcare"
               style={{
-                maxWidth: "100%",
+                width: "100%",
                 height: "auto",
                 borderRadius: "20px",
                 boxShadow: "0 15px 40px rgba(0, 122, 126, 0.15)",
@@ -139,8 +140,9 @@ const WhoCanBenefit = () => {
 
           {/* Content Column */}
           <div
+            className="content-column"
             style={{
-              flex: "1 1 500px",
+              flex: "0 0 50%",
               maxWidth: "50%",
               opacity: animated ? 1 : 0,
               transform: animated ? "translateX(0)" : "translateX(50px)",
@@ -152,7 +154,9 @@ const WhoCanBenefit = () => {
                 listStyle: "none",
                 padding: 0,
                 margin: 0,
-                paddingTop: "25px",
+                display: "flex",
+                flexDirection: "column",
+                gap: "16px",
               }}
             >
               {[
@@ -164,45 +168,47 @@ const WhoCanBenefit = () => {
                 <li
                   key={index}
                   style={{
-                    marginBottom: "20px",
-                    fontSize: "clamp(17px, 2.2vw, 19px)",
-                    fontFamily: "'Poppins', sans-serif",
+                    fontSize: "clamp(16px, 2.2vw, 18px)",
+                    fontFamily: "Poppins",
                     color: "#4a5568",
                     display: "flex",
                     alignItems: "flex-start",
                     backgroundColor: "#FFFFFF",
-                    padding: "20px 30px 20px 40px",
-                    borderRadius: "15px",
+                    padding: "18px 25px",
+                    borderRadius: "12px",
                     boxShadow: itemsVisible[index]
-                      ? "0 8px 20px rgba(0, 122, 126, 0.08)"
+                      ? "0 6px 18px rgba(0, 122, 126, 0.08)"
                       : "none",
-                    borderLeft: `6px solid #007a7e`,
+                    borderLeft: `4px solid #007a7e`,
                     transition: `transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out, opacity 0.6s ease-out`,
                     opacity: itemsVisible[index] ? 1 : 0,
                     transform: itemsVisible[index] ? "translateY(0)" : "translateY(30px)",
+                    lineHeight: "1.5",
+                    minHeight: "auto",
                   }}
                   onMouseEnter={(e) => {
-                    e.currentTarget.style.transform = "translateY(-6px) scale(1.01)";
-                    e.currentTarget.style.boxShadow = "0 18px 40px rgba(0, 122, 126, 0.2)";
+                    e.currentTarget.style.transform = "translateY(-4px) scale(1.01)";
+                    e.currentTarget.style.boxShadow = "0 12px 30px rgba(0, 122, 126, 0.15)";
                   }}
                   onMouseLeave={(e) => {
                     e.currentTarget.style.transform = "translateY(0) scale(1)";
-                    e.currentTarget.style.boxShadow = "0 8px 20px rgba(0, 122, 126, 0.08)";
+                    e.currentTarget.style.boxShadow = "0 6px 18px rgba(0, 122, 126, 0.08)";
                   }}
                 >
                   <span
                     style={{
-                      marginRight: "20px",
+                      marginRight: "16px",
                       color: "#007a7e",
-                      fontSize: "1.8rem",
+                      fontSize: "1.4rem",
                       lineHeight: "1",
                       flexShrink: 0,
-                      marginTop: "3px",
+                      marginTop: "2px",
+                      fontWeight: "bold",
                     }}
                   >
-                    ✔
+                    ✓
                   </span>
-                  {item}
+                  <span style={{ flex: 1 }}>{item}</span>
                 </li>
               ))}
             </ul>
@@ -210,7 +216,7 @@ const WhoCanBenefit = () => {
         </div>
       </div>
 
-      {/* Responsive CSS: Remove flex on mobile */}
+      {/* Responsive CSS */}
       <style>
         {`
           @keyframes floatShape1 {
@@ -224,37 +230,110 @@ const WhoCanBenefit = () => {
             100% { transform: translate(0, 0) rotate(0deg); }
           }
 
-          /* MOBILE: Remove flex layout and stack elements */
+          /* Desktop - maintain side by side layout */
+          @media (min-width: 769px) {
+            .who-flex-wrap {
+              display: flex !important;
+              flex-direction: row !important;
+              align-items: center !important;
+              justify-content: space-between !important;
+              gap: 40px !important;
+            }
+            
+            .image-column {
+              flex: 0 0 45% !important;
+              max-width: 45% !important;
+            }
+            
+            .content-column {
+              flex: 0 0 50% !important;
+              max-width: 50% !important;
+            }
+            
+            .content-column ul li {
+              padding: 24px 35px !important;
+              font-size: clamp(17px, 1.8vw, 19px) !important;
+              margin-bottom: 0 !important;
+            }
+            
+            .content-column ul {
+              gap: 20px !important;
+            }
+            
+            .content-column ul li span:first-child {
+              margin-right: 20px !important;
+              font-size: 1.5rem !important;
+            }
+          }
+
+          /* Tablet and mobile adjustments */
           @media (max-width: 768px) {
             .who-flex-wrap {
-              display: block !important; /* Removes flex behavior */
+              display: flex !important;
+              flex-direction: column !important;
+              align-items: center !important;
+              gap: 30px !important;
             }
-            .who-flex-wrap > div {
-              display: block !important;
-              max-width: 100% !important;
-              margin: 0 auto 20px !important;
+            
+            .image-column {
               flex: none !important;
+              max-width: 100% !important;
+              order: 1;
             }
-            .who-flex-wrap > div:last-child {
-              margin-top: 30px !important; /* Space between image and list */
+            
+            .content-column {
+              flex: none !important;
+              max-width: 100% !important;
+              order: 2;
             }
+            
+            .content-column ul {
+              gap: 14px !important;
+            }
+            
+            .content-column ul li {
+              padding: 16px 20px !important;
+              font-size: clamp(15px, 3vw, 17px) !important;
+            }
+            
+            .content-column ul li span:first-child {
+              margin-right: 14px !important;
+              font-size: 1.2rem !important;
+            }
+            
             h2 {
-              text-align: center !important;
+              margin-bottom: 30px !important;
             }
           }
 
           /* Extra small devices */
           @media (max-width: 480px) {
+            section {
+              padding: 40px 15px !important;
+            }
+            
             .who-flex-wrap {
-              padding: 0 10px;
+              gap: 25px !important;
             }
-            .who-flex-wrap > div {
+            
+            .content-column ul {
+              gap: 12px !important;
+            }
+            
+            .content-column ul li {
+              padding: 14px 18px !important;
+              font-size: 14px !important;
+              border-left-width: 3px !important;
+            }
+            
+            .content-column ul li span:first-child {
+              margin-right: 12px !important;
+              font-size: 1.1rem !important;
+            }
+            
+            h2 {
+              font-size: clamp(28px, 6vw, 32px) !important;
               margin-bottom: 25px !important;
-            }
-            ul li {
-              padding: 14px 16px !important;
-              margin-bottom: 12px !important;
-              font-size: 15px !important;
             }
           }
         `}

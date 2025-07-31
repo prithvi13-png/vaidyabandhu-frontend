@@ -72,7 +72,7 @@ const ServicesPreview = () => {
     background: "linear-gradient(135deg, #e0f7fa 0%, #ffffff 100%)",
     textAlign: "center",
     overflow: "hidden",
-    fontFamily: "'Inter', sans-serif",
+    fontFamily: "Poppins ",
   };
 
   const headingStyle = {

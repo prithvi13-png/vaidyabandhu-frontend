@@ -133,7 +133,7 @@ const DoctorsComponent = () => {
         style={{
           fontSize: "clamp(36px, 5vw, 34px)",
           fontWeight: "800",
-          fontFamily: "'Poppins', sans-serif",
+          fontFamily: "'Poppins",
           color: "#004d4f",
           marginBottom: "10px",
           lineHeight: "1.2",
@@ -150,7 +150,7 @@ const DoctorsComponent = () => {
           color: "#4a5568",
           lineHeight: "1.4",
           fontWeight: "400",
-          fontFamily: "'Poppins', sans-serif",
+          fontFamily: "'Poppins",
           maxWidth: "1100px",
           margin: "0 auto 40px",
           opacity: animated ? 1 : 0,
@@ -224,7 +224,7 @@ const DoctorsComponent = () => {
               style={{
                 fontSize: "clamp(20px, 2.5vw, 24px)",
                 fontWeight: "700",
-                fontFamily: "'Poppins', sans-serif",
+                fontFamily: "'Poppins",
                 color: "#004d4f",
                 marginBottom: "5px",
                 transition: "color 0.3s ease",
@@ -241,7 +241,7 @@ const DoctorsComponent = () => {
                 color: "#007a7e",
                 fontWeight: "600",
                 margin: "0 0 10px",
-                fontFamily: "'Poppins', sans-serif",
+                fontFamily: "'Poppins",
               }}
             >
               {doctor.specialty}
@@ -266,7 +266,7 @@ const DoctorsComponent = () => {
             cursor: "pointer",
             fontSize: "18px",
             fontWeight: "600",
-            fontFamily: "'Poppins', sans-serif",
+            fontFamily: "'Poppins",
             marginTop: "50px", // Space above the button
             transition: "background 0.3s ease, transform 0.2s ease",
             boxShadow: "0 4px 10px rgba(0, 122, 126, 0.2)",
@@ -499,7 +499,7 @@ const DoctorsComponent = () => {
         background: "linear-gradient(135deg, #e0f7fa 0%, #ffffff 100%)",
         textAlign: "center",
         overflow: "hidden",
-        fontFamily: "'Poppins', sans-serif",
+        fontFamily: "'Poppins",
         position: "relative",
       }}
     >

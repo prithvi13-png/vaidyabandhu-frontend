@@ -15,7 +15,7 @@ class Testimonials extends Component {
                                 color: "#004d4f",
                                 marginTop: "30px",
                                 marginBottom: "10px",
-                                fontFamily: "'Poppins', sans-serif",
+                                fontFamily: "Poppins",
                                 position: "relative",
                                 display: "inline-block",
                             }}
@@ -70,7 +70,7 @@ class Testimonials extends Component {
                                                 <h5
                                                     style={{
                                                         margin: 0,
-                                                        fontFamily: "'Poppins', sans-serif",
+                                                        fontFamily: "Poppins",
                                                         fontWeight: 600,
                                                     }}
                                                 >
@@ -80,7 +80,7 @@ class Testimonials extends Component {
                                                     className="sigma_testimonial-category"
                                                     style={{
                                                         color: "#5a6778",
-                                                        fontFamily: "'Poppins', sans-serif",
+                                                        fontFamily: "Poppins",
                                                         fontSize: "14px",
                                                     }}
                                                 >
@@ -92,7 +92,7 @@ class Testimonials extends Component {
                                             className="sigma_testimonial-body"
                                             style={{
                                                 marginTop: "16px",
-                                                fontFamily: "'Poppins', sans-serif",
+                                                fontFamily: "Poppins",
                                             }}
                                         >
                                             <p className="mb-0" style={{ fontStyle: "italic", color: "#4a5568" }}>

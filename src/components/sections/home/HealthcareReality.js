@@ -16,7 +16,7 @@ const HealthcareReality = () => {
         background: "linear-gradient(135deg, #fdfefe 0%, #e8f5e9 100%)", // Very light, calming gradient
         textAlign: "center",
         overflow: "hidden",
-        fontFamily: "'Poppins', sans-serif",
+        fontFamily: "Poppins",
         position: "relative",
       }}
     >
@@ -88,7 +88,7 @@ const HealthcareReality = () => {
             textAlign: "center",
             marginBottom: "8px",
             lineHeight: "1.3",
-            fontFamily: "'Poppins', sans-serif",
+            fontFamily: "Poppins",
           }}
         >
           The Reality of{" "}
@@ -100,9 +100,9 @@ const HealthcareReality = () => {
           style={{
             fontSize: "clamp(16px, 2.5vw, 22px)", // Responsive font size
             color: "#4a5568",
-            lineHeight: "1.5",
+            lineHeight: "1.3",
             fontWeight: "400",
-            fontFamily: "'Poppins', sans-serif", // Ensure Poppins is applied globally
+            fontFamily: "Poppins", // Ensure Poppins is applied globally
             marginBottom: "10px",
             opacity: animated ? 1 : 0,
             transform: animated ? "translateY(0)" : "translateY(30px)",
@@ -127,10 +127,10 @@ const HealthcareReality = () => {
           <p
             style={{
               fontSize: "clamp(16px, 2.5vw, 22px)", // Same responsive font size
-              fontFamily: "'Poppins', sans-serif", // Ensure Poppins is applied globally
+              fontFamily: "Poppins", // Ensure Poppins is applied globally
 
               color: "#4a5568", // Same color
-              lineHeight: "1.5",
+              lineHeight: "1.3",
             }}
           >
             Thousands of families face financial burden during medical
@@ -171,16 +171,46 @@ const HealthcareReality = () => {
             }
           }
 
-          @media (max-width: 480px) {
-            div[style*="padding: 80px 20px"] { /* Section padding */
-              padding: 40px 10px !important;
-            }
-            div[style*="width: 90%"] { /* Main content wrapper */
-              width: 100% !important;
-              padding: 0 10px; /* Add horizontal padding to prevent content touching edges */
-              box-sizing: border-box; /* Include padding in width calculation */
-            }
-          }
+       @media (max-width: 480px) {
+  /* Adjust section padding */
+  div[style*="padding: 40px 20px"] {
+    padding: 40px 10px !important;
+  }
+
+  /* Main content wrapper */
+  div[style*="width: 90%"] {
+    width: 100% !important;
+    padding: 0 10px;
+    box-sizing: border-box;
+  }
+
+  /* Intro paragraph: Set font size to 16px and line height to 1.3 */
+  p[style*="clamp(16px, 2.5vw, 22px)"] {
+    font-size: 16px !important;
+    line-height: 1.3 !important;
+  }
+
+  /* FAQ answer text: Ensure consistent readability */
+  p[style*="font-size: clamp(15px, 2vw, 17px)"] {
+    font-size: 16px !important;
+    line-height: 1.3 !important;
+  }
+
+  /* Question header padding */
+  div[style*="padding: 20px 25px"] {
+    padding: 15px !important;
+  }
+
+  /* Question font size */
+  h4 {
+    font-size: clamp(16px, 3.5vw, 18px) !important;
+  }
+
+  /* Arrow size */
+  span[style*="font-size: 16px"] {
+    font-size: 20px !important;
+  }
+}
         `}
       </style>
     </div>

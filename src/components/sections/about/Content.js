@@ -21,8 +21,6 @@ class Content extends Component {
                     </div>
                 </div>
                   <LeadershipInline />
-              
-           
                   <Workprocess />
             
                     <WhoCanBenefit/>

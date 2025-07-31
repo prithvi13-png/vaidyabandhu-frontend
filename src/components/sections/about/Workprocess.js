@@ -49,7 +49,7 @@ const Workprocess = () => {
       style={{
         padding: "40px 20px",
         background: "linear-gradient(135deg, #f5fdfd 0%, #e0f7fa 100%)", // Light, calming gradient
-        fontFamily: "'poppins', sans-serif",
+        fontFamily: "poppins",
         color: "#4a5568",
         overflow: "hidden",
         position: "relative",
@@ -99,8 +99,9 @@ const Workprocess = () => {
         }}
       >
         <div
+          className="header-section"
           style={{
-            // display: "flex",
+            display: "flex",
             flexWrap: "wrap",
             alignItems: "center",
             marginBottom: "30px",
@@ -121,7 +122,7 @@ const Workprocess = () => {
               <h3
                 style={{
                   fontSize: "clamp(36px, 5vw, 34px)",
-                  fontFamily: "'Poppins', sans-serif",
+                  fontFamily: "Poppins",
                   fontWeight: "800",
                   color: "#004d4f",
                   marginBottom: "0",
@@ -140,7 +141,7 @@ const Workprocess = () => {
                 fontSize: "clamp(16px, 2.5vw, 22px)",
                 color: "#4a5568",
                 lineHeight: "1.4",
-                fontFamily: "'Poppins', sans-serif",
+                fontFamily: "Poppins",
                 marginBottom: "0",
                 opacity: animated ? 1 : 0,
                 transform: animated ? "translateY(0)" : "translateY(30px)",
@@ -149,10 +150,10 @@ const Workprocess = () => {
               }}
             >
               At Vaidya Bandhu, we make quality healthcare simple, affordable,
-              and accessible. Here’s how you can benefit from our services
+              and accessible. Here's how you can benefit from our services.
             </p>
           </div>
-          <div style={{ flex: "1 1 auto", textAlign: "right" }}>
+          <div className="membership-button-wrapper" style={{ flex: "1 1 auto", textAlign: "right" }}>
             {" "}
             {/* col-lg-3 equivalent */}
             <MembershipModal />
@@ -231,7 +232,7 @@ const Workprocess = () => {
                   fontSize: "clamp(20px, 2.5vw, 22px)",
                   fontWeight: "700",
                   color: "#004d4f",
-                  fontFamily: "'Poppins', sans-serif",
+                  fontFamily: "Poppins",
                   marginBottom: "15px",
                   lineHeight: "1.3",
                   transition: baseTransition,
@@ -244,20 +245,27 @@ const Workprocess = () => {
                   paddingLeft: "20px",
                   marginBottom: "0",
                   marginTop: "0",
-                  fontFamily: "'Poppins', sans-serif",
+                  fontFamily: "Poppins",
                   flexGrow: 1,
                   color: "#5a6778",
                   fontSize: "clamp(15px, 1.8vw, 18px)",
-                  lineHeight: "1.3", // Tightest line spacing
+                  lineHeight: "1.3",
+                  listStyleType: "disc",
                 }}
               >
                 {item.points.map((point, j) => (
                   <li
                     key={j}
                     style={{
-                      margin: "0", // No margin at all
+                      margin: "0",
+                      padding: "0",
+                      marginBottom: "0",
+                      marginTop: "0",
+                      paddingBottom: "0",
+                      paddingTop: "0",
                       listStyle: "disc",
-                      fontFamily: "'Poppins', sans-serif",
+                      fontFamily: "Poppins",
+                      lineHeight: "1.3",
                     }}
                   >
                     {point}
@@ -273,7 +281,7 @@ const Workprocess = () => {
                   color: "rgba(0, 77, 79, 0.1)", // Faded step number
                   position: "absolute",
                   bottom: "15px",
-                  fontFamily: "'Poppins', sans-serif",
+                  fontFamily: "Poppins",
                   right: "20px",
                   zIndex: 0,
                   transition: baseTransition,
@@ -291,7 +299,7 @@ const Workprocess = () => {
                   position: "absolute",
                   top: "20px",
                   right: "20px",
-                  fontFamily: "'Poppins', sans-serif",
+                  fontFamily: "Poppins",
                   width: "15px",
                   height: "15px",
                   borderRadius: "50%",
@@ -335,15 +343,44 @@ const Workprocess = () => {
             }
           }
 
+          /* Remove all gaps between list items - More specific selectors */
+          .container ul li {
+            margin: 0 !important;
+            padding: 0 !important;
+            margin-bottom: 0 !important;
+            margin-top: 0 !important;
+            padding-bottom: 0 !important;
+            padding-top: 0 !important;
+          }
+          
+          /* Target list items in the cards specifically */
+          div[style*="background: #ffffff"] ul li {
+            margin: 0 !important;
+            padding: 0 !important;
+            margin-bottom: 0 !important;
+            margin-top: 0 !important;
+            padding-bottom: 0 !important;
+            padding-top: 0 !important;
+          }
+
           /* Responsive adjustments */
           @media (max-width: 992px) {
-            div[style*="flex: 1 1 300px"] { /* Header columns */
+            .header-section {
+                flex-direction: column !important;
+                text-align: center !important;
+                gap: 5px !important;
+            }
+            
+            .header-section > div {
                 flex-basis: 100% !important;
                 text-align: center !important;
             }
-            div[style*="flex: 1 1 auto"] { /* Button column */
+            
+            .membership-button-wrapper {
                 text-align: center !important;
+                margin-top: 12px !important;
             }
+            
             h3[style*="font-size: clamp(36px, 5vw, 48px)"] { /* How it Works title */
                 font-size: clamp(32px, 6vw, 40px) !important;
             }
@@ -357,6 +394,15 @@ const Workprocess = () => {
           }
 
           @media (max-width: 768px) {
+            .header-section {
+                gap: 5px !important;
+                margin-bottom: 30px !important;
+            }
+            
+            .membership-button-wrapper {
+                margin-top: 15px !important;
+            }
+            
             div[style*="padding: 80px 20px"] { /* Section padding */
               padding: 60px 15px !important;
             }
@@ -365,6 +411,7 @@ const Workprocess = () => {
             }
             p[style*="font-size: clamp(16px, 2.5vw, 18px)"] { /* Intro paragraph */
                 font-size: clamp(14px, 3vw, 16px) !important;
+                margin-bottom: 0 !important;
             }
             div[style*="padding: 30px"] { /* Card padding */
               padding: 25px !important;
@@ -384,6 +431,23 @@ const Workprocess = () => {
             ul[style*="font-size: clamp(15px, 1.8vw, 16px)"] { /* List items */
                 font-size: clamp(14px, 2.5vw, 15px) !important;
             }
+            /* Ensure no gaps between list items on tablet */
+            .container ul li {
+                margin: 0 !important;
+                padding: 0 !important;
+                margin-bottom: 0 !important;
+                margin-top: 0 !important;
+                padding-bottom: 0 !important;
+                padding-top: 0 !important;
+            }
+            div[style*="background: #ffffff"] ul li {
+                margin: 0 !important;
+                padding: 0 !important;
+                margin-bottom: 0 !important;
+                margin-top: 0 !important;
+                padding-bottom: 0 !important;
+                padding-top: 0 !important;
+            }
             span.steps { /* Faded step text */
                 font-size: clamp(24px, 5vw, 32px) !important;
                 bottom: 10px !important;
@@ -398,6 +462,15 @@ const Workprocess = () => {
           }
 
           @media (max-width: 480px) {
+            .header-section {
+                gap: 5px !important;
+                margin-bottom: 25px !important;
+            }
+            
+            .membership-button-wrapper {
+                margin-top: 12px !important;
+            }
+            
             div[style*="padding: 80px 20px"] { /* Section padding */
               padding: 40px 10px !important;
             }
@@ -418,6 +491,25 @@ const Workprocess = () => {
             }
             ul[style*="font-size: clamp(15px, 1.8vw, 16px)"] { /* List items */
                 font-size: clamp(13px, 3vw, 14px) !important;
+            }
+            /* Extra specific rule for smallest screens - no gaps */
+            .container ul li {
+                margin: 0 !important;
+                padding: 0 !important;
+                margin-bottom: 0 !important;
+                margin-top: 0 !important;
+                padding-bottom: 0 !important;
+                padding-top: 0 !important;
+                line-height: 1.3 !important;
+            }
+            div[style*="background: #ffffff"] ul li {
+                margin: 0 !important;
+                padding: 0 !important;
+                margin-bottom: 0 !important;
+                margin-top: 0 !important;
+                padding-bottom: 0 !important;
+                padding-top: 0 !important;
+                line-height: 1.3 !important;
             }
             span.steps { /* Faded step text */
                 font-size: clamp(20px, 6vw, 28px) !important;
