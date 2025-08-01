@@ -89,34 +89,35 @@ const DiagnosticCentersApp = () => {
     return () => clearTimeout(timeoutId); // Cleanup on each keystroke
   }, [searchTerm]);
 
-    // Fetch locations using useFetch
-    const {
-      data: locationsData,
-      loading: loadingAddresses,
-      error: locationsError,
-    } = useFetch({
-      method: "GET",
-      request: "https://stage.vaidyabandhu.com/api/locations/",
-    });
-  
-    useEffect(() => {
-      if (locationsData) {
-        setAddresses(locationsData.data || []);
-      }
-      if (locationsError) {
-        console.error("Error fetching locations:", locationsError);
-        setAddresses([
-          { id: 'Delhi', name: "Delhi" },
-          { id: 'Mumbai', name: "Mumbai" },
-          { id: 'Bangalore', name: "Bangalore" },
-          { id: 'Chennai', name: "Chennai" },
-          { id: 'Hyderabad', name: "Hyderabad" },
-        ]);
-      }
-    }, [locationsData, locationsError]);
+  // Fetch locations using useFetch
+  const {
+    data: locationsData,
+    loading: loadingAddresses,
+    error: locationsError,
+  } = useFetch({
+    method: "GET",
+    request: "https://stage.vaidyabandhu.com/api/locations/",
+  });
+
+  useEffect(() => {
+    if (locationsData) {
+      setAddresses(locationsData.data || []);
+    }
+    if (locationsError) {
+      console.error("Error fetching locations:", locationsError);
+      setAddresses([
+        { id: "Delhi", name: "Delhi" },
+        { id: "Mumbai", name: "Mumbai" },
+        { id: "Bangalore", name: "Bangalore" },
+        { id: "Chennai", name: "Chennai" },
+        { id: "Hyderabad", name: "Hyderabad" },
+      ]);
+    }
+  }, [locationsData, locationsError]);
 
   const handleSearchChange = (e) => {
     setSearchTerm(e.target.value); // Set the search term
+    setCurrentPage(1); // Reset to first page when searching
   };
 
   // Handlers
@@ -136,6 +137,11 @@ const DiagnosticCentersApp = () => {
         ? prev.filter((s) => s !== subService)
         : [...prev, subService]
     );
+    setCurrentPage(1);
+  };
+
+  const handleAddressChange = (e) => {
+    setSelectedAddress(e.target.value);
     setCurrentPage(1);
   };
 
@@ -200,7 +206,7 @@ const DiagnosticCentersApp = () => {
   const totalPages = useMemo(
     () =>
       Math.ceil(
-       ( diagnosticCenters?.pagination_data?.total_count ||
+        (diagnosticCenters?.pagination_data?.total_count ||
           diagnosticCenters?.data?.length) / itemsPerPage
       ),
     [diagnosticCenters]
@@ -217,22 +223,15 @@ const DiagnosticCentersApp = () => {
   // Loading component
   const LoadingSpinner = ({ text = "Loading..." }) => (
     <div className="d-flex flex-column align-items-center justify-content-center py-5">
-      <Spinner
-        animation="border" // You can choose from "border" or "grow"
-        style={{ color: "#3b82f6" }}
-      />
-      <p className="text-muted mb-0">{text}</p>
+      <Spinner animation="border" style={{ color: "#3b82f6" }} />
+      <p className="text-muted mt-3 mb-0">{text}</p>
     </div>
   );
 
   // Error component
   const ErrorMessage = ({ message, onRetry }) => (
     <div className="text-center py-5">
-      <AlertCircle
-        className="mb-3 me-1"
-        size={48}
-        style={{ color: "#ef4444" }}
-      />
+      <AlertCircle className="mb-3" size={48} style={{ color: "#ef4444" }} />
       <h5 className="text-danger mb-3">Oops! Something went wrong</h5>
       <p className="text-muted mb-4">{message}</p>
       {onRetry && (
@@ -247,13 +246,13 @@ const DiagnosticCentersApp = () => {
   // Empty state component
   const EmptyState = () => (
     <div className="text-center py-5">
-      <Building className="mb-3 me-1" size={64} style={{ color: "#6b7280" }} />
+      <Building className="mb-3" size={64} style={{ color: "#6b7280" }} />
       <h5 className="text-muted mb-3">No diagnostic centers found</h5>
       <p className="text-muted mb-4">
         Try adjusting your filters or search terms to find more results.
       </p>
       {hasActiveFilters && (
-        <button className="btn text-white" onClick={clearFilters}>
+        <button className="btn btn-primary" onClick={clearFilters}>
           <X size={16} className="me-2" />
           Clear All Filters
         </button>
@@ -276,10 +275,7 @@ const DiagnosticCentersApp = () => {
   };
 
   return (
-    <div
-      className="min-vh-100 container-bg"
-      style={{ backgroundColor: "#f8fafc" }}
-    >
+    <div className="min-vh-100" style={{ backgroundColor: "#f8fafc" }}>
       {/* Modern Header with Gradient */}
       <div
         className="py-5 mb-4"
@@ -323,15 +319,15 @@ const DiagnosticCentersApp = () => {
               <div className="text-white">
                 <div className="d-flex align-items-center justify-content-end mb-2">
                   <span>Verified Centers</span>
-                  <CheckCircle className="ms-1" size={20} />
+                  <CheckCircle className="ms-2" size={20} />
                 </div>
                 <div className="d-flex align-items-center justify-content-end mb-2">
                   <span>Accredited Labs</span>
-                  <Shield className="ms-1" size={20} />
+                  <Shield className="ms-2" size={20} />
                 </div>
                 <div className="d-flex align-items-center justify-content-end">
                   <span>Quick Results</span>
-                  <Clock className="ms-1" size={20} />
+                  <Clock className="ms-2" size={20} />
                 </div>
               </div>
             </div>
@@ -345,14 +341,14 @@ const DiagnosticCentersApp = () => {
           <div className="col-12 d-lg-none mb-4">
             <div className="d-flex gap-2">
               <button
-                className="btn text-white flex-fill d-flex align-items-center justify-content-center gap-2 secondary-color"
+                className="btn btn-primary flex-fill d-flex align-items-center justify-content-center gap-2"
                 onClick={() => setShowMobileFilters(!showMobileFilters)}
                 style={{ borderRadius: "12px" }}
               >
-                <Filter className=" me-1" size={18} />
+                <Filter size={18} />
                 Filters
                 {hasActiveFilters && (
-                  <span className="badge bg-primary rounded-pill">
+                  <span className="badge bg-light text-primary rounded-pill">
                     {(selectedAddress ? 1 : 0) +
                       selectedServices.length +
                       selectedSubServices.length}
@@ -369,24 +365,171 @@ const DiagnosticCentersApp = () => {
                 </button>
               )}
             </div>
+
+            {/* Mobile Filters Dropdown */}
+            {showMobileFilters && (
+              <div
+                className="card border-0 shadow-sm mt-3"
+                style={{ borderRadius: "16px" }}
+              >
+                <div className="card-body p-4">
+                  <div className="d-flex align-items-center justify-content-between mb-4">
+                    <h5 className="mb-0 fw-bold" style={{ color: "#00b2b2" }}>
+                      Filters
+                    </h5>
+                    <button
+                      className="btn-close"
+                      onClick={() => setShowMobileFilters(false)}
+                      aria-label="Close"
+                    ></button>
+                  </div>
+
+                  {/* Location Filter */}
+                  <div className="mb-4">
+                    <label
+                      className="form-label fw-semibold d-flex align-items-center gap-2"
+                      style={{ color: "#00b2b2" }}
+                    >
+                      <MapIcon size={18} />
+                      Location
+                    </label>
+                    {loadingAddresses ? (
+                      <LoadingSpinner text="Loading locations..." />
+                    ) : (
+                      <select
+                        className="form-select border-0 bg-light"
+                        value={selectedAddress}
+                        onChange={handleAddressChange}
+                        style={{ borderRadius: "12px", padding: "12px 16px" }}
+                      >
+                        <option value="">All Locations</option>
+                        {addresses.map((address) => (
+                          <option key={address.id} value={address.id}>
+                            {address.name}
+                          </option>
+                        ))}
+                      </select>
+                    )}
+                  </div>
+
+                  {/* Services Filter */}
+                  <div>
+                    <label
+                      className="form-label fw-semibold d-flex align-items-center gap-2"
+                      style={{ color: "#00b2b2" }}
+                    >
+                      <Shield size={18} />
+                      Services
+                    </label>
+                    {loadingServices ? (
+                      <LoadingSpinner text="Loading services..." />
+                    ) : errorServices ? (
+                      <ErrorMessage
+                        message={errorServices}
+                        onRetry={fetchServices}
+                      />
+                    ) : (
+                      <div
+                        className="border-0 bg-light p-3"
+                        style={{
+                          borderRadius: "12px",
+                          maxHeight: "300px",
+                          overflowY: "auto",
+                        }}
+                      >
+                        {isNotEmptyArray(services?.data) ? (
+                          services.data.map((service) => (
+                            <div
+                              key={service.id}
+                              className="mb-3 pb-2"
+                              style={{ borderBottom: "1px solid #00000012" }}
+                            >
+                              <div className="form-check">
+                                <input
+                                  className="form-check-input"
+                                  type="checkbox"
+                                  id={`mobile-service-${service.id}`}
+                                  checked={selectedServices.includes(
+                                    service.id
+                                  )}
+                                  onChange={() =>
+                                    handleServiceToggle(service.id)
+                                  }
+                                />
+                                <label
+                                  className="form-check-label fw-medium"
+                                  htmlFor={`mobile-service-${service.id}`}
+                                >
+                                  {service.name}
+                                </label>
+                              </div>
+
+                              {/* Sub-services */}
+                              {selectedServices.includes(service.id) &&
+                                isNotEmptyArray(service.sub_category) && (
+                                  <div className="ms-4 mt-2">
+                                    {service.sub_category.map((subService) => (
+                                      <div
+                                        key={subService.id}
+                                        className="form-check mb-1"
+                                      >
+                                        <input
+                                          className="form-check-input"
+                                          type="checkbox"
+                                          id={`mobile-sub-service-${subService.id}`}
+                                          checked={selectedSubServices.includes(
+                                            subService.id
+                                          )}
+                                          onChange={() =>
+                                            handleSubServiceToggle(
+                                              subService.id
+                                            )
+                                          }
+                                        />
+                                        <label
+                                          className="form-check-label text-muted"
+                                          htmlFor={`mobile-sub-service-${subService.id}`}
+                                        >
+                                          {subService.name}
+                                        </label>
+                                      </div>
+                                    ))}
+                                  </div>
+                                )}
+                            </div>
+                          ))
+                        ) : (
+                          <div className="text-center text-muted">
+                            No services found
+                          </div>
+                        )}
+                      </div>
+                    )}
+                  </div>
+                </div>
+              </div>
+            )}
           </div>
 
-          {/* Enhanced Filters Sidebar */}
-          <div
-            className={`col-lg-4 ${
-              showMobileFilters ? "d-block" : "d-none d-lg-block"
-            }`}
-          >
+{/* Desktop Filters Sidebar */}
+          <div className="col-lg-4 d-none d-lg-block">
             <div
-              className="card border-0 shadow-sm mb-4"
-              style={{ borderRadius: "16px" }}
+              className="card border-0 shadow-sm mb-4 position-sticky"
+              style={{
+                borderRadius: "16px",
+                top: "2rem",
+                maxHeight: "636px",
+                overflowY: "auto",
+              }}
             >
               <div className="card-body p-4">
                 <div className="d-flex align-items-center justify-content-between mb-4">
-                  <h5 className="mb-0 fw-bold secondary-color">Filters</h5>
+                  <h5 className="mb-0 fw-bold" style={{ color: "#00b2b2" }}>
+                    Filters
+                  </h5>
                   {hasActiveFilters && (
                     <button
-                      className="btn text-white p-2 text-decoration-none"
+                      className="btn btn-sm btn-outline-primary"
                       style={{ fontSize: "12px" }}
                       onClick={clearFilters}
                     >
@@ -397,8 +540,11 @@ const DiagnosticCentersApp = () => {
 
                 {/* Location Filter */}
                 <div className="mb-4">
-                  <label className="form-label fw-semibold d-flex align-items-center gap-2 secondary-color">
-                    <MapIcon className=" me-1" size={18} />
+                  <label
+                    className="form-label fw-semibold d-flex align-items-center gap-2"
+                    style={{ color: "#00b2b2" }}
+                  >
+                    <MapIcon size={18} />
                     Location
                   </label>
                   {loadingAddresses ? (
@@ -407,7 +553,7 @@ const DiagnosticCentersApp = () => {
                     <select
                       className="form-select border-0 bg-light"
                       value={selectedAddress}
-                      onChange={(e) => setSelectedAddress(e.target.value)}
+                      onChange={handleAddressChange}
                       style={{ borderRadius: "12px", padding: "12px 16px" }}
                     >
                       <option value="">All Locations</option>
@@ -421,9 +567,12 @@ const DiagnosticCentersApp = () => {
                 </div>
 
                 {/* Services Filter */}
-                <div>
-                  <label className="form-label fw-semibold d-flex align-items-center gap-2 secondary-color">
-                    <Shield className=" me-1" size={18} />
+                <div className="flex-grow-1 d-flex flex-column">
+                  <label
+                    className="form-label fw-semibold d-flex align-items-center gap-2"
+                    style={{ color: "#00b2b2" }}
+                  >
+                    <Shield size={18} />
                     Services
                   </label>
                   {loadingServices ? (
@@ -435,19 +584,24 @@ const DiagnosticCentersApp = () => {
                     />
                   ) : (
                     <div
-                      className="border-0 bg-light p-3"
+                      className="border-0 bg-light p-3 flex-grow-1"
                       style={{
                         borderRadius: "12px",
-                        maxHeight: "400px",
-                        overflowY: "auto",
+                        // minHeight: "350px",
+                        // maxHeight: "400px",
+                        // overflowY: "auto",
+                        // overflowX: "hidden",
                       }}
                     >
                       {isNotEmptyArray(services?.data) ? (
                         services.data.map((service) => (
                           <div
                             key={service.id}
-                            className="mb-1 mb-2"
-                            style={{ borderBottom: "1px solid #00000012" }}
+                            className="mb-3"
+                            style={{ 
+                              borderBottom: "1px solid #00000012",
+                              paddingBottom: "12px"
+                            }}
                           >
                             <div className="form-check">
                               <input
@@ -460,19 +614,26 @@ const DiagnosticCentersApp = () => {
                               <label
                                 className="form-check-label fw-medium"
                                 htmlFor={`service-${service.id}`}
+                                style={{ wordBreak: "break-word" }}
                               >
                                 {service.name}
                               </label>
                             </div>
 
-                            {/* Sub-services with Animation */}
+                            {/* Sub-services with Smooth Animation */}
                             {selectedServices.includes(service.id) &&
-                              service.sub_category.length > 0 && (
-                                <div className="ms-4 mt-2 ml-3">
+                              isNotEmptyArray(service.sub_category) && (
+                                <div 
+                                  className="ms-4 mt-2"
+                                  style={{
+                                    animation: "slideDown 0.2s ease-out",
+                                    transformOrigin: "top"
+                                  }}
+                                >
                                   {service.sub_category.map((subService) => (
                                     <div
                                       key={subService.id}
-                                      className="form-check mb-1"
+                                      className="form-check mb-2"
                                     >
                                       <input
                                         className="form-check-input"
@@ -488,6 +649,10 @@ const DiagnosticCentersApp = () => {
                                       <label
                                         className="form-check-label text-muted"
                                         htmlFor={`sub-service-${subService.id}`}
+                                        style={{ 
+                                          wordBreak: "break-word",
+                                          fontSize: "0.9rem"
+                                        }}
                                       >
                                         {subService.name}
                                       </label>
@@ -498,8 +663,8 @@ const DiagnosticCentersApp = () => {
                           </div>
                         ))
                       ) : (
-                        <div style={{ textAlign: "center" }}>
-                          No Service Found
+                        <div className="text-center text-muted py-4">
+                          No services found
                         </div>
                       )}
                     </div>
@@ -508,6 +673,21 @@ const DiagnosticCentersApp = () => {
               </div>
             </div>
           </div>
+
+          <style jsx>{`
+            @keyframes slideDown {
+              from {
+                opacity: 0;
+                transform: translateY(-10px);
+                max-height: 0;
+              }
+              to {
+                opacity: 1;
+                transform: translateY(0);
+                max-height: 200px;
+              }
+            }
+          `}</style>
 
           {/* Results Section */}
           <div className="col-lg-8">
@@ -522,7 +702,9 @@ const DiagnosticCentersApp = () => {
                 {/* Results Header */}
                 <div className="d-flex justify-content-between align-items-center mb-4">
                   <div>
-                    <h4 className="mb-1 secondary-color">Diagnostic Centers</h4>
+                    <h4 className="mb-1" style={{ color: "#00b2b2" }}>
+                      Diagnostic Centers
+                    </h4>
                     <p className="text-muted mb-0">
                       {diagnosticCenters.data.length} centers found
                       {hasActiveFilters && " with your filters"}
@@ -576,13 +758,16 @@ const DiagnosticCentersApp = () => {
                             <div className="card-body p-4 h-100 d-flex flex-column">
                               <div className="flex-grow-1">
                                 <div className="d-flex justify-content-between align-items-start mb-3">
-                                  <h5 className="card-title mb-0 fw-bold secondary-color">
+                                  <h5
+                                    className="card-title mb-0 fw-bold"
+                                    style={{ color: "#00b2b2" }}
+                                  >
                                     {center.name}
                                   </h5>
                                   <div className="d-flex align-items-center">
                                     <Star
                                       size={16}
-                                      className="text-warning me-1 me-1"
+                                      className="text-warning me-1"
                                       fill="currentColor"
                                     />
                                     <span className="fw-bold">
@@ -592,8 +777,11 @@ const DiagnosticCentersApp = () => {
                                 </div>
 
                                 <div className="mb-3">
-                                  <div className="d-flex align-items-center text-muted mb-2">
-                                    <MapPin size={16} className="me-2 me-1" />
+                                  <div className="d-flex align-items-start text-muted mb-2">
+                                    <MapPin
+                                      size={16}
+                                      className="me-2 mt-1 flex-shrink-0"
+                                    />
                                     <span>
                                       {center.address}, {center.city} -{" "}
                                       {center.pincode}
@@ -604,7 +792,7 @@ const DiagnosticCentersApp = () => {
                                     <span>{center.contact_number}</span>
                                     <Copy
                                       size={16}
-                                      style={{ marginLeft: ".5rem" }}
+                                      className="ms-2 cursor-pointer"
                                       onClick={(e) =>
                                         handleCopy(e, center.contact_number)
                                       }
@@ -613,19 +801,25 @@ const DiagnosticCentersApp = () => {
                                 </div>
 
                                 {/* Services Tags */}
-                               <DiagnosticCenterCategories categories={isNotEmptyArray(center?.category) ? center.category : []} />
+                                <DiagnosticCenterCategories
+                                  categories={
+                                    isNotEmptyArray(center?.category)
+                                      ? center.category
+                                      : []
+                                  }
+                                />
 
                                 {/* Features */}
                                 <div className="d-flex gap-3 mb-3">
                                   {center.home_collection && (
                                     <div className="d-flex align-items-center text-success">
-                                      <Home size={16} className="me-1 me-1" />
+                                      <Home size={16} className="me-1" />
                                       <small>Home Collection</small>
                                     </div>
                                   )}
                                   {center.opening_hours === "24/7" && (
                                     <div className="d-flex align-items-center text-info">
-                                      <Clock size={16} className="me-1 me-1" />
+                                      <Clock size={16} className="me-1" />
                                       <small>24/7 Available</small>
                                     </div>
                                   )}
@@ -633,31 +827,19 @@ const DiagnosticCentersApp = () => {
                               </div>
 
                               <div className="d-flex gap-2 mt-auto">
-                                <div className="d-flex">
-                                  <button
-                                    className="btn btn-primary flex-fill me-2"
-                                    style={{
-                                      borderRadius: "8px",
-                                      padding: "8px 36px",
-                                    }}
-                                    onClick={(e) => {
-                                      e.stopPropagation();
-                                      handleEnquire(center);
-                                    }}
-                                  >
-                                    Enquiry
-                                  </button>
-                                </div>
-                                {/* <button
-                                  className="btn text-white px-3 py-2"
-                                  style={{ borderRadius: "12px" }}
+                                <button
+                                  className="btn btn-primary"
+                                  style={{
+                                    borderRadius: "8px",
+                                    padding: "8px 36px",
+                                  }}
                                   onClick={(e) => {
                                     e.stopPropagation();
-                                    // Handle call action
+                                    handleEnquire(center);
                                   }}
                                 >
-                                  <Phone size={16} className=" me-1" />
-                                </button> */}
+                                  Enquiry
+                                </button>
                               </div>
                             </div>
                           </div>
@@ -755,7 +937,6 @@ const DiagnosticCentersApp = () => {
   );
 };
 
-
 const DiagnosticCenterCategories = ({ categories }) => {
   // Check if the category exists and get the first 6 items
   const visibleCategories = categories.slice(0, 6); // Show only the first 6
@@ -782,15 +963,16 @@ const DiagnosticCenterCategories = ({ categories }) => {
   return (
     <div className="mb-3">
       <div className="d-flex flex-wrap gap-2">
-        {isNotEmptyArray(visibleCategories) && visibleCategories.map((service) => (
-          <span
-            key={service.id}
-            className="badge bg-light text-dark border px-3 py-1 me-2 mb-2"
-            style={{ borderRadius: "20px" }}
-          >
-            {service.name}
-          </span>
-        ))}
+        {isNotEmptyArray(visibleCategories) &&
+          visibleCategories.map((service) => (
+            <span
+              key={service.id}
+              className="badge bg-light text-dark border px-3 py-1 me-2 mb-2"
+              style={{ borderRadius: "20px" }}
+            >
+              {service.name}
+            </span>
+          ))}
 
         {/* Show Popover if there are more than 6 items */}
         {remainingCategories.length > 0 && (
