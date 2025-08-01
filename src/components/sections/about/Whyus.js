@@ -13,7 +13,7 @@ const whyus = [
   {
     icon: "flaticon-doctor",
     title: "Affordable Healthcare for All",
-    text: "Get cost-effective medical treatments without compromising quality"
+    text: "Get cost-effective medical treatments without compromising quality."
   },
   {
     icon: "flaticon-hospital",
@@ -33,7 +33,7 @@ const whyus = [
   {
     icon: "flaticon-heart",
     title: "₹49 Membership Benefits",
-    text: "Unlock 10%–40% discounts on surgeries, treatments and diagnostics."
+    text: "Unlock 10% – 40% discounts on surgeries, treatments and diagnostics."
   },
   {
     icon: "flaticon-call",
@@ -49,7 +49,7 @@ class Whyus extends Component {
         className="row"
         style={{
           paddingTop: "80px",
-          fontFamily: "'Poppins', sans-serif" // Apply Poppins to all text in this section
+          fontFamily: "Poppins" // Apply Poppins to all text in this section
         }}
       >
         <div className="col-lg-5 order-2 order-lg-1">
@@ -63,7 +63,7 @@ class Whyus extends Component {
                   textAlign: "center",
                   marginBottom: "8px",
                   lineHeight: "1.3",
-                  fontFamily: "'Poppins', sans-serif" // Added Poppins
+                  fontFamily: "Poppins" // Added Poppins
                 }}
               >
                 Why Choose VaidyaBandhu?
@@ -84,18 +84,18 @@ class Whyus extends Component {
                   </div>
                   <div
                     className="sigma_info-description"
-                    style={{ fontFamily: "'Poppins', sans-serif" }} // Added Poppins
+                    style={{ fontFamily: "Poppins" }} // Added Poppins
                   >
                     <h5
                       style={{
-                        fontFamily: "'Poppins', sans-serif" // Added Poppins
+                        fontFamily: "Poppins" // Added Poppins
                       }}
                     >
                       {item.title}
                     </h5>
                     <p
                       style={{
-                        fontFamily: "'Poppins', sans-serif" // Added Poppins
+                        fontFamily: "Poppins" // Added Poppins
                       }}
                     >
                       {item.text}

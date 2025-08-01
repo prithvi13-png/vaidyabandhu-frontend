@@ -2,15 +2,15 @@ import React, { useState, useEffect } from "react";
 // import { Link } from "react-router-dom";
 
 // Import Swiper React components
-import { Swiper, SwiperSlide } from 'swiper/react';
+import { Swiper, SwiperSlide } from "swiper/react";
 
 // Import Swiper styles
-import 'swiper/css';
-import 'swiper/css/pagination';
+import "swiper/css";
+import "swiper/css/pagination";
 // Removed 'swiper/css/navigation' as we are removing navigation arrows
 
 // Import required modules (e.g., Pagination, Autoplay)
-import { Pagination, Autoplay } from 'swiper/modules'; // Removed Navigation module
+import { Pagination, Autoplay } from "swiper/modules"; // Removed Navigation module
 
 const services = [
   {
@@ -92,7 +92,7 @@ const ServicesPreview = () => {
     background: "linear-gradient(135deg, #e0f7fa 0%, #ffffff 100%)",
     textAlign: "center",
     overflow: "hidden",
-    fontFamily: "'Inter', sans-serif",
+    fontFamily: "poppins",
   };
 
   // Re-using the heading style from the previous version for consistency and underline
@@ -123,8 +123,8 @@ const ServicesPreview = () => {
     color: "#4a5568",
     maxWidth: "800px",
     margin: "0 auto 60px",
-    lineHeight: "1.4",
-    fontFamily: "'Inter', sans-serif",
+    lineHeight: "1.3",
+    fontFamily: "poppins",
     fontWeight: "400",
   };
 
@@ -191,58 +191,56 @@ const ServicesPreview = () => {
     fontSize: "18px",
     color: "#5a6778",
     fontFamily: "poppins",
-    lineHeight: "1.4",
+    lineHeight: "1.3",
     marginBottom: "10px",
     position: "relative",
   };
 
   return (
     <div style={sectionStyle}>
-      
-         <h2
+      <h2
+        style={{
+          fontSize: "clamp(24px, 4vw, 34px)",
+          fontWeight: 800,
+          color: "#004d4f",
+          textAlign: "center",
+          marginBottom: "8px",
+          lineHeight: "1.3",
+          fontFamily: "Poppins",
+        }}
+      >
+        Our <span style={{ color: "#007a7e" }}>Services</span>
+      </h2>
+
+      {/* Subtitle/Intro Paragraph */}
+      <div
+        style={{
+          maxWidth: "1100px",
+          margin: "0 auto 60px", // centers it and adds bottom spacing
+          padding: "0 16px", // for small screen padding
+          opacity: animated ? 1 : 0,
+          transform: animated ? "translateY(0)" : "translateY(30px)",
+          transition:
+            "opacity 0.8s ease-out 0.2s, transform 0.8s ease-out 0.2s",
+        }}
+      >
+        <p
           style={{
-            fontSize: "clamp(24px, 4vw, 34px)",
-            fontWeight: 800,
-            color: "#004d4f",
-            textAlign: "center",
-            marginBottom: "8px",
+            fontSize: "clamp(16px, 2.5vw, 22px)",
+            color: "#4a5568",
             lineHeight: "1.3",
-            fontFamily: "'Poppins', sans-serif",
+            fontWeight: "400",
+            fontFamily: "Poppins",
+            textAlign: "center",
           }}
         >
-          Our{" "}
-          <span style={{ color: "#007a7e" }}>Services</span>
-        </h2>
+          Vaidya Bandhu offers dependable healthcare services, including expert
+          doctor consultations and big discounts on treatments, tests, and
+          surgeries. Making quality healthcare simple, ethical, accessible, and
+          affordable for everyone, everywhere, anytime.
+        </p>
+      </div>
 
-        {/* Subtitle/Intro Paragraph */}
-      <div
-  style={{
-    maxWidth: "1100px",
-    margin: "0 auto 60px", // centers it and adds bottom spacing
-    padding: "0 16px",     // for small screen padding
-    opacity: animated ? 1 : 0,
-    transform: animated ? "translateY(0)" : "translateY(30px)",
-    transition: "opacity 0.8s ease-out 0.2s, transform 0.8s ease-out 0.2s",
-  }}
->
-  <p
-    style={{
-      fontSize: "clamp(16px, 2.5vw, 22px)",
-      color: "#4a5568",
-      lineHeight: "1.4",
-      fontWeight: "400",
-      fontFamily: "'Poppins', sans-serif",
-      textAlign: "center",
-    }}
-  >
-    Vaidya Bandhu offers dependable healthcare services, including expert doctor consultations and
-    big discounts on treatments, tests, and surgeries. Making quality healthcare simple, ethical,
-    accessible, and affordable for everyone, everywhere, anytime.
-  </p>
-</div>
-
-        
-    
       {/* Swiper Carousel Integration */}
       <Swiper
         modules={[Pagination, Autoplay]} // Removed Navigation module
@@ -256,7 +254,7 @@ const ServicesPreview = () => {
         }}
         pagination={{ clickable: true }} // Enable clickable pagination dots
         navigation={false} // Explicitly disable navigation arrows
-        style={{ maxWidth: '1200px', margin: '0 auto', paddingBottom: '50px' }} // Container for Swiper
+        style={{ maxWidth: "1200px", margin: "0 auto", paddingBottom: "50px" }} // Container for Swiper
         breakpoints={{
           // When window width is >= 768px
           768: {
@@ -272,62 +270,61 @@ const ServicesPreview = () => {
       >
         {services.map((service, idx) => (
           <SwiperSlide key={idx}>
-          
+            <div
+              style={{
+                ...cardBaseStyle,
+                ...cardEntranceAnimation(idx),
+                // Hover effects
+                ...(hoveredCard === idx && {
+                  transform: "translateY(-8px) scale(1.02)",
+                  boxShadow: "0 25px 50px rgba(0, 122, 126, 0.35)",
+                  background:
+                    "linear-gradient(135deg, #f0ffff 0%, #ffffff 100%)",
+                  borderBottom: "4px solid #007a7e",
+                }),
+              }}
+              onMouseEnter={() => setHoveredCard(idx)}
+              onMouseLeave={() => setHoveredCard(null)}
+            >
               <div
                 style={{
-                  ...cardBaseStyle,
-                  ...cardEntranceAnimation(idx),
-                  // Hover effects
+                  ...iconContainerStyle,
                   ...(hoveredCard === idx && {
-                    transform: "translateY(-8px) scale(1.02)",
-                    boxShadow: "0 25px 50px rgba(0, 122, 126, 0.35)",
-                    background: "linear-gradient(135deg, #f0ffff 0%, #ffffff 100%)",
-                    borderBottom: "4px solid #007a7e",
+                    transform: "scale(1.1)",
+                    backgroundColor: "#CCF5F5",
                   }),
                 }}
-                onMouseEnter={() => setHoveredCard(idx)}
-                onMouseLeave={() => setHoveredCard(null)}
               >
-                <div
-                  style={{
-                    ...iconContainerStyle,
-                    ...(hoveredCard === idx && {
-                      transform: "scale(1.1)",
-                      backgroundColor: "#CCF5F5",
-                    }),
-                  }}
-                >
-                  <i className={service.icon} style={iconStyle}></i>
-                </div>
-                <h4
-                  style={{
-                    ...titleStyle,
-                    ...(hoveredCard === idx && {
-                      transform: "translateY(-3px)",
-                      color: "#005f62",
-                    }),
-                  }}
-                >
-                  {service.title}
-                </h4>
-                <ul style={listStyle}>
-                  {service.points.map((point, pIdx) => (
-                    <li style={listItemStyle} key={pIdx}>
-                      <span
-                        style={{
-                          marginRight: "8px",
-                          color: "#007a7e",
-                          fontWeight: "bold",
-                        }}
-                      >
-                        •
-                      </span>
-                      {point}
-                    </li>
-                  ))}
-                </ul>
+                <i className={service.icon} style={iconStyle}></i>
               </div>
-         
+              <h4
+                style={{
+                  ...titleStyle,
+                  ...(hoveredCard === idx && {
+                    transform: "translateY(-3px)",
+                    color: "#005f62",
+                  }),
+                }}
+              >
+                {service.title}
+              </h4>
+              <ul style={listStyle}>
+                {service.points.map((point, pIdx) => (
+                  <li style={listItemStyle} key={pIdx}>
+                    <span
+                      style={{
+                        marginRight: "8px",
+                        color: "#007a7e",
+                        fontWeight: "bold",
+                      }}
+                    >
+                      •
+                    </span>
+                    {point}
+                  </li>
+                ))}
+              </ul>
+            </div>
           </SwiperSlide>
         ))}
       </Swiper>

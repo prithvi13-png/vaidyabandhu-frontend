@@ -49,7 +49,7 @@ const Workprocess = () => {
         position: "relative",
         overflow: "hidden",
         marginBottom: "10px !important",
-        fontFamily: "'Inter', sans-serif", // Modern font (assuming it's imported or fallback)
+        fontFamily: "poppins", // Modern font (assuming it's imported or fallback)
       }}
       id="how-it-works"
     >
@@ -105,10 +105,10 @@ const Workprocess = () => {
           style={{
             fontSize: 34, // Larger, more impactful heading
             fontWeight: "800",
-            fontFamily: "'Poppins', sans-serif",
+            fontFamily: "Poppins",
             color: "#004d4f",
             // margin: "20px 0 25px", // Adjusted margins
-            lineHeight: 1.2,
+            lineHeight: 1.3,
             marginTop: 50,
           }}
         >
@@ -122,9 +122,9 @@ const Workprocess = () => {
           style={{
             fontSize: "clamp(16px, 2.5vw, 22px)",
             color: "#4a5568",
-            lineHeight: "1.4",
+            lineHeight: "1.3",
             fontWeight: "400",
-            fontFamily: "'Poppins', sans-serif",
+            fontFamily: "Poppins",
             maxWidth: "1100px",
             margin: "0 auto 40px",
             opacity: animated ? 1 : 0,
@@ -229,12 +229,12 @@ const Workprocess = () => {
                 listStyleType: "none",
                 fontSize: 18, // Changed from 16 to 18px
                 color: "#4a5568",
-                lineHeight: 1.5, // Slightly increased for better spacing with larger font
+                lineHeight: 1.3, // Slightly increased for better spacing with larger font
                 textAlign: "left",
                 flexGrow: 1,
                 position: "relative",
                 zIndex: 1,
-                fontFamily: "'Poppins', sans-serif", // Optional: ensure Poppins font consistency
+                fontFamily: "Poppins", // Optional: ensure Poppins font consistency
               }}
             >
               {step.points.map((point, i) => (

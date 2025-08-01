@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { ArrowRight, CheckCircle } from "lucide-react"; // Icons for buttons and benefits
-
 // Dummy data for the banner (now only one item needed for a static page)
 const dummyBannerData = [
   {
@@ -18,26 +17,25 @@ const dummyBannerData = [
     ],
   },
 ];
-
 const Banner = () => {
   const [animated, setAnimated] = useState(false);
   const [hoveredButton, setHoveredButton] = useState(null); // State for button hover effect
-
   useEffect(() => {
     // Trigger entrance animation after component mounts
     const timer = setTimeout(() => setAnimated(true), 300);
     return () => clearTimeout(timer);
   }, []);
-
   const baseTransition = "all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)"; // Smoother transition curve
-
   // Since it's a static page, we only need the first item
   const item = dummyBannerData[0];
-
   return (
     <div
       className="sigma_banner style-8"
-      style={{ overflow: "hidden", position: "relative" }}
+      style={{
+        overflow: "hidden",
+        position: "relative",
+        marginTop: "60px", // Ensures content starts below the header
+      }}
     >
       <div
         className="banner-slider-inner secondary-overlay"
@@ -67,7 +65,6 @@ const Banner = () => {
             zIndex: 2,
           }}
         ></div>
-
         <div
           className="sigma_banner-text text-center"
           style={{ position: "relative", zIndex: 3 }}
@@ -83,7 +80,7 @@ const Banner = () => {
                   className="title text-white"
                   style={{
                     color: "#ffffff",
-                    fontFamily: "poppins",
+                    fontFamily: "'poppins'",
                     fontWeight: "700", // Extra bold
                     fontSize: "clamp(1.2rem, 4.5vw, 2rem)", // Larger, more dynamic font size
                     marginBottom: "20px",
@@ -96,7 +93,6 @@ const Banner = () => {
                 >
                   {item.title}
                 </h1>
-
                 {/* Subtitle - now more of a tag-line */}
                 <h5
                   className="text-white"
@@ -104,6 +100,7 @@ const Banner = () => {
                     color: "#e0f7fa", // Light teal for subtitle
                     fontWeight: "600",
                     fontFamily: "poppins",
+                    lineHeight: "1.3",
                     fontSize: "clamp(1.6rem, 3.2vw, 2.2rem)", // Slightly larger subtitle
                     marginBottom: "35px", // Increased margin below subtitle
                     textShadow: "1px 1px 5px rgba(0,0,0,0.3)",
@@ -114,7 +111,6 @@ const Banner = () => {
                 >
                   {item.subtitle}
                 </h5>
-
                 {/* Benefits List */}
                 <ul
                   style={{
@@ -134,7 +130,7 @@ const Banner = () => {
                         color: "#e0f7fa",
                         fontSize: "clamp(1.1rem, 1.9vw, 1.3rem)", // Slightly larger font for benefits
                         marginBottom: "12px", // Increased spacing between benefits
-                        lineHeight: "1.5",
+                        lineHeight: "1.3",
                         opacity: animated ? 1 : 0,
                         transform: animated
                           ? "translateY(0)"
@@ -159,7 +155,6 @@ const Banner = () => {
                     </li>
                   ))}
                 </ul>
-
                 {/* Banner Links */}
                 <div
                   className="banner-links"
@@ -249,7 +244,6 @@ const Banner = () => {
           </div>
         </div>
       </div>
-
       {/* Global Styles for responsiveness */}
       <style>
         {`
@@ -264,57 +258,46 @@ const Banner = () => {
               font-size: clamp(1rem, 2.2vw, 1.2rem) !important;
             }
           }
-
-@media (max-width: 768px) {
-  .banner-slider-inner {
-    min-height: 480px !important;
-    padding: 40px 15px !important;
-  }
-
-  .sigma_banner-text h1 {
-    font-size: clamp(2rem, 6vw, 3rem) !important;
-    margin-bottom: 10px !important;
-  }
-
-  .sigma_banner-text h5 {
-    font-size: clamp(1.2rem, 4.5vw, 1.8rem) !important;
-    margin-bottom: 20px !important;
-  }
-
-  .sigma_banner-text ul li {
-    font-size: clamp(0.9rem, 3vw, 1.1rem) !important;
-    margin-bottom: 8px !important;
-  }
-
-  .sigma_banner-text ul {
-    margin-bottom: 25px !important;
-  }
-
-  .banner-links {
-    flex-direction: column !important;
-    gap: 15px !important;
-  }
-
-  .banner-links a {
-    width: 100% !important;
-    justify-content: center !important;
-    padding: 12px 25px !important;
-    font-size: 16px !important;
-  }
-
-  .banner-links a svg {
-    margin-left: 10px !important;
-    width: 18px !important;
-    height: 18px !important;
-  }
-
-  /* ✅ Add this new rule below everything else */
-  .col-lg-10 {
-    padding-top: 125px !important;
-  }
-}
-
-
+          @media (max-width: 768px) {
+            .banner-slider-inner {
+              min-height: 480px !important;
+              padding: 40px 15px !important;
+            }
+            .sigma_banner-text h1 {
+              font-size: clamp(2rem, 6vw, 3rem) !important;
+              margin-bottom: 10px !important;
+            }
+            .sigma_banner-text h5 {
+              font-size: clamp(1.2rem, 4.5vw, 1.8rem) !important;
+              margin-bottom: 20px !important;
+            }
+            .sigma_banner-text ul li {
+              font-size: clamp(0.9rem, 3vw, 1.1rem) !important;
+              margin-bottom: 8px !important;
+            }
+            .sigma_banner-text ul {
+              margin-bottom: 25px !important;
+            }
+            .banner-links {
+              flex-direction: column !important;
+              gap: 15px !important;
+            }
+            .banner-links a {
+              width: 100% !important;
+              justify-content: center !important;
+              padding: 12px 25px !important;
+              font-size: 16px !important;
+            }
+            .banner-links a svg {
+              margin-left: 10px !important;
+              width: 18px !important;
+              height: 18px !important;
+            }
+            /* ✅ Add this new rule below everything else */
+            .col-lg-10 {
+              padding-top: 125px !important;
+            }
+          }
           @media (max-width: 480px) {
             .banner-slider-inner {
               min-height: 400px !important;
@@ -327,7 +310,7 @@ const Banner = () => {
               font-size: clamp(1rem, 5.5vw, 1.5rem) !important;
             }
             .sigma_banner-text ul li {
-              font-size: clamp(0.8rem, 3.5vw, 1rem) !important;
+              font-size: clamp(1rem, 3.5vw, 1rem) !important;
               margin-bottom: 6px !important;
             }
           }
@@ -336,5 +319,4 @@ const Banner = () => {
     </div>
   );
 };
-
 export default Banner;

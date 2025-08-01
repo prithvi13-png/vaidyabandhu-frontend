@@ -11,10 +11,10 @@ class ClientTestimonials extends Component {
               style={{
                 fontSize: "clamp(36px, 5vw, 34px)",
                 fontWeight: "800",
-                fontFamily: "'Poppins', sans-serif",
+                fontFamily: "Poppins",
                 color: "#004d4f",
                 marginBottom: "10px",
-                lineHeight: "1.2",
+                lineHeight: "1.3",
                 // opacity: animated ? 1 : 0,
                 // transform: animated ? "translateY(0)" : "translateY(30px)",
                 // transition: "opacity 0.8s ease-out, transform 0.8s ease-out",

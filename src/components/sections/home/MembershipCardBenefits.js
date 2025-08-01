@@ -10,7 +10,7 @@ const MembershipCardBenefits = () => {
   }, []);
 
   const benefits = [
-    "10%–40% Discounts on Services: Reduce costs for surgeries, treatments, and diagnostic tests at healthcare partners.",
+    "10% – 40% Discounts on Services: Reduce costs for surgeries, treatments, and diagnostic tests at healthcare partners.",
     "Get 10% Cashback: Send your bill to Vaidya Bandhu via WhatsApp or Email. Cashback will be credited to your account within 7 working days.",
     "Statewide Karnataka Coverage: Valid at affiliated doctors, hospitals, and labs for easy access.",
     "Vaidya Bandhu Card – Just ₹49/- Unlimited Savings & Care for 365 Days.",
@@ -29,7 +29,7 @@ const MembershipCardBenefits = () => {
       style={{
         padding: "40px 20px",
         background: "linear-gradient(135deg, #e0f7fa 0%, #ffffff 100%)",
-        fontFamily: "'poppins', sans-serif",
+        fontFamily: "poppins",
         position: "relative",
         overflow: "hidden",
       }}
@@ -66,7 +66,7 @@ const MembershipCardBenefits = () => {
           style={{
             fontSize: "clamp(28px, 5vw, 34px)",
             fontWeight: 800,
-            fontFamily: "'poppins', sans-serif",
+            fontFamily: "poppins",
             color: "#004d4f",
             textAlign: "center",
             marginBottom: "20px",
@@ -75,7 +75,7 @@ const MembershipCardBenefits = () => {
         >
           Big Savings. Full Support. Just ₹49/Year <br />
           <span
-            style={{ color: "#007a7e", fontFamily: "'poppins', sans-serif" }}
+            style={{ color: "#007a7e", fontFamily: "poppins" }}
           >
             Vaidya Bandhu Card: Key to Affordable Healthcare in India.
           </span>
@@ -85,9 +85,9 @@ const MembershipCardBenefits = () => {
           style={{
             fontSize: "clamp(16px, 2.5vw, 22px)",
             color: "#4a5568",
-            lineHeight: "1.4",
+            lineHeight: "1.3",
             fontWeight: "400",
-            fontFamily: "'Poppins', sans-serif",
+            fontFamily: "Poppins",
             maxWidth: "1100px",
             margin: "0 auto 0px",
             opacity: animated ? 1 : 0,
@@ -202,7 +202,7 @@ const MembershipCardBenefits = () => {
                       margin: 0,
                       fontSize: "clamp(16px, 2.5vw, 18px)",
                       color: "#4a5568",
-                      lineHeight: "1.4",
+                      lineHeight: "1.3",
                     }}
                   >
                     {benefit}
@@ -288,8 +288,8 @@ const MembershipCardBenefits = () => {
               margin: 0 !important;
             }
             .membership-benefits p {
-              font-size: 15px !important;
-              line-height: 1.4 !important;
+              font-size: 16px !important;
+              line-height: 1.3 !important;
               margin-bottom: 10px !important;
             }
             div[style*="marginRight: 14px"] {

@@ -27,8 +27,7 @@ const Footer = () => {
         background: "linear-gradient(135deg, #003d3f 0%, #001a1b 100%)", // Dark, inviting gradient
         paddingTop: "60px", // Adjusted padding
         paddingBottom: "0",
-        // fontFamily: "'poppins', sans-serif",
-          fontFamily: "poppins",
+        fontFamily: "poppins",
         color: "#a0aec0", // Default light text color for dark background
         overflow: "hidden",
         position: "relative",
@@ -43,8 +42,7 @@ const Footer = () => {
           position: "absolute",
           top: "5%",
           left: "0%",
-          // fontFamily: "'poppins', sans-serif",
-            fontFamily: "poppins",
+          fontFamily: "poppins",
           width: "min(100px, 10vw)",
           height: "min(100px, 10vw)",
           backgroundColor: "rgba(0, 122, 126, 0.1)", // Slightly more visible on dark
@@ -59,8 +57,7 @@ const Footer = () => {
           position: "absolute",
           bottom: "5%",
           right: "0%",
-          // fontFamily: "'poppins', sans-serif",
-            fontFamily: "poppins",
+          fontFamily: "poppins",
           width: "min(120px, 12vw)",
           height: "min(120px, 12vw)",
           backgroundColor: "rgba(0, 122, 126, 0.08)", // Slightly more visible on dark
@@ -76,8 +73,7 @@ const Footer = () => {
         style={{
           maxWidth: "1200px",
           margin: "0 auto",
-          // fontFamily: "'poppins', sans-serif",
-            fontFamily: "poppins",
+          fontFamily: "poppins",
           position: "relative",
           zIndex: 1,
         }}
@@ -111,8 +107,7 @@ const Footer = () => {
                 width: "50px",
                 height: "50px",
                 borderRadius: "50%",
-                // fontFamily: "'poppins', sans-serif",
-                  fontFamily: "poppins",
+                fontFamily: "poppins",
                 background: "#007a7e", // Accent color for icons
                 display: "flex",
                 alignItems: "center",
@@ -141,8 +136,7 @@ const Footer = () => {
               <p
                 style={{
                   margin: "0",
-                  // fontFamily: "'poppins', sans-serif",
-                    fontFamily: "poppins",
+                  fontFamily: "poppins",
                   fontSize: "16px",
                   color: "#a0aec0",
                 }}
@@ -152,8 +146,7 @@ const Footer = () => {
               <p
                 style={{
                   margin: "0",
-                  // fontFamily: "'poppins', sans-serif",
-                    fontFamily: "poppins",
+                  fontFamily: "poppins",
                   fontSize: "18px",
                   fontWeight: "bold",
                   color: "#e2e8f0",
@@ -180,8 +173,7 @@ const Footer = () => {
               style={{
                 width: "50px",
                 height: "50px",
-                // fontFamily: "'poppins', sans-serif",
-                  fontFamily: "poppins",
+                fontFamily: "poppins",
                 borderRadius: "50%",
                 background: "#007a7e", // Accent color for icons
                 display: "flex",
@@ -210,8 +202,7 @@ const Footer = () => {
               <p
                 style={{
                   margin: "0",
-                  // fontFamily: "'poppins', sans-serif",
-                    fontFamily: "poppins",
+                  fontFamily: "poppins",
                   fontSize: "16px",
                   color: "#a0aec0",
                 }}
@@ -368,8 +359,7 @@ const Footer = () => {
               <h5
                 style={{
                   fontSize: "20px",
-                    fontFamily: "poppins",
-                  // fontFamily: "'poppins', sans-serif",
+                  fontFamily: "poppins",
                   fontWeight: "700",
                   color: "#e2e8f0",
                   marginBottom: "20px",
@@ -380,8 +370,7 @@ const Footer = () => {
               <ul
                 style={{
                   listStyle: "none",
-                    fontFamily: "poppins",
-                  // fontFamily: "'poppins', sans-serif",
+                  fontFamily: "poppins",
                   padding: 0,
                   margin: 0,
                 }}
@@ -431,6 +420,7 @@ const Footer = () => {
                   padding: "12px 15px",
                   color: "#e2e8f0",
                   marginBottom: "0px",
+                  marginTop: "-12px",
                 }}
               >
                 Subscribe
@@ -490,7 +480,7 @@ const Footer = () => {
                     marginBottom: "0",
                   }}
                 >
-                  Get The Latest Updates via email. Any time you may unsubscribe
+                  Get The Latest Updates via email. Any time you may unsubscribe.
                 </p>
               </form>
             </div>

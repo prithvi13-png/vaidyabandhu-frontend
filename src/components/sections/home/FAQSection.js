@@ -82,7 +82,7 @@ const FAQSection = () => {
         background: "linear-gradient(135deg, #f5fdfd 0%, #e0f7fa 100%)", // Light, calming gradient
         textAlign: "center",
         overflow: "hidden",
-        fontFamily: "'Inter', sans-serif",
+        fontFamily: "Poppins",
         position: "relative",
       }}
     >
@@ -138,7 +138,7 @@ const FAQSection = () => {
             color: "#004d4f",
             marginBottom: "10px",
             lineHeight: "1.3",
-             fontFamily: "'Poppins', sans-serif",
+            fontFamily: "Poppins",
             opacity: animated ? 1 : 0,
             transform: animated ? "translateY(0)" : "translateY(30px)",
             transition: "opacity 0.8s ease-out, transform 0.8s ease-out",
@@ -152,11 +152,10 @@ const FAQSection = () => {
           style={{
             fontSize: "clamp(16px, 2.5vw, 22px)",
             color: "#4a5568",
-              fontFamily: "poppins",
-            lineHeight: "1.5",
+            lineHeight: "1.3",
             fontWeight: "500",
             marginBottom: "30px",
-            // fontFamily: "'Poppins', sans-serif",
+            fontFamily: "Poppins",
             opacity: animated ? 1 : 0,
             transform: animated ? "translateY(0)" : "translateY(30px)",
             transition:
@@ -260,8 +259,7 @@ const FAQSection = () => {
                     style={{
                       fontSize: "clamp(15px, 2vw, 17px)",
                       color: "#5a6778",
-                        fontFamily: "poppins",
-                      lineHeight: "1.7",
+                      lineHeight: "1.3",
                       margin: 0,
                       paddingTop: "15px", // Space from top of answer area
                     }}
@@ -308,6 +306,7 @@ const FAQSection = () => {
               font-size: clamp(14px, 1.8vw, 16px) !important;
             }
           }
+            
 
           @media (max-width: 480px) {
             div[style*="padding: 80px 20px"] { /* Section padding */
@@ -322,7 +321,7 @@ const FAQSection = () => {
               padding: 15px !important;
             }
             h4 { /* Question font size */
-              font-size: clamp(15px, 3.5vw, 18px) !important;
+              font-size: clamp(16px, 3.5vw, 18px) !important;
             }
             span[style*="font-size: 16px"] { /* Arrow size */
               font-size: 20px !important;

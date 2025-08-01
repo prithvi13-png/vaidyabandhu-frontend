@@ -19,7 +19,7 @@ const OurStory = () => {
         padding: "40px 10px" /* Generous padding for section */,
         background:
           "linear-gradient(135deg, #e0f7fa 0%, #ffffff 100%)" /* Light, inviting gradient */,
-        fontFamily: "'poppins', sans-serif" /* Consistent font */,
+        fontFamily: "poppins" /* Consistent font */,
         color: "#4a5568" /* Soft dark gray for main text */,
         lineHeight: "1.4", // Adjusted for better readability
         overflow: "hidden",
@@ -109,7 +109,7 @@ const OurStory = () => {
                 paddingBottom: "10px", // More space for underline
                 textAlign: "center",
                 marginBottom: "10px",
-                fontFamily: "'Poppins', sans-serif",
+                fontFamily: "Poppins",
               }}
             >
               Our <span style={{ color: "#007a7e" }}>Story</span>
@@ -119,7 +119,7 @@ const OurStory = () => {
               style={{
                 fontSize: "clamp(17px, 2.2vw, 19px)",
                 color: "#4a5568",
-                fontFamily: "'Poppins', sans-serif",
+                fontFamily: "Poppins",
                 marginBottom: "20px",
                 opacity: animated ? 1 : 0,
                 transform: animated ? "translateY(0)" : "translateY(20px)",
@@ -135,18 +135,17 @@ const OurStory = () => {
               style={{
                 fontSize: "clamp(17px, 2.2vw, 19px)",
                 color: "#4a5568",
-                fontFamily: "'Poppins', sans-serif",
-
+                fontFamily: "Poppins",
                 opacity: animated ? 1 : 0,
                 transform: animated ? "translateY(0)" : "translateY(20px)",
                 transition: `opacity 0.8s ease-out 0.6s, transform 0.8s ease-out 0.6s`,
               }}
             >
-              Understanding these challenges,{" "}
+              Understanding these challenges,
               <strong style={{ color: "#007a7e" }}>
                 Vaidya Bandhu was created to bridge the gap between patients and
                 affordable healthcare.
-              </strong>
+              </strong>{" "}
               Our goal is simple: No one should suffer due to financial
               limitations.
             </p>
@@ -183,7 +182,7 @@ const OurStory = () => {
                 paddingBottom: "10px",
                 textAlign: "center",
                 marginBottom: "15px",
-                fontFamily: "'Poppins', sans-serif",
+                fontFamily: "Poppins",
               }}
             >
               Our <span style={{ color: "#007a7e" }}>Vision</span>
@@ -191,7 +190,7 @@ const OurStory = () => {
             <p
               style={{
                 fontWeight: 600,
-                fontFamily: "'Poppins', sans-serif",
+                fontFamily: "Poppins",
                 color: "#007a7e", // Bright teal accent for vision statement
                 fontSize:
                   "clamp(20px, 3vw, 19px)" /* Larger font size for vision statement */,
@@ -241,7 +240,7 @@ const OurStory = () => {
               style={{
                 fontSize: "clamp(32px, 4.5vw, 36px)",
                 fontWeight: 800,
-                fontFamily: "'Poppins', sans-serif",
+                fontFamily: "Poppins",
                 color: "#004d4f",
                 position: "relative",
                 paddingBottom: "10px",
@@ -259,7 +258,7 @@ const OurStory = () => {
                 textAlign: "center",
                 maxWidth: "1100px",
                 margin: "0 auto 25px",
-                fontFamily: "'Poppins', sans-serif",
+                fontFamily: "Poppins",
               }}
             >
               At Vaidya Bandhu, we empower patients with timely medical
@@ -314,12 +313,12 @@ const OurStory = () => {
               >
                 <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
                   {[
-                    "10–40% off on surgeries, treatments & diagnostics",
-                    "Free medical guidance for informed decisions)",
+                    "10 – 40% off on surgeries, treatments & diagnostics",
+                    "Free medical guidance for informed decisions",
                     "Get 10% Cashback: Send your bill to Vaidya Bandhu via WhatsApp or Email. Cashback will be credited to your account within 7 working days.",
-                    "Top doctors across all specialties and everywhere",
+                    "Top doctors across all specialties and everywhere.",
                     "Free surgeries for the needy through our social impact programs.",
-                    " Personalized support in selecting the Ideal Doctor, Hospital, or Diagnostic Centers.",
+                    " Personalized support in selecting the Ideal Doctor, Hospital, or Diagnostic centers.",
                   ].map((item, index) => (
                     <li
                       key={index}
@@ -329,7 +328,7 @@ const OurStory = () => {
                           "clamp(16px, 2vw, 18px)" /* Font for list items */,
                         color: "#4a5568",
                         display: "flex",
-                        fontFamily: "'Poppins', sans-serif",
+                        fontFamily: "Poppins",
                         alignItems: "flex-start",
                         padding: "15px 25px" /* Padding for list items */,
                         backgroundColor:

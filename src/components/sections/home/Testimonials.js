@@ -13,10 +13,10 @@ class Testimonials extends Component {
               style={{
                 fontSize: "clamp(36px, 5vw, 34px)",
                 fontWeight: "800",
-                fontFamily: "'Poppins', sans-serif",
+                fontFamily: "Poppins",
                 color: "#004d4f",
                 marginBottom: "10px",
-                lineHeight: "1.2",
+                lineHeight: "1.3",
                 //   opacity: animated ? 1 : 0,
                 //   transform: animated ? "translateY(0)" : "translateY(30px)",
                 //   transition: "opacity 0.8s ease-out, transform 0.8s ease-out",
@@ -41,7 +41,7 @@ class Testimonials extends Component {
                     <div className="sigma_testimonial-body">
                       <p
                         style={{
-                          fontFamily: "'Poppins', sans-serif",
+                          fontFamily: "Poppins",
                           color: "#007a7e",
                         }}
                       >
@@ -50,7 +50,7 @@ class Testimonials extends Component {
                       <div className="sigma_author-block">
                         <h5
                           style={{
-                            fontFamily: "'Poppins', sans-serif",
+                            fontFamily: "Poppins",
                             color: "#004d4f", // Doctor's name color
                           }}
                         >
@@ -59,7 +59,7 @@ class Testimonials extends Component {
                         <span
                           className="sigma_testimonial-category"
                           style={{
-                            fontFamily: "'Poppins', sans-serif",
+                            fontFamily: "Poppins",
                             color: "#6c757d", // Specialty color
                           }}
                         >

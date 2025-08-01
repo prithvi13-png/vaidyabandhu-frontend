@@ -11,7 +11,7 @@ const HowToBecomeMember = () => {
   const sectionStyle = {
     padding: "40px 20px",
     background: "linear-gradient(135deg, #f5fdfd 0%, #e0f7fa 100%)",
-    fontFamily: "Poppins, sans-serif",
+    fontFamily: "Poppins",
     color: "#4a5568",
     lineHeight: "1.4",
     overflow: "hidden",
@@ -26,7 +26,7 @@ const HowToBecomeMember = () => {
     color: "#002a2c",
     marginBottom: "15px",
     lineHeight: "1.3",
-    fontFamily: "Poppins, sans-serif",
+    fontFamily: "Poppins",
     opacity: animated ? 1 : 0,
     transform: animated ? "translateY(0)" : "translateY(-20px)",
     transition: "opacity 1s ease-out, transform 1s ease-out",
@@ -36,7 +36,7 @@ const HowToBecomeMember = () => {
     fontSize: "clamp(18px, 2.5vw, 19px)",
     color: "#4a5568",
     maxWidth: "900px",
-    fontFamily: "Poppins, sans-serif",
+    fontFamily: "Poppins",
     margin: "0 auto 20px",
     lineHeight: "1.4",
     fontWeight: "400",
@@ -51,7 +51,7 @@ const HowToBecomeMember = () => {
     gap: "0px",
     maxWidth: "800px",
     margin: "0 auto",
-    fontFamily: "Poppins, sans-serif",
+    fontFamily: "Poppins",
     padding: "0 10px",
     position: "relative",
     zIndex: 1,
@@ -97,7 +97,7 @@ const HowToBecomeMember = () => {
     boxShadow: "0 6px 20px rgba(0, 122, 126, 0.3)",
     flexShrink: 0,
     transition: "all 0.3s ease",
-    fontFamily: "Poppins, sans-serif",
+    fontFamily: "Poppins",
   };
 
   const stepContentStyle = {
@@ -106,7 +106,7 @@ const HowToBecomeMember = () => {
     borderLeft: "2px solid rgba(0, 122, 126, 0.2)",
     paddingBottom: "10px",
     paddingTop: "5px",
-    fontFamily: "Poppins, sans-serif",
+    fontFamily: "Poppins",
   };
 
   const stepTitleStyle = {
@@ -115,14 +115,14 @@ const HowToBecomeMember = () => {
     color: "#002a2c",
     marginBottom: "8px",
     lineHeight: "1.3",
-    fontFamily: "Poppins, sans-serif",
+    fontFamily: "Poppins",
   };
 
   const stepDescriptionStyle = {
     fontSize: "clamp(16px, 2.2vw, 18px)",
     color: "#5a6778",
     lineHeight: "1.6",
-    fontFamily: "Poppins, sans-serif",
+    fontFamily: "Poppins",
   };
 
   const buttonContainerStyle = {
@@ -130,7 +130,7 @@ const HowToBecomeMember = () => {
     opacity: animated ? 1 : 0,
     transform: animated ? "translateY(0)" : "translateY(30px)",
     transition: "opacity 0.8s ease-out 1.5s, transform 0.8s ease-out 1.5s",
-    fontFamily: "Poppins, sans-serif",
+    fontFamily: "Poppins",
   };
 
   return (
@@ -226,12 +226,12 @@ const HowToBecomeMember = () => {
           position: "relative",
           zIndex: 1,
           textAlign: "center",
-          fontFamily: "Poppins, sans-serif",
+          fontFamily: "Poppins",
         }}
       >
         <h2 style={headingStyle}>
           How to Become a{" "}
-          <span style={{ color: "#007a7e", fontFamily: "Poppins, sans-serif" }}>
+          <span style={{ color: "#007a7e", fontFamily: "Poppins" }}>
             Member
           </span>
         </h2>

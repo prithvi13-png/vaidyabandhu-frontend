@@ -25,7 +25,6 @@ class Content extends Component {
         <Banner />
         <Searchform />
         <HealthcareReality />
-
         <Services />
         <div className="section bg-secondary-1">
           <div className="container">

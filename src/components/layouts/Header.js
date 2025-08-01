@@ -5,31 +5,27 @@ import navigation from "../../data/navigation.json";
 import MembershipModal from "./MembershipModal";
 import "../../assets/css/Header.css";
 
-// Custom hook to implement NavHelper functionality
+// Custom hook
 const useNavHelper = () => {
   const [navMethod, setNavMethod] = useState(false);
   const [searchMethod, setSearchMethod] = useState(false);
   const [windowSize] = useState("");
   const [stickyHeader, setStickyHeader] = useState(0);
 
-  // Nav toggle
   const toggleNav = useCallback(() => {
     setNavMethod((prev) => !prev);
   }, []);
 
-  // Search toggle
   const toggleSearch = useCallback(() => {
     setSearchMethod((prev) => !prev);
   }, []);
 
-  // Sticky header
   const StickyHeader = useCallback((e) => {
     const windowSize = window.scrollY;
     const stickyHeader = windowSize > 100;
     setStickyHeader(stickyHeader);
   }, []);
 
-  // Mobile menu helper functions
   const getNextSibling = useCallback((elem, selector) => {
     var sibling = elem.nextElementSibling;
     if (!selector) return sibling;
@@ -56,7 +52,6 @@ const useNavHelper = () => {
     [getNextSibling]
   );
 
-  // Setup scroll listener
   useEffect(() => {
     window.addEventListener("scroll", StickyHeader);
     return () => {
@@ -75,11 +70,8 @@ const useNavHelper = () => {
   };
 };
 
-const Header = (props) => {
-  const {
-    navMethod,
-    toggleNav,
-  } = useNavHelper();
+const Header = () => {
+  const { navMethod, toggleNav } = useNavHelper();
   const [userPhone, setUserPhone] = useState(null);
 
   useEffect(() => {
@@ -104,7 +96,9 @@ const Header = (props) => {
         </div>
         <Mobilemenu />
       </aside>
-      <div className="sigma_aside-overlay aside-trigger" onClick={toggleNav} />
+      {navMethod && (
+        <div className="sigma_aside-overlay aside-trigger" onClick={toggleNav} />
+      )}
 
       {/* Header */}
       <header
@@ -120,56 +114,141 @@ const Header = (props) => {
           transition: "all 0.3s ease",
         }}
       >
-        <div className="sigma_header-top dark-bg d-none d-md-block">
+        {/* Header Top */}
+        <div className="sigma_header-top dark-bg">
           <div className="container-fluid">
-            <div className="sigma_header-top-inner">
-              <div className="sigma_header-top-contacts">
-                <ul className="sigma_header-top-nav">
-                  <li>
-                    <Link to="#">
-                      <i className="fab fa-facebook-f" />
-                    </Link>
-                  </li>
-                  <li>
-                    <Link to="#">
-                      <i className="fab fa-twitter" />
-                    </Link>
-                  </li>
-                  <li>
-                    <Link to="#">
-                      <i className="fab fa-linkedin-in" />
-                    </Link>
-                  </li>
-                  <li>
-                    <Link to="#">
-                      <i className="fab fa-google" />
-                    </Link>
-                  </li>
-                </ul>
-              </div>
-              <div className="sigma_header-top-links">
-                <ul className="sigma_header-top-nav">
-                  <li>
-                    <a href="mailto:support@vaidyabandhu.com">
-                      <i className="fal fa-envelope" /> support@vaidyabandhu.com
-                    </a>
-                  </li>
-                  <li>
-                    <Link to="#">
-                      <i className="fal fa-map-marker-alt" /> Bangalore
-                    </Link>
-                  </li>
-                  <li>
-                    <a href="tel:+918535853589">
-                      <i className="fal fa-mobile" /> +91 8535853589
-                    </a>
-                  </li>
-                </ul>
+            {/* Desktop: Full layout | Mobile: Responsive override */}
+            <div
+              className="sigma_header-top-inner"
+              style={{
+                display: "flex",
+                justifyContent: "space-between",
+               
+                padding: "8px 0",
+              }}
+            >
+              {/* Left: Social Icons */}
+             <div
+  className="sigma_header-top-contacts mobile-margin"
+  style={{
+    display: "flex",
+    gap: "12px",
+  }}
+>
+  <Link to="#" style={{ fontSize: "16px", color: "#fff" }}>
+    <i className="fab fa-facebook-f" />
+  </Link>
+  <Link to="#" style={{ fontSize: "16px", color: "#fff" }}>
+    <i className="fab fa-twitter" />
+  </Link>
+  <Link to="#" style={{ fontSize: "16px", color: "#fff" }}>
+    <i className="fab fa-linkedin-in" />
+  </Link>
+  <Link to="#" style={{ fontSize: "16px", color: "#fff" }}>
+    <i className="fab fa-google" />
+  </Link>
+</div>
+
+
+              {/* Right: Contact Info */}
+              <div
+                className="sigma_header-top-links"
+                style={{
+                  display: "flex",
+                  gap: "15px",
+                  fontSize: "14px",
+                  color: "#fff",
+                }}
+              >
+                <a
+                  href="mailto:support@vaidyabandhu.com"
+                  style={{ color: "#fff", textDecoration: "none" }}
+                >
+                  <i className="fal fa-envelope" style={{ marginRight: "5px" }} />{" "}
+                  support@vaidyabandhu.com
+                </a>
+                <Link to="#" style={{ color: "#fff", textDecoration: "none" }}>
+                  <i className="fal fa-map-marker-alt" style={{ marginRight: "5px" }} /> Bangalore
+                </Link>
+                <a
+                  href="tel:+918535853589"
+                  style={{ color: "#fff", textDecoration: "none" }}
+                >
+                  <i className="fal fa-mobile" style={{ marginRight: "5px" }} /> +91 8535853589
+                </a>
               </div>
             </div>
+
+            {/* Mobile-Only Responsive Override */}
+            <style>
+              {`
+                @media (max-width: 768px) {
+                  .sigma_header-top-inner {
+                    flex-direction: row;
+                    align-items: center;
+                    justify-content: space-between;
+                    gap: 10px;
+                    padding: 6px 10px;
+                  }
+
+                  /* Tighter social icons on mobile */
+                  .sigma_header-top-contacts {
+                    display: flex !important;
+                  
+                    flex-shrink: 0;
+                  }
+
+                  .sigma_header-top-contacts a i {
+                    font-size: 14px;
+                  }
+
+                  /* Stack contact info vertically on very small screens */
+                  @media (max-width: 460px) {
+                    .sigma_header-top-inner {
+                      flex-direction: column;
+                      align-items: stretch;
+                      gap: 4px;
+                      text-align: right;
+                    }
+
+                    .sigma_header-top-links {
+                      display: flex !important;
+                      flex-direction: column !important;
+                      align-items: flex-end !important;
+                      gap: 2px !important;
+                      font-size: 12px !important;
+                    }
+
+                    .sigma_header-top-links a,
+                    .sigma_header-top-links > div {
+                      font-size: 11px !important;
+                      color: #fff;
+                    }
+
+                    .sigma_header-top-links i {
+                      font-size: 12px;
+                      margin-right: 4px;
+                    }
+                  }
+
+                  /* Keep horizontal on mid-mobile */
+                  @media (min-width: 461px) and (max-width: 768px) {
+                    .sigma_header-top-links {
+                      gap: 10px !important;
+                      font-size: 13px;
+                    }
+
+                    .sigma_header-top-links i {
+                      margin-right: 4px;
+                    }
+                  }
+                }
+              `}
+            </style>
           </div>
         </div>
 
+        {/* Header Middle (Logo + Nav + Controls) */}
         <div className="sigma_header-middle">
           <div className="container-fluid">
             <div className="navbar">
@@ -256,7 +335,7 @@ const Header = (props) => {
                   )}
 
                   <li
-                    className="aside-toggle aside-trigger"
+                    className="aside-toggle aside-trigger d-inline-block d-md-none"
                     onClick={toggleNav}
                   >
                     <span />
