@@ -5,7 +5,69 @@ import navigation from "../../data/navigation.json";
 import MembershipModal from "./MembershipModal";
 import "../../assets/css/Header.css";
 
-// Custom hook
+// Custom Hamburger Menu Component
+const CustomHamburgerMenu = ({ isOpen, onClick }) => {
+  return (
+    <div 
+      onClick={onClick}
+      className="aside-toggle aside-trigger d-inline-block d-md-none"
+      style={{
+        width: '40px',
+        height: '40px',
+        position: 'relative',
+        cursor: 'pointer',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderRadius: '50%',
+        transition: 'background-color 0.3s ease',
+        backgroundColor: 'transparent',
+        padding: '0',
+        margin: '0',
+        border: 'none'
+      }}
+      onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'rgba(0,0,0,0.1)'}
+      onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'transparent'}
+    >
+      <div
+        style={{
+          width: '18px',
+          height: '2px',
+          backgroundColor: '#333',
+          borderRadius: '1px',
+          transition: 'all 0.3s ease',
+          transform: isOpen ? 'rotate(45deg) translate(0px, 7px)' : 'rotate(0deg)',
+          marginBottom: isOpen ? '0px' : '3px'
+        }}
+      />
+      <div
+        style={{
+          width: '18px',
+          height: '2px',
+          backgroundColor: '#333',
+          borderRadius: '1px',
+          transition: 'all 0.3s ease',
+          opacity: isOpen ? '0' : '1',
+          marginBottom: isOpen ? '0px' : '3px'
+        }}
+      />
+      <div
+        style={{
+          width: '18px',
+          height: '2px',
+          backgroundColor: '#333',
+          borderRadius: '1px',
+          transition: 'all 0.3s ease',
+          transform: isOpen ? 'rotate(-45deg) translate(0px, -7px)' : 'rotate(0deg)',
+          marginBottom: '0px'
+        }}
+      />
+    </div>
+  );
+};
+
+// Custom hook for nav actions
 const useNavHelper = () => {
   const [navMethod, setNavMethod] = useState(false);
   const [searchMethod, setSearchMethod] = useState(false);
@@ -20,9 +82,9 @@ const useNavHelper = () => {
     setSearchMethod((prev) => !prev);
   }, []);
 
-  const StickyHeader = useCallback((e) => {
-    const windowSize = window.scrollY;
-    const stickyHeader = windowSize > 100;
+  const StickyHeader = useCallback(() => {
+    const windowY = window.scrollY;
+    const stickyHeader = windowY > 100;
     setStickyHeader(stickyHeader);
   }, []);
 
@@ -37,9 +99,8 @@ const useNavHelper = () => {
 
   const triggerChild = useCallback(
     (e) => {
-      let subMenu = "";
       let subMenuClass = "sub-menu";
-      subMenu =
+      let subMenu =
         getNextSibling(e.target, "." + subMenuClass) !== undefined
           ? getNextSibling(e.target, "." + subMenuClass)
           : null;
@@ -117,38 +178,35 @@ const Header = () => {
         {/* Header Top */}
         <div className="sigma_header-top dark-bg">
           <div className="container-fluid">
-            {/* Desktop: Full layout | Mobile: Responsive override */}
             <div
               className="sigma_header-top-inner"
               style={{
                 display: "flex",
                 justifyContent: "space-between",
-               
                 padding: "8px 0",
               }}
             >
               {/* Left: Social Icons */}
-             <div
-  className="sigma_header-top-contacts mobile-margin"
-  style={{
-    display: "flex",
-    gap: "12px",
-  }}
->
-  <Link to="#" style={{ fontSize: "16px", color: "#fff" }}>
-    <i className="fab fa-facebook-f" />
-  </Link>
-  <Link to="#" style={{ fontSize: "16px", color: "#fff" }}>
-    <i className="fab fa-twitter" />
-  </Link>
-  <Link to="#" style={{ fontSize: "16px", color: "#fff" }}>
-    <i className="fab fa-linkedin-in" />
-  </Link>
-  <Link to="#" style={{ fontSize: "16px", color: "#fff" }}>
-    <i className="fab fa-google" />
-  </Link>
-</div>
-
+              <div
+                className="sigma_header-top-contacts mobile-margin"
+                style={{
+                  display: "flex",
+                  gap: "12px",
+                }}
+              >
+                <Link to="#" style={{ fontSize: "16px", color: "#fff" }}>
+                  <i className="fab fa-facebook-f" />
+                </Link>
+                <Link to="#" style={{ fontSize: "16px", color: "#fff" }}>
+                  <i className="fab fa-twitter" />
+                </Link>
+                <Link to="#" style={{ fontSize: "16px", color: "#fff" }}>
+                  <i className="fab fa-linkedin-in" />
+                </Link>
+                <Link to="#" style={{ fontSize: "16px", color: "#fff" }}>
+                  <i className="fab fa-google" />
+                </Link>
+              </div>
 
               {/* Right: Contact Info */}
               <div
@@ -179,7 +237,7 @@ const Header = () => {
               </div>
             </div>
 
-            {/* Mobile-Only Responsive Override */}
+            {/* Responsive styles and hamburger/cross controls */}
             <style>
               {`
                 @media (max-width: 768px) {
@@ -190,19 +248,13 @@ const Header = () => {
                     gap: 10px;
                     padding: 6px 10px;
                   }
-
-                  /* Tighter social icons on mobile */
                   .sigma_header-top-contacts {
                     display: flex !important;
-                  
                     flex-shrink: 0;
                   }
-
                   .sigma_header-top-contacts a i {
                     font-size: 14px;
                   }
-
-                  /* Stack contact info vertically on very small screens */
                   @media (max-width: 460px) {
                     .sigma_header-top-inner {
                       flex-direction: column;
@@ -210,7 +262,6 @@ const Header = () => {
                       gap: 4px;
                       text-align: right;
                     }
-
                     .sigma_header-top-links {
                       display: flex !important;
                       flex-direction: column !important;
@@ -218,30 +269,66 @@ const Header = () => {
                       gap: 2px !important;
                       font-size: 12px !important;
                     }
-
                     .sigma_header-top-links a,
                     .sigma_header-top-links > div {
                       font-size: 11px !important;
                       color: #fff;
                     }
-
                     .sigma_header-top-links i {
                       font-size: 12px;
                       margin-right: 4px;
                     }
                   }
-
-                  /* Keep horizontal on mid-mobile */
                   @media (min-width: 461px) and (max-width: 768px) {
                     .sigma_header-top-links {
                       gap: 10px !important;
                       font-size: 13px;
                     }
-
                     .sigma_header-top-links i {
                       margin-right: 4px;
                     }
                   }
+                }
+                /* Hide hamburger on desktop */
+                .sigma_header-controls-inner .aside-toggle {
+                  display: none !important;
+                }
+                @media (max-width: 991px) {
+                  .sigma_header-controls-inner .aside-toggle {
+                    display: flex !important;
+                  }
+                }
+                /* Hamburger close/cross style */
+                .sigma_close.aside-trigger {
+                  position: relative !important;
+                  width: 40px !important;
+                  height: 40px !important;
+                  display: flex !important;
+                  justify-content: center !important;
+                  align-items: center !important;
+                  cursor: pointer !important;
+                  border-radius: 50% !important;
+                  transition: background-color 0.3s ease !important;
+                }
+                .sigma_close.aside-trigger:hover {
+                  background-color: #007a7e !important;
+                }
+                .sigma_close.aside-trigger span {
+                  position: absolute !important;
+                  width: 18px !important;
+                  height: 2px !important;
+                  background-color: #333 !important;
+                  border-radius: 1px !important;
+                  transition: all 0.3s ease !important;
+                }
+                .sigma_close.aside-trigger:hover span {
+                  background-color: #fff !important;
+                }
+                .sigma_close.aside-trigger span:first-child {
+                  transform: rotate(45deg) !important;
+                }
+                .sigma_close.aside-trigger span:last-child {
+                  transform: rotate(-45deg) !important;
                 }
               `}
             </style>
@@ -334,13 +421,12 @@ const Header = () => {
                     </li>
                   )}
 
-                  <li
-                    className="aside-toggle aside-trigger d-inline-block d-md-none"
-                    onClick={toggleNav}
-                  >
-                    <span />
-                    <span />
-                    <span />
+                  {/* Hamburger menu: only visible below md (mobile/tablet) */}
+                  <li className="d-block d-md-none">
+                    <CustomHamburgerMenu 
+                      isOpen={navMethod} 
+                      onClick={toggleNav} 
+                    />
                   </li>
                 </ul>
               </div>
