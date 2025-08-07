@@ -2,40 +2,39 @@ import React, { useEffect, useState } from "react";
 
 // Sample client logos data - replace with your actual logo paths
 const clientLogos = [
-  { id: 1, src: "https://placehold.co/150x80/E0F7FA/007A7E?text=Client+A" },
-  { id: 2, src: "https://placehold.co/150x80/E0F7FA/007A7E?text=Client+B" },
-  { id: 3, src: "https://placehold.co/150x80/E0F7FA/007A7E?text=Client+C" },
-  { id: 4, src: "https://placehold.co/150x80/E0F7FA/007A7E?text=Client+D" },
-  { id: 5, src: "https://placehold.co/150x80/E0F7FA/007A7E?text=Client+E" },
-  { id: 6, src: "https://placehold.co/150x80/E0F7FA/007A7E?text=Client+F" },
-  { id: 7, src: "https://placehold.co/150x80/E0F7FA/007A7E?text=Client+G" },
-  { id: 8, src: "https://placehold.co/150x80/E0F7FA/007A7E?text=Client+H" },
+  { id: 1, src: "/assets/img/h1.png" },
+  { id: 2, src: "/assets/img/h2.png" },
+  { id: 3, src: "/assets/img/h3.png" },
+  { id: 4, src: "/assets/img/h4.png" },
+  { id: 5, src: "/assets/img/h5.png" },
+  { id: 6, src: "/assets/img/h6.png" },
+  { id: 7, src: "/assets/img/h7.png" },
+  { id: 8, src: "/assets/img/h8.png" },
+  { id: 9, src: "/assets/img/h9.png" },
+  { id: 10, src: "/assets/img/h10.png" },
 ];
 
 const ClientLogosCarousel = () => {
   const [animated, setAnimated] = useState(false);
 
   useEffect(() => {
-    // Trigger entrance animation after component mounts
     const timer = setTimeout(() => setAnimated(true), 100);
     return () => clearTimeout(timer);
   }, []);
 
-  // Duplicate logos to create a seamless infinite scroll effect
   const duplicatedLogos = [...clientLogos, ...clientLogos];
 
   return (
     <div
       style={{
         padding: "40px 20px",
-        background: "linear-gradient(135deg, #f5fdfd 0%, #e0f7fa 100%)", // Light, calming gradient
+        background: "linear-gradient(135deg, #f5fdfd 0%, #e0f7fa 100%)",
         textAlign: "center",
-        overflow: "hidden", // Hide overflowing content for the carousel effect
+        overflow: "hidden",
         fontFamily: "Poppins",
         position: "relative",
       }}
     >
-      {/* Section Heading */}
       <h2
         style={{
           fontSize: "34px",
@@ -83,44 +82,32 @@ const ClientLogosCarousel = () => {
           overflow: "hidden",
           position: "relative",
           maskImage:
-            "linear-gradient(to right, transparent, black 10%, black 90%, transparent)", // Fading edges
+            "linear-gradient(to right, transparent, black 10%, black 90%, transparent)",
           WebkitMaskImage:
-            "linear-gradient(to right, transparent, black 10%, black 90%, transparent)", // For Webkit browsers
+            "linear-gradient(to right, transparent, black 10%, black 90%, transparent)",
         }}
       >
         <div
           className="logo-carousel-track"
           style={{
             display: "flex",
-            whiteSpace: "nowrap", // Keep all logos on one line
-            animation: "scrollLogos 30s linear infinite", // Animation for scrolling
+            whiteSpace: "nowrap",
+            animation: "scrollLogos 30s linear infinite",
             opacity: animated ? 1 : 0,
-            transition: "opacity 1s ease-out 0.4s", // Fade in the carousel
+            transition: "opacity 1s ease-out 0.4s",
           }}
         >
           {duplicatedLogos.map((logo, index) => (
             <div
-              key={index} // Use index here as IDs are duplicated for seamless loop
+              key={index}
               style={{
-                flexShrink: 0, // Prevent items from shrinking
-                width: "180px", // Fixed width for each logo container
-                height: "100px", // Fixed height for each logo container
+                flexShrink: 0,
+                width: "180px",
+                height: "100px",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
-                margin: "0 20px", // Spacing between logos
-                filter: "grayscale(100%)", // Grayscale by default
-                transition:
-                  "filter 0.3s ease-in-out, transform 0.3s ease-in-out",
-                cursor: "pointer",
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.filter = "grayscale(0%)"; // Colorize on hover
-                e.currentTarget.style.transform = "scale(1.1)"; // Slight scale on hover
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.filter = "grayscale(100%)"; // Revert to grayscale
-                e.currentTarget.style.transform = "scale(1)"; // Revert scale
+                margin: "0 20px",
               }}
             >
               <img
@@ -129,13 +116,13 @@ const ClientLogosCarousel = () => {
                 style={{
                   maxWidth: "100%",
                   maxHeight: "100%",
-                  objectFit: "contain", // Ensure image fits without distortion
+                  objectFit: "contain",
                 }}
                 onError={(e) => {
                   e.target.onerror = null;
                   e.target.src =
                     "https://placehold.co/150x80/CCCCCC/666666?text=Logo+Error";
-                }} // Fallback for broken images
+                }}
               />
             </div>
           ))}
@@ -143,23 +130,40 @@ const ClientLogosCarousel = () => {
       </div>
 
       {/* Keyframes for the scrolling animation */}
-      <style>
-        {`
-          @keyframes scrollLogos {
-            0% {
-              transform: translateX(0%);
-            }
-            100% {
-              transform: translateX(-50%); /* Scrolls half the duplicated list length */
-            }
-          }
+     <style>
+  {`
+    @keyframes scrollLogos {
+      0% {
+        transform: translateX(0%);
+      }
+      100% {
+        transform: translateX(-50%);
+      }
+    }
 
-          /* Pause animation on hover for the entire track */
-          .logo-carousel-track:hover {
-            animation-play-state: paused;
-          }
-        `}
-      </style>
+    .logo-carousel-track {
+      animation: scrollLogos 30s linear infinite;
+    }
+
+    /* Speed up on smaller screens */
+    @media (max-width: 768px) {
+      .logo-carousel-track {
+        animation-duration: 15s;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .logo-carousel-track {
+        animation-duration: 6s;
+      }
+    }
+
+    .logo-carousel-track:hover {
+      animation-play-state: paused;
+    }
+  `}
+</style>
+
     </div>
   );
 };

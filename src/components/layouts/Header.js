@@ -194,42 +194,108 @@ const Header = () => {
                   gap: "12px",
                 }}
               >
-                {/* Replace Font Awesome icons with images */}
-              <a href="#" style={{ fontSize: "16px", color: "#fff" }}>
-                <img
-                  src="/assets/img/facebook.jpg"
-                  alt="Facebook"
-                  style={{ width: "24px", height: "24px" }}
-                />
-              </a>
-              <a href="#" style={{ fontSize: "16px", color: "#fff" }}>
-                <img
-                  src="/assets/img/twitter.jpg"
-                  alt="Twitter"
-                  style={{ width: "24px", height: "24px" }}
-                />
-              </a>
-              <a href="#" style={{ fontSize: "16px", color: "#fff" }}>
-                <img
-                  src="/assets/img/linkedin.jpg"
-                  alt="LinkedIn"
-                  style={{ width: "24px", height: "24px" }}
-                />
-              </a>
-              <a href="#" style={{ fontSize: "16px", color: "#fff" }}>
-                <img
-                  src="/assets/img/instagram.jpg"
-                  alt="Google"
-                  style={{ width: "24px", height: "24px" }}
-                />
-              </a>
-              <a href="#" style={{ fontSize: "16px", color: "#fff" }}>
-                <img
-                  src="/assets/img/youtube.jpg"
-                  alt="Google"
-                  style={{ width: "24px", height: "24px" }}
-                />
-              </a>
+                <Link 
+      to="#" 
+      style={{
+        display: 'inline-flex', 
+        justifyContent: 'center', 
+        alignItems: 'center', 
+        width: '40px', 
+        height: '40px', 
+        backgroundColor: '#3b5998', 
+        borderRadius: '50%', 
+        padding: '2px', 
+        textAlign: 'center',
+        textDecoration: 'none'
+      }}
+    >
+      <i className="fab fa-facebook-f" style={{ fontSize: '16px', color: '#fff' }} />
+    </Link>
+      <Link 
+      to="#" 
+      style={{
+        display: 'inline-flex', 
+        justifyContent: 'center', 
+        alignItems: 'center', 
+        width: '40px', 
+        height: '40px', 
+        backgroundColor: '#cd201f',  // Red background color
+        borderRadius: '50%', 
+        padding: '2px', 
+        textAlign: 'center',
+        textDecoration: 'none'
+      }}
+    >
+      <i className="fab fa-youtube" style={{ fontSize: '16px', color: '#fff' }} />
+    </Link>
+                 <Link 
+      to="#" 
+      style={{
+        display: 'inline-flex', 
+        justifyContent: 'center', 
+        alignItems: 'center', 
+        width: '40px', 
+        height: '40px', 
+        backgroundColor: '#000',  // Black background color
+        borderRadius: '50%', 
+        padding: '2px', 
+        textAlign: 'center',
+        textDecoration: 'none'
+      }}
+    >
+      <img 
+        src="/assets/img/t-i.png"  // Local image path
+        alt="Twitter X" 
+        style={{
+          width: '20px',  // Adjust image size as needed
+          height: '20px', 
+          objectFit: 'contain'
+        }} 
+      />
+    </Link>
+                <Link 
+      to="#" 
+      style={{
+        display: 'inline-flex', 
+        justifyContent: 'center', 
+        alignItems: 'center', 
+        width: '40px', 
+        height: '40px', 
+      backgroundColor: '#E1306C',  // LinkedIn blue color
+        borderRadius: '50%', 
+        padding: '2px', 
+        textAlign: 'center',
+        textDecoration: 'none'
+      }}
+    >
+      <img 
+        src="/assets/img/i-i.png"  // Local image path
+        alt="Twitter X" 
+        style={{
+          width: '20px',  // Adjust image size as needed
+          height: '20px', 
+          objectFit: 'contain'
+        }} 
+      />
+    </Link>
+                   <Link 
+      to="#" 
+      style={{
+        display: 'inline-flex', 
+        justifyContent: 'center', 
+        alignItems: 'center', 
+        width: '40px', 
+        height: '40px', 
+        backgroundColor: '#0a66c2',  // LinkedIn background color
+        borderRadius: '50%', 
+        padding: '2px', 
+        textAlign: 'center',
+        textDecoration: 'none'
+      }}
+    >
+      <i className="fab fa-linkedin-in" style={{ fontSize: '16px', color: '#fff' }} />  {/* LinkedIn icon */}
+    </Link>
+             
               </div>
               <div className="sigma_header-top-links">
                 <ul className="sigma_header-top-nav">
