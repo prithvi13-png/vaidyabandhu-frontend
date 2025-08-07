@@ -41,7 +41,7 @@ class Content extends Component {
                                     <div className="sigma_post-details-meta">
                                         <div className="sigma_post-details-meta-item sigma_post-share">
                                             <h5 className="mb-0">Share:</h5>
-                                            <ul className="sigma_sm ml-4">
+                                            <ul className="sigma_sm ms-4">
                                                 {/* Data */}
                                                 {socialShare(item.title).map((social, i) => (
                                                     <li key={i}>

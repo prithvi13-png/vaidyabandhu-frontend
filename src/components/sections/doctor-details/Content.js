@@ -60,7 +60,7 @@ const Content = ({ detailId }) => {
                         </h5>
                         <div className="sigma_rating">
                           {Rating(item.ratings || 5)}
-                          <span className="ml-3">
+                          <span className="ms-3">
                             ({item.reviews?.length || 0})
                           </span>
                         </div>
@@ -299,7 +299,7 @@ const Content = ({ detailId }) => {
                       className="sigma_btn btn-block btn-sm"
                     >
                       Book Appointment
-                      <i className="fal fa-arrow-right ml-3" />
+                      <i className="fal fa-arrow-right ms-3" />
                     </Link>
                   </form>
                 </div>
@@ -341,7 +341,7 @@ const Content = ({ detailId }) => {
                       className="sigma_btn btn-block btn-sm"
                     >
                       Send Message
-                      <i className="fal fa-arrow-right ml-3" />
+                      <i className="fal fa-arrow-right ms-3" />
                     </button>
                   </form>
                 </div>

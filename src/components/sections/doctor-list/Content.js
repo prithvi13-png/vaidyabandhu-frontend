@@ -336,7 +336,7 @@ const Content = () => {
                     </button>
                   )}
                   <button
-                    className="btn btn-primary rounded-circle ml-2"
+                    className="btn btn-primary rounded-circle ms-2"
                     style={{
                       width: "40px",
                       height: "40px",
@@ -407,7 +407,7 @@ const Content = () => {
                         >
                           {filter.label}
                           <button
-                            className="btn btn-link p-0 ml-2"
+                            className="btn btn-link p-0 ms-2"
                             onClick={() => removeFilter(filter.type, filter.id)}
                             style={{
                               fontSize: "14px",
@@ -727,7 +727,7 @@ const Content = () => {
                               >
                                 View More
                               </Link>
-                              {/* <div className="sigma_team-controls ml-3">
+                              {/* <div className="sigma_team-controls ms-3">
                                 <Link to="#" className="">
                                   <i className="fal fa-heart" />
                                 </Link>
@@ -757,7 +757,7 @@ const Content = () => {
                             </div>
                             {/* <div className="sigma_rating">
                               {Rating(item.ratings || 0)}
-                              <span className="ml-3">
+                              <span className="ms-3">
                                 ({item.reviews?.length})
                               </span>
                             </div> */}

@@ -49,7 +49,7 @@ class Content extends Component {
                         </h5>
                         <div className="sigma_rating">
                             {Rating(item.rating)}
-                            <span className="ml-3">({item.reviews.length})</span>
+                            <span className="ms-3">({item.reviews.length})</span>
                         </div>
                         <div className="sigma_team-categories">
                             <Link to={"/clinic-details/" + item.id} className="sigma_team-category">{item.specialist}</Link>

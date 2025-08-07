@@ -28,7 +28,7 @@ class Content extends Component {
                                                     </h5>
                                                     <div className="sigma_rating">
                                                         {Rating(item.rating)}
-                                                        <span className="ml-3">({item.reviews.length})</span>
+                                                        <span className="ms-3">({item.reviews.length})</span>
                                                     </div>
                                                     <div className="sigma_team-categories">
                                                         <Link to={"/clinic-details/" + item.id} className="sigma_team-category">{item.specialist}</Link>
@@ -138,9 +138,9 @@ class Content extends Component {
                                                                         {user.name}
                                                                     </h5>
                                                                 </div>
-                                                                <div className="sigma_rating ml-sm-4 ml-0 mt-2 mt-sm-0">
+                                                                <div className="sigma_rating ms-sm-4 ms-0 mt-2 mt-sm-0">
                                                                     {Rating(review.rating)}
-                                                                    <span className="ml-3">({review.rating}/5)</span>
+                                                                    <span className="ms-3">({review.rating}/5)</span>
                                                                 </div>
                                                             </div>
                                                             <span className="sigma_testimonial-date">{review.commentdate}</span>
@@ -180,7 +180,7 @@ class Content extends Component {
                                             </div>
                                             <button type="button" className="sigma_btn btn-block btn-sm">
                                                 Send Message
-                                                <i className="fal fa-arrow-right ml-3" />
+                                                <i className="fal fa-arrow-right ms-3" />
                                             </button>
                                         </form>
                                     </div>

@@ -109,7 +109,7 @@ const Headertwo = () => {
                                 </ul>
                                 <div className="sigma_header-controls style-2">
                                     <ul className="sigma_header-controls-inner">
-                                        <li className="d-none d-sm-block ml-5">
+                                        <li className="d-none d-sm-block ms-5">
                                             <MembershipModal />
                                         </li>
                                         <li className="aside-toggle aside-trigger" onClick={toggleNav}>

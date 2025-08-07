@@ -225,7 +225,7 @@ const VaidyaBandhuForm = () => {
                   {benefits.map((benefit, index) => (
                     <li key={index} className="d-flex align-items-start mb-2" style={{ fontFamily: 'Poppins' }}>
                       <Check className="h-5 w-5 text-success mt-0.5 flex-shrink-0" />
-                      <span className="ml-2">{benefit}</span>
+                      <span className="ms-2">{benefit}</span>
                     </li>
                   ))}
                 </ul>
@@ -571,7 +571,7 @@ const VaidyaBandhuForm = () => {
                   {termsConditions.map((term, index) => (
                     <li key={index} className="d-flex align-items-start mb-2" style={{ fontFamily: 'Poppins' }}>
                       <AlertCircle className="h-5 w-5 text-orange-500 mt-0.5 flex-shrink-0" />
-                      <span className="ml-4" style={{ fontFamily: 'Poppins' }}>{term}</span>
+                      <span className="ms-4" style={{ fontFamily: 'Poppins' }}>{term}</span>
                     </li>
                   ))}
                 </ul>
