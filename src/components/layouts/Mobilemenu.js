@@ -8,9 +8,9 @@ class Mobilemenu extends Navhelper {
         return (
             <Fragment>
                 <div className="sigma_logo-wrapper">
-                    <Link to="/" className="sigma_logo">
+                    {/* <Link to="/" className="sigma_logo">
                         <img src={process.env.PUBLIC_URL + "/assets/img/logoo.png"} alt="logo" />
-                    </Link>
+                    </Link> */}
                 </div>
                 <ul className="navbar-nav">
                     {/* Data */}

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import FloatingCallButton from "./helpline";
-
+import { Link } from "react-router-dom";
 // Dummy serviceblock data as we cannot access local JSON files
 const dummyServiceblock = [
   { title: "Consult a Doctor", path: "/services/consult-doctor" },
@@ -9,7 +9,6 @@ const dummyServiceblock = [
   { title: "Diagnostic Tests", path: "/services/diagnostic-tests" },
   { title: "One-Stop Solution", path: "/services/one-stop-solution" },
 ];
-
 // === POLICY TEXTS (as provided) ===
 const TERMS_TEXT = `Terms and Conditions:
 Welcome to Vaidya Bandhu. These Terms and Conditions govern your access to and use of our website,
@@ -54,7 +53,7 @@ protected by intellectual property laws.
 You are granted a limited, non-exclusive license to use the Services for personal, non-commercial purposes. You may not
 copy, modify, distribute, or create derivative works without our written consent.
 6. Disclaimers and Limitation of Liability
-Services are provided ”as is” without warranties of any kind. We disclaim all warranties, express or implied, including
+Services are provided "as is" without warranties of any kind. We disclaim all warranties, express or implied, including
 fitness for a particular purpose.
 We are not liable for:
 ● Inaccuracies in content or services provided by partners.
@@ -81,7 +80,6 @@ For questions about these terms, contact us at
 ● WhatsApp/Helpline: +91 8535853589
 ● Email: support@vaidyabandhu.com
 ● Website: www.vaidyabandhu.com`;
-
 const PRIVACY_TEXT = `Privacy Policy:
 At Vaidya Bandhu, we are dedicated to safeguarding your privacy and handling your personal data responsibly. This Privacy
 Policy explains our practices regarding the collection, use, processing, storage, disclosure, and protection of your personal
@@ -147,11 +145,11 @@ services or regulatory retention).
 ● Restriction of Processing: Object to certain uses of your data.
 To exercise these rights, email us at support@vaidyabandhu.com. We will respond within 30 days, free of charge for most
 requests. For grievances, contact us at the same address. If you are a parent/guardian, we require verifiable parental
-Consent for processing children’s data (under 18), and such processing is limited.
+Consent for processing children's data (under 18), and such processing is limited.
 7. Cookies and Tracking Technologies
 Our website uses cookies, pixels, and analytics tools to enhance user experience, track usage, and improve functionality.
 These do not collect sensitive data without consent.
-8. Children’s Privacy
+8. Children's Privacy
 Our services are not directed at children under 18. We do not knowingly collect data from minors without parental consent.
 If we discover such data, we will delete it promptly.
 9. Updates to This Policy
@@ -162,7 +160,6 @@ For questions, concerns, or to exercise rights, reach out:
 ● WhatsApp/Helpline: +91 8535853589
 ● Email: support@vaidyabandhu.com
 ● Website: www.vaidyabandhu.com`;
-
 const REFUND_TEXT = `Refund and Cancellation Policies:
 At Vaidya Bandhu Healthcare Foundation, we are committed to providing quality and affordable healthcare services to our
 members. This Refund Policy outlines the conditions under which refunds may or may not be issued for payments related to
@@ -197,8 +194,7 @@ be requested by emailing us at payments@vaidyabandhu.com with the following deta
 ● Mobile Number
 ● Transaction Reference ID
 ● Screenshot of payment (if available)
-● Reason for refund request: We will review and process eligible refund requests within 7–10 business
-days.
+● Reason for refund request: We will review and process eligible refund requests within 7–10 business days.
 6. Contact Us For any questions related to your membership, billing, or refund requests, please reach out to us at:
 ● WhatsApp/Helpline: +91 8535853589
 ● Email: payments@vaidyabandhu.com
@@ -207,32 +203,34 @@ days.
 const Footer = () => {
   const [animated, setAnimated] = useState(false);
   const [showModal, setShowModal] = useState(null); // 'terms', 'privacy', 'refund'
-
+  
   useEffect(() => {
     const timer = setTimeout(() => setAnimated(true), 200);
     return () => clearTimeout(timer);
   }, []);
-
+  
   const baseTransition = "all 0.3s ease-in-out";
-
+  
   // Handlers for opening modals
   const openTerms = (e) => {
     e.preventDefault();
     setShowModal("terms");
   };
+  
   const openPrivacy = (e) => {
     e.preventDefault();
     setShowModal("privacy");
   };
+  
   const openRefund = (e) => {
     e.preventDefault();
     setShowModal("refund");
   };
-
+  
   const closeModal = () => {
     setShowModal(null);
   };
-
+  
   return (
     <footer
       style={{
@@ -248,6 +246,7 @@ const Footer = () => {
       }}
     >
       <FloatingCallButton />
+      
       {/* Decorative background elements (optional, but consistent with previous components) */}
       <div
         style={{
@@ -279,6 +278,7 @@ const Footer = () => {
           zIndex: 0,
         }}
       ></div>
+      
       <div
         className="container"
         style={{
@@ -369,6 +369,7 @@ const Footer = () => {
               </p>
             </div>
           </div>
+          
           {/* Phone Info */}
           <div
             style={{
@@ -434,6 +435,7 @@ const Footer = () => {
               </p>
             </div>
           </div>
+          
           {/* Email Info */}
           <div
             style={{
@@ -501,6 +503,7 @@ const Footer = () => {
             </div>
           </div>
         </div>
+        
         <div
           style={{
             padding: "60px 0",
@@ -563,6 +566,7 @@ const Footer = () => {
                 ))}
               </ul>
             </div>
+            
             {/* Useful Links */}
             <div>
               <h5
@@ -615,6 +619,7 @@ const Footer = () => {
                 ))}
               </ul>
             </div>
+            
             {/* Subscribe Form */}
             <div>
               <h5
@@ -692,6 +697,258 @@ const Footer = () => {
             </div>
           </div>
         </div>
+        
+        {/* Social Media Icons and Contact Info Section */}
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            padding: "20px 0",
+            borderTop: "1px solid rgba(0, 122, 126, 0.2)",
+            flexWrap: "wrap",
+            gap: "20px",
+          }}
+        >
+          {/* Social Media Icons */}
+          <div
+            style={{
+              display: "flex",
+              gap: "12px",
+            }}
+          >
+            <Link
+              to="#"
+              style={{
+                display: "inline-flex",
+                justifyContent: "center",
+                alignItems: "center",
+                width: "30px",
+                height: "30px",
+                backgroundColor: "#3b5998",
+                borderRadius: "50%",
+                padding: "2px",
+                textAlign: "center",
+                textDecoration: "none",
+                transition: baseTransition,
+              }}
+              onMouseEnter={(e) => 
+                (e.currentTarget.style.transform = "scale(1.1)")
+              }
+              onMouseLeave={(e) => 
+                (e.currentTarget.style.transform = "scale(1)")
+              }
+            >
+              <i
+                className="fab fa-facebook-f"
+                style={{ fontSize: "18px", color: "#fff" }}
+              />
+            </Link>
+            
+            <Link
+              to="#"
+              style={{
+                display: "inline-flex",
+                justifyContent: "center",
+                alignItems: "center",
+                width: "30px",
+                height: "30px",
+                backgroundColor: "#cd201f",
+                borderRadius: "50%",
+                padding: "2px",
+                textAlign: "center",
+                textDecoration: "none",
+                transition: baseTransition,
+              }}
+              onMouseEnter={(e) => 
+                (e.currentTarget.style.transform = "scale(1.1)")
+              }
+              onMouseLeave={(e) => 
+                (e.currentTarget.style.transform = "scale(1)")
+              }
+            >
+              <i
+                className="fab fa-youtube"
+                style={{ fontSize: "18px", color: "#fff" }}
+              />
+            </Link>
+            
+            <Link
+              to="#"
+              style={{
+                display: "inline-flex",
+                justifyContent: "center",
+                alignItems: "center",
+                width: "30px",
+                height: "30px",
+                backgroundColor: "#000",
+                borderRadius: "50%",
+                padding: "2px",
+                textAlign: "center",
+                textDecoration: "none",
+                transition: baseTransition,
+              }}
+              onMouseEnter={(e) => 
+                (e.currentTarget.style.transform = "scale(1.1)")
+              }
+              onMouseLeave={(e) => 
+                (e.currentTarget.style.transform = "scale(1)")
+              }
+            >
+              <img
+                src="/assets/img/t-i.png"
+                alt="Twitter X"
+                style={{
+                  width: "22px",
+                  height: "22px",
+                  objectFit: "contain",
+                }}
+              />
+            </Link>
+            
+            <Link
+              to="#"
+              style={{
+                display: "inline-flex",
+                justifyContent: "center",
+                alignItems: "center",
+                width: "30px",
+                height: "30px",
+                backgroundColor: "#E1306C",
+                borderRadius: "50%",
+                padding: "2px",
+                textAlign: "center",
+                textDecoration: "none",
+                transition: baseTransition,
+              }}
+              onMouseEnter={(e) => 
+                (e.currentTarget.style.transform = "scale(1.1)")
+              }
+              onMouseLeave={(e) => 
+                (e.currentTarget.style.transform = "scale(1)")
+              }
+            >
+              <img
+                src="/assets/img/i-i.png"
+                alt="Instagram"
+                style={{
+                  width: "22px",
+                  height: "22px",
+                  objectFit: "contain",
+                }}
+              />
+            </Link>
+            
+            <Link
+              to="#"
+              style={{
+                display: "inline-flex",
+                justifyContent: "center",
+                alignItems: "center",
+                width: "30px",
+                height: "30px",
+                backgroundColor: "#0a66c2",
+                borderRadius: "50%",
+                padding: "2px",
+                textAlign: "center",
+                textDecoration: "none",
+                transition: baseTransition,
+              }}
+              onMouseEnter={(e) => 
+                (e.currentTarget.style.transform = "scale(1.1)")
+              }
+              onMouseLeave={(e) => 
+                (e.currentTarget.style.transform = "scale(1)")
+              }
+            >
+              <i
+                className="fab fa-linkedin-in"
+                style={{ fontSize: "18px", color: "#fff" }}
+              />
+            </Link>
+          </div>
+          
+          {/* Contact Info */}
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "flex-end",
+              gap: "8px",
+            }}
+          >
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: "8px",
+              }}
+            >
+              <i
+                className="fal fa-envelope"
+                style={{ color: "#a0aec0" }}
+              />
+              <a
+                href="mailto:support@vaidyabandhu.com"
+                style={{
+                  color: "#e2e8f0",
+                  textDecoration: "none",
+                  fontSize: "16px",
+                  fontFamily: "poppins",
+                }}
+              >
+                support@vaidyabandhu.com
+              </a>
+            </div>
+            
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: "8px",
+              }}
+            >
+              <i
+                className="fal fa-map-marker-alt"
+                style={{ color: "#a0aec0" }}
+              />
+              <span
+                style={{
+                  color: "#e2e8f0",
+                  fontSize: "16px",
+                  fontFamily: "poppins",
+                }}
+              >
+                © Bangalore
+              </span>
+            </div>
+            
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: "8px",
+              }}
+            >
+              <i
+                className="fal fa-mobile"
+                style={{ color: "#a0aec0" }}
+              />
+              <a
+                href="tel:+918535853589"
+                style={{
+                  color: "#e2e8f0",
+                  textDecoration: "none",
+                  fontSize: "16px",
+                  fontFamily: "poppins",
+                }}
+              >
+                +91 8535 8535 89
+              </a>
+            </div>
+          </div>
+        </div>
+        
         <div
           style={{
             padding: "25px 0",
@@ -736,6 +993,7 @@ const Footer = () => {
               <strong>Copyright Act, 1957</strong>.
             </p>
           </div>
+          
           <ul
             style={{
               display: "flex",
@@ -790,7 +1048,7 @@ const Footer = () => {
           </ul>
         </div>
       </div>
-
+      
       {/* === MODAL OVERLAY === */}
       {showModal && (
         <div
@@ -872,7 +1130,7 @@ const Footer = () => {
           </div>
         </div>
       )}
-
+      
       {/* === Keyframes for floating shapes and responsive styles === */}
       <style>
         {`
@@ -886,46 +1144,68 @@ const Footer = () => {
             50% { transform: translate(-15px, -15px); }
             100% { transform: translate(0, 0); }
           }
-          /* Responsive styles (unchanged from original) */
+          
+          /* Responsive styles */
           @media (max-width: 992px) {
             div[style*="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr))"] {
               grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)) !important;
             }
           }
+          
           @media (max-width: 768px) {
             div[style*="display: flex"][style*="flex-wrap: wrap"][style*="justify-content: space-around"] {
               flex-direction: column !important;
               align-items: center !important;
               gap: 40px !important;
             }
+            
             div[style*="flex: 1 1 280px"] {
               max-width: 90% !important;
               text-align: center !important;
               align-items: center !important;
               justify-content: center !important;
             }
+            
             div[style*="flex: 1 1 300px"], div[style*="flex: 1 1 200px"] {
               flex-basis: 100% !important;
               text-align: center !important;
               justify-content: center !important;
             }
+            
             ul[style*="justify-content: flex-end"] {
               justify-content: center !important;
             }
+            
+            /* Social media and contact info responsive styles */
+            div[style*="justify-content: space-between"][style*="align-items: center"] {
+              flex-direction: column !important;
+              align-items: center !important;
+              text-align: center !important;
+            }
+            
+            div[style*="align-items: flex-end"] {
+              align-items: center !important;
+              text-align: center !important;
+            }
           }
+          
           @media (max-width: 480px) {
             div[style*="padding-top: 60px"] {
               padding-top: 40px !important;
             }
+            
             div[style*="margin-bottom: 60px"] {
               margin-bottom: 40px !important;
             }
+            
             div[style*="padding: 60px 0"] {
               padding: 40px 0 !important;
             }
+            
             div[style*="padding: 25px 0"] {
               padding: 15px 0 !important;
             }
+            
             h2 { font-size: clamp(30px, 6vw, 40px) !important; }
             p { font-size: clamp(15px, 2.5vw, 18px) !important; }
             h5 { font-size: clamp(18px, 3vw, 22px) !important; }
@@ -933,6 +1213,7 @@ const Footer = () => {
               padding: 10px 12px !important;
               font-size: 14px !important;
             }
+            
             /* Mobile layout fix for info blocks */
             div[style*="flex: 1 1 280px"] {
               display: table !important;
@@ -941,51 +1222,56 @@ const Footer = () => {
               max-width: 100% !important;
               margin-bottom: 20px !important;
             }
+            
             div[style*="flex: 1 1 280px"] > div:first-child {
               display: table-cell !important;
               vertical-align: middle !important;
               width: 60px !important;
             }
+            
             div[style*="flex: 1 1 280px"] > div:nth-child(2) {
               display: table-cell !important;
               vertical-align: middle !important;
               padding-left: 15px !important;
             }
-              @media (max-width: 480px) {
-             .responsive-stack {
+            
+            @media (max-width: 480px) {
+              .responsive-stack {
+                display: block !important;
+              }
+            }
+            
+            /* Properly align icons inside circular background */
+            div[style*="flex: 1 1 280px"] {
+              display: flex !important;
+              flex-direction: row !important;
+              align-items: center !important;
+              justify-content: flex-start !important;
+              max-width: 100% !important;
+              width: 100% !important;
+              text-align: left !important;
+              margin-bottom: 20px !important;
+              gap: 15px !important; /* Keep spacing between icon and text */
+            }
+            
+            div[style*="flex: 1 1 280px"] > div:first-child {
+              display: flex !important;
+              align-items: center !important;
+              justify-content: center !important;
+              width: 50px !important;
+              height: 50px !important;
+              min-width: 50px !important;
+              min-height: 50px !important;
+              margin: 0 !important;
+              padding: 0 !important;
+            }
+            
+            div[style*="flex: 1 1 280px"] > div:nth-child(2) {
               display: block !important;
-           }
-             }
-           /* Properly align icons inside circular background */
-  div[style*="flex: 1 1 280px"] {
-    display: flex !important;
-    flex-direction: row !important;
-    align-items: center !important;
-    justify-content: flex-start !important;
-    max-width: 100% !important;
-    width: 100% !important;
-    text-align: left !important;
-    margin-bottom: 20px !important;
-    gap: 15px !important; /* Keep spacing between icon and text */
-  }
-  div[style*="flex: 1 1 280px"] > div:first-child {
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    width: 50px !important;
-    height: 50px !important;
-    min-width: 50px !important;
-    min-height: 50px !important;
-    margin: 0 !important;
-    padding: 0 !important;
-  }
-  div[style*="flex: 1 1 280px"] > div:nth-child(2) {
-    display: block !important;
-    padding-left: 0 !important;
-    vertical-align: middle !important;
-    width: auto !important;
-  }
-
+              padding-left: 0 !important;
+              vertical-align: middle !important;
+              width: auto !important;
+            }
           }
         `}
       </style>
