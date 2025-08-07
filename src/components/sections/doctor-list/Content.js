@@ -5,16 +5,77 @@ import { useLocation } from "react-router-dom";
 import { isNotEmptyArray } from "../../utiles/utils";
 import { useFetch } from "../../hooks/usefetch";
 
+// Responsive filter sidebar for mobile + desktop
+function FilterSidebar({
+  filtersContent,
+  showMobileFilters,
+  setShowMobileFilters,
+}) {
+  return (
+    <>
+      {/* Mobile overlay */}
+      {showMobileFilters && (
+        <div
+          className="position-fixed top-0 start-0 w-100 h-100"
+          style={{ zIndex: 1040, background: "rgba(0,0,0,0.3)" }}
+          onClick={() => setShowMobileFilters(false)}
+        />
+      )}
+      {/* Mobile drawer */}
+      <div
+        className="card shadow-sm d-md-none"
+        style={{
+          position: "fixed",
+          left: showMobileFilters ? 0 : "-100vw",
+          top: 0,
+          height: "100vh",
+          maxWidth: "90vw",
+          width: "320px",
+          transition: "left 0.3s",
+          background: "#fff",
+          zIndex: 1050,
+          padding: "16px 10px",
+          overflowY: "auto",
+        }}
+      >
+        <button
+          type="button"
+          aria-label="Close"
+          className="btn btn-link"
+          style={{
+            position: "absolute",
+            right: 10,
+            top: 10,
+            fontSize: 22,
+            color: "#444",
+            zIndex: 10,
+          }}
+          onClick={() => setShowMobileFilters(false)}
+        >
+          ×
+        </button>
+        <div className="card-body pt-4">{filtersContent}</div>
+      </div>
+      {/* Desktop sidebar */}
+      <div className="d-none d-md-block">
+        <div className="card shadow-sm">
+          <div className="card-body">{filtersContent}</div>
+        </div>
+      </div>
+    </>
+  );
+}
+
 const Content = () => {
-  const [locations, setLocations] = useState([]); // Locations for dropdown
+  const [locations, setLocations] = useState([]);
   const [activePage, setActivePage] = useState(1);
   const [itemPerpage] = useState(5);
   const { search } = useLocation();
   const params = new URLSearchParams(search);
   const specialtyParam = params.get("specialty");
-  const { id } = useParams(); // Get the doctor ID from the URL
+  const { id } = useParams();
 
-  // Filter states
+  // Filters
   const [searchTerm, setSearchTerm] = useState("");
   const [debouncedSearchTerm, setDebouncedSearchTerm] = useState(searchTerm);
   const [selectedSpecialties, setSelectedSpecialties] = useState(
@@ -25,12 +86,12 @@ const Content = () => {
   const [selectedRating, setSelectedRating] = useState("");
   const [selectedGender, setSelectedGender] = useState("");
   const [sortBy, setSortBy] = useState("");
+  const [showMobileFilters, setShowMobileFilters] = useState(false);
 
-  // Search states for filters
   const [specialtySearchTerm, setSpecialtySearchTerm] = useState("");
   const [locationSearchTerm, setLocationSearchTerm] = useState("");
 
-  // Static data for filters
+  // Static options
   const availabilityOptions = [
     "Monday",
     "Tuesday",
@@ -40,7 +101,6 @@ const Content = () => {
     "Saturday",
     "Sunday",
   ];
-
   const ratingOptions = [
     { value: "5", label: "5 Stars" },
     { value: "4", label: "4+ Stars" },
@@ -48,40 +108,26 @@ const Content = () => {
     { value: "2", label: "2+ Stars" },
     { value: "1", label: "1+ Stars" },
   ];
-
   const genderOptions = [
     { value: "male", label: "Male" },
     { value: "female", label: "Female" },
     { value: "Nopreference", label: "No preference" },
   ];
 
-  // const sortOptions = [
-  //   { value: "name", label: "Name (A-Z)" },
-  //   { value: "experience", label: "Experience" },
-  //   { value: "rating", label: "Rating" },
-  //   { value: "reviews", label: "Reviews" },
-  // ];
-
-  // Debounce search input
+  // Debounce search
   useEffect(() => {
-    const timeoutId = setTimeout(() => {
-      setDebouncedSearchTerm(searchTerm);
-    }, 500); // Adjust delay (500ms) as needed
-
-    return () => clearTimeout(timeoutId); // Cleanup on each keystroke
+    const timeoutId = setTimeout(() => setDebouncedSearchTerm(searchTerm), 500);
+    return () => clearTimeout(timeoutId);
   }, [searchTerm]);
 
-  // Fetch specialties using useFetch
+  // Fetch specialties
   const {
     data: specialtiesData,
     loading: specialtiesLoading,
     error: specialtiesError,
-  } = useFetch({
-    method: "GET",
-    request: "specialty/",
-  });
+  } = useFetch({ method: "GET", request: "specialty/" });
 
-  // Fetch locations using useFetch
+  // Fetch locations
   const {
     data: locationsData,
     loading: locationsLoading,
@@ -92,11 +138,8 @@ const Content = () => {
   });
 
   useEffect(() => {
-    if (locationsData) {
-      setLocations(locationsData.data || []);
-    }
+    if (locationsData) setLocations(locationsData.data || []);
     if (locationsError) {
-      console.error("Error fetching locations:", locationsError);
       setLocations([
         { id: "Delhi", name: "Delhi" },
         { id: "Mumbai", name: "Mumbai" },
@@ -107,7 +150,7 @@ const Content = () => {
     }
   }, [locationsData, locationsError]);
 
-  // Fetch departments using useFetch
+  // Fetch doctors
   const {
     data,
     loading: loader,
@@ -130,18 +173,10 @@ const Content = () => {
     },
   });
 
-  const handlePageChange = (pageNumber) => {
-    setActivePage(pageNumber);
-  };
-
-  const handleSearchChange = (e) => {
-    setSearchTerm(e.target.value);
-  };
-
-  const clearSearch = () => {
-    setSearchTerm("");
-  };
-
+  // Filter Handlers
+  const handlePageChange = (pageNumber) => setActivePage(pageNumber);
+  const handleSearchChange = (e) => setSearchTerm(e.target.value);
+  const clearSearch = () => setSearchTerm("");
   const handleSpecialtyChange = (specialtyId) => {
     setSelectedSpecialties((prev) =>
       prev.includes(specialtyId)
@@ -149,7 +184,6 @@ const Content = () => {
         : [...prev, specialtyId]
     );
   };
-
   const handleLocationChange = (locationId) => {
     setSelectedLocations((prev) =>
       prev.includes(locationId)
@@ -157,13 +191,11 @@ const Content = () => {
         : [...prev, locationId]
     );
   };
-
   const handleAvailabilityChange = (day) => {
     setSelectedAvailability((prev) =>
       prev.includes(day) ? prev.filter((d) => d !== day) : [...prev, day]
     );
   };
-
   const handleReset = () => {
     setSearchTerm("");
     setSelectedSpecialties([]);
@@ -185,68 +217,54 @@ const Content = () => {
     selectedGender ||
     sortBy;
 
-  // Filter specialties based on search term
+  // Filtered
   const filteredSpecialties = specialtiesData?.data?.filter((specialty) =>
-    specialty.title
-      .toLowerCase()
-      .includes(specialtySearchTerm.toLowerCase())
+    specialty.title.toLowerCase().includes(specialtySearchTerm.toLowerCase())
   );
-
-  // Filter locations based on search term
   const filteredLocations = locations.filter((location) =>
     location.name.toLowerCase().includes(locationSearchTerm.toLowerCase())
   );
 
-  // Get active filter chips
+  // Filter chips
   const getActiveFilters = () => {
     const filters = [];
-
     if (selectedSpecialties.length > 0) {
       selectedSpecialties.forEach((id) => {
         const specialty = specialtiesData?.data?.find((s) => s.id === id);
-        if (specialty) {
+        if (specialty)
           filters.push({ type: "specialty", id, label: specialty.title });
-        }
       });
     }
-
     if (selectedLocations.length > 0) {
       selectedLocations.forEach((id) => {
         const location = locations.find((l) => l.id === id);
-        if (location) {
+        if (location)
           filters.push({ type: "location", id, label: location.name });
-        }
       });
     }
-
     if (selectedAvailability.length > 0) {
-      selectedAvailability.forEach((day) => {
-        filters.push({ type: "availability", id: day, label: day });
-      });
+      selectedAvailability.forEach((day) =>
+        filters.push({ type: "availability", id: day, label: day })
+      );
     }
-
     if (selectedRating) {
       const rating = ratingOptions.find((r) => r.value === selectedRating);
-      if (rating) {
+      if (rating)
         filters.push({
           type: "rating",
           id: selectedRating,
           label: rating.label,
         });
-      }
     }
-
     if (selectedGender) {
       const gender = genderOptions.find((g) => g.value === selectedGender);
-      if (gender) {
+      if (gender)
         filters.push({
           type: "gender",
           id: selectedGender,
           label: gender.label,
         });
-      }
     }
-
     return filters;
   };
 
@@ -275,6 +293,205 @@ const Content = () => {
   };
 
   const activeFilters = getActiveFilters();
+
+  // Filters sidebar content (single instance, used twice)
+  const filtersContent = (
+    <>
+      {/* Specialities */}
+      <div className="mb-4">
+        <h6 className="font-weight-bold mb-3">Specialities</h6>
+        <div className="form-group">
+          <div className="position-relative">
+            <input
+              type="text"
+              className="form-control form-control-sm mb-3"
+              placeholder="Search Speciality"
+              value={specialtySearchTerm}
+              onChange={(e) => setSpecialtySearchTerm(e.target.value)}
+              style={{ paddingRight: specialtySearchTerm ? "35px" : "12px" }}
+            />
+            {specialtySearchTerm && (
+              <button
+                onClick={() => setSpecialtySearchTerm("")}
+                className="btn btn-link p-0"
+                style={{
+                  position: "absolute",
+                  right: "8px",
+                  top: "20px",
+                  fontSize: "18px",
+                  color: "#6c757d",
+                  textDecoration: "none",
+                  lineHeight: "1",
+                  width: "20px",
+                  height: "20px",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  zIndex: 10,
+                }}
+              >
+                ×
+              </button>
+            )}
+          </div>
+        </div>
+        <div style={{ maxHeight: "200px", overflowY: "auto" }}>
+          {!isNotEmptyArray(filteredSpecialties) ? (
+            <p className="text-muted small">No specialties found</p>
+          ) : (
+            filteredSpecialties.map((specialty) => (
+              <div key={specialty.id} className="form-check mb-2">
+                <input
+                  className="form-check-input"
+                  type="checkbox"
+                  id={`specialty-${specialty.id}`}
+                  checked={selectedSpecialties.includes(specialty.id)}
+                  onChange={() => handleSpecialtyChange(specialty.id)}
+                />
+                <label
+                  className="form-check-label small"
+                  htmlFor={`specialty-${specialty.id}`}
+                >
+                  {specialty.title}
+                </label>
+              </div>
+            ))
+          )}
+        </div>
+      </div>
+      {/* Location */}
+      <div className="mb-4">
+        <h6 className="font-weight-bold mb-3">City</h6>
+        <div className="form-group">
+          <div className="position-relative">
+            <input
+              type="text"
+              className="form-control form-control-sm mb-3"
+              placeholder="Search Cities"
+              value={locationSearchTerm}
+              onChange={(e) => setLocationSearchTerm(e.target.value)}
+              style={{ paddingRight: locationSearchTerm ? "35px" : "12px" }}
+            />
+            {locationSearchTerm && (
+              <button
+                onClick={() => setLocationSearchTerm("")}
+                className="btn btn-link p-0"
+                style={{
+                  position: "absolute",
+                  right: "8px",
+                  top: "20px",
+                  fontSize: "18px",
+                  color: "#6c757d",
+                  textDecoration: "none",
+                  lineHeight: "1",
+                  width: "20px",
+                  height: "20px",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  zIndex: 10,
+                }}
+              >
+                ×
+              </button>
+            )}
+          </div>
+        </div>
+        <div style={{ maxHeight: "200px", overflowY: "auto" }}>
+          {filteredLocations.length === 0 ? (
+            <p className="text-muted small">No locations found</p>
+          ) : (
+            filteredLocations.map((location) => (
+              <div key={location.id} className="form-check mb-2">
+                <input
+                  className="form-check-input"
+                  type="checkbox"
+                  id={`location-${location.id}`}
+                  checked={selectedLocations.includes(location.id)}
+                  onChange={() => handleLocationChange(location.id)}
+                />
+                <label
+                  className="form-check-label small"
+                  htmlFor={`location-${location.id}`}
+                >
+                  {location.name}
+                </label>
+              </div>
+            ))
+          )}
+        </div>
+      </div>
+      {/* Availability */}
+      <div className="mb-4">
+        <h6 className="font-weight-bold mb-3">Availability</h6>
+        <div className="row">
+          {availabilityOptions.map((day) => (
+            <div key={day} className="col-6 mb-2">
+              <div className="form-check">
+                <input
+                  className="form-check-input"
+                  type="checkbox"
+                  id={`day-${day}`}
+                  checked={selectedAvailability.includes(day)}
+                  onChange={() => handleAvailabilityChange(day)}
+                />
+                <label
+                  className="form-check-label small"
+                  htmlFor={`day-${day}`}
+                >
+                  {day.slice(0, 3)}
+                </label>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+      {/* Rating */}
+      <div className="mb-4">
+        <h6 className="font-weight-bold mb-3">Rating</h6>
+        {ratingOptions.map((rating) => (
+          <div key={rating.value} className="form-check mb-2">
+            <input
+              className="form-check-input"
+              type="radio"
+              name="rating"
+              id={`rating-${rating.value}`}
+              checked={selectedRating === rating.value}
+              onChange={() => setSelectedRating(rating.value)}
+            />
+            <label
+              className="form-check-label small"
+              htmlFor={`rating-${rating.value}`}
+            >
+              {rating.label}
+            </label>
+          </div>
+        ))}
+      </div>
+      {/* Gender */}
+      <div className="mb-4">
+        <h6 className="font-weight-bold mb-3">Gender</h6>
+        {genderOptions.map((gender) => (
+          <div key={gender.value} className="form-check mb-2">
+            <input
+              className="form-check-input"
+              type="radio"
+              name="gender"
+              id={`gender-${gender.value}`}
+              checked={selectedGender === gender.value}
+              onChange={() => setSelectedGender(gender.value)}
+            />
+            <label
+              className="form-check-label small"
+              htmlFor={`gender-${gender.value}`}
+            >
+              {gender.label}
+            </label>
+          </div>
+        ))}
+      </div>
+    </>
+  );
 
   return (
     <div className="sidebar-style-9 container-bg">
@@ -335,24 +552,6 @@ const Content = () => {
                       ×
                     </button>
                   )}
-                  <button
-                    className="btn btn-primary rounded-circle ms-2"
-                    style={{
-                      width: "40px",
-                      height: "40px",
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      padding: "0",
-                      position: "relative",
-                      zIndex: 5,
-                    }}
-                  >
-                    <i
-                      className="fas fa-search"
-                      style={{ fontSize: "16px", marginLeft: "0px" }}
-                    ></i>
-                  </button>
                 </div>
               </div>
             </div>
@@ -371,8 +570,27 @@ const Content = () => {
                       >
                         Filters
                       </h5>
-
-                      {/* Reset Button */}
+                      {/* Mobile filter toggle */}
+                      <button
+                        className="btn me-2 btn-primary flex-fill d-flex align-items-center justify-content-center gap-2 ms-2 d-md-none"
+                        onClick={() => setShowMobileFilters(!showMobileFilters)}
+                        style={{ borderRadius: "12px" }}
+                      >
+                        <i
+                          className="fas fa-filter"
+                          style={{ fontSize: "16px" }}
+                        ></i>
+                        Filters
+                        {hasActiveFilters && (
+                          <span className="badge bg-light text-primary rounded-pill">
+                            {selectedSpecialties.length +
+                              selectedLocations.length +
+                              selectedAvailability.length +
+                              (selectedRating ? 1 : 0) +
+                              (selectedGender ? 1 : 0)}
+                          </span>
+                        )}
+                      </button>
                       {hasActiveFilters && (
                         <button
                           className="btn btn-outline-secondary btn-sm me-2"
@@ -388,8 +606,6 @@ const Content = () => {
                         </button>
                       )}
                     </div>
-
-                    {/* Active Filter Chips */}
                     <div className="filter-chips-container d-flex flex-wrap">
                       {activeFilters.map((filter, index) => (
                         <span
@@ -430,236 +646,11 @@ const Content = () => {
           <div className="row">
             {/* Filters Sidebar */}
             <div className="col-lg-3 col-md-4 mb-4">
-              <div className="card shadow-sm">
-                <div className="card-body">
-                  {/* Sort By */}
-                  {/* <div className="mb-4">
-                    <h6 className="font-weight-bold mb-3">Sort By</h6>
-                    <select
-                      className="form-control form-control-sm"
-                      value={sortBy}
-                      onChange={(e) => setSortBy(e.target.value)}
-                    >
-                      <option value="">Default</option>
-                      {sortOptions.map((option) => (
-                        <option key={option.value} value={option.value}>
-                          {option.label}
-                        </option>
-                      ))}
-                    </select>
-                  </div> */}
-
-                  {/* Specialities */}
-                  <div className="mb-4">
-                    <h6 className="font-weight-bold mb-3">Specialities</h6>
-                    <div className="form-group">
-                      <div className="position-relative">
-                        <input
-                          type="text"
-                          className="form-control form-control-sm mb-3"
-                          placeholder="Search Speciality"
-                          value={specialtySearchTerm}
-                          onChange={(e) =>
-                            setSpecialtySearchTerm(e.target.value)
-                          }
-                          style={{
-                            paddingRight: specialtySearchTerm ? "35px" : "12px",
-                          }}
-                        />
-                        {specialtySearchTerm && (
-                          <button
-                            onClick={() => setSpecialtySearchTerm("")}
-                            className="btn btn-link p-0"
-                            style={{
-                              position: "absolute",
-                              right: "8px",
-                              top: "20px",
-                              fontSize: "18px",
-                              color: "#6c757d",
-                              textDecoration: "none",
-                              lineHeight: "1",
-                              width: "20px",
-                              height: "20px",
-                              display: "flex",
-                              alignItems: "center",
-                              justifyContent: "center",
-                              zIndex: 10,
-                            }}
-                          >
-                            ×
-                          </button>
-                        )}
-                      </div>
-                    </div>
-                    <div style={{ maxHeight: "200px", overflowY: "auto" }}>
-                      {!isNotEmptyArray(filteredSpecialties) ? (
-                        <p className="text-muted small">No specialties found</p>
-                      ) : (
-                        filteredSpecialties.map((specialty) => (
-                          <div key={specialty.id} className="form-check mb-2">
-                            <input
-                              className="form-check-input"
-                              type="checkbox"
-                              id={`specialty-${specialty.id}`}
-                              checked={selectedSpecialties.includes(
-                                specialty.id
-                              )}
-                              onChange={() =>
-                                handleSpecialtyChange(specialty.id)
-                              }
-                            />
-                            <label
-                              className="form-check-label small"
-                              htmlFor={`specialty-${specialty.id}`}
-                            >
-                              {specialty.title}
-                            </label>
-                          </div>
-                        ))
-                      )}
-                    </div>
-                  </div>
-
-                  {/* Location */}
-                  <div className="mb-4">
-                    <h6 className="font-weight-bold mb-3">Select City</h6>
-                    <div className="form-group">
-                      <div className="position-relative">
-                        <input
-                          type="text"
-                          className="form-control form-control-sm mb-3"
-                          placeholder="Search Cities"
-                          value={locationSearchTerm}
-                          onChange={(e) =>
-                            setLocationSearchTerm(e.target.value)
-                          }
-                          style={{
-                            paddingRight: locationSearchTerm ? "35px" : "12px",
-                          }}
-                        />
-                        {locationSearchTerm && (
-                          <button
-                            onClick={() => setLocationSearchTerm("")}
-                            className="btn btn-link p-0"
-                            style={{
-                              position: "absolute",
-                              right: "8px",
-                              top: "20px",
-                              fontSize: "18px",
-                              color: "#6c757d",
-                              textDecoration: "none",
-                              lineHeight: "1",
-                              width: "20px",
-                              height: "20px",
-                              display: "flex",
-                              alignItems: "center",
-                              justifyContent: "center",
-                              zIndex: 10,
-                            }}
-                          >
-                            ×
-                          </button>
-                        )}
-                      </div>
-                    </div>
-                    <div style={{ maxHeight: "200px", overflowY: "auto" }}>
-                      {filteredLocations.length === 0 ? (
-                        <p className="text-muted small">No locations found</p>
-                      ) : (
-                        filteredLocations.map((location) => (
-                          <div key={location.id} className="form-check mb-2">
-                            <input
-                              className="form-check-input"
-                              type="checkbox"
-                              id={`location-${location.id}`}
-                              checked={selectedLocations.includes(location.id)}
-                              onChange={() => handleLocationChange(location.id)}
-                            />
-                            <label
-                              className="form-check-label small"
-                              htmlFor={`location-${location.id}`}
-                            >
-                              {location.name}
-                            </label>
-                          </div>
-                        ))
-                      )}
-                    </div>
-                  </div>
-
-                  {/* Availability */}
-                  <div className="mb-4">
-                    <h6 className="font-weight-bold mb-3">Availability</h6>
-                    <div className="row">
-                      {availabilityOptions.map((day) => (
-                        <div key={day} className="col-6 mb-2">
-                          <div className="form-check">
-                            <input
-                              className="form-check-input"
-                              type="checkbox"
-                              id={`day-${day}`}
-                              checked={selectedAvailability.includes(day)}
-                              onChange={() => handleAvailabilityChange(day)}
-                            />
-                            <label
-                              className="form-check-label small"
-                              htmlFor={`day-${day}`}
-                            >
-                              {day.slice(0, 3)}
-                            </label>
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* Rating */}
-                  <div className="mb-4">
-                    <h6 className="font-weight-bold mb-3">Rating</h6>
-                    {ratingOptions.map((rating) => (
-                      <div key={rating.value} className="form-check mb-2">
-                        <input
-                          className="form-check-input"
-                          type="radio"
-                          name="rating"
-                          id={`rating-${rating.value}`}
-                          checked={selectedRating === rating.value}
-                          onChange={() => setSelectedRating(rating.value)}
-                        />
-                        <label
-                          className="form-check-label small"
-                          htmlFor={`rating-${rating.value}`}
-                        >
-                          {rating.label}
-                        </label>
-                      </div>
-                    ))}
-                  </div>
-
-                  {/* Gender */}
-                  <div className="mb-4">
-                    <h6 className="font-weight-bold mb-3">Gender</h6>
-                    {genderOptions.map((gender) => (
-                      <div key={gender.value} className="form-check mb-2">
-                        <input
-                          className="form-check-input"
-                          type="radio"
-                          name="gender"
-                          id={`gender-${gender.value}`}
-                          checked={selectedGender === gender.value}
-                          onChange={() => setSelectedGender(gender.value)}
-                        />
-                        <label
-                          className="form-check-label small"
-                          htmlFor={`gender-${gender.value}`}
-                        >
-                          {gender.label}
-                        </label>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
+              <FilterSidebar
+                filtersContent={filtersContent}
+                showMobileFilters={showMobileFilters}
+                setShowMobileFilters={setShowMobileFilters}
+              />
             </div>
 
             {/* Doctor List */}
@@ -727,11 +718,6 @@ const Content = () => {
                               >
                                 View More
                               </Link>
-                              {/* <div className="sigma_team-controls ms-3">
-                                <Link to="#" className="">
-                                  <i className="fal fa-heart" />
-                                </Link>
-                              </div> */}
                             </div>
                           </div>
                         </div>
@@ -755,34 +741,25 @@ const Content = () => {
                                 {item.educational_degrees}
                               </span>
                             </div>
-                            {/* <div className="sigma_rating">
-                              {Rating(item.ratings || 0)}
-                              <span className="ms-3">
-                                ({item.reviews?.length})
-                              </span>
-                            </div> */}
                           </div>
                         </div>
                       </div>
                     </div>
                   ))}
-
                   {/* Pagination */}
-                  {
-                    <div className="d-flex justify-content-center mt-4">
-                      <Pagination
-                        activePage={activePage}
-                        itemsCountPerPage={itemPerpage}
-                        totalItemsCount={data.data.length}
-                        pageRangeDisplayed={5}
-                        onChange={handlePageChange}
-                        innerClass="pagination"
-                        activeClass="active"
-                        itemClass="page-item"
-                        linkClass="page-link"
-                      />
-                    </div>
-                  }
+                  <div className="d-flex justify-content-center mt-4">
+                    <Pagination
+                      activePage={activePage}
+                      itemsCountPerPage={itemPerpage}
+                      totalItemsCount={data.data.length}
+                      pageRangeDisplayed={5}
+                      onChange={handlePageChange}
+                      innerClass="pagination"
+                      activeClass="active"
+                      itemClass="page-item"
+                      linkClass="page-link"
+                    />
+                  </div>
                 </>
               )}
             </div>
