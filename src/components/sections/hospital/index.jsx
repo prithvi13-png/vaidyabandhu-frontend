@@ -159,11 +159,11 @@ const HospitalsPage = () => {
                       ></span>
                     </div>
                     <h5 className="mb-1 fw-bold text-white">
-                      {hospital.description}
+                      {hospital.hospital_name}
                     </h5>
                     <div className="d-flex align-items-center">
                       <MapPin size={16} className="me-2" />
-                      <small>{hospital.address}</small>
+                      <small>{hospital.location_name}</small>
                     </div>
                   </div>
 

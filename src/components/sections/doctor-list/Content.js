@@ -187,7 +187,7 @@ const Content = () => {
 
   // Filter specialties based on search term
   const filteredSpecialties = specialtiesData?.data?.filter((specialty) =>
-    specialty.description
+    specialty.title
       .toLowerCase()
       .includes(specialtySearchTerm.toLowerCase())
   );
@@ -205,7 +205,7 @@ const Content = () => {
       selectedSpecialties.forEach((id) => {
         const specialty = specialtiesData?.data?.find((s) => s.id === id);
         if (specialty) {
-          filters.push({ type: "specialty", id, label: specialty.description });
+          filters.push({ type: "specialty", id, label: specialty.title });
         }
       });
     }
@@ -512,7 +512,7 @@ const Content = () => {
                               className="form-check-label small"
                               htmlFor={`specialty-${specialty.id}`}
                             >
-                              {specialty.description}
+                              {specialty.title}
                             </label>
                           </div>
                         ))
@@ -714,7 +714,7 @@ const Content = () => {
                                   className="sigma_team-category"
                                   key={index}
                                 >
-                                  {specialityItem.description}
+                                  {specialityItem.title}
                                   {index !== item.speciality.length - 1 && ", "}
                                 </Link>
                               ))}
@@ -742,7 +742,7 @@ const Content = () => {
                                 <i className="fal fa-map-marker-alt" />
                                 {isNotEmptyArray(item?.hospital)
                                   ? item.hospital
-                                      .map((el) => el.description)
+                                      .map((el) => el.hospital_name)
                                       .join(", ")
                                   : "Not specified"}
                               </span>
