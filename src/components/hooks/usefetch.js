@@ -1,9 +1,9 @@
-import { useState, useEffect, useCallback } from 'react';
-import axiosInstance from '../../api/axiosInstance';
-import { responseError } from '../utiles/responseError';
+import { useState, useEffect, useCallback, useRef } from "react";
+import axiosInstance from "../../api/axiosInstance";
+import { responseError } from "../utiles/responseError";
 
 export const useFetch = ({
-  method = 'GET',
+  method = "GET",
   request,
   params = {},
   payload = {},
@@ -12,11 +12,11 @@ export const useFetch = ({
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const isMounted = useRef(true);
 
   const fetchData = useCallback(async () => {
     if (!request) {
-      // eslint-disable-next-line no-console
-      console.warn('useFetch: No request provided, skipping API call.');
+      console.warn("useFetch: No request provided, skipping API call.");
       return;
     }
 
@@ -26,49 +26,66 @@ export const useFetch = ({
     try {
       let response;
 
-      if (typeof request === 'function') {
-        response = await request({ params, payload });
-        setData(response);
+      if (typeof request === "function") {
+        response = await request({
+          params: params || {},
+          payload: payload || {},
+        });
+        if (isMounted.current) setData(response);
         return response;
       }
 
-      const config = { params };
+      const config = { params: params || {} };
 
-      switch (method) {
-        case 'POST':
+      switch (method.toUpperCase()) {
+        case "POST":
           response = await axiosInstance.post(request, payload, config);
           break;
-        case 'PUT':
+        case "PUT":
           response = await axiosInstance.put(request, payload, config);
           break;
-        case 'PATCH':
+        case "PATCH":
           response = await axiosInstance.patch(request, payload, config);
           break;
-        case 'DELETE':
-          response = await axiosInstance.delete(request, { ...config, data: payload });
+        case "DELETE":
+          response = await axiosInstance.delete(request, {
+            ...config,
+            data: payload,
+          });
           break;
-        case 'GET':
+        case "GET":
         default:
           response = await axiosInstance.get(request, config);
           break;
       }
 
-      setData(response.data);
+      if (isMounted.current) setData(response.data);
       return response.data;
-
     } catch (err) {
-      const cleanedError = responseError(err);
-      setError(typeof cleanedError === 'string' ? cleanedError : (cleanedError?.message || "Unknown error"));
+      if (isMounted.current) {
+        setData(null);
+        const cleanedError = responseError(err);
+        setError(
+          typeof cleanedError === "string"
+            ? cleanedError
+            : cleanedError?.message || "Unknown error"
+        );
+      }
       return null;
     } finally {
-      setLoading(false);
+      if (isMounted.current) setLoading(false);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [method, request, JSON.stringify(params), JSON.stringify(payload)]);
 
   useEffect(() => {
+    isMounted.current = true;
     if (!dontCall && request) {
       fetchData();
     }
+    return () => {
+      isMounted.current = false;
+    };
     // eslint-disable-next-line
   }, [fetchData, dontCall, request]);
 
