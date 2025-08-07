@@ -1,29 +1,28 @@
-import React, { useEffect, useState } from 'react'; // Fixed import statement
+import React, { useEffect, useState } from 'react';
 
 const LeadershipInline = () => {
   const [animated, setAnimated] = useState(false);
-  const [hoveredSection, setHoveredSection] = useState(null); // State for section hover effects
+  const [hoveredSection, setHoveredSection] = useState(null);
 
   useEffect(() => {
-    // Trigger entrance animation after component mounts
     const timer = setTimeout(() => setAnimated(true), 200);
     return () => clearTimeout(timer);
   }, []);
 
-  // Unified, smoother transition for hover effects and animations
-  const baseTransition = "all 0.5s cubic-bezier(0.23, 1, 0.32, 1)"; // More expressive cubic-bezier
+  const baseTransition = "all 0.5s cubic-bezier(0.23, 1, 0.32, 1)";
 
   return (
     <section
+      className="leadership-inline" // Added a class name for better CSS targeting
       style={{
         paddingTop: '180px',
         paddingBottom: '40px',
-        background: 'linear-gradient(135deg, #e0f7fa 0%, #ffffff 100%)', /* Light, inviting gradient */
-        fontFamily: "Poppins", /* Consistent font */
-        color: '#4a5568', /* Soft dark gray for main text */
+        background: 'linear-gradient(135deg, #e0f7fa 0%, #ffffff 100%)',
+        fontFamily: "Poppins",
+        color: '#4a5568',
         lineHeight: '1.4',
         overflow: 'hidden',
-        position: 'relative', // For absolute positioned background elements
+        position: 'relative',
       }}
     >
       {/* Decorative background elements */}
@@ -34,7 +33,7 @@ const LeadershipInline = () => {
           right: "10%",
           width: "min(150px, 15vw)",
           height: "min(150px, 15vw)",
-          backgroundColor: "rgba(0, 122, 126, 0.08)", // Teal accent with transparency
+          backgroundColor: "rgba(0, 122, 126, 0.08)",
           borderRadius: "50%",
           filter: "blur(30px)",
           animation: "floatShape1 12s infinite ease-in-out",
@@ -50,7 +49,7 @@ const LeadershipInline = () => {
           left: "10%",
           width: "min(180px, 18vw)",
           height: "min(180px, 18vw)",
-          backgroundColor: "rgba(0, 122, 126, 0.05)", // Lighter teal accent with transparency
+          backgroundColor: "rgba(0, 122, 126, 0.05)",
           borderRadius: "50%",
           filter: "blur(35px)",
           animation: "floatShape2 14s infinite ease-in-out",
@@ -63,25 +62,25 @@ const LeadershipInline = () => {
       <div
         className="container"
         style={{
-          maxWidth: '1250px', /* Wider max-width for a more spacious feel */
+          maxWidth: '1250px',
           margin: '0 auto',
           padding: '0 10px',
-          position: 'relative', // Ensures content is above background elements
+          position: 'relative',
           zIndex: 1,
         }}
       >
-        <div className="row" style={{ display: 'flex', flexDirection: 'column', gap: '30px' }}> {/* Increased gap */}
+        <div className="row" style={{ display: 'flex', flexDirection: 'column', gap: '30px' }}>
           {/* CEO Message */}
           <div
             style={{
-              padding: '40px', /* Increased padding within the card */
-              backgroundColor: '#FFFFFF', /* Pure white background for a crisp look */
-              borderRadius: '20px', /* More rounded corners */
-              border: '1px solid rgba(0, 77, 79, 0.1)', /* Subtle border matching dark primary */
-              boxShadow: hoveredSection === 'ceo' ? '0 25px 60px rgba(0, 77, 79, 0.25)' : '0 12px 35px rgba(0, 77, 79, 0.12)', // Enhanced shadow on hover
+              padding: '40px',
+              backgroundColor: '#FFFFFF',
+              borderRadius: '20px',
+              border: '1px solid rgba(0, 77, 79, 0.1)',
+              boxShadow: hoveredSection === 'ceo' ? '0 25px 60px rgba(0, 77, 79, 0.25)' : '0 12px 35px rgba(0, 77, 79, 0.12)',
               transition: baseTransition,
               opacity: animated ? 1 : 0,
-              transform: animated ? "translateY(0) scale(1)" : "translateY(50px) scale(0.98)", // More pronounced entrance
+              transform: animated ? "translateY(0) scale(1)" : "translateY(50px) scale(0.98)",
               transitionDelay: '0.2s',
             }}
             onMouseEnter={() => setHoveredSection('ceo')}
@@ -89,23 +88,19 @@ const LeadershipInline = () => {
           >
             <h2
               style={{
-                fontSize: 'clamp(22px, 4.5vw, 36px)', /* Larger, responsive title size */
-                fontWeight: 800, // Bolder
-                color: '#004d4f', /* Dark teal for headings */
+                fontSize: 'clamp(22px, 4.5vw, 36px)',
+                fontWeight: 800,
+                color: '#004d4f',
                 position: 'relative',
-                paddingBottom: '20px', // More space for underline
+                paddingBottom: '20px',
                 textAlign: 'center',
-                marginBottom: '25px', // More space below title
+                marginBottom: '25px',
                 fontFamily: "Poppins"
               }}
             >
               Message from the <span style={{ color: '#007a7e' }}>Founder</span>, Managing Director & CEO
-              {/* Custom underline effect: double line */}
-
             </h2>
-
-            {/* Dr. Ajith Ramaswamy's Photo and Name/Designation Container */}
-            <div style={{ display: 'flex', alignItems: 'center', gap: '20px', marginBottom: '20px', flexDirection: 'row' }}> {/* Changed to row */}
+            <div style={{ display: 'flex', alignItems: 'center', gap: '20px', marginBottom: '20px', flexDirection: 'row' }}>
               <img
                 src={process.env.PUBLIC_URL + "/assets/img/ajith.jpg"}
                 alt="Dr. Ajith Ramaswamy"
@@ -114,7 +109,7 @@ const LeadershipInline = () => {
                   height: '150px',
                   borderRadius: '50%',
                   objectFit: 'cover',
-                  objectPosition: 'center 15%', // shifts image focus downward
+                  objectPosition: 'center 15%',
                   border: '4px solid #007a7e',
                   boxShadow: '0 8px 20px rgba(0, 77, 79, 0.2)',
                   transition: baseTransition,
@@ -127,13 +122,12 @@ const LeadershipInline = () => {
                   e.target.src = "https://placehold.co/150x150/CCCCCC/666666?text=Dr+Img";
                 }}
               />
-
-              <div style={{ flexGrow: 1, textAlign: 'left' }}> {/* Container for name and designation */}
+              <div style={{ flexGrow: 1, textAlign: 'left' }}>
                 <h3
                   style={{
                     fontSize: 'clamp(20px, 2.5vw, 24px)',
                     fontWeight: 600,
-                    color: '#007a7e', /* Accent color for names */
+                    color: '#007a7e',
                     marginBottom: '8px',
                     opacity: animated ? 1 : 0,
                     transform: animated ? "translateY(0)" : "translateY(15px)",
@@ -146,9 +140,8 @@ const LeadershipInline = () => {
                 <h5
                   style={{
                     color: '#5a6778',
-                    marginBottom: '0', /* Remove bottom margin here as it's handled by parent gap */
+                    marginBottom: '0',
                     fontSize: 'clamp(15px, 1.8vw, 17px)',
-                    // fontStyle: 'italic',
                     opacity: animated ? 1 : 0,
                     transform: animated ? "translateY(0)" : "translateY(15px)",
                     transition: `opacity 0.7s ease-out 0.5s, transform 0.7s ease-out 0.5s`,
@@ -159,7 +152,6 @@ const LeadershipInline = () => {
                 </h5>
               </div>
             </div>
-
             <p style={{
               fontFamily: "Poppins",
               marginBottom: '15px', fontSize: 'clamp(16px, 2vw, 18px)', color: '#4a5568',
@@ -188,12 +180,12 @@ const LeadershipInline = () => {
             <p
               style={{
                 fontWeight: 700,
-                color: '#007a7e', /* Use primary teal for key statements */
+                color: '#007a7e',
                 marginTop: '30px',
                 padding: '20px',
-                backgroundColor: 'rgba(0, 122, 126, 0.05)', /* Subtle background for highlights */
-                borderLeft: '6px solid #007a7e', /* Stronger, teal left border */
-                borderRadius: '10px', /* Softer corners */
+                backgroundColor: 'rgba(0, 122, 126, 0.05)',
+                borderLeft: '6px solid #007a7e',
+                borderRadius: '10px',
                 marginBottom: '20px',
                 fontSize: 'clamp(17px, 2.2vw, 19px)',
                 lineHeight: '1.6',
@@ -208,10 +200,10 @@ const LeadershipInline = () => {
             <p
               style={{
                 fontWeight: 700,
-                color: '#004d4f', /* A deeper, calming teal for assurance */
+                color: '#004d4f',
                 marginTop: '30px',
                 fontSize: 'clamp(18px, 2.5vw, 20px)',
-                textAlign: 'center', /* Center align closing remarks */
+                textAlign: 'center',
                 opacity: animated ? 1 : 0,
                 transform: animated ? "translateY(0)" : "translateY(20px)",
                 transition: `opacity 0.8s ease-out 1.2s, transform 0.8s ease-out 1.2s`,
@@ -251,11 +243,8 @@ const LeadershipInline = () => {
               }}
             >
               Message from the <span style={{ color: '#007a7e' }}>Founder</span>, Director & COO
-
             </h2>
-
-            {/* Dr. Subhashith Shetty's Photo and Name/Designation Container */}
-            <div style={{ display: 'flex', alignItems: 'center', gap: '20px', marginBottom: '20px', flexDirection: 'row' }}> {/* Changed to row */}
+            <div style={{ display: 'flex', alignItems: 'center', gap: '20px', marginBottom: '20px', flexDirection: 'row' }}>
               <img
                 src={process.env.PUBLIC_URL + "/assets/img/Subhashith.jpeg"}
                 alt="Dr. Ajith Ramaswamy"
@@ -264,7 +253,7 @@ const LeadershipInline = () => {
                   height: '150px',
                   borderRadius: '50%',
                   objectFit: 'cover',
-                  objectPosition: 'center 15%', // shifts image focus downward
+                  objectPosition: 'center 15%',
                   border: '4px solid #007a7e',
                   boxShadow: '0 8px 20px rgba(0, 77, 79, 0.2)',
                   transition: baseTransition,
@@ -274,7 +263,7 @@ const LeadershipInline = () => {
                 }}
                 onError={(e) => { e.target.onerror = null; e.target.src = "https://placehold.co/150x150/CCCCCC/666666?text=Dr+Img"; }}
               />
-              <div style={{ flexGrow: 1, textAlign: 'left' }}> {/* Container for name and designation */}
+              <div style={{ flexGrow: 1, textAlign: 'left' }}>
                 <h3
                   style={{
                     fontSize: 'clamp(20px, 2.5vw, 24px)',
@@ -294,7 +283,6 @@ const LeadershipInline = () => {
                     color: '#5a6778',
                     marginBottom: '0',
                     fontSize: 'clamp(15px, 1.8vw, 17px)',
-                    // fontStyle: 'italic',
                     fontFamily: "Poppins",
                     opacity: animated ? 1 : 0,
                     transform: animated ? "translateY(0)" : "translateY(15px)",
@@ -305,7 +293,6 @@ const LeadershipInline = () => {
                 </h5>
               </div>
             </div>
-
             <p style={{
               marginBottom: '15px', fontSize: 'clamp(16px, 2vw, 18px)', color: '#4a5568', fontFamily: "Poppins",
               opacity: animated ? 1 : 0, transform: animated ? "translateY(0)" : "translateY(15px)", transition: `opacity 0.7s ease-out 1.2s, transform 0.7s ease-out 1.2s`,
@@ -340,12 +327,12 @@ const LeadershipInline = () => {
             <p
               style={{
                 fontWeight: 700,
-                color: '#007a7e', /* Use primary teal for key statements */
+                color: '#007a7e',
                 marginTop: '30px',
                 padding: '20px',
-                backgroundColor: 'rgba(0, 122, 126, 0.05)', /* Subtle background for highlights */
-                borderLeft: '6px solid #007a7e', /* Stronger, teal left border */
-                borderRadius: '10px', /* Softer corners */
+                backgroundColor: 'rgba(0, 122, 126, 0.05)',
+                borderLeft: '6px solid #007a7e',
+                borderRadius: '10px',
                 marginBottom: '20px',
                 fontSize: 'clamp(17px, 2.2vw, 19px)',
                 lineHeight: '1.6',
@@ -360,10 +347,10 @@ const LeadershipInline = () => {
             <p
               style={{
                 fontWeight: 700,
-                color: '#004d4f', /* A deeper, calming teal for assurance */
+                color: '#004d4f',
                 marginTop: '30px',
                 fontSize: 'clamp(18px, 2.5vw, 20px)',
-                textAlign: 'center', /* Center align closing remarks */
+                textAlign: 'center',
                 opacity: animated ? 1 : 0,
                 transform: animated ? "translateY(0)" : "translateY(20px)",
                 transition: `opacity 0.8s ease-out 1.8s, transform 0.8s ease-out 1.8s`,
@@ -390,77 +377,85 @@ const LeadershipInline = () => {
             100% { transform: translate(0, 0) rotate(0deg); }
           }
 
-          /* Responsive adjustments */
+          /* --- Responsive adjustments to fix spacing issue --- */
+
+          /* Targets the main section to adjust padding on smaller screens */
           @media (max-width: 768px) {
-            section[style*="padding: 80px 20px"] { /* Main section padding */
-              padding: 60px 15px !important;
+            .leadership-inline {
+              /* Increased top padding to prevent overlap and ensure proper spacing */
+              padding-top: 80px !important;
+              padding-bottom: 40px !important;
             }
+
             div[style*="padding: 40px"] { /* Card padding */
               padding: 30px !important;
             }
-            h2[style*="font-size: clamp(32px, 4.5vw, 40px)"] { /* Section titles */
+            h2[style*="font-size: clamp(22px, 4.5vw, 36px)"] { /* Section titles */
               font-size: clamp(28px, 5.5vw, 36px) !important;
               padding-bottom: 15px !important;
             }
             h2 span[style*="bottom: 12px"] { /* Underline position */
-                bottom: 8px !important;
+              bottom: 8px !important;
             }
             h2 span[style*="bottom: 0"] { /* Underline position */
-                bottom: -2px !important;
+              bottom: -2px !important;
             }
+            p[style*="font-size: clamp(16px, 2vw, 18px)"],
             p[style*="font-size: clamp(17px, 2.2vw, 19px)"],
-            p[style*="font-size: clamp(20px, 3vw, 24px)"] { /* Paragraphs */
+            p[style*="font-size: clamp(18px, 2.5vw, 20px)"] { /* Paragraphs */
               font-size: clamp(16px, 2.8vw, 18px) !important;
             }
             h3[style*="font-size: clamp(20px, 2.5vw, 24px)"] { /* Name */
-                font-size: clamp(18px, 3vw, 22px) !important;
+              font-size: clamp(18px, 3vw, 22px) !important;
             }
             h5[style*="font-size: clamp(15px, 1.8vw, 17px)"] { /* Designation */
-                font-size: clamp(14px, 2.5vw, 16px) !important;
+              font-size: clamp(14px, 2.5vw, 16px) !important;
             }
-            div[style*="gap: 60px"] { /* Gap between sections */
+            div[style*="gap: 30px"] { /* Gap between sections */
                 gap: 40px !important;
             }
             div[style*="display: flex"][style*="flex-direction: row"] { /* Photo/Name container */
-                flex-direction: column !important; /* Stack on smaller screens */
-                text-align: center !important;
+              flex-direction: column !important;
+              text-align: center !important;
             }
             div[style*="flex-grow: 1"][style*="text-align: left"] { /* Name/Designation text container */
-                text-align: center !important; /* Center text when stacked */
+              text-align: center !important;
             }
           }
 
           @media (max-width: 480px) {
-            section[style*="padding: 80px 20px"] { /* Main section padding */
-              padding: 40px 10px !important;
+            .leadership-inline {
+              padding-top: 163px !important;
+              padding-bottom: 30px !important;
             }
             div[style*="padding: 40px"] { /* Card padding */
               padding: 20px !important;
             }
-            h2[style*="font-size: clamp(32px, 4.5vw, 40px)"] { /* Section titles */
+            h2[style*="font-size: clamp(22px, 4.5vw, 36px)"] { /* Section titles */
               font-size: clamp(24px, 7vw, 30px) !important;
               padding-bottom: 12px !important;
             }
             h2 span[style*="bottom: 12px"] { /* Underline position */
-                bottom: 6px !important;
-                width: 70px !important;
+              bottom: 6px !important;
+              width: 70px !important;
             }
             h2 span[style*="bottom: 0"] { /* Underline position */
-                bottom: -4px !important;
-                width: 40px !important;
+              bottom: -4px !important;
+              width: 40px !important;
             }
+            p[style*="font-size: clamp(16px, 2vw, 18px)"],
             p[style*="font-size: clamp(17px, 2.2vw, 19px)"],
-            p[style*="font-size: clamp(20px, 3vw, 24px)"] { /* Paragraphs */
+            p[style*="font-size: clamp(18px, 2.5vw, 20px)"] { /* Paragraphs */
               font-size: clamp(15px, 3.5vw, 17px) !important;
             }
             h3[style*="font-size: clamp(20px, 2.5vw, 24px)"] { /* Name */
-                font-size: clamp(16px, 4vw, 20px) !important;
+              font-size: clamp(16px, 4vw, 20px) !important;
             }
             h5[style*="font-size: clamp(15px, 1.8vw, 17px)"] { /* Designation */
-                font-size: clamp(13px, 3vw, 15px) !important;
+              font-size: clamp(13px, 3vw, 15px) !important;
             }
-            div[style*="gap: 60px"] { /* Gap between sections */
-                gap: 30px !important;
+            div[style*="gap: 30px"] { /* Gap between sections */
+              gap: 30px !important;
             }
           }
         `}

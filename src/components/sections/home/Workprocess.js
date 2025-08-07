@@ -16,8 +16,8 @@ const Workprocess = () => {
       icon: "fas fa-id-card",
       title: "Step 1: Get the Vaidya Bandhu Card for ₹49",
       points: [
-        "Fill out the form with name, address, phone number, etc",
-        "Big Savings. Full Support. Just ₹49/Year on Vaidya Bandhu Card",
+        "Fill out the form with name, address, phone number, etc.",
+        "Big Savings. Full Support. Just ₹49/Year on Vaidya Bandhu Card.",
         "Receive your digital card instantly via website or app.",
       ],
     },
@@ -25,7 +25,7 @@ const Workprocess = () => {
       icon: "flaticon-hospital",
       title: "Step 2: Access Quality Healthcare",
       points: [
-        "Contact us by call, WhatsApp, or email about your concerns",
+        "Contact us by call, WhatsApp, or email about your concerns.",
         "Consult top doctors in our network.",
         "Avail 10%–40% discounts on surgeries, treatments, and diagnostics.",
       ],
@@ -136,7 +136,7 @@ const Workprocess = () => {
           At Vaidya Bandhu we simplify your search for the right doctors,
           hospitals, and diagnostic centers near you. Just call or WhatsApp us,
           and we’ll guide you to quality, affordable care, quickly and
-          effortlessly
+          effortlessly.
         </p>
       </div>
 

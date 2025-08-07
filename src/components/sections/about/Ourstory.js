@@ -311,56 +311,62 @@ const OurStory = () => {
                   transition: `opacity 0.8s ease-out 0.8s, transform 0.8s ease-out 0.8s`,
                 }}
               >
-                <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
+                <ul
+                  style={{
+                    listStyle: "none",
+                    padding: "20px",
+                    paddingBottom: "5px",
+                    paddingTop: "5px",
+                    margin: 0,
+                    display: "flex",
+                    flexDirection: "column",
+                    gap: "15px", // Consistent gap between items
+                  }}
+                >
                   {[
-                    "10 – 40% off on surgeries, treatments & diagnostics",
-                    "Free medical guidance for informed decisions",
+                    "10% – 40% off on surgeries, treatments & diagnostics.",
+                    "Free medical guidance for informed decisions.",
                     "Get 10% Cashback: Send your bill to Vaidya Bandhu via WhatsApp or Email. Cashback will be credited to your account within 7 working days.",
                     "Top doctors across all specialties and everywhere.",
                     "Free surgeries for the needy through our social impact programs.",
-                    " Personalized support in selecting the Ideal Doctor, Hospital, or Diagnostic centers.",
+                    "Personalized support in selecting the Ideal Doctor, Hospital, or Diagnostic centers.",
                   ].map((item, index) => (
                     <li
                       key={index}
                       style={{
-                        marginBottom: "15px" /* Spacing for list items */,
-                        fontSize:
-                          "clamp(16px, 2vw, 18px)" /* Font for list items */,
+                        marginBottom: 0, // Remove bottom margin since we're using gap
+                        fontSize: "clamp(16px, 2vw, 18px)",
                         color: "#4a5568",
                         display: "flex",
                         fontFamily: "Poppins",
                         alignItems: "flex-start",
-                        padding: "15px 25px" /* Padding for list items */,
-                        backgroundColor:
-                          "rgba(0, 122, 126, 0.03)" /* Subtle teal background for each list item */,
-                        borderRadius:
-                          "12px" /* Rounded corners for list items */,
-                        border:
-                          "1px solid rgba(0, 122, 126, 0.1)" /* Consistent border */,
-                        boxShadow:
-                          "0 4px 12px rgba(0, 77, 79, 0.06)" /* Subtle shadow */,
+                        padding: "15px 20px",
+                        backgroundColor: "rgba(0, 122, 126, 0.03)",
+                        borderRadius: "12px",
+                        border: "1px solid rgba(0, 122, 126, 0.1)",
+                        boxShadow: "0 4px 12px rgba(0, 77, 79, 0.06)",
                         opacity: animated ? 1 : 0,
                         transform: animated
                           ? "translateY(0)"
                           : "translateY(15px)",
                         transition: `opacity 0.8s ease-out ${
                           1.0 + index * 0.1
-                        }s, transform 0.8s ease-out ${1.0 + index * 0.1}s`, // Staggered list item animation
+                        }s, transform 0.8s ease-out ${1.0 + index * 0.1}s`,
                       }}
                     >
                       <span
                         style={{
-                          marginRight: "18px",
+                          marginRight: "15px",
                           color: "#007a7e",
-                          fontSize: "1.6rem",
-                          lineHeight: "1",
+                          fontSize: "1.4rem",
+                          lineHeight: "1.3",
                           flexShrink: 0,
+                          marginTop: "2px", // Better alignment with first line of text
                         }}
                       >
-                        ✔
-                      </span>{" "}
-                      {/* Accent color checkmark */}
-                      {item}
+                        ✓
+                      </span>
+                      <span style={{ flex: 1 }}>{item}</span>
                     </li>
                   ))}
                 </ul>

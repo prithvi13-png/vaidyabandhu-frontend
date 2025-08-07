@@ -16,6 +16,7 @@ button:focus,
 }
 .aside-open.sigma_aside {
     left: 0;
+    padding-top: 60px;
 }
 .aside-open.sigma_aside:not(.sigma_aside-desktop)+.sigma_aside-overlay, 
 .aside-right-open.sigma_aside-desktop+.sigma_aside-overlay {

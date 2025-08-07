@@ -10,7 +10,8 @@ function Counter(props) {
             <div className="row">
                 {/* Data */}
                 {counter.map((item, i) => (
-                    <div className="col-lg-3 col-md-4 col-sm-6" key={i}>
+                  <div key={i} style={{ flex: '0 0 auto', width: '20%', minWidth: '200px', marginBottom: '20px' }}>
+
                         <div className="sigma_counter style-5">
                             <span>
                                 <CountUp start={focus ? 0 : null} end={item.value} duration={5} redraw={true}>
