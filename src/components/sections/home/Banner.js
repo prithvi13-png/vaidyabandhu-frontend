@@ -295,7 +295,7 @@ const Banner = () => {
             }
             /* ✅ Add this new rule below everything else */
             .col-lg-10 {
-              padding-top: 150px !important;
+              padding-top: 80px !important;
             }
           }
           @media (max-width: 480px) {
