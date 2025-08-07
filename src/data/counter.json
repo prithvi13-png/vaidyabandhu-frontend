@@ -3,7 +3,7 @@
         "id":1,
         "icon":"fal fa-procedures",
         "title":"Verified Doctors",
-        "value":100
+        "value":200
     },
     {
         "id":2,
@@ -11,16 +11,23 @@
         "title":"Specialties Covered",
         "value":80
     },
-    {
+        {
         "id":3,
         "icon":"fal fa-heartbeat",
-        "title":"Satisfied Patients",
-        "value":200
+        "title":"Diagnostic Centers",
+        "value":100
     },
     {
         "id":4,
+        "icon":"fal fa-heartbeat",
+        "title":"Satisfied Patients",
+        "value":400
+    },
+  
+    {
+        "id":5,
         "icon":"fal fa-ambulance",
-        "title":"24/7 Support",
-        "value":100
+        "title":"Vaidya Bandhu Card Holder",
+        "value":1000
     }
 ]

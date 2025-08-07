@@ -47,7 +47,7 @@ const Headertwo = () => {
                                     </li>
                                     <li>
                                         <a href="tel:+918535853589">
-                                            <i className="fal fa-phone" /> +91 8535853589
+                                            <i className="fal fa-phone" /> +91 8535 8535 89
                                         </a>
                                     </li>
                                 </ul>
