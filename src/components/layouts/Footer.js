@@ -10,16 +10,228 @@ const dummyServiceblock = [
   { title: "One-Stop Solution", path: "/services/one-stop-solution" },
 ];
 
+// === POLICY TEXTS (as provided) ===
+const TERMS_TEXT = `Terms and Conditions:
+Welcome to Vaidya Bandhu. These Terms and Conditions govern your access to and use of our website,
+www.vaidyabandhu.com, our mobile applications (if any), and the services provided through them, including membership
+subscriptions, healthcare discounts, consultations, and related features. By accessing or using our Services, you agree to be
+bound by these Terms, our Privacy Policy, Refund Policy, and any other policies referenced herein. If you do not agree,
+please do not use our Services. We may update these terms from time to time. Continued use of the Services after changes
+constitutes your acceptance of the revised Terms.
+1. Eligibility: To use our Services, you must:
+● Be at least 18 years old or have parental/guardian consent if under 18.
+● Reside in India, as our services are currently available only within India.
+● Provide accurate and complete information during registration. We reserve the right to
+Refuse or terminate access if you do not meet these criteria
+2. Membership and Services
+Vaidya Bandhu offers a paid membership program for ₹49 per year, providing benefits such
+as:
+● Discounts on healthcare services at partnered hospitals and diagnostic centres.
+● Access to medical consultations.
+● Issuance of a membership card.
+• Health tips, updates, and promotional offers. Membership is valid for one year from activation and is
+non-transferable. Benefits are subject to availability and terms set by our partners. We do not guarantee specific discounts
+or service availability. Services are for informational and facilitative purposes only and do not constitute medical advice.
+Always consult a qualified healthcare professional for medical needs.
+3. User Accounts and Obligations
+To access certain Services, you may need to create an account. You agree to:
+● Provide truthful information and update it as necessary.
+● Maintain the confidentiality of your account credentials.
+● Do not share your account with others.
+● Notify us immediately of any unauthorised access. You are responsible for all activities
+under your account. Prohibited actions include:
+● Using services for illegal purposes.
+● Impersonating others or providing false information.
+● Interfering with the Website or Services.
+● Uploading harmful content or viruses. We may suspend or terminate your account for
+violations.
+4. Payments and Fees: Membership fees are payable via secure payment gateways.
+All payments are non-refundable except as outlined in our Refund Policy. You authorize us to charge the applicable fee to
+your chosen payment method. Taxes are included where applicable.
+5. Intellectual Property
+All content on the Website and Services, including text, graphics, logos, and software, is owned by us or our licensors and
+protected by intellectual property laws.
+You are granted a limited, non-exclusive license to use the Services for personal, non-commercial purposes. You may not
+copy, modify, distribute, or create derivative works without our written consent.
+6. Disclaimers and Limitation of Liability
+Services are provided ”as is” without warranties of any kind. We disclaim all warranties, express or implied, including
+fitness for a particular purpose.
+We are not liable for:
+● Inaccuracies in content or services provided by partners.
+● Any medical outcomes or advice from consultations.
+● Interruptions, errors, or data loss.
+● Indirect, consequential, or punitive damages.
+Our total liability shall not exceed the membership fee paid by you in the preceding 12 months.
+7. Indemnification
+You agree to indemnify and hold us harmless from any claims, losses, or damages arising from your use of the Services,
+violation of these Terms, or infringement of third-party rights.
+8. Termination
+We may terminate your access to Services at any time for any reason, including violations of these Terms. Upon termination,
+your right to use Services ceases, but provisions like liability and indemnification survive.
+9. Governing Law and Dispute Resolution
+These Terms are governed by the laws of India. Any disputes shall be resolved through arbitration in India, under the
+Arbitration and Conciliation Act, 1996, before a single arbitrator appointed by us. If arbitration is not feasible, disputes shall
+be subject to the exclusive jurisdiction of courts in India.
+10. Miscellaneous
+These Terms constitute the entire agreement between you and us. If any provision is invalid, the remainder remains
+enforceable.
+We are not liable for failures due to force majeure events.
+11. Contact Us
+For questions about these terms, contact us at
+● WhatsApp/Helpline: +91 8535853589
+● Email: support@vaidyabandhu.com
+● Website: www.vaidyabandhu.com`;
+
+const PRIVACY_TEXT = `Privacy Policy:
+At Vaidya Bandhu, we are dedicated to safeguarding your privacy and handling your personal data responsibly. This Privacy
+Policy explains our practices regarding the collection, use, processing, storage, disclosure, and protection of your personal
+information. We comply with the Digital Personal Data Protection Act, 2023 (DPDP Act), and other applicable Indian laws,
+ensuring transparency, fairness, and accountability in data handling.
+As a healthcare platform offering membership services, doctor appointment booking, consultations, and discounts at
+partnered facilities, we process personal data as a data fiduciary under the DPDP Act. Personal data includes any
+information that relates to an identified or identifiable individual, and we treat health-related data as sensitive personal data,
+applying enhanced protections.
+1. Information We Collect
+We collect personal information only when it is necessary and with your explicit consent or as permitted by law. Categories
+include:
+● Personal Identification Information: Full name, address, phone number, email address (optional), PAN (Permanent
+Account Number), and Aadhaar details (optional, collected only for identity verification where required).
+● Sensitive Personal Data: Health-related details, medical history, or consultation records (collected solely for
+providing medical services, with your explicit consent).
+● Usage and Technical Data: IP address, device information, browser type, and interaction logs when you visit our
+website or use our services (collected automatically for security and improvement purposes).
+● Other Data: Payment details (processed through secure gateways) and any other information you voluntarily
+provide during inquiries or support interactions. We adhere to data minimization principles, collecting only what is
+essential for the specified purposes.
+2. How We Use Your Information
+We process your personal data based on lawful grounds, primarily your consent or for legitimate uses as defined under the
+DPDP Act. Purposes include:
+● Processing membership registrations, issuing membership cards, and managing your
+account.
+● Facilitating healthcare services, such as booking appointments, providing discounts at
+partner hospitals/diagnostic centers, and enabling medical consultations.
+● Communicating service updates, health tips, and relevant promotional materials (you can
+opt out at any time).
+● Responding to inquiries, providing customer support, and improving our services through
+analytics.
+• Complying with legal obligations, such as record-keeping for regulatory purposes. We do not use your
+data for secondary purposes without obtaining fresh consent. Health data is used strictly for the purpose consented to, with
+no profiling or automated decision-making unless disclosed.
+3. Data Sharing and Disclosure
+We do not sell, rent, or trade your personal data. Sharing occurs only under the following controlled circumstances:
+● With Data Processors and Partners: Shared with authorised hospitals, doctors, or service providers (e.g.,
+diagnostic centers) solely for delivering membership benefits. These entities act as data processors and
+are contractually bound to DPDP Act compliance, including data security and confidentiality.
+● Legal Requirements: Disclosed to government authorities, regulators, or law enforcement if
+required by law, such as under court orders or for public health emergencies.
+● Other: In the event of business transfers (e.g., mergers), but only with anonymised data where possible.
+We do not transfer data outside India unless adequate protections are in place, as per the DPDP Act
+requirements.
+4. Data Security
+In accordance with the DPDP Act, we have implemented privacy by design and default, vulnerability assessments, and
+breach notification protocols.
+While we take all reasonable steps to secure your data, no system is infallible, especially over internet-based transmission.
+Please use strong passwords and secure networks.
+5. Data Retention
+We retain personal data only for as long as necessary to fulfil the purposes outlined or as required by law (e.g., 5-10 years for
+health records under medical regulations). After this period, the data is securely disposed of or anonymised
+6. Your Rights
+As a Data Principal under the DPDP Act, you have the following rights:
+● Access: Request a summary or copy of your personal data.
+● Correction and Update: Rectify inaccurate or incomplete information.
+● Erasure: Request deletion of data when no longer needed (subject to legal exceptions, such as ongoing
+services or regulatory retention).
+● Consent Withdrawal: Withdraw consent at any time, which may limit service access.
+● Grievance Redressal: Lodge complaints about data handling.
+● Nomination: Nominate a person to exercise rights on your behalf in case of incapacity.
+● Restriction of Processing: Object to certain uses of your data.
+To exercise these rights, email us at support@vaidyabandhu.com. We will respond within 30 days, free of charge for most
+requests. For grievances, contact us at the same address. If you are a parent/guardian, we require verifiable parental
+Consent for processing children’s data (under 18), and such processing is limited.
+7. Cookies and Tracking Technologies
+Our website uses cookies, pixels, and analytics tools to enhance user experience, track usage, and improve functionality.
+These do not collect sensitive data without consent.
+8. Children’s Privacy
+Our services are not directed at children under 18. We do not knowingly collect data from minors without parental consent.
+If we discover such data, we will delete it promptly.
+9. Updates to This Policy
+We may update this policy to reflect legal changes or service updates. Changes will be posted on the website with a new
+effective date, and we may notify you via email for significant updates. Continued use constitutes acceptance.
+10. Contact Us
+For questions, concerns, or to exercise rights, reach out:
+● WhatsApp/Helpline: +91 8535853589
+● Email: support@vaidyabandhu.com
+● Website: www.vaidyabandhu.com`;
+
+const REFUND_TEXT = `Refund and Cancellation Policies:
+At Vaidya Bandhu Healthcare Foundation, we are committed to providing quality and affordable healthcare services to our
+members. This Refund Policy outlines the conditions under which refunds may or may not be issued for payments related to
+our membership and services.
+We aim to ensure transparency and fairness in all transactions.
+1. The Membership Fee of ₹49 is non-refundable.
+● Once the payment is successfully processed and the membership is activated, no refund will be issued
+under any circumstances.
+● This fee covers administrative and operational costs, including the issuance of and access to benefits
+such as discounts on healthcare services and consultations.
+2. Service Eligibility Membership benefits, including discounts and consultations, are available throughout the
+1-year validity period of the membership.
+● If a member is unable to utilise the services due to personal reasons, no partial or full refund will be
+provided.
+● Non-utilization of services does not entitle members to a refund, as the membership fee is for access
+to the benefits provided during the validity period.
+3. Duplicate Payments: In the event of a duplicate payment for the same membership due to a technical error or
+banking issue:
+● Please contact us with proof of the transaction, such as a transaction reference ID or screenshot of the
+payment.
+● Upon verification, a refund for the duplicate payment will be processed within 7–10 business days to
+the original mode of payment.
+Please note: Any applicable transaction or processing fees will be deducted from the refund amount.
+4. Failed Transactions: If a payment fails but the amount is deducted from your account:
+● The deducted amount is typically reversed automatically by your bank or payment provider within
+5–7 business days.
+● If the amount is not refunded within this period, please share the transaction reference ID with us. We
+will coordinate with the payment gateway to resolve the issue promptly.
+5. How to Request a Refund. Refunds, applicable only in cases of duplicate payments or failed transactions, can
+be requested by emailing us at payments@vaidyabandhu.com with the following details:
+● Full Name
+● Mobile Number
+● Transaction Reference ID
+● Screenshot of payment (if available)
+● Reason for refund request: We will review and process eligible refund requests within 7–10 business
+days.
+6. Contact Us For any questions related to your membership, billing, or refund requests, please reach out to us at:
+● WhatsApp/Helpline: +91 8535853589
+● Email: payments@vaidyabandhu.com
+● Website: www.vaidyabandhu.com`;
+
 const Footer = () => {
   const [animated, setAnimated] = useState(false);
+  const [showModal, setShowModal] = useState(null); // 'terms', 'privacy', 'refund'
 
   useEffect(() => {
-    // Trigger animation after component mounts
     const timer = setTimeout(() => setAnimated(true), 200);
     return () => clearTimeout(timer);
   }, []);
 
   const baseTransition = "all 0.3s ease-in-out";
+
+  // Handlers for opening modals
+  const openTerms = (e) => {
+    e.preventDefault();
+    setShowModal("terms");
+  };
+  const openPrivacy = (e) => {
+    e.preventDefault();
+    setShowModal("privacy");
+  };
+  const openRefund = (e) => {
+    e.preventDefault();
+    setShowModal("refund");
+  };
+
+  const closeModal = () => {
+    setShowModal(null);
+  };
 
   return (
     <footer
@@ -67,7 +279,6 @@ const Footer = () => {
           zIndex: 0,
         }}
       ></div>
-
       <div
         className="container"
         style={{
@@ -79,6 +290,7 @@ const Footer = () => {
         }}
       >
         <div
+          className="responsive-stack"
           style={{
             display: "flex",
             flexWrap: "wrap",
@@ -87,7 +299,8 @@ const Footer = () => {
             marginBottom: "60px",
             opacity: animated ? 1 : 0,
             transform: animated ? "translateY(0)" : "translateY(30px)",
-            transition: `opacity 0.8s ease-out 0.2s, transform 0.8s ease-out 0.2s`,
+            transition:
+              "opacity 0.8s ease-out 0.2s, transform 0.8s ease-out 0.2s",
           }}
         >
           {/* Address Info */}
@@ -156,7 +369,6 @@ const Footer = () => {
               </p>
             </div>
           </div>
-
           {/* Phone Info */}
           <div
             style={{
@@ -222,7 +434,6 @@ const Footer = () => {
               </p>
             </div>
           </div>
-
           {/* Email Info */}
           <div
             style={{
@@ -290,7 +501,6 @@ const Footer = () => {
             </div>
           </div>
         </div>
-
         <div
           style={{
             padding: "60px 0",
@@ -353,7 +563,6 @@ const Footer = () => {
                 ))}
               </ul>
             </div>
-
             {/* Useful Links */}
             <div>
               <h5
@@ -376,15 +585,12 @@ const Footer = () => {
                 }}
               >
                 {[
-                 
-                  // { title: "About Us", path: "/about" },
                   { title: "Doctors", path: "/doctor-list" },
                   { title: "Specialities", path: "/doctor-grid" },
                   { title: "Hospitals", path: "/hospital-list" },
                   { title: "Diagnostics", path: "/clinic-list" },
-                     { title: "Our Services", path: "/services" },
+                  { title: "Our Services", path: "/services" },
                   { title: "Contact Us", path: "/contact" },
-
                 ].map((item, i) => (
                   <li key={i} style={{ marginBottom: "10px" }}>
                     <a
@@ -409,7 +615,6 @@ const Footer = () => {
                 ))}
               </ul>
             </div>
-
             {/* Subscribe Form */}
             <div>
               <h5
@@ -480,13 +685,13 @@ const Footer = () => {
                     marginBottom: "0",
                   }}
                 >
-                  Get The Latest Updates via email. Any time you may unsubscribe.
+                  Get The Latest Updates via email. Any time you may
+                  unsubscribe.
                 </p>
               </form>
             </div>
           </div>
         </div>
-
         <div
           style={{
             padding: "25px 0",
@@ -513,7 +718,7 @@ const Footer = () => {
             }}
           >
             <p style={{ margin: "0", lineHeight: "1.6" }}>
-              ©{" "}
+              Â©{" "}
               <a
                 href="#"
                 style={{
@@ -524,7 +729,7 @@ const Footer = () => {
               >
                 2025
               </a>{" "}
-              Vaidya Bandhu – All Rights Reserved. <br />
+              Vaidya Bandhu â€“ All Rights Reserved. <br />
               This website and its content are the intellectual property of{" "}
               <strong>MyCompanyon Healthcare Pvt Ltd</strong>. <br />
               Unauthorized use is strictly prohibited under{" "}
@@ -538,14 +743,14 @@ const Footer = () => {
               listStyle: "none",
               padding: 0,
               margin: 0,
-              justifyContent: "center", // center for small screens (you can change this)
+              justifyContent: "center", // center for small screens
               gap: "10px", // controls spacing between items
             }}
           >
             {[
-              { title: "Privacy Policy", path: "#" },
-              { title: "Terms & Conditions", path: "#" },
-              { title: "Refund & Cancellation Policy", path: "#" },
+              { title: "Privacy Policy", action: openPrivacy },
+              { title: "Terms & Conditions", action: openTerms },
+              { title: "Refund & Cancellation Policy", action: openRefund },
             ].map((item, i, arr) => (
               <li
                 key={i}
@@ -556,10 +761,11 @@ const Footer = () => {
                 }}
               >
                 <a
-                  href={item.path}
+                  href="#"
+                  onClick={item.action}
                   style={{
                     fontSize: "14px",
-                      fontFamily: "poppins",
+                    fontFamily: "poppins",
                     color: "#cbd5e0",
                     textDecoration: "none",
                     transition: "0.3s all",
@@ -573,7 +779,6 @@ const Footer = () => {
                 >
                   {item.title}
                 </a>
-
                 {/* Add | separator only if not last item */}
                 {i < arr.length - 1 && (
                   <span style={{ marginLeft: "10px", color: "#a0aec0" }}>
@@ -586,132 +791,203 @@ const Footer = () => {
         </div>
       </div>
 
-      {/* Keyframes for the floating background shapes */}
+      {/* === MODAL OVERLAY === */}
+      {showModal && (
+        <div
+          style={{
+            position: "fixed",
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "100%",
+            backgroundColor: "rgba(0, 0, 0, 0.8)",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            zIndex: 9999,
+            padding: "20px",
+            boxSizing: "border-box",
+          }}
+          onClick={closeModal}
+        >
+          <div
+            style={{
+              background: "#001a1b",
+              borderRadius: "12px",
+              width: "100%",
+              maxWidth: "800px",
+              maxHeight: "90vh",
+              overflowY: "auto",
+              border: "1px solid #007a7e",
+              boxShadow: "0 10px 30px rgba(0, 0, 0, 0.5)",
+            }}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div
+              style={{
+                padding: "20px",
+                borderBottom: "1px solid #007a7e",
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "center",
+              }}
+            >
+              <h3 style={{ margin: "0", color: "#e2e8f0", fontSize: "18px" }}>
+                {showModal === "terms"
+                  ? "Terms and Conditions"
+                  : showModal === "privacy"
+                  ? "Privacy Policy"
+                  : "Refund and Cancellation Policy"}
+              </h3>
+              <button
+                onClick={closeModal}
+                style={{
+                  background: "transparent",
+                  border: "none",
+                  color: "#a0aec0",
+                  fontSize: "20px",
+                  cursor: "pointer",
+                  padding: "0 10px",
+                }}
+              >
+                ✕
+              </button>
+            </div>
+            <div
+              style={{
+                padding: "20px",
+                color: "#cbd5e0",
+                fontSize: "14px",
+                lineHeight: "1.6",
+                whiteSpace: "pre-wrap",
+                fontFamily: "poppins",
+              }}
+            >
+              {showModal === "terms"
+                ? TERMS_TEXT
+                : showModal === "privacy"
+                ? PRIVACY_TEXT
+                : REFUND_TEXT}
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* === Keyframes for floating shapes and responsive styles === */}
       <style>
         {`
-                    @keyframes floatShape3 {
-                        0% { transform: translate(0, 0); }
-                        50% { transform: translate(15px, 15px); }
-                        100% { transform: translate(0, 0); }
-                    }
-                    @keyframes floatShape4 {
-                        0% { transform: translate(0, 0); }
-                        50% { transform: translate(-15px, -15px); }
-                        100% { transform: translate(0, 0); }
-                    }
-
-                    /* Responsive adjustments */
-                    @media (max-width: 992px) {
-                        div[style*="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr))"] {
-                            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)) !important;
-                        }
-                    }
-
-                    @media (max-width: 768px) {
-                        div[style*="display: flex"][style*="flex-wrap: wrap"][style*="justify-content: space-around"] {
-                            flex-direction: column !important;
-                            align-items: center !important;
-                            gap: 40px !important;
-                        }
-                        div[style*="flex: 1 1 280px"] { /* Info blocks */
-                            max-width: 90% !important;
-                            text-align: center !important;
-                            align-items: center !important;
-                            justify-content: center !important;
-                        }
-                        div[style*="flex: 1 1 300px"], div[style*="flex: 1 1 200px"] { /* Copyright and bottom links */
-                            flex-basis: 100% !important;
-                            text-align: center !important;
-                            justify-content: center !important;
-                        }
-                        ul[style*="justify-content: flex-end"] { /* Bottom links */
-                            justify-content: center !important;
-                        }
-                        h2 { font-size: clamp(30px, 6vw, 40px) !important; }
-                        p { font-size: clamp(15px, 2.5vw, 18px) !important; }
-                        h5 { font-size: clamp(18px, 3vw, 22px) !important; }
-                    }
-@media (max-width: 480px) {
-  div[style*="padding-top: 60px"] {
-    padding-top: 40px !important;
+          @keyframes floatShape3 {
+            0% { transform: translate(0, 0); }
+            50% { transform: translate(15px, 15px); }
+            100% { transform: translate(0, 0); }
+          }
+          @keyframes floatShape4 {
+            0% { transform: translate(0, 0); }
+            50% { transform: translate(-15px, -15px); }
+            100% { transform: translate(0, 0); }
+          }
+          /* Responsive styles (unchanged from original) */
+          @media (max-width: 992px) {
+            div[style*="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr))"] {
+              grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)) !important;
+            }
+          }
+          @media (max-width: 768px) {
+            div[style*="display: flex"][style*="flex-wrap: wrap"][style*="justify-content: space-around"] {
+              flex-direction: column !important;
+              align-items: center !important;
+              gap: 40px !important;
+            }
+            div[style*="flex: 1 1 280px"] {
+              max-width: 90% !important;
+              text-align: center !important;
+              align-items: center !important;
+              justify-content: center !important;
+            }
+            div[style*="flex: 1 1 300px"], div[style*="flex: 1 1 200px"] {
+              flex-basis: 100% !important;
+              text-align: center !important;
+              justify-content: center !important;
+            }
+            ul[style*="justify-content: flex-end"] {
+              justify-content: center !important;
+            }
+          }
+          @media (max-width: 480px) {
+            div[style*="padding-top: 60px"] {
+              padding-top: 40px !important;
+            }
+            div[style*="margin-bottom: 60px"] {
+              margin-bottom: 40px !important;
+            }
+            div[style*="padding: 60px 0"] {
+              padding: 40px 0 !important;
+            }
+            div[style*="padding: 25px 0"] {
+              padding: 15px 0 !important;
+            }
+            h2 { font-size: clamp(30px, 6vw, 40px) !important; }
+            p { font-size: clamp(15px, 2.5vw, 18px) !important; }
+            h5 { font-size: clamp(18px, 3vw, 22px) !important; }
+            input[type="email"], button {
+              padding: 10px 12px !important;
+              font-size: 14px !important;
+            }
+            /* Mobile layout fix for info blocks */
+            div[style*="flex: 1 1 280px"] {
+              display: table !important;
+              width: 100% !important;
+              text-align: left !important;
+              max-width: 100% !important;
+              margin-bottom: 20px !important;
+            }
+            div[style*="flex: 1 1 280px"] > div:first-child {
+              display: table-cell !important;
+              vertical-align: middle !important;
+              width: 60px !important;
+            }
+            div[style*="flex: 1 1 280px"] > div:nth-child(2) {
+              display: table-cell !important;
+              vertical-align: middle !important;
+              padding-left: 15px !important;
+            }
+              @media (max-width: 480px) {
+             .responsive-stack {
+              display: block !important;
+           }
+             }
+           /* Properly align icons inside circular background */
+  div[style*="flex: 1 1 280px"] {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    text-align: left !important;
+    margin-bottom: 20px !important;
+    gap: 15px !important; /* Keep spacing between icon and text */
   }
-
-  div[style*="margin-bottom: 60px"] {
-    margin-bottom: 40px !important;
-  }
-
-  div[style*="padding: 60px 0"] {
-    padding: 40px 0 !important;
-  }
-
-  div[style*="padding: 25px 0"] {
-    padding: 15px 0 !important;
-  }
-
-  h2 {
-    font-size: clamp(28px, 7vw, 36px) !important;
-  }
-
-  p {
-    font-size: clamp(14px, 3vw, 16px) !important;
-  }
-
-  h5 {
-    font-size: clamp(16px, 4vw, 20px) !important;
-  }
-
-  input[type="email"],
-  button {
-    padding: 10px 12px !important;
-    font-size: 14px !important;
-  }
-
-  ul[style*="gap: 15px"] {
-    gap: 10px !important;
-  }
-
-  ul[style*="gap: 15px"] li span {
-    margin-left: 10px !important;
-  }
-
-  /* Remove display: flex and fix icon + text block layout */
-  div[style*="display: flex"][style*="flex-wrap: wrap"][style*="justify-content: space-around"] {
-    display: block !important;
-    gap: 0 !important;
-    margin-bottom: 40px !important;
-  }
-
-  /* ICON + TEXT block fix (only on mobile) */
- div[style*="flex: 1 1 280px"] {
-  display: table !important;
-  width: 100% !important;
-  text-align: left !important;
-  max-width: 100% !important;
-  gap: 0 !important;
-  margin-bottom: 20px !important; /* ✅ adds vertical gap between blocks */
-}
-
-
   div[style*="flex: 1 1 280px"] > div:first-child {
-    display: table-cell !important;
-    vertical-align: middle !important;
-    width: 60px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 50px !important;
+    height: 50px !important;
+    min-width: 50px !important;
+    min-height: 50px !important;
+    margin: 0 !important;
+    padding: 0 !important;
   }
-
-  div[style*="flex: 1 1 280px"] > div:first-child svg {
-    display: block !important;
-    margin: auto;
-  }
-
   div[style*="flex: 1 1 280px"] > div:nth-child(2) {
-    display: table-cell !important;
+    display: block !important;
+    padding-left: 0 !important;
     vertical-align: middle !important;
-    padding-left: 15px !important;
+    width: auto !important;
   }
-}
 
-
-                `}
+          }
+        `}
       </style>
     </footer>
   );

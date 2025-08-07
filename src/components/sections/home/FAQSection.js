@@ -218,7 +218,7 @@ const FAQSection = () => {
                       fontSize: "clamp(18px, 2.5vw, 20px)",
                       fontWeight: "600",
                       color: "#004d4f",
-                        fontFamily: "poppins",
+                      fontFamily: "poppins",
                       margin: 0,
                       flexGrow: 1,
                       textAlign: "left",
@@ -230,7 +230,7 @@ const FAQSection = () => {
                     style={{
                       fontSize: "16px", // Slightly larger arrow
                       color: "#007a7e",
-                        fontFamily: "poppins",
+                      fontFamily: "poppins",
                       transform: isOpen ? "rotate(180deg)" : "rotate(0deg)",
                       transition: "transform 0.3s ease",
                       marginLeft: "15px",
@@ -254,18 +254,20 @@ const FAQSection = () => {
                     position: "relative",
                   }}
                 >
-                  <p
-                    ref={answerRefs.current[index]} // Assign the ref to the paragraph element
-                    style={{
-                      fontSize: "clamp(15px, 2vw, 17px)",
-                      color: "#5a6778",
-                      lineHeight: "1.3",
-                      margin: 0,
-                      paddingTop: "15px", // Space from top of answer area
-                    }}
-                  >
-                    {faq.answer}
-                  </p>
+                <p
+  ref={answerRefs.current[index]}
+  style={{
+    fontSize: "clamp(15px, 2vw, 17px)",
+    color: "#5a6778",
+    lineHeight: "1.3",
+    margin: 0,
+    paddingTop: "15px",
+    textAlign: "left", // <-- add this line
+  }}
+>
+  {faq.answer}
+</p>
+
                 </div>
               </div>
             );

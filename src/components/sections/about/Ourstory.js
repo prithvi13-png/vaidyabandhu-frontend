@@ -324,8 +324,8 @@ const OurStory = () => {
                   }}
                 >
                   {[
-                    "10 – 40% off on surgeries, treatments & diagnostics",
-                    "Free medical guidance for informed decisions",
+                    "10% – 40% off on surgeries, treatments & diagnostics.",
+                    "Free medical guidance for informed decisions.",
                     "Get 10% Cashback: Send your bill to Vaidya Bandhu via WhatsApp or Email. Cashback will be credited to your account within 7 working days.",
                     "Top doctors across all specialties and everywhere.",
                     "Free surgeries for the needy through our social impact programs.",

@@ -15,7 +15,7 @@ class Testimonials extends Component {
                 fontWeight: "800",
                 fontFamily: "Poppins",
                 color: "#004d4f",
-                marginBottom: "10px",
+                marginBottom: "-15px",
                 lineHeight: "1.3",
                 //   opacity: animated ? 1 : 0,
                 //   transform: animated ? "translateY(0)" : "translateY(30px)",

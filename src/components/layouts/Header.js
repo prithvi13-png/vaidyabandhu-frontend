@@ -194,18 +194,42 @@ const Header = () => {
                   gap: "12px",
                 }}
               >
-                <Link to="#" style={{ fontSize: "16px", color: "#fff" }}>
-                  <i className="fab fa-facebook-f" />
-                </Link>
-                <Link to="#" style={{ fontSize: "16px", color: "#fff" }}>
-                  <i className="fab fa-twitter" />
-                </Link>
-                <Link to="#" style={{ fontSize: "16px", color: "#fff" }}>
-                  <i className="fab fa-linkedin-in" />
-                </Link>
-                <Link to="#" style={{ fontSize: "16px", color: "#fff" }}>
-                  <i className="fab fa-google" />
-                </Link>
+                {/* Replace Font Awesome icons with images */}
+              <a href="#" style={{ fontSize: "16px", color: "#fff" }}>
+                <img
+                  src="/assets/img/facebook.jpg"
+                  alt="Facebook"
+                  style={{ width: "24px", height: "24px" }}
+                />
+              </a>
+              <a href="#" style={{ fontSize: "16px", color: "#fff" }}>
+                <img
+                  src="/assets/img/twitter.jpg"
+                  alt="Twitter"
+                  style={{ width: "24px", height: "24px" }}
+                />
+              </a>
+              <a href="#" style={{ fontSize: "16px", color: "#fff" }}>
+                <img
+                  src="/assets/img/linkedin.jpg"
+                  alt="LinkedIn"
+                  style={{ width: "24px", height: "24px" }}
+                />
+              </a>
+              <a href="#" style={{ fontSize: "16px", color: "#fff" }}>
+                <img
+                  src="/assets/img/instagram.jpg"
+                  alt="Google"
+                  style={{ width: "24px", height: "24px" }}
+                />
+              </a>
+              <a href="#" style={{ fontSize: "16px", color: "#fff" }}>
+                <img
+                  src="/assets/img/youtube.jpg"
+                  alt="Google"
+                  style={{ width: "24px", height: "24px" }}
+                />
+              </a>
               </div>
 
               {/* Right: Contact Info */}
