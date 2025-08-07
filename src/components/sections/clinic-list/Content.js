@@ -42,6 +42,9 @@ const DiagnosticCentersApp = () => {
 
   const navigate = useNavigate();
 
+  // Search state
+  const [serviceSearch, setServiceSearch] = React.useState("");
+
   const token = localStorage.getItem("token");
   const itemsPerPage = 5;
   const defaultImage =
@@ -274,6 +277,12 @@ const DiagnosticCentersApp = () => {
     e.stopPropagation();
   };
 
+  const filteredServices = isNotEmptyArray(services?.data)
+    ? services.data.filter((service) =>
+        service.name.toLowerCase().includes(serviceSearch.trim().toLowerCase())
+      )
+    : [];
+
   return (
     <div className="min-vh-100" style={{ backgroundColor: "#f8fafc" }}>
       {/* Modern Header with Gradient */}
@@ -437,8 +446,18 @@ const DiagnosticCentersApp = () => {
                           overflowY: "auto",
                         }}
                       >
-                        {isNotEmptyArray(services?.data) ? (
-                          services.data.map((service) => (
+                        {/* Search box */}
+                        <input
+                          type="text"
+                          className="form-control mb-3"
+                          placeholder="Search services..."
+                          value={serviceSearch}
+                          onChange={(e) => setServiceSearch(e.target.value)}
+                          style={{ borderRadius: 8, maxWidth: 340 }}
+                        />
+
+                        {isNotEmptyArray(filteredServices) ? (
+                          filteredServices.map((service) => (
                             <div
                               key={service.id}
                               className="mb-3 pb-2"
@@ -463,7 +482,6 @@ const DiagnosticCentersApp = () => {
                                   {service.name}
                                 </label>
                               </div>
-
                               {/* Sub-services */}
                               {selectedServices.includes(service.id) &&
                                 isNotEmptyArray(service.sub_category) && (
@@ -511,7 +529,7 @@ const DiagnosticCentersApp = () => {
             )}
           </div>
 
-{/* Desktop Filters Sidebar */}
+          {/* Desktop Filters Sidebar */}
           <div className="col-lg-4 d-none d-lg-block">
             <div
               className="card border-0 shadow-sm mb-4 position-sticky"
@@ -587,23 +605,28 @@ const DiagnosticCentersApp = () => {
                       className="border-0 bg-light p-3 flex-grow-1"
                       style={{
                         borderRadius: "12px",
-                        // minHeight: "350px",
-                        // maxHeight: "400px",
-                        // overflowY: "auto",
-                        // overflowX: "hidden",
                       }}
                     >
-                      {isNotEmptyArray(services?.data) ? (
-                        services.data.map((service) => (
+                      {/* Add the search box here */}
+                      <input
+                        type="text"
+                        className="form-control mb-3"
+                        placeholder="Search services..."
+                        value={serviceSearch}
+                        onChange={(e) => setServiceSearch(e.target.value)}
+                        style={{ borderRadius: 8, maxWidth: 340 }}
+                      />
+
+                      {isNotEmptyArray(filteredServices) ? (
+                        filteredServices.map((service) => (
                           <div
                             key={service.id}
                             className="mb-3"
-                            style={{ 
+                            style={{
                               borderBottom: "1px solid #00000012",
-                              paddingBottom: "12px"
                             }}
                           >
-                            <div className="form-check">
+                            <div className="form-check d-flex justify-content-between align-items-center">
                               <input
                                 className="form-check-input"
                                 type="checkbox"
@@ -618,16 +641,17 @@ const DiagnosticCentersApp = () => {
                               >
                                 {service.name}
                               </label>
+                              <ChevronRight size={20} />
                             </div>
 
                             {/* Sub-services with Smooth Animation */}
                             {selectedServices.includes(service.id) &&
                               isNotEmptyArray(service.sub_category) && (
-                                <div 
+                                <div
                                   className="ms-4 mt-2"
                                   style={{
                                     animation: "slideDown 0.2s ease-out",
-                                    transformOrigin: "top"
+                                    transformOrigin: "top",
                                   }}
                                 >
                                   {service.sub_category.map((subService) => (
@@ -649,9 +673,9 @@ const DiagnosticCentersApp = () => {
                                       <label
                                         className="form-check-label text-muted"
                                         htmlFor={`sub-service-${subService.id}`}
-                                        style={{ 
+                                        style={{
                                           wordBreak: "break-word",
-                                          fontSize: "0.9rem"
+                                          fontSize: "0.9rem",
                                         }}
                                       >
                                         {subService.name}
