@@ -89,7 +89,7 @@ const HospitalsPage = () => {
         <Container className="py-4">
           <div className="text-center mb-4">
             <p className="text-muted">
-              Discover quality healthcare facilities near you
+              Discover quality healthcare facilities near you.
             </p>
           </div>
 
@@ -267,6 +267,7 @@ const HospitalsPage = () => {
               <div className="pagination-custom">
                 {data.pagination_data.previous_page && (
                   <Button
+                  style={{ width: '100px'}}
                     size="sm"
                     onClick={() =>
                       handlePageChange(
@@ -280,7 +281,7 @@ const HospitalsPage = () => {
 
                 <Badge
                   bg="green"
-                  style={{ background: "#008493" }}
+                  style={{ background: "", color: '#008493' }}
                   className="px-3 py-2"
                 >
                   Page {data.pagination_data.current_page_number}
@@ -288,6 +289,7 @@ const HospitalsPage = () => {
 
                 {data.pagination_data.next_page && (
                   <Button
+                  style={{ width: '100px'}}
                     size="sm"
                     onClick={() =>
                       handlePageChange(
