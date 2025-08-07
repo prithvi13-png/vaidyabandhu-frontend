@@ -8,6 +8,7 @@ import {
   Spinner,
 } from "react-bootstrap";
 import { CheckCircle, Mail, Phone, User, MapPin } from "lucide-react";
+import { toast } from "sonner";
 
 const ShowEnquireModal = ({ show, onClose, setShowSuccessMessage, token }) => {
   const [formData, setFormData] = useState({
@@ -70,7 +71,7 @@ const ShowEnquireModal = ({ show, onClose, setShowSuccessMessage, token }) => {
     setErrors({});
 
     try {
-      const response = await fetch("https://stage.vaidyabandhu.com/api/users/enquiry", {
+      const response = await fetch("https://stage.vaidyabandhu.com/api/users/enquiry/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -87,8 +88,7 @@ const ShowEnquireModal = ({ show, onClose, setShowSuccessMessage, token }) => {
         setFormData({ full_name: "", phone: "", email: "", address: "" });
         setErrors({});
         onClose();
-        setShowSuccessMessage(true);
-        setTimeout(() => setShowSuccessMessage(false), 3000);
+        toast.success(data.message, {position: 'top-center'})
       } else {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
