@@ -117,19 +117,18 @@ function AppRoutes() {
         element={<Clinicdetails key={window.location.pathname} />}
       />
       <Route
-        path="/clinic-list-details/:id"
+        path="/clinic-list-details"
         element={<ClinicListdetails key={window.location.pathname} />}
       />
 
       <Route path="/doctor-grid" element={<Doctorgrid />} />
       <Route path="/doctor-list" element={<Doctorlist />} />
-      <Route path="/doctor-list/:id" element={<Doctorlist />} />
       <Route
         path="/doctor/cat/:catId"
         element={<Doctorgrid key={window.location.pathname} />}
       />
       <Route
-        path="/doctor-details/:id"
+        path="/doctor-details"
         element={<Doctordetails key={window.location.pathname} />}
       />
 

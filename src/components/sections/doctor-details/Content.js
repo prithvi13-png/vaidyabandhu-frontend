@@ -54,7 +54,7 @@ const Content = ({ detailId }) => {
                     <div className="col-md-8">
                       <div className="sigma_team-body">
                         <h5>
-                          <Link to={"/doctor-details/" + (item.id || "unknown")}>
+                          <Link to={"/doctor-details?id=" + (item.id || "unknown")}>
                             {item.full_name}
                           </Link>
                         </h5>
@@ -66,7 +66,7 @@ const Content = ({ detailId }) => {
                         </div>
                         <div className="sigma_team-categories">
                           <Link
-                            to={"/doctor-details/" + (item.id || "unknown")}
+                            to={"/doctor-details?id=" + (item.id || "unknown")}
                             className="sigma_team-category"
                           >
                             {item.designation}

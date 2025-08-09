@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Pagination from "react-js-pagination";
 import { useLocation } from "react-router-dom";
 import { isNotEmptyArray } from "../../utiles/utils";
@@ -73,7 +73,7 @@ const Content = () => {
   const { search } = useLocation();
   const params = new URLSearchParams(search);
   const specialtyParam = params.get("specialty");
-  const { id } = useParams();
+  const id = params.get("id");
 
   // Filters
   const [searchTerm, setSearchTerm] = useState("");
@@ -694,14 +694,14 @@ const Content = () => {
                         <div className="col-md-5 col-sm-6">
                           <div className="sigma_team-body">
                             <h5>
-                              <Link to={`/doctor-details/${item.id}`}>
+                              <Link to={`/doctor-details?id=${item.id}`}>
                                 {item.full_name}
                               </Link>
                             </h5>
                             <div className="sigma_team-categories">
                               {item.speciality?.map((specialityItem, index) => (
                                 <Link
-                                  to={`/doctor-details/${specialityItem.id}`}
+                                  to={`/doctor-details?id=${specialityItem.id}`}
                                   className="sigma_team-category"
                                   key={index}
                                 >
@@ -713,7 +713,7 @@ const Content = () => {
                             <p>{item.qualification}</p>
                             <div className="d-flex align-items-center mt-4">
                               <Link
-                                to={`/doctor-details/${item.id}`}
+                                to={`/doctor-details?id=${item.id}`}
                                 className="sigma_btn"
                               >
                                 View More
