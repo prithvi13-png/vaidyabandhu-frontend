@@ -328,7 +328,7 @@ const Header = () => {
                   href="tel:+918535853589"
                   style={{ color: "#fff", textDecoration: "none" }}
                 >
-                  <i className="fal fa-mobile" style={{ marginRight: "5px" }} /> +91 8535853589
+                  <i className="fal fa-mobile" style={{ marginRight: "5px" }} /> +91 8535 8535 89
                 </a>
               </div>
             </div>

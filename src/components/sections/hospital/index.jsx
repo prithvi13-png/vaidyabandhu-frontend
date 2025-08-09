@@ -230,7 +230,7 @@ const HospitalsPage = () => {
                                 className="text-success me-1"
                               />
                               <small className="text-success fw-medium">
-                                Refund Available
+                                Varified
                               </small>
                             </div>
                           </Col>
