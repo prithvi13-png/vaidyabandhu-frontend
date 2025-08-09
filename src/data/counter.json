@@ -11,14 +11,20 @@
         "title":"Specialties Covered",
         "value":80
     },
-    {
+     {
         "id":3,
+        "icon":"fal fa-file-medical-alt",
+        "title":"Diagnostic Centers",
+        "value":80
+    },
+    {
+        "id":4,
         "icon":"fal fa-heartbeat",
         "title":"Satisfied Patients",
         "value":200
     },
     {
-        "id":4,
+        "id":5,
         "icon":"fal fa-ambulance",
         "title":"Our Card Holders",
         "value":1000
