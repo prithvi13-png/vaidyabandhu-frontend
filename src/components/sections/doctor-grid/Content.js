@@ -255,23 +255,10 @@ const MedicalDepartments = () => {
                       />
                     </div>
                     <div className="mdc-specialty-title">
-                      {spec.description}
+                      {spec.title}
                     </div>
                     <div className="mdc-specialty-meta">
                       <span className="mdc-specialty-code">{spec.code}</span>
-                      <span
-                        className={`mdc-badge ${
-                          spec.is_active
-                            ? "mdc-badge-active"
-                            : "mdc-badge-inactive"
-                        }`}
-                      >
-                        {spec.is_active ? "Active" : "Inactive"}
-                      </span>
-                    </div>
-                    <div className="mdc-specialty-dates">
-                      <span>Start: {spec.start_date}</span>
-                      {spec.end_date && <span>End: {spec.end_date}</span>}
                     </div>
                   </div>
                 ))}

@@ -219,12 +219,6 @@ const Content = ({ detailId }) => {
                   <div className="quick-info-item mb-3">
                     <strong>Specialization:</strong> {item.designation}
                   </div>
-                  <div className="quick-info-item mb-3">
-                    <strong>Procedures Performed:</strong>
-                    <ul className="mt-2">
-                      <li>{item.awards_achievements || "—"}</li>
-                    </ul>
-                  </div>
                 </div>
               </div>
 
