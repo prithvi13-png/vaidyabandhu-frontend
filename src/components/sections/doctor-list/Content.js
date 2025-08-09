@@ -759,7 +759,7 @@ const Content = () => {
                     <Pagination
                       activePage={activePage}
                       itemsCountPerPage={itemPerpage}
-                      totalItemsCount={data.data.length}
+                      totalItemsCount={data?.pagination_data?.total_count}
                       pageRangeDisplayed={5}
                       onChange={handlePageChange}
                       innerClass="pagination"
