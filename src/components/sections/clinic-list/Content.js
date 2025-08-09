@@ -193,7 +193,7 @@ const DiagnosticCentersApp = () => {
 
   const handleCenterClick = (center) => {
     // Navigate to the center details page
-    navigate(`/clinic-list-details/${center.id}`);
+    navigate(`/clinic-list-details?id=${center.id}`);
     console.log(`Navigate to center ${center.id}`);
   };
 

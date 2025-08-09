@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import { useParams } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 import { Helmet } from "react-helmet-async";
 import Breadcrumbs from '../layouts/Breadcrumbs';
 import Footer from '../layouts/Footer';
@@ -9,7 +9,8 @@ import Header from '../layouts/Header';
 const pagelocation = "Doctor Details";
 
 function Doctordetails() {
-    const { id } = useParams();
+  const [searchParams] = useSearchParams();
+  const id = searchParams.get("id");
 
     return (
         <Fragment>

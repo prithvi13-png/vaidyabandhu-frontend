@@ -1,11 +1,12 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { Phone, MapPin, Star, Calendar } from "lucide-react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import { Spinner } from "react-bootstrap";
 import ShowEnquireModal from "../clinic-list/showEnquireModal";
 
 const DiagnosticCenterDetail = () => {
-  const { id } = useParams();
+    const [searchParams] = useSearchParams();
+    const id = searchParams.get("id");
   const navigate = useNavigate();
   const [centerDetail, setCenterDetail] = useState(null);
   const [loading, setLoading] = useState(false);

@@ -63,7 +63,7 @@ const HospitalsPage = () => {
 
   // Handle card click to navigate to hospital details
   const handleCardClick = (hospitalId) => {
-    navigate(`/doctor-list/${hospitalId}`); // Navigate to detail page
+    navigate(`/doctor-list?id=${hospitalId}`); // Navigate to detail page
   };
 
   const ServiceBadge = ({
