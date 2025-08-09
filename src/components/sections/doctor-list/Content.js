@@ -173,6 +173,7 @@ const Content = () => {
       hostital_id: id,
     },
   });
+console.log({ loader, data });
 
   // Filter Handlers
   const handlePageChange = (pageNumber) => setActivePage(pageNumber);
