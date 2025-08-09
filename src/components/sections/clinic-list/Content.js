@@ -50,6 +50,15 @@ const DiagnosticCentersApp = () => {
   const defaultImage =
     "https://images.unsplash.com/photo-1551601651-2a8555f1a136?w=400&h=300&fit=crop";
 
+      // Debounce search input
+  useEffect(() => {
+    const timeoutId = setTimeout(() => {
+      setDebouncedSearchTerm(searchTerm);
+    }, 1000); // Adjust delay (500ms) as needed
+
+    return () => clearTimeout(timeoutId); // Cleanup on each keystroke
+  }, [searchTerm]);
+
   // Using useFetch hook to fetch diagnostic categories
   const {
     data: services,
@@ -76,21 +85,12 @@ const DiagnosticCentersApp = () => {
     params: {
       page_count: itemsPerPage.toString(),
       page: currentPage.toString(),
-      search: debouncedSearchTerm.trim(),
+      search: debouncedSearchTerm.trim() ?? "",
       address: selectedAddress,
       services: selectedServices.join(","),
       sub_services: selectedSubServices.join(","),
     },
   });
-
-  // Debounce search input
-  useEffect(() => {
-    const timeoutId = setTimeout(() => {
-      setDebouncedSearchTerm(searchTerm);
-    }, 500); // Adjust delay (500ms) as needed
-
-    return () => clearTimeout(timeoutId); // Cleanup on each keystroke
-  }, [searchTerm]);
 
   // Fetch locations using useFetch
   const {
@@ -194,7 +194,6 @@ const DiagnosticCentersApp = () => {
   const handleCenterClick = (center) => {
     // Navigate to the center details page
     navigate(`/clinic-list-details?id=${center.id}`);
-    console.log(`Navigate to center ${center.id}`);
   };
 
   const clearFilters = () => {
@@ -760,7 +759,6 @@ const DiagnosticCentersApp = () => {
                           e.currentTarget.style.boxShadow =
                             "0 4px 6px rgba(0,0,0,0.1)";
                         }}
-                        onClick={() => handleCenterClick(center)}
                       >
                         <div className="row g-0">
                           <div className="col-md-4">
@@ -863,6 +861,16 @@ const DiagnosticCentersApp = () => {
                                   }}
                                 >
                                   Enquiry
+                                </button>
+                                <button
+                                  style={{
+                                    borderRadius: "8px",
+                                    padding: "8px 30px",
+                                    background: '#727b85'
+                                  }}
+                                  onClick={() => handleCenterClick(center)}
+                                >
+                                  Veiw details
                                 </button>
                               </div>
                             </div>

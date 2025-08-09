@@ -10,15 +10,46 @@ export const useFetch = ({
   dontCall = false,
 } = {}) => {
   const [data, setData] = useState(null);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const isMounted = useRef(true);
 
-  const fetchData = useCallback(async () => {
-    if (!request) {
+  const abortControllerRef = useRef(null);
+
+  // Store the latest values in refs to avoid stale closures
+  const latestValues = useRef({
+    method,
+    request,
+    params,
+    payload,
+  });
+
+  // Update refs whenever values change
+  useEffect(() => {
+    latestValues.current = { method, request, params, payload };
+  }, [method, request, params, payload]);
+
+  // Stable fetchData function that doesn't cause re-renders
+  const fetchData = useCallback(async (overrideParams, overridePayload) => {
+    const {
+      request: currentRequest,
+      method: currentMethod,
+      params: currentParams,
+      payload: currentPayload,
+    } = latestValues.current;
+
+    if (!currentRequest) {
       console.warn("useFetch: No request provided, skipping API call.");
-      return;
+      return null;
     }
+
+    // Cancel previous request if it's still pending
+    if (abortControllerRef.current) {
+      abortControllerRef.current.abort();
+    }
+
+    // Create new AbortController for this request
+    abortControllerRef.current = new AbortController();
+    const signal = abortControllerRef.current.signal;
 
     setLoading(true);
     setError(null);
@@ -26,68 +57,116 @@ export const useFetch = ({
     try {
       let response;
 
-      if (typeof request === "function") {
-        response = await request({
-          params: params || {},
-          payload: payload || {},
+      // Use override values if provided, otherwise use current values
+      const finalParams =
+        overrideParams !== undefined ? overrideParams : currentParams;
+      const finalPayload =
+        overridePayload !== undefined ? overridePayload : currentPayload;
+
+      if (typeof currentRequest === "function") {
+        response = await currentRequest({
+          params: finalParams,
+          payload: finalPayload,
+          signal,
         });
-        if (isMounted.current) setData(response);
+
+        // Check if request was aborted
+        if (signal.aborted) {
+          return null;
+        }
+
+        setData(response);
         return response;
       }
 
-      const config = { params: params || {} };
+      const config = {
+        params: finalParams,
+        signal,
+      };
 
-      switch (method.toUpperCase()) {
+      switch (currentMethod.toUpperCase()) {
         case "POST":
-          response = await axiosInstance.post(request, payload, config);
+          response = await axiosInstance.post(
+            currentRequest,
+            finalPayload,
+            config
+          );
           break;
         case "PUT":
-          response = await axiosInstance.put(request, payload, config);
+          response = await axiosInstance.put(
+            currentRequest,
+            finalPayload,
+            config
+          );
           break;
         case "PATCH":
-          response = await axiosInstance.patch(request, payload, config);
+          response = await axiosInstance.patch(
+            currentRequest,
+            finalPayload,
+            config
+          );
           break;
         case "DELETE":
-          response = await axiosInstance.delete(request, {
+          response = await axiosInstance.delete(currentRequest, {
             ...config,
-            data: payload,
+            data: finalPayload,
           });
           break;
         case "GET":
         default:
-          response = await axiosInstance.get(request, config);
+          response = await axiosInstance.get(currentRequest, config);
           break;
       }
 
-      if (isMounted.current) setData(response.data);
-      return response.data;
-    } catch (err) {
-      if (isMounted.current) {
-        setData(null);
-        const cleanedError = responseError(err);
-        setError(
-          typeof cleanedError === "string"
-            ? cleanedError
-            : cleanedError?.message || "Unknown error"
-        );
+      // Check if request was aborted before setting data
+      if (!signal.aborted) {
+        setData(response.data);
+        return response.data;
       }
+
+      return null;
+    } catch (err) {
+      // Don't set error if request was aborted
+      if (err.name === "AbortError" || err.name === "CanceledError") {
+        return null;
+      }
+
+      const cleanedError = responseError(err);
+      const errorMessage =
+        typeof cleanedError === "string"
+          ? cleanedError
+          : cleanedError?.message || "Unknown error";
+
+      setError(errorMessage);
       return null;
     } finally {
-      if (isMounted.current) setLoading(false);
+      // Only set loading to false if the request wasn't aborted
+      if (!abortControllerRef.current?.signal.aborted) {
+        setLoading(false);
+      }
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [method, request, JSON.stringify(params), JSON.stringify(payload)]);
+  }, []); // Empty dependency array - function reference never changes
 
+  // Separate effect that triggers when we want to make API calls
   useEffect(() => {
-    isMounted.current = true;
     if (!dontCall && request) {
       fetchData();
     }
+
+    // Cleanup on unmount or when dependencies change
     return () => {
-      isMounted.current = false;
+      if (abortControllerRef.current) {
+        abortControllerRef.current.abort();
+      }
     };
-    // eslint-disable-next-line
-  }, [fetchData, dontCall, request]);
+  }, [
+    dontCall,
+    request,
+    method,
+    JSON.stringify(params),
+    JSON.stringify(payload),
+    fetchData,
+  ]);
 
   return {
     data,
