@@ -90,6 +90,7 @@ const Content = () => {
 
   const [specialtySearchTerm, setSpecialtySearchTerm] = useState("");
   const [locationSearchTerm, setLocationSearchTerm] = useState("");
+  console.log({ selectedGender, selectedRating });
 
   // Static options
   const availabilityOptions = [
@@ -453,11 +454,14 @@ const Content = () => {
           <div key={rating.value} className="form-check mb-2">
             <input
               className="form-check-input"
-              type="radio"
-              name="rating"
+              type="checkbox"
               id={`rating-${rating.value}`}
               checked={selectedRating === rating.value}
-              onChange={() => setSelectedRating(rating.value)}
+              onChange={() =>
+                setSelectedRating(
+                  selectedRating === rating.value ? "" : rating.value
+                )
+              }
             />
             <label
               className="form-check-label small"
@@ -468,6 +472,7 @@ const Content = () => {
           </div>
         ))}
       </div>
+
       {/* Gender */}
       <div className="mb-4">
         <h6 className="font-weight-bold mb-3">Gender</h6>
@@ -475,11 +480,14 @@ const Content = () => {
           <div key={gender.value} className="form-check mb-2">
             <input
               className="form-check-input"
-              type="radio"
-              name="gender"
+              type="checkbox"
               id={`gender-${gender.value}`}
               checked={selectedGender === gender.value}
-              onChange={() => setSelectedGender(gender.value)}
+              onChange={() =>
+                setSelectedGender(
+                  selectedGender === gender.value ? "" : gender.value
+                )
+              }
             />
             <label
               className="form-check-label small"
