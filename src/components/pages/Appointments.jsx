@@ -13,6 +13,8 @@ import {
   InputGroup,
   ButtonGroup,
 } from "react-bootstrap";
+import { useFetch } from "../hooks/usefetch";
+import { useAuthContext } from "../context";
 
 // Dummy appointments data with more variety
 const initialAppointments = Array.from({ length: 25 }).map((_, i) => ({
@@ -44,6 +46,18 @@ const Appointments = () => {
   const [loadingActionId, setLoadingActionId] = useState(null);
   const [searchTerm, setSearchTerm] = useState("");
   const [filterStatus, setFilterStatus] = useState("all");
+  const { user } = useAuthContext();
+
+  const response = useFetch({
+    method: "GET",
+    request: "appointment/",
+    params: {
+      doctor_id: user?.id ?? "",
+      hospital_id: user?.selectedHostiptal?.id ?? "",
+      status: filterStatus !== "all" ? filterStatus : "",
+      search: searchTerm ? encodeURIComponent(searchTerm.trim()) : "",
+    },
+  });
 
   const handleAction = (id, action) => {
     setActionData({ id, action });
@@ -79,6 +93,7 @@ const Appointments = () => {
         return "warning";
     }
   };
+  console.log({ appointments });
 
   const filteredAppointments = appointments.filter((app) => {
     const matchesSearch =
@@ -96,11 +111,7 @@ const Appointments = () => {
   };
 
   return (
-    <Container
-      fluid
-      className="py-2 px-4"
-      style={{ minHeight: "calc(100%)" }}
-    >
+    <Container fluid className="py-2 px-4" style={{ minHeight: "calc(100%)" }}>
       <Row className="mb-4">
         <Col>
           <div className="d-flex align-items-center justify-content-between flex-wrap gap-3">
