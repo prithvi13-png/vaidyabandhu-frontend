@@ -10,7 +10,7 @@ const dummyBannerData = [
       "India's Premier All-in-One Healthcare Ecosystem Seamless Access to Top Doctors, Hospitals,and Diagnostics", // Main title
     benefits: [
       "Save 10% to 40% on surgeries, treatments, and diagnostics Services.",
-      "Get 10% Cashback: Send your bill to Vaidya Bandhu via WhatsApp or Email. Cashback will be credited to your account within 7 working days.",
+      "Get 10% Cashback: Send your medical bill to Vaidya Bandhu via WhatsApp or Email. Cashback will be credited to your account within 7 working days.",
       "Free surgeries available for those in need through our social programs.",
       "Call our helpline from 9 AM to 6 PM for free medical advice.",
       "We help you choose the right doctor, hospital, or diagnostic center.",
@@ -20,14 +20,18 @@ const dummyBannerData = [
 const Banner = () => {
   const [animated, setAnimated] = useState(false);
   const [hoveredButton, setHoveredButton] = useState(null); // State for button hover effect
+  
   useEffect(() => {
     // Trigger entrance animation after component mounts
     const timer = setTimeout(() => setAnimated(true), 300);
     return () => clearTimeout(timer);
   }, []);
+  
   const baseTransition = "all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)"; // Smoother transition curve
+  
   // Since it's a static page, we only need the first item
   const item = dummyBannerData[0];
+  
   return (
     <div
       className="sigma_banner style-8"
@@ -138,9 +142,7 @@ const Banner = () => {
                         transition: `opacity 0.8s ease-out ${
                           0.6 + idx * 0.1
                         }s, transform 0.8s ease-out ${0.6 + idx * 0.1}s`,
-                        // Removed hover effect styles for list items
                       }}
-                      // Removed onMouseEnter and onMouseLeave handlers from here
                     >
                       <CheckCircle
                         size={22}
@@ -201,6 +203,8 @@ const Banner = () => {
                     <ArrowRight size={20} style={{ marginLeft: "12px" }} />{" "}
                     {/* Slightly larger arrow */}
                   </a>
+                  
+                  {/* Read More Button - Fixed for mobile */}
                   <a
                     href="/about"
                     className="sigma_btn light"
@@ -208,7 +212,7 @@ const Banner = () => {
                       background:
                         hoveredButton === "readMore"
                           ? "rgba(255, 255, 255, 0.3)"
-                          : "rgba(255, 255, 255, 0.2)", // More pronounced hover
+                          : "rgba(255, 255, 255, 0.2)",
                       color: "#ffffff",
                       border:
                         hoveredButton === "readMore"
@@ -230,7 +234,9 @@ const Banner = () => {
                       transform:
                         hoveredButton === "readMore"
                           ? "translateY(-3px) scale(1.02)"
-                          : "translateY(0) scale(1)", // Lift and scale on hover
+                          : "translateY(0) scale(1)",
+                      position: "relative",
+                      zIndex: 100, // High z-index to ensure it's above all elements
                     }}
                     onMouseEnter={() => setHoveredButton("readMore")}
                     onMouseLeave={() => setHoveredButton(null)}
@@ -244,6 +250,7 @@ const Banner = () => {
           </div>
         </div>
       </div>
+      
       {/* Global Styles for responsiveness */}
       <style>
         {`
@@ -258,6 +265,7 @@ const Banner = () => {
               font-size: clamp(1rem, 2.2vw, 1.2rem) !important;
             }
           }
+          
           @media (max-width: 768px) {
             .banner-slider-inner {
               min-height: 480px !important;
@@ -287,26 +295,30 @@ const Banner = () => {
               justify-content: center !important;
               padding: 12px 25px !important;
               font-size: 16px !important;
+              position: relative !important;
+              z-index: 100 !important;
+              pointer-events: auto !important;
+              touch-action: manipulation !important; /* Improves touch responsiveness */
             }
             .banner-links a svg {
               margin-left: 10px !important;
               width: 18px !important;
               height: 18px !important;
             }
-            /* ✅ Add this new rule below everything else */
             .col-lg-10 {
               padding-top: 80px !important;
             }
           }
+          
           @media (max-width: 480px) {
             .banner-slider-inner {
               min-height: 400px !important;
               padding: 30px 10px !important;
             }
-            .sigma_banner-text h1 { /* Main title */
+            .sigma_banner-text h1 {
               font-size: clamp(1.8rem, 7vw, 2.5rem) !important;
             }
-            .sigma_banner-text h5 { /* Subtitle */
+            .sigma_banner-text h5 {
               font-size: clamp(1rem, 5.5vw, 1.5rem) !important;
             }
             .sigma_banner-text ul li {

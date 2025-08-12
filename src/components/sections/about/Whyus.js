@@ -18,7 +18,7 @@ const whyus = [
   {
     icon: "flaticon-hospital",
     title: "Top Doctors Across Specialties",
-    text: "Consult experienced specialists in cardiology, orthopedics, oncology, and 70+ departments.",
+    text: "Consult experienced specialists in cardiology, orthopedics, oncology, and 80+ departments.",
   },
   {
     icon: "flaticon-stethoscope",
@@ -37,7 +37,7 @@ const whyus = [
   },
   {
     icon: "flaticon-call",
-    title: "24/7 Helpline",
+    title: "9AM to 6PM Helpline will be coming soon",
     text: "Free medical advice and assistance available whenever you need it.",
   },
 ];

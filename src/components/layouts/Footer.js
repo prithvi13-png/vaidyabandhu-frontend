@@ -718,7 +718,7 @@ const Footer = () => {
             }}
           >
             <Link
-              to="#"
+              to="https://www.facebook.com/profile.php?id=61578623333168"
               style={{
                 display: "inline-flex",
                 justifyContent: "center",
@@ -746,7 +746,7 @@ const Footer = () => {
             </Link>
             
             <Link
-              to="#"
+              to="https://www.youtube.com/@VaidyaBandhu"
               style={{
                 display: "inline-flex",
                 justifyContent: "center",
@@ -774,7 +774,7 @@ const Footer = () => {
             </Link>
             
             <Link
-              to="#"
+              to="https://x.com/vaidya_bandhu"
               style={{
                 display: "inline-flex",
                 justifyContent: "center",
@@ -807,7 +807,7 @@ const Footer = () => {
             </Link>
             
             <Link
-              to="#"
+              to="https://www.instagram.com/vaidyabandhu/"
               style={{
                 display: "inline-flex",
                 justifyContent: "center",
