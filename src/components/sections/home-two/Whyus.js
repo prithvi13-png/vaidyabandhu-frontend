@@ -39,7 +39,7 @@ class Whyus extends Component {
                                     </div>
                                     <Link to="/contact" className="sigma_btn">
                                         Get A Quote
-                                        <i className="fal fa-arrow-right ml-3" />
+                                        <i className="fal fa-arrow-right ms-3" />
                                     </Link>
                                 </div>
                             </div>

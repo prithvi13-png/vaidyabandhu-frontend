@@ -8,10 +8,11 @@ import {
   Spinner,
 } from "react-bootstrap";
 import { CheckCircle, Mail, Phone, User, MapPin } from "lucide-react";
+import { toast } from "sonner";
 
 const ShowEnquireModal = ({ show, onClose, setShowSuccessMessage, token }) => {
   const [formData, setFormData] = useState({
-    name: "",
+    full_name: "",
     phone: "",
     email: "",
     address: "",
@@ -23,8 +24,8 @@ const ShowEnquireModal = ({ show, onClose, setShowSuccessMessage, token }) => {
   const validateForm = () => {
     const validationErrors = {};
 
-    if (!formData.name.trim()) {
-      validationErrors.name = "Name is required";
+    if (!formData.full_name.trim()) {
+      validationErrors.full_name = "Name is required";
     }
 
     if (!formData.phone.trim()) {
@@ -70,7 +71,7 @@ const ShowEnquireModal = ({ show, onClose, setShowSuccessMessage, token }) => {
     setErrors({});
 
     try {
-      const response = await fetch("https://stage.vaidyabandhu.com/api/enquiry", {
+      const response = await fetch("https://stage.vaidyabandhu.com/api/users/enquiry/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -84,11 +85,10 @@ const ShowEnquireModal = ({ show, onClose, setShowSuccessMessage, token }) => {
         console.log("Enquiry submitted successfully:", data);
 
         // Reset form and show success
-        setFormData({ name: "", phone: "", email: "", address: "" });
+        setFormData({ full_name: "", phone: "", email: "", address: "" });
         setErrors({});
         onClose();
-        setShowSuccessMessage(true);
-        setTimeout(() => setShowSuccessMessage(false), 3000);
+        toast.success(data.message, {position: 'top-center'})
       } else {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
@@ -102,7 +102,7 @@ const ShowEnquireModal = ({ show, onClose, setShowSuccessMessage, token }) => {
 
   const handleClose = () => {
     if (!isSubmitting) {
-      setFormData({ name: "", phone: "", email: "", address: "" });
+      setFormData({ full_name: "", phone: "", email: "", address: "" });
       setErrors({});
       onClose();
     }
@@ -139,15 +139,15 @@ const ShowEnquireModal = ({ show, onClose, setShowSuccessMessage, token }) => {
                   <Form.Control
                     type="text"
                     placeholder="Enter full name"
-                    value={formData.name}
-                    onChange={(e) => handleInputChange("name", e.target.value)}
-                    isInvalid={!!errors.name}
+                    value={formData.full_name}
+                    onChange={(e) => handleInputChange("full_name", e.target.value)}
+                    isInvalid={!!errors.full_name}
                     disabled={isSubmitting}
                     className="border-0 bg-light"
                     style={{ borderRadius: "0 12px 12px 0" }}
                   />
                   <Form.Control.Feedback type="invalid">
-                    {errors.name}
+                    {errors.full_name}
                   </Form.Control.Feedback>
                 </InputGroup>
               </Form.Group>

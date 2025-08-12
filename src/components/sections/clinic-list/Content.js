@@ -42,10 +42,22 @@ const DiagnosticCentersApp = () => {
 
   const navigate = useNavigate();
 
+  // Search state
+  const [serviceSearch, setServiceSearch] = React.useState("");
+
   const token = localStorage.getItem("token");
   const itemsPerPage = 5;
   const defaultImage =
     "https://images.unsplash.com/photo-1551601651-2a8555f1a136?w=400&h=300&fit=crop";
+
+      // Debounce search input
+  useEffect(() => {
+    const timeoutId = setTimeout(() => {
+      setDebouncedSearchTerm(searchTerm);
+    }, 1000); // Adjust delay (500ms) as needed
+
+    return () => clearTimeout(timeoutId); // Cleanup on each keystroke
+  }, [searchTerm]);
 
   // Using useFetch hook to fetch diagnostic categories
   const {
@@ -73,21 +85,12 @@ const DiagnosticCentersApp = () => {
     params: {
       page_count: itemsPerPage.toString(),
       page: currentPage.toString(),
-      search: debouncedSearchTerm.trim(),
+      search: debouncedSearchTerm.trim() ?? "",
       address: selectedAddress,
       services: selectedServices.join(","),
       sub_services: selectedSubServices.join(","),
     },
   });
-
-  // Debounce search input
-  useEffect(() => {
-    const timeoutId = setTimeout(() => {
-      setDebouncedSearchTerm(searchTerm);
-    }, 500); // Adjust delay (500ms) as needed
-
-    return () => clearTimeout(timeoutId); // Cleanup on each keystroke
-  }, [searchTerm]);
 
   // Fetch locations using useFetch
   const {
@@ -190,8 +193,7 @@ const DiagnosticCentersApp = () => {
 
   const handleCenterClick = (center) => {
     // Navigate to the center details page
-    navigate(`/clinic-details/${center.id}`);
-    console.log(`Navigate to center ${center.id}`);
+    navigate(`/clinic-list-details?id=${center.id}`);
   };
 
   const clearFilters = () => {
@@ -273,6 +275,12 @@ const DiagnosticCentersApp = () => {
       });
     e.stopPropagation();
   };
+
+  const filteredServices = isNotEmptyArray(services?.data)
+    ? services.data.filter((service) =>
+        service.name.toLowerCase().includes(serviceSearch.trim().toLowerCase())
+      )
+    : [];
 
   return (
     <div className="min-vh-100" style={{ backgroundColor: "#f8fafc" }}>
@@ -437,8 +445,18 @@ const DiagnosticCentersApp = () => {
                           overflowY: "auto",
                         }}
                       >
-                        {isNotEmptyArray(services?.data) ? (
-                          services.data.map((service) => (
+                        {/* Search box */}
+                        <input
+                          type="text"
+                          className="form-control mb-3"
+                          placeholder="Search services..."
+                          value={serviceSearch}
+                          onChange={(e) => setServiceSearch(e.target.value)}
+                          style={{ borderRadius: 8, maxWidth: 340 }}
+                        />
+
+                        {isNotEmptyArray(filteredServices) ? (
+                          filteredServices.map((service) => (
                             <div
                               key={service.id}
                               className="mb-3 pb-2"
@@ -463,7 +481,6 @@ const DiagnosticCentersApp = () => {
                                   {service.name}
                                 </label>
                               </div>
-
                               {/* Sub-services */}
                               {selectedServices.includes(service.id) &&
                                 isNotEmptyArray(service.sub_category) && (
@@ -511,7 +528,7 @@ const DiagnosticCentersApp = () => {
             )}
           </div>
 
-{/* Desktop Filters Sidebar */}
+          {/* Desktop Filters Sidebar */}
           <div className="col-lg-4 d-none d-lg-block">
             <div
               className="card border-0 shadow-sm mb-4 position-sticky"
@@ -587,23 +604,28 @@ const DiagnosticCentersApp = () => {
                       className="border-0 bg-light p-3 flex-grow-1"
                       style={{
                         borderRadius: "12px",
-                        // minHeight: "350px",
-                        // maxHeight: "400px",
-                        // overflowY: "auto",
-                        // overflowX: "hidden",
                       }}
                     >
-                      {isNotEmptyArray(services?.data) ? (
-                        services.data.map((service) => (
+                      {/* Add the search box here */}
+                      <input
+                        type="text"
+                        className="form-control mb-3"
+                        placeholder="Search services..."
+                        value={serviceSearch}
+                        onChange={(e) => setServiceSearch(e.target.value)}
+                        style={{ borderRadius: 8, maxWidth: 340 }}
+                      />
+
+                      {isNotEmptyArray(filteredServices) ? (
+                        filteredServices.map((service) => (
                           <div
                             key={service.id}
                             className="mb-3"
-                            style={{ 
+                            style={{
                               borderBottom: "1px solid #00000012",
-                              paddingBottom: "12px"
                             }}
                           >
-                            <div className="form-check">
+                            <div className="form-check d-flex justify-content-between align-items-center">
                               <input
                                 className="form-check-input"
                                 type="checkbox"
@@ -618,16 +640,17 @@ const DiagnosticCentersApp = () => {
                               >
                                 {service.name}
                               </label>
+                              <ChevronRight size={20} />
                             </div>
 
                             {/* Sub-services with Smooth Animation */}
                             {selectedServices.includes(service.id) &&
                               isNotEmptyArray(service.sub_category) && (
-                                <div 
+                                <div
                                   className="ms-4 mt-2"
                                   style={{
                                     animation: "slideDown 0.2s ease-out",
-                                    transformOrigin: "top"
+                                    transformOrigin: "top",
                                   }}
                                 >
                                   {service.sub_category.map((subService) => (
@@ -649,9 +672,9 @@ const DiagnosticCentersApp = () => {
                                       <label
                                         className="form-check-label text-muted"
                                         htmlFor={`sub-service-${subService.id}`}
-                                        style={{ 
+                                        style={{
                                           wordBreak: "break-word",
-                                          fontSize: "0.9rem"
+                                          fontSize: "0.9rem",
                                         }}
                                       >
                                         {subService.name}
@@ -736,7 +759,6 @@ const DiagnosticCentersApp = () => {
                           e.currentTarget.style.boxShadow =
                             "0 4px 6px rgba(0,0,0,0.1)";
                         }}
-                        onClick={() => handleCenterClick(center)}
                       >
                         <div className="row g-0">
                           <div className="col-md-4">
@@ -839,6 +861,16 @@ const DiagnosticCentersApp = () => {
                                   }}
                                 >
                                   Enquiry
+                                </button>
+                                <button
+                                  style={{
+                                    borderRadius: "8px",
+                                    padding: "8px 30px",
+                                    background: '#727b85'
+                                  }}
+                                  onClick={() => handleCenterClick(center)}
+                                >
+                                  Veiw details
                                 </button>
                               </div>
                             </div>

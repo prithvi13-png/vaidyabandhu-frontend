@@ -7,7 +7,7 @@ const dummyBannerData = [
     // Using a direct placeholder image URL for static environment
     image: "assets/img/ban1.jpeg",
     title:
-      "India's Premier All-in-One Healthcare Ecosystem Seamless Access to Top Doctors, Hospitals,and Diagnostics", // Main title
+      "India's Premier All-in-One Healthcare Ecosystem Seamless Access to Top Doctors, Hospitals, and Diagnostics", // Main title
     benefits: [
       "Save 10% to 40% on surgeries, treatments, and diagnostics Services.",
       "Get 10% Cashback: Send your medical bill to Vaidya Bandhu via WhatsApp or Email. Cashback will be credited to your account within 7 working days.",

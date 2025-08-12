@@ -11,7 +11,7 @@ class Services extends Component {
                         <h3 className="title mb-0">Praesent tempor dictum tellus ut molestie</h3>
                         <Link to="/contact" className="sigma_btn mt-3 mt-sm-0">
                             Get a Quote
-                            <i className="fal fa-arrow-right ml-3" />
+                            <i className="fal fa-arrow-right ms-3" />
                         </Link>
                     </div>
                     <div className="row">

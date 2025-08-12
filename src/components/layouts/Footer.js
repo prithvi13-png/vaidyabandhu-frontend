@@ -694,29 +694,16 @@ const Footer = () => {
                   unsubscribe.
                 </p>
               </form>
-            </div>
-          </div>
-        </div>
-        
-        {/* Social Media Icons and Contact Info Section */}
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-            padding: "20px 0",
-            borderTop: "1px solid rgba(0, 122, 126, 0.2)",
-            flexWrap: "wrap",
-            gap: "20px",
-          }}
-        >
-          {/* Social Media Icons */}
           <div
-            style={{
-              display: "flex",
-              gap: "12px",
-            }}
-          >
+  style={{
+    display: "flex",
+    gap: "12px",
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+  }}
+>
+
             <Link
               to="https://www.facebook.com/profile.php?id=61578623333168"
               style={{
@@ -867,87 +854,12 @@ const Footer = () => {
               />
             </Link>
           </div>
-          
-          {/* Contact Info */}
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "flex-end",
-              gap: "8px",
-            }}
-          >
-            <div
-              style={{
-                display: "flex",
-                alignItems: "center",
-                gap: "8px",
-              }}
-            >
-              <i
-                className="fal fa-envelope"
-                style={{ color: "#a0aec0" }}
-              />
-              <a
-                href="mailto:support@vaidyabandhu.com"
-                style={{
-                  color: "#e2e8f0",
-                  textDecoration: "none",
-                  fontSize: "16px",
-                  fontFamily: "poppins",
-                }}
-              >
-                support@vaidyabandhu.com
-              </a>
-            </div>
-            
-            <div
-              style={{
-                display: "flex",
-                alignItems: "center",
-                gap: "8px",
-              }}
-            >
-              <i
-                className="fal fa-map-marker-alt"
-                style={{ color: "#a0aec0" }}
-              />
-              <span
-                style={{
-                  color: "#e2e8f0",
-                  fontSize: "16px",
-                  fontFamily: "poppins",
-                }}
-              >
-                © Bangalore
-              </span>
-            </div>
-            
-            <div
-              style={{
-                display: "flex",
-                alignItems: "center",
-                gap: "8px",
-              }}
-            >
-              <i
-                className="fal fa-mobile"
-                style={{ color: "#a0aec0" }}
-              />
-              <a
-                href="tel:+918535853589"
-                style={{
-                  color: "#e2e8f0",
-                  textDecoration: "none",
-                  fontSize: "16px",
-                  fontFamily: "poppins",
-                }}
-              >
-                +91 8535 8535 89
-              </a>
             </div>
           </div>
         </div>
+        
+        {/* Social Media Icons and Contact Info Section */}
+   
         
         <div
           style={{

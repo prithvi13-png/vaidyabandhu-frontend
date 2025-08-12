@@ -303,24 +303,33 @@ const Header = () => {
                   {/* LinkedIn icon */}
                 </Link>
               </div>
-              <div className="sigma_header-top-links">
-                <ul className="sigma_header-top-nav">
-                  <li>
-                    <a href="mailto:support@vaidyabandhu.com">
-                      <i className="fal fa-envelope" /> support@vaidyabandhu.com
-                    </a>
-                  </li>
-                  <li>
-                    <Link to="#">
-                      <i className="fal fa-map-marker-alt" /> Bangalore
-                    </Link>
-                  </li>
-                  <li>
-                    <a href="tel:+918535853589">
-                      <i className="fal fa-mobile" /> +91 8535 8535 89
-                    </a>
-                  </li>
-                </ul>
+
+              {/* Right: Contact Info */}
+              <div
+                className="sigma_header-top-links"
+                style={{
+                  display: "flex",
+                  gap: "15px",
+                  fontSize: "14px",
+                  color: "#fff",
+                }}
+              >
+                <a
+                  href="mailto:support@vaidyabandhu.com"
+                  style={{ color: "#fff", textDecoration: "none" }}
+                >
+                  <i className="fal fa-envelope" style={{ marginRight: "5px" }} />{" "}
+                  support@vaidyabandhu.com
+                </a>
+                <Link to="#" style={{ color: "#fff", textDecoration: "none" }}>
+                  <i className="fal fa-map-marker-alt" style={{ marginRight: "5px" }} /> Bangalore
+                </Link>
+                <a
+                  href="tel:+918535853589"
+                  style={{ color: "#fff", textDecoration: "none" }}
+                >
+                  <i className="fal fa-mobile" style={{ marginRight: "5px" }} /> +91 8535 8535 89
+                </a>
               </div>
             </div>
           </div>

@@ -3,7 +3,7 @@
         "id":1,
         "icon":"fal fa-procedures",
         "title":"Verified Doctors",
-        "value":200
+        "value":100
     },
     {
         "id":2,
@@ -11,21 +11,14 @@
         "title":"Specialties Covered",
         "value":80
     },
-        {
+    {
         "id":3,
         "icon":"fal fa-heartbeat",
-        "title":"Diagnostic Centers",
-        "value":100
+        "title":"Satisfied Patients",
+        "value":200
     },
     {
         "id":4,
-        "icon":"fal fa-heartbeat",
-        "title":"Satisfied Patients",
-        "value":400
-    },
-  
-    {
-        "id":5,
         "icon":"fal fa-ambulance",
         "title":"Membership Holder",
         "value":1000

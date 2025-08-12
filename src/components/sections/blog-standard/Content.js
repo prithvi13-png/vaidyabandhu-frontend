@@ -94,7 +94,7 @@ class Content extends Videohelper {
                                 ))}
                                 <li>
                                     <i className="fal fa-calendar-alt" />
-                                    on <Link to={"/blog-details/" + item.id} className="ml-2">{item.postdate}</Link>
+                                    on <Link to={"/blog-details/" + item.id} className="ms-2">{item.postdate}</Link>
                                 </li>
                                 <li>
                                     <i className="fal fa-comment-dots" />

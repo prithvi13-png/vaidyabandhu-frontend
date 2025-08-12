@@ -1,81 +1,115 @@
-import { useState, useEffect, useCallback } from 'react';
-import axiosInstance from '../../api/axiosInstance';
-import { responseError } from '../utiles/responseError';
+import { useState, useEffect, useCallback, useRef, useMemo } from "react";
+import axiosInstance from "../../api/axiosInstance";
+import { responseError } from "../utiles/responseError";
 
 export const useFetch = ({
-  method = 'GET',
+  method = "GET",
   request,
   params = {},
   payload = {},
   dontCall = false,
 } = {}) => {
-  const [data, setData] = useState(null);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
+  const [state, setState] = useState(() => ({
+    data: null,
+    loading: !dontCall && Boolean(request),
+    error: null,
+  }));
 
-  const fetchData = useCallback(async () => {
-    if (!request) {
-      // eslint-disable-next-line no-console
-      console.warn('useFetch: No request provided, skipping API call.');
-      return;
+  const abortControllerRef = useRef(null);
+  const mountedRef = useRef(true);
+
+  // Memoize serialized params/payload to prevent unnecessary re-renders
+  const serializedParams = useMemo(() => JSON.stringify(params), [params]);
+  const serializedPayload = useMemo(() => JSON.stringify(payload), [payload]);
+
+  // Store latest values without causing re-renders
+  const configRef = useRef({ method, request, params, payload });
+  configRef.current = { method, request, params, payload };
+
+  const updateState = useCallback((updates) => {
+    if (mountedRef.current) {
+      setState(prev => ({ ...prev, ...updates }));
+    }
+  }, []);
+
+  const fetchData = useCallback(async (overrideParams, overridePayload) => {
+    const { request: currentRequest, method: currentMethod, params: currentParams, payload: currentPayload } = configRef.current;
+
+    if (!currentRequest) {
+      console.warn("useFetch: No request provided");
+      updateState({ loading: false });
+      return null;
     }
 
-    setLoading(true);
-    setError(null);
+    // Abort previous request
+    abortControllerRef.current?.abort();
+    abortControllerRef.current = new AbortController();
+    const { signal } = abortControllerRef.current;
+
+    updateState({ loading: true, error: null });
 
     try {
+      const finalParams = overrideParams ?? currentParams;
+      const finalPayload = overridePayload ?? currentPayload;
+
       let response;
 
-      if (typeof request === 'function') {
-        response = await request({ params, payload });
-        setData(response);
+      if (typeof currentRequest === "function") {
+        response = await currentRequest({ params: finalParams, payload: finalPayload, signal });
+      } else {
+        const config = { params: finalParams, signal };
+        const upperMethod = currentMethod.toUpperCase();
+
+        switch (upperMethod) {
+          case "POST":
+          case "PUT":
+          case "PATCH":
+            response = await axiosInstance[method.toLowerCase()](currentRequest, finalPayload, config);
+            break;
+          case "DELETE":
+            response = await axiosInstance.delete(currentRequest, { ...config, data: finalPayload });
+            break;
+          default:
+            response = await axiosInstance.get(currentRequest, config);
+        }
+        response = response.data;
+      }
+
+      if (!signal.aborted) {
+        updateState({ data: response, loading: false });
         return response;
       }
-
-      const config = { params };
-
-      switch (method) {
-        case 'POST':
-          response = await axiosInstance.post(request, payload, config);
-          break;
-        case 'PUT':
-          response = await axiosInstance.put(request, payload, config);
-          break;
-        case 'PATCH':
-          response = await axiosInstance.patch(request, payload, config);
-          break;
-        case 'DELETE':
-          response = await axiosInstance.delete(request, { ...config, data: payload });
-          break;
-        case 'GET':
-        default:
-          response = await axiosInstance.get(request, config);
-          break;
-      }
-
-      setData(response.data);
-      return response.data;
-
     } catch (err) {
-      const cleanedError = responseError(err);
-      setError(typeof cleanedError === 'string' ? cleanedError : (cleanedError?.message || "Unknown error"));
-      return null;
-    } finally {
-      setLoading(false);
+      if (!signal.aborted && err.name !== "AbortError" && err.name !== "CanceledError") {
+        const errorMessage = responseError(err)?.message || responseError(err) || "Unknown error";
+        updateState({ error: errorMessage, loading: false });
+      }
     }
-  }, [method, request, JSON.stringify(params), JSON.stringify(payload)]);
+    return null;
+  }, [updateState]);
 
+  // Handle automatic fetching
   useEffect(() => {
     if (!dontCall && request) {
       fetchData();
+    } else if (dontCall) {
+      updateState({ loading: false, error: null });
     }
-    // eslint-disable-next-line
-  }, [fetchData, dontCall, request]);
 
-  return {
-    data,
-    loading,
-    error,
+    return () => abortControllerRef.current?.abort();
+  }, [dontCall, request, method, serializedParams, serializedPayload, fetchData]);
+
+  // Cleanup on unmount
+  useEffect(() => {
+    mountedRef.current = true;
+    return () => {
+      mountedRef.current = false;
+      abortControllerRef.current?.abort();
+    };
+  }, []);
+
+  return useMemo(() => ({
+    ...state,
     refetch: fetchData,
-  };
+  }), [state, fetchData]);
 };

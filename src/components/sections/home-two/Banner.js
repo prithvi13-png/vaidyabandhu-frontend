@@ -19,7 +19,7 @@ class Banner extends Component {
                                     </h1>
                                     <div className="banner-links d-flex align-items-center">
                                         <Link to="/contact" className="sigma_btn">Get a Quote</Link>
-                                        <Link to="/about" className="sigma_btn light ml-4">Read more</Link>
+                                        <Link to="/about" className="sigma_btn light ms-4">Read more</Link>
                                     </div>
                                 </div>
                                 <div className="col-lg-6 d-none d-lg-block">

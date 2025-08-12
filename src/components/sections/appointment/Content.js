@@ -137,7 +137,7 @@ class Content extends Component {
                                                 <input type="radio" id="radio" value={this.state.gender} onChange={this.gender} />
                                                 <label className="mb-0" htmlFor="radio">Male</label>
                                             </div>
-                                            <div className="d-flex align-items-center ml-4">
+                                            <div className="d-flex align-items-center ms-4">
                                                 <input type="radio" id="radio2" value={this.state.gender} onChange={this.gender} />
                                                 <label className="mb-0" htmlFor="radio2">Female</label>
                                             </div>
@@ -262,7 +262,7 @@ class Content extends Component {
                                                 <li className="d-flex align-items-center justify-content-between">
                                                     <button type="submit" className="sigma_btn btn-block btn-sm mt-4">
                                                         Confirm and Pay
-                                                        <i className="fal fa-arrow-right ml-3" />
+                                                        <i className="fal fa-arrow-right ms-3" />
                                                     </button>
                                                 </li>
                                             </ul>
