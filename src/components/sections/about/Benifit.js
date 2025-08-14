@@ -9,10 +9,10 @@ const WhoCanBenefit = () => {
     const sectionTimer = setTimeout(() => setAnimated(true), 200);
     const itemTimers = [];
     const items = [
-      "Patients who need affordable treatments & surgeries",
-      "Families looking for trusted doctors & hospitals",
-      "Needy individuals requiring free medical support",
-      "Anyone who wants guidance for the best healthcare options",
+      "Patients who need affordable treatments & surgeries.",
+      "Families looking for trusted doctors & hospitals.",
+      "Needy individuals requiring free medical support.",
+      "Anyone who wants guidance for the best healthcare options.",
     ];
     items.forEach((_, index) => {
       const timer = setTimeout(() => {
@@ -160,10 +160,10 @@ const WhoCanBenefit = () => {
               }}
             >
               {[
-                "Patients who need affordable treatments & surgeries",
-                "Families looking for trusted doctors & hospitals",
-                "Needy individuals requiring free medical support",
-                "Anyone who wants guidance for the best healthcare options",
+                "Patients who need affordable treatments & surgeries.",
+                "Families looking for trusted doctors & hospitals.",
+                "Needy individuals requiring free medical support.",
+                "Anyone who wants guidance for the best healthcare options.",
               ].map((item, index) => (
                 <li
                   key={index}
@@ -308,9 +308,7 @@ const WhoCanBenefit = () => {
 
           /* Extra small devices */
           @media (max-width: 480px) {
-            section {
-              padding: 40px 15px !important;
-            }
+          
             
             .who-flex-wrap {
               gap: 25px !important;

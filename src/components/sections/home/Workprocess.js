@@ -27,7 +27,7 @@ const Workprocess = () => {
       points: [
         "Contact us by call, WhatsApp, or email about your concerns.",
         "Consult top doctors in our network.",
-        "Avail 10%–40% discounts on surgeries, treatments, and diagnostics.",
+        "Avail 10% – 40% discounts on surgeries, treatments, and diagnostics.",
       ],
     },
     {

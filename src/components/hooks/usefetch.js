@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback, useRef } from "react";
+import { useState, useEffect, useCallback, useRef, useMemo } from "react";
 import axiosInstance from "../../api/axiosInstance";
 import { responseError } from "../utiles/responseError";
 
@@ -9,169 +9,107 @@ export const useFetch = ({
   payload = {},
   dontCall = false,
 } = {}) => {
-  const [data, setData] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [state, setState] = useState(() => ({
+    data: null,
+    loading: !dontCall && Boolean(request),
+    error: null,
+  }));
 
   const abortControllerRef = useRef(null);
+  const mountedRef = useRef(true);
 
-  // Store the latest values in refs to avoid stale closures
-  const latestValues = useRef({
-    method,
-    request,
-    params,
-    payload,
-  });
+  // Memoize serialized params/payload to prevent unnecessary re-renders
+  const serializedParams = useMemo(() => JSON.stringify(params), [params]);
+  const serializedPayload = useMemo(() => JSON.stringify(payload), [payload]);
 
-  // Update refs whenever values change
-  useEffect(() => {
-    latestValues.current = { method, request, params, payload };
-  }, [method, request, params, payload]);
+  // Store latest values without causing re-renders
+  const configRef = useRef({ method, request, params, payload });
+  configRef.current = { method, request, params, payload };
 
-  // Stable fetchData function that doesn't cause re-renders
+  const updateState = useCallback((updates) => {
+    if (mountedRef.current) {
+      setState(prev => ({ ...prev, ...updates }));
+    }
+  }, []);
+
   const fetchData = useCallback(async (overrideParams, overridePayload) => {
-    const {
-      request: currentRequest,
-      method: currentMethod,
-      params: currentParams,
-      payload: currentPayload,
-    } = latestValues.current;
+    const { request: currentRequest, method: currentMethod, params: currentParams, payload: currentPayload } = configRef.current;
 
     if (!currentRequest) {
-      console.warn("useFetch: No request provided, skipping API call.");
+      console.warn("useFetch: No request provided");
+      updateState({ loading: false });
       return null;
     }
 
-    // Cancel previous request if it's still pending
-    if (abortControllerRef.current) {
-      abortControllerRef.current.abort();
-    }
-
-    // Create new AbortController for this request
+    // Abort previous request
+    abortControllerRef.current?.abort();
     abortControllerRef.current = new AbortController();
-    const signal = abortControllerRef.current.signal;
+    const { signal } = abortControllerRef.current;
 
-    setLoading(true);
-    setError(null);
+    updateState({ loading: true, error: null });
 
     try {
+      const finalParams = overrideParams ?? currentParams;
+      const finalPayload = overridePayload ?? currentPayload;
+
       let response;
 
-      // Use override values if provided, otherwise use current values
-      const finalParams =
-        overrideParams !== undefined ? overrideParams : currentParams;
-      const finalPayload =
-        overridePayload !== undefined ? overridePayload : currentPayload;
-
       if (typeof currentRequest === "function") {
-        response = await currentRequest({
-          params: finalParams,
-          payload: finalPayload,
-          signal,
-        });
+        response = await currentRequest({ params: finalParams, payload: finalPayload, signal });
+      } else {
+        const config = { params: finalParams, signal };
+        const upperMethod = currentMethod.toUpperCase();
 
-        // Check if request was aborted
-        if (signal.aborted) {
-          return null;
+        switch (upperMethod) {
+          case "POST":
+          case "PUT":
+          case "PATCH":
+            response = await axiosInstance[method.toLowerCase()](currentRequest, finalPayload, config);
+            break;
+          case "DELETE":
+            response = await axiosInstance.delete(currentRequest, { ...config, data: finalPayload });
+            break;
+          default:
+            response = await axiosInstance.get(currentRequest, config);
         }
+        response = response.data;
+      }
 
-        setData(response);
+      if (!signal.aborted) {
+        updateState({ data: response, loading: false });
         return response;
       }
-
-      const config = {
-        params: finalParams,
-        signal,
-      };
-
-      switch (currentMethod.toUpperCase()) {
-        case "POST":
-          response = await axiosInstance.post(
-            currentRequest,
-            finalPayload,
-            config
-          );
-          break;
-        case "PUT":
-          response = await axiosInstance.put(
-            currentRequest,
-            finalPayload,
-            config
-          );
-          break;
-        case "PATCH":
-          response = await axiosInstance.patch(
-            currentRequest,
-            finalPayload,
-            config
-          );
-          break;
-        case "DELETE":
-          response = await axiosInstance.delete(currentRequest, {
-            ...config,
-            data: finalPayload,
-          });
-          break;
-        case "GET":
-        default:
-          response = await axiosInstance.get(currentRequest, config);
-          break;
-      }
-
-      // Check if request was aborted before setting data
-      if (!signal.aborted) {
-        setData(response.data);
-        return response.data;
-      }
-
-      return null;
     } catch (err) {
-      // Don't set error if request was aborted
-      if (err.name === "AbortError" || err.name === "CanceledError") {
-        return null;
-      }
-
-      const cleanedError = responseError(err);
-      const errorMessage =
-        typeof cleanedError === "string"
-          ? cleanedError
-          : cleanedError?.message || "Unknown error";
-
-      setError(errorMessage);
-      return null;
-    } finally {
-      // Only set loading to false if the request wasn't aborted
-      if (!abortControllerRef.current?.signal.aborted) {
-        setLoading(false);
+      if (!signal.aborted && err.name !== "AbortError" && err.name !== "CanceledError") {
+        const errorMessage = responseError(err)?.message || responseError(err) || "Unknown error";
+        updateState({ error: errorMessage, loading: false });
       }
     }
-  }, []); // Empty dependency array - function reference never changes
+    return null;
+  }, [updateState]);
 
-  // Separate effect that triggers when we want to make API calls
+  // Handle automatic fetching
   useEffect(() => {
     if (!dontCall && request) {
       fetchData();
+    } else if (dontCall) {
+      updateState({ loading: false, error: null });
     }
 
-    // Cleanup on unmount or when dependencies change
-    return () => {
-      if (abortControllerRef.current) {
-        abortControllerRef.current.abort();
-      }
-    };
-  }, [
-    dontCall,
-    request,
-    method,
-    JSON.stringify(params),
-    JSON.stringify(payload),
-    fetchData,
-  ]);
+    return () => abortControllerRef.current?.abort();
+  }, [dontCall, request, method, serializedParams, serializedPayload, fetchData]);
 
-  return {
-    data,
-    loading,
-    error,
+  // Cleanup on unmount
+  useEffect(() => {
+    mountedRef.current = true;
+    return () => {
+      mountedRef.current = false;
+      abortControllerRef.current?.abort();
+    };
+  }, []);
+
+  return useMemo(() => ({
+    ...state,
     refetch: fetchData,
-  };
+  }), [state, fetchData]);
 };
