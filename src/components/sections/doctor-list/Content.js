@@ -321,7 +321,7 @@ console.log({ loader, data });
                   right: "8px",
                   top: "20px",
                   fontSize: "18px",
-                  color: "#6c757d",
+                  color: "#FFF",
                   textDecoration: "none",
                   lineHeight: "1",
                   width: "20px",
@@ -609,6 +609,7 @@ console.log({ loader, data });
                             padding: "5px 15px",
                             fontSize: "12px",
                             fontWeight: "500",
+                            color: "#FFF",
                           }}
                         >
                           RESET
@@ -636,7 +637,7 @@ console.log({ loader, data });
                             onClick={() => removeFilter(filter.type, filter.id)}
                             style={{
                               fontSize: "14px",
-                              color: "#6c757d",
+                              color: "#FFF",
                               textDecoration: "none",
                               lineHeight: "1",
                             }}
