@@ -37,7 +37,7 @@ const whyus = [
   },
   {
     icon: "flaticon-call",
-    title: "9 AM to 6 PM Helpline will be coming soon",
+    title: "9 AM to 6 PM. 24/7 Helpline will be coming soon",
     text: "Free medical advice and assistance available whenever you need it.",
   },
 ];
