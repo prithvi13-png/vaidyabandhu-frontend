@@ -199,38 +199,30 @@ be requested by emailing us at payments@vaidyabandhu.com with the following deta
 ● WhatsApp/Helpline: +91 8535853589
 ● Email: payments@vaidyabandhu.com
 ● Website: www.vaidyabandhu.com`;
-
 const Footer = () => {
   const [animated, setAnimated] = useState(false);
   const [showModal, setShowModal] = useState(null); // 'terms', 'privacy', 'refund'
-
   useEffect(() => {
     const timer = setTimeout(() => setAnimated(true), 200);
     return () => clearTimeout(timer);
   }, []);
-
   const baseTransition = "all 0.3s ease-in-out";
-
   // Handlers for opening modals
   const openTerms = (e) => {
     e.preventDefault();
     setShowModal("terms");
   };
-
   const openPrivacy = (e) => {
     e.preventDefault();
     setShowModal("privacy");
   };
-
   const openRefund = (e) => {
     e.preventDefault();
     setShowModal("refund");
   };
-
   const closeModal = () => {
     setShowModal(null);
   };
-
   return (
     <footer
       style={{
@@ -246,7 +238,6 @@ const Footer = () => {
       }}
     >
       <FloatingCallButton />
-
       {/* Decorative background elements (optional, but consistent with previous components) */}
       <div
         style={{
@@ -278,7 +269,6 @@ const Footer = () => {
           zIndex: 0,
         }}
       ></div>
-
       <div
         className="container"
         style={{
@@ -369,7 +359,6 @@ const Footer = () => {
               </p>
             </div>
           </div>
-
           {/* Phone Info */}
           <div
             style={{
@@ -435,7 +424,6 @@ const Footer = () => {
               </p>
             </div>
           </div>
-
           {/* Email Info */}
           <div
             style={{
@@ -503,7 +491,6 @@ const Footer = () => {
             </div>
           </div>
         </div>
-
         <div
           style={{
             padding: "60px 0",
@@ -566,7 +553,6 @@ const Footer = () => {
                 ))}
               </ul>
             </div>
-
             {/* Useful Links */}
             <div>
               <h5
@@ -619,7 +605,6 @@ const Footer = () => {
                 ))}
               </ul>
             </div>
-
             {/* Subscribe Form */}
             <div>
               <h5
@@ -698,7 +683,7 @@ const Footer = () => {
                 style={{
                   display: "flex",
                   gap: "12px",
-                  flexDirection: "row",
+                  flexDirection: "row !important",
                   justifyContent: "center",
                   alignItems: "center",
                 }}
@@ -730,7 +715,6 @@ const Footer = () => {
                     style={{ fontSize: "18px", color: "#fff" }}
                   />
                 </Link>
-
                 <Link
                   to="https://www.youtube.com/@VaidyaBandhu"
                   style={{
@@ -758,7 +742,6 @@ const Footer = () => {
                     style={{ fontSize: "18px", color: "#fff" }}
                   />
                 </Link>
-
                 <Link
                   to="https://x.com/vaidya_bandhu"
                   style={{
@@ -791,7 +774,6 @@ const Footer = () => {
                     }}
                   />
                 </Link>
-
                 <Link
                   to="https://www.instagram.com/vaidyabandhu/"
                   style={{
@@ -824,7 +806,6 @@ const Footer = () => {
                     }}
                   />
                 </Link>
-
                 <Link
                   to="#"
                   style={{
@@ -856,9 +837,7 @@ const Footer = () => {
             </div>
           </div>
         </div>
-
         {/* Social Media Icons and Contact Info Section */}
-
         <div
           style={{
             padding: "25px 0",
@@ -903,7 +882,6 @@ const Footer = () => {
               <strong>Copyright Act, 1957</strong>.
             </p>
           </div>
-
           <ul
             style={{
               display: "flex",
@@ -958,7 +936,6 @@ const Footer = () => {
           </ul>
         </div>
       </div>
-
       {/* === MODAL OVERLAY === */}
       {showModal && (
         <div
@@ -985,12 +962,14 @@ const Footer = () => {
               width: "100%",
               maxWidth: "800px",
               maxHeight: "90vh",
-              overflowY: "auto",
+              display: "flex",
+              flexDirection: "column",
               border: "1px solid #007a7e",
               boxShadow: "0 10px 30px rgba(0, 0, 0, 0.5)",
             }}
             onClick={(e) => e.stopPropagation()}
           >
+            {/* Fixed Header */}
             <div
               style={{
                 padding: "20px",
@@ -998,6 +977,11 @@ const Footer = () => {
                 display: "flex",
                 justifyContent: "space-between",
                 alignItems: "center",
+                position: "sticky",
+                top: 0,
+                background: "#001a1b",
+                zIndex: 10,
+                borderRadius: "12px 12px 0 0",
               }}
             >
               <h3 style={{ margin: "0", color: "#e2e8f0", fontSize: "18px" }}>
@@ -1021,6 +1005,7 @@ const Footer = () => {
                 ✕
               </button>
             </div>
+            {/* Scrollable Content */}
             <div
               style={{
                 padding: "20px",
@@ -1029,6 +1014,8 @@ const Footer = () => {
                 lineHeight: "1.6",
                 whiteSpace: "pre-wrap",
                 fontFamily: "poppins",
+                overflowY: "auto",
+                flex: 1,
               }}
             >
               {showModal === "terms"
@@ -1040,7 +1027,6 @@ const Footer = () => {
           </div>
         </div>
       )}
-
       {/* === Keyframes for floating shapes and responsive styles === */}
       <style>
         {`
@@ -1188,5 +1174,4 @@ const Footer = () => {
     </footer>
   );
 };
-
 export default Footer;

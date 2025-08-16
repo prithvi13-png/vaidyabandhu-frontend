@@ -1916,7 +1916,6 @@ table img {
 /* Header Controls starts */
 .sigma_header .sigma_header-controls ul {
   display: flex;
-  align-items: center;
 }
 
 .sigma_header .sigma_header-controls ul li + li {

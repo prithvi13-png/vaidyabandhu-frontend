@@ -25,6 +25,7 @@ const CustomHamburgerMenu = ({ isOpen, onClick }) => {
         padding: "0",
         margin: "0",
         border: "none",
+        zIndex: 1001,
       }}
       onMouseEnter={(e) =>
         (e.currentTarget.style.backgroundColor = "rgba(0,0,0,0.1)")
@@ -146,11 +147,13 @@ const Header = () => {
     <Fragment>
       {/* Mobile Menu */}
       <aside className={navMethod ? "sigma_aside aside-open" : "sigma_aside"}>
-        <div className="sigma_close aside-trigger" onClick={toggleNav}>
-          <span />
-          <span />
-        </div>
         <Mobilemenu />
+        {/* Added membership button in mobile menu */}
+        {!userPhone && (
+          <div className="p-3 text-center">
+            <MembershipModal />
+          </div>
+        )}
       </aside>
       {navMethod && (
         <div
@@ -160,13 +163,13 @@ const Header = () => {
       )}
       {/* Header */}
       <header
-        className="sigma_header header-absolute style-5 other can-sticky"
+        className={`sigma_header header-absolute style-5 other can-sticky ${navMethod ? "mobile-menu-open" : ""}`}
         style={{
           position: "fixed",
           top: 0,
           left: 0,
           right: 0,
-          zIndex: 1000,
+          zIndex: navMethod ? 1001 : 1000,
           backgroundColor: "#fff",
           boxShadow: "0 2px 10px rgba(0,0,0,0.1)",
           transition: "all 0.3s ease",
@@ -303,7 +306,6 @@ const Header = () => {
                   {/* LinkedIn icon */}
                 </Link>
               </div>
-
               {/* Right: Contact Info */}
               <div
                 className="sigma_header-top-links"
@@ -413,12 +415,15 @@ const Header = () => {
                       </li>
                     </>
                   ) : (
-                    <li className="d-none d-sm-block">
-                      <MembershipModal />
-                    </li>
+                    <>
+                      <li className="d-none d-sm-block">
+                        <MembershipModal />
+                      </li>
+                      {/* REMOVED: Mobile membership button from header */}
+                    </>
                   )}
                   {/* Hamburger menu: only visible below md (mobile/tablet) */}
-                  <li className="d-block d-md-none">
+                  <li className="d-block d-md-none mobile-hamburger">
                     <CustomHamburgerMenu
                       isOpen={navMethod}
                       onClick={toggleNav}
@@ -481,6 +486,29 @@ const Header = () => {
                 margin-right: 4px;
               }
             }
+            
+            /* New styles for mobile layout */
+            .navbar {
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+            }
+            
+            .sigma_header-controls-inner {
+              display: flex;
+              flex-direction: row;
+              align-items: center;
+              justify-content: flex-end;
+              gap: 10px;
+              position: absolute;
+              right: 15px;
+              top: 50%;
+              transform: translateY(-50%);
+            }
+            
+            .mobile-hamburger {
+              order: 1;
+            }
           }
           /* Hide hamburger on desktop */
           .sigma_header-controls-inner .aside-toggle {
@@ -498,7 +526,7 @@ const Header = () => {
             height: 40px !important;
             display: flex !important;
             justify-content: center !important;
-            align-items: center !important;
+            alignItems: center !important;
             cursor: pointer !important;
             border-radius: 50% !important;
             transition: background-color 0.3s ease !important;
@@ -522,6 +550,15 @@ const Header = () => {
           }
           .sigma_close.aside-trigger span:last-child {
             transform: rotate(-45deg) !important;
+          }
+          /* Style for membership button in mobile menu */
+          .sigma_aside .sigma_btn {
+            width: 100%;
+            margin-top: 15px;
+          }
+          /* Ensure header stays above mobile menu */
+          .sigma_header.mobile-menu-open {
+            z-index: 1001 !important;
           }
         `}
       </style>
