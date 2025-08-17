@@ -37,7 +37,7 @@ const SlotFormModal = ({ show, onHide, onSaved, user, slot = null, title }) => {
     start_time: "",
     end_date: "",
     end_time: "",
-    duration: 15,
+    slot_duration: 15,
   });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
@@ -50,7 +50,7 @@ const SlotFormModal = ({ show, onHide, onSaved, user, slot = null, title }) => {
         start_time: getLocalTimeString(slot.start_time),
         end_date: getLocalDateString(slot.end_time),
         end_time: getLocalTimeString(slot.end_time),
-        duration: Math.round(
+        slot_duration: Math.round(
           (new Date(slot.end_time) - new Date(slot.start_time)) / (1000 * 60)
         ),
       });
@@ -63,7 +63,7 @@ const SlotFormModal = ({ show, onHide, onSaved, user, slot = null, title }) => {
         start_time: nextHour.toTimeString().slice(0, 5),
         end_date: nextHour.toISOString().slice(0, 10),
         end_time: endTime.toTimeString().slice(0, 5),
-        duration: 30,
+        slot_duration: 30,
       });
     }
   }, [slot]);
@@ -110,7 +110,7 @@ const SlotFormModal = ({ show, onHide, onSaved, user, slot = null, title }) => {
   };
 
   const handleDurationChange = (e) => {
-    handleChange("duration", Number(e.target.value));
+    handleChange("slot_duration", Number(e.target.value));
   };
 
   const handleSubmit = async (e) => {
@@ -127,7 +127,7 @@ const SlotFormModal = ({ show, onHide, onSaved, user, slot = null, title }) => {
         start_time: formData.start_time,
         end_date: formData.end_date,
         end_time: formData.end_time,
-        duration: formData.duration,
+        slot_duration: formData.slot_duration,
       };
       if (slot) payload.id = slot.id;
 
@@ -222,7 +222,7 @@ const SlotFormModal = ({ show, onHide, onSaved, user, slot = null, title }) => {
               <Form.Group className="mb-3">
                 <Form.Label>Duration</Form.Label>
                 <Form.Select
-                  value={formData.duration}
+                  value={formData.slot_duration}
                   onChange={handleDurationChange}
                   required
                 >

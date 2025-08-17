@@ -16,8 +16,8 @@ const MembershipCardBenefits = () => {
     "Vaidya Bandhu Card – Just ₹49/- Unlimited Savings & Care for 365 Days.",
     "Immediate Activation: Get your digital card instantly via website or app.",
     "Effortless Auto-Renewal: Unused memberships renew automatically after one year.",
-    "Complimentary Medical Advice from 9 AM to 6 PM via Our Helpline",
-    "Connect with trusted doctors and find the right hospitals with seamless location support",
+    "Complimentary Medical Advice from 9 AM to 6 PM via Our Helpline.",
+    "Connect with trusted doctors and find the right hospitals with seamless location support.",
     "We help you choose the right doctors — connect with us via call, WhatsApp, email, or visit us.",
   ];
 

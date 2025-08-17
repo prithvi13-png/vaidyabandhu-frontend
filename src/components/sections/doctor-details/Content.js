@@ -8,7 +8,6 @@ const Content = ({ detailId }) => {
     data: doctorData,
     loading,
     error,
-    refetch,
   } = useFetch({
     method: "GET",
     request: "doctors/" + detailId,
@@ -209,18 +208,6 @@ const Content = ({ detailId }) => {
           {/* Sidebar Start */}
           <div className="col-lg-4">
             <div className="sidebar style-10 mt-5 mt-lg-0">
-              {/* Quick Info Widget */}
-              <div className="widget">
-                <h5 className="widget-title">Quick Information</h5>
-                <div className="widget-inner">
-                  <div className="quick-info-item mb-3">
-                    <strong>Experience:</strong> {item.experience || "N/A"}
-                  </div>
-                  <div className="quick-info-item mb-3">
-                    <strong>Specialization:</strong> {item.designation}
-                  </div>
-                </div>
-              </div>
 
               {/* Booking Summary Widget */}
               <div className="widget widget-form">

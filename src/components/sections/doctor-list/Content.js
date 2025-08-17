@@ -173,6 +173,7 @@ const Content = () => {
       hostital_id: id,
     },
   });
+console.log({ loader, data });
 
   // Filter Handlers
   const handlePageChange = (pageNumber) => setActivePage(pageNumber);
@@ -320,7 +321,7 @@ const Content = () => {
                   right: "8px",
                   top: "20px",
                   fontSize: "18px",
-                  color: "#6c757d",
+                  color: "#FFF",
                   textDecoration: "none",
                   lineHeight: "1",
                   width: "20px",
@@ -608,6 +609,7 @@ const Content = () => {
                             padding: "5px 15px",
                             fontSize: "12px",
                             fontWeight: "500",
+                            color: "#FFF",
                           }}
                         >
                           RESET
@@ -635,7 +637,7 @@ const Content = () => {
                             onClick={() => removeFilter(filter.type, filter.id)}
                             style={{
                               fontSize: "14px",
-                              color: "#6c757d",
+                              color: "#FFF",
                               textDecoration: "none",
                               lineHeight: "1",
                             }}

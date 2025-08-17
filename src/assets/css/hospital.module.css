@@ -1,0 +1,119 @@
+/* Root wrappers */
+.hospitalPage {
+  color: var(--thm-secondary);
+
+}
+
+/* Search */
+.searchIcon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  opacity: 0.7;
+}
+.searchInput {
+  padding-left: 40px;
+}
+
+/* Card */
+.hospitalCard {
+  border-radius: 12px;
+  overflow: hidden;
+  color: var(--thm-secondary);
+
+}
+
+/* Header with background */
+.cardHeaderCustom {
+  position: relative;
+  height: 150px;
+  padding: 12px;
+  color: var(--thm-secondary);
+}
+
+/* Background layer (uses CSS var with fallback) */
+.headerBg {
+  position: absolute;
+  inset: 0;
+  background-image: var(--header-bg), linear-gradient(180deg, #008493, #11a6b8);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: 0;
+}
+
+/* Overlay for contrast */
+.headerOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(0,0,0,.25), rgba(0,0,0,.55));
+  z-index: 1;
+}
+
+/* Content above overlay */
+.headerContent {
+  position: relative;
+  z-index: 2;
+}
+
+/* Code + status */
+.hospitalCode {
+  background: rgba(255,255,255,.15);
+  padding: 2px 8px;
+  border-radius: 8px;
+  font-size: 12px;
+}
+.statusIndicator {
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  display: inline-block;
+}
+.statusActive { background: #28a745; }
+.statusInactive { background: #adb5bd; }
+
+/* Contact buttons (HTML buttons with custom CSS) */
+.contactActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.contactBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: 600;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: transform .15s ease, filter .15s ease;
+  color: #fff;
+  will-change: transform;
+}
+.contactBtn:active { transform: translateY(0); }
+.contactBtn:hover { filter: brightness(.95); }
+
+.callBtn { background: #28a745; }
+.emailBtn { background: #17a2b8; }
+.cardHeaderCustom {
+  position: relative;
+  height: 150px;        /* important so the bg is visible */
+  padding: 12px;
+  color: #000;
+  border-radius: 12px 12px 0 0;
+  overflow: hidden;
+}
+
+.headerContent {
+  position: relative;
+  z-index: 1;
+  /* optional overlay for readability, if needed:
+  text-shadow: 0 1px 2px rgba(0,0,0,.4);
+  */
+}
+
+
+
