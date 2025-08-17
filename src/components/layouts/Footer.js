@@ -528,9 +528,14 @@ const Footer = () => {
                   padding: 0,
                   margin: 0,
                 }}
+                className="ul-padding"
               >
                 {dummyServiceblock.map((item, i) => (
-                  <li key={i} style={{ marginBottom: "10px" }}>
+                  <li
+                    key={i}
+                    style={{ paddingBottom: "10px !important" }}
+                    className="list-padding-setup"
+                  >
                     <a
                       href="/services" // Redirect all links to /services
                       style={{
@@ -573,6 +578,7 @@ const Footer = () => {
                   padding: 0,
                   margin: 0,
                 }}
+                className="ul-padding"
               >
                 {[
                   { title: "Doctors", path: "/doctor-list" },
@@ -582,7 +588,8 @@ const Footer = () => {
                   { title: "Our Services", path: "/services" },
                   { title: "Contact Us", path: "/contact" },
                 ].map((item, i) => (
-                  <li key={i} style={{ marginBottom: "10px" }}>
+                  <li key={i} style={{ marginBottom: "10px" }}
+                  className="list-padding-setup">
                     <a
                       href={item.path} // Placeholder link
                       style={{
@@ -1135,6 +1142,9 @@ const Footer = () => {
               .responsive-stack {
                 display: block !important;
               }
+              .ul-padding .list-padding-setup {
+               padding-bottom: 10px !important;
+              }   
             }
             
             /* Properly align icons inside circular background */
