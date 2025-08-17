@@ -3,7 +3,6 @@ import {
   Search,
   MapPin,
   Phone,
-  Home,
   ChevronLeft,
   ChevronRight,
   Filter,
@@ -833,12 +832,6 @@ const DiagnosticCentersApp = () => {
 
                                 {/* Features */}
                                 <div className="d-flex gap-3 mb-3">
-                                  {center.home_collection && (
-                                    <div className="d-flex align-items-center text-success">
-                                      <Home size={16} className="me-1" />
-                                      <small>Home Collection</small>
-                                    </div>
-                                  )}
                                   {center.opening_hours === "24/7" && (
                                     <div className="d-flex align-items-center text-info">
                                       <Clock size={16} className="me-1" />

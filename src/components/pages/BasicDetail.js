@@ -5,7 +5,7 @@ import Breadcrumbs from '../layouts/Breadcrumbs';
 import Footer from '../layouts/Footer';
 import Content from '../sections/basic-detail/Content';
 
-const pagelocation = "Basic Details";
+const pagelocation = "Membership Form";
 
 class BasicDetail extends Component {
     render() {
