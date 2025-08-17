@@ -15,7 +15,7 @@ import { Pagination, Autoplay } from "swiper/modules"; // Removed Navigation mod
 const services = [
   {
     icon: "flaticon-hospital",
-    title: "10%–40% Discount on Surgeries, Treatments, and Diagnostics",
+    title: "10% – 40% Discount on Surgeries, Treatments, and Diagnostics",
     points: [
       "Access affordable surgeries and treatments across all medical departments.",
       "Connect with the best doctors/specialists to ensure high-quality care.",
@@ -44,7 +44,7 @@ const services = [
     icon: "flaticon-doctor",
     title: "Your One-Stop Healthcare Solution",
     points: [
-      "Consult experts across 70+ departments ",
+      "Consult experts across 70+ departments.",
       "Find trusted doctors, hospitals, and labs, all in one place.",
       "Benefit from personalized medical support tailored to your needs.",
     ],

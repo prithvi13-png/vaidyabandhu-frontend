@@ -297,7 +297,7 @@ const LeadershipInline = () => {
               marginBottom: '15px', fontSize: 'clamp(16px, 2vw, 18px)', color: '#4a5568', fontFamily: "Poppins",
               opacity: animated ? 1 : 0, transform: animated ? "translateY(0)" : "translateY(15px)", transition: `opacity 0.7s ease-out 1.2s, transform 0.7s ease-out 1.2s`,
             }}>
-              At Vaidya Bandhu, our mission is simple but transformative - to make healthcare accessible, affordable, and trustworthy for everyone. As a Founder and COO, I am deeply committed to ensuring that every patient receives the best care possible, supported by a team that puts people above profit.
+              At Vaidya Bandhu, our mission is simple but transformative - to make healthcare accessible, affordable, and trustworthy for everyone. As a Founder, Director and COO, I am deeply committed to ensuring that every patient receives the best care possible, supported by a team that puts people above profit.
             </p>
             <p style={{
               marginBottom: '15px', fontSize: 'clamp(16px, 2vw, 18px)', color: '#4a5568', fontFamily: "Poppins",

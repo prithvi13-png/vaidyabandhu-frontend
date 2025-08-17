@@ -126,7 +126,7 @@ const Workprocess = () => {
                   fontWeight: "800",
                   color: "#004d4f",
                   marginBottom: "0",
-                  lineHeight: "1.2",
+                  lineHeight: "0.2",
                 }}
               >
                 How it Works?
