@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import navigation from "../../data/navigation.json";
 import MembershipModal from "./MembershipModal";
 import "../../assets/css/Header.css";
+
 // Custom Hamburger Menu Component
 const CustomHamburgerMenu = ({ isOpen, onClick }) => {
   return (
@@ -163,7 +164,9 @@ const Header = () => {
       )}
       {/* Header */}
       <header
-        className={`sigma_header header-absolute style-5 other can-sticky ${navMethod ? "mobile-menu-open" : ""}`}
+        className={`sigma_header header-absolute style-5 other can-sticky ${
+          navMethod ? "mobile-menu-open" : ""
+        }`}
         style={{
           position: "fixed",
           top: 0,
@@ -320,17 +323,28 @@ const Header = () => {
                   href="mailto:support@vaidyabandhu.com"
                   style={{ color: "#fff", textDecoration: "none" }}
                 >
-                  <i className="fal fa-envelope" style={{ marginRight: "5px" }} />{" "}
+                  <i
+                    className="fal fa-envelope"
+                    style={{ marginRight: "5px" }}
+                  />{" "}
                   support@vaidyabandhu.com
                 </a>
                 <Link to="#" style={{ color: "#fff", textDecoration: "none" }}>
-                  <i className="fal fa-map-marker-alt" style={{ marginRight: "5px" }} /> Bangalore
+                  <i
+                    className="fal fa-map-marker-alt"
+                    style={{ marginRight: "5px" }}
+                  />{" "}
+                  Bangalore
                 </Link>
                 <a
                   href="tel:+918535853589"
                   style={{ color: "#fff", textDecoration: "none" }}
                 >
-                  <i className="fal fa-mobile" style={{ marginRight: "5px" }} /> +91 8535 8535 89
+                  <i
+                    className="fal fa-mobile"
+                    style={{ marginRight: "5px" }}
+                  />{" "}
+                  +91 8535 8535 89
                 </a>
               </div>
             </div>
@@ -416,10 +430,40 @@ const Header = () => {
                     </>
                   ) : (
                     <>
+                      
+                      {/* Existing Membership Button */}
                       <li className="d-none d-sm-block">
                         <MembershipModal />
                       </li>
-                      {/* REMOVED: Mobile membership button from header */}
+                      {/* Login Button UI */}
+                      <li className="d-none d-sm-block">
+                        <button
+                          className="sigma_btn btn-sm"
+                          style={{
+                            backgroundColor: "#00908d",
+                            color: "white",
+                            border: "none",
+                            padding: "8px 16px",
+                            borderRadius: "5px",
+                            cursor: "pointer",
+                            fontSize: "14px",
+                            textTransform: "uppercase",
+                            fontWeight: "bold",
+                            letterSpacing: "1px",
+                            boxShadow: "0 2px 5px rgba(0,0,0,0.2)",
+                            transition: "all 0.3s ease",
+                            whiteSpace: "nowrap", // Prevents text from wrapping
+                          }}
+                          onMouseEnter={(e) =>
+                            (e.currentTarget.style.backgroundColor = "#007a7e")
+                          }
+                          onMouseLeave={(e) =>
+                            (e.currentTarget.style.backgroundColor = "#00908d")
+                          }
+                        >
+                          Login
+                        </button>
+                      </li>
                     </>
                   )}
                   {/* Hamburger menu: only visible below md (mobile/tablet) */}
@@ -486,14 +530,14 @@ const Header = () => {
                 margin-right: 4px;
               }
             }
-            
+           
             /* New styles for mobile layout */
             .navbar {
               display: flex;
               justify-content: space-between;
               align-items: center;
             }
-            
+           
             .sigma_header-controls-inner {
               display: flex;
               flex-direction: row;
@@ -505,7 +549,7 @@ const Header = () => {
               top: 50%;
               transform: translateY(-50%);
             }
-            
+           
             .mobile-hamburger {
               order: 1;
             }
@@ -559,6 +603,19 @@ const Header = () => {
           /* Ensure header stays above mobile menu */
           .sigma_header.mobile-menu-open {
             z-index: 1001 !important;
+          }
+          /* Custom styles to align buttons */
+          .sigma_header-controls-inner {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+          }
+          .sigma_header-controls-inner .d-none.d-sm-block {
+            margin: 0;
+            padding: 0;
+          }
+          .sigma_header-controls-inner .btn {
+            white-space: nowrap;
           }
         `}
       </style>

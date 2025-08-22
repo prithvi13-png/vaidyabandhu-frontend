@@ -21,7 +21,7 @@ const MembershipCardBenefits = () => {
     "We help you choose the right doctors — connect with us via call, WhatsApp, email, or visit us.",
   ];
 
-  const membershipCardImage = "assets/img/mm.png";
+  const membershipCardImage = "assets/img/membershipcard.jpg";
 
   return (
     <div

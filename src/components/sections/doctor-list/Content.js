@@ -173,7 +173,7 @@ const Content = () => {
       hostital_id: id,
     },
   });
-console.log({ loader, data });
+  console.log({ loader, data });
 
   // Filter Handlers
   const handlePageChange = (pageNumber) => setActivePage(pageNumber);
@@ -508,16 +508,17 @@ console.log({ loader, data });
         <div className="container-fluid">
           {/* Top Search Bar */}
           <div className="row mb-4">
-            <div className="col-12">
+            {/* Search Bar - Left */}
+            <div className="col-lg-4 col-md-6 col-sm-12 d-flex align-items-center">
               <div className="search-container">
                 <div
                   className="search-wrapper d-flex align-items-center"
                   style={{
                     background: "#f8f9fa",
                     borderRadius: "50px",
-                    padding: "8px 20px",
+                    padding: "0px 23px",
                     border: "1px solid #e9ecef",
-                    maxWidth: "600px",
+                    maxWidth: "400px",
                     margin: "0 auto",
                     position: "relative",
                   }}
@@ -530,8 +531,8 @@ console.log({ loader, data });
                     className="form-control border-0 bg-transparent"
                     style={{
                       fontSize: "16px",
-                      padding: "12px 10px",
-                      paddingRight: searchTerm ? "50px" : "10px",
+                      padding: "12px 40px",
+                      paddingRight: searchTerm ? "50px" : "40px",
                       outline: "none",
                       boxShadow: "none",
                       marginBottom: "0px",
@@ -564,6 +565,33 @@ console.log({ loader, data });
                 </div>
               </div>
             </div>
+
+            {/* Hospital Info  */}
+            <div className="col-lg-4 col-md-6 col-sm-12 text-center d-flex flex-column justify-content-center align-items-center">
+              <div
+                className="mb-1"
+                style={{
+                  fontWeight: "bold",
+                  fontSize: "25px", 
+                  color: "#333",
+                  lineHeight: "1.2",
+                }}
+              >
+                Sammprada Hospital
+              </div>
+              <div
+                style={{
+                  fontSize: "20px",
+                  color: "#555",
+                  lineHeight: "1.4",
+                  textAlign: "center",
+                }}
+              >
+                Bangalore # 76-1-1, Sarakki main road, V R Layout, JP Nagar 1st phase, Bangalore 560078.
+              </div>
+            </div>
+
+           
           </div>
 
           {/* Filter Chips Section */}

@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import MembershipModal from "../../layouts/MembershipModal";
-
 // Updated dummy workprocess data with 3 steps and new content
 const dummyWorkprocess = [
   {
@@ -32,18 +31,14 @@ const dummyWorkprocess = [
     imageUrl: "https://cdn-icons-png.flaticon.com/128/2991/2991158.png", // Support/help icon
   },
 ];
-
 const Workprocess = () => {
   const [animated, setAnimated] = useState(false);
   const [hoveredStep, setHoveredStep] = useState(null);
-
   useEffect(() => {
     const timer = setTimeout(() => setAnimated(true), 200);
     return () => clearTimeout(timer);
   }, []);
-
   const baseTransition = "all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94)";
-
   return (
     <div
       style={{
@@ -88,7 +83,6 @@ const Workprocess = () => {
           zIndex: 0,
         }}
       ></div>
-
       <div
         className="container"
         style={{
@@ -104,66 +98,61 @@ const Workprocess = () => {
             display: "flex",
             flexWrap: "wrap",
             alignItems: "center",
-            marginBottom: "30px",
-            gap: "20px", // Gap for responsive wrapping
+            marginBottom: "40px",
+            gap: "20px",
           }}
         >
-          <div style={{ flex: "1 1 300px" }}>
+          <div style={{ flex: "1", textAlign: "center" }}>
             {" "}
-            {/* col-lg-5 equivalent */}
             <div
               className="section-title"
               style={{
                 opacity: animated ? 1 : 0,
                 transform: animated ? "translateY(0)" : "translateY(30px)",
                 transition: "opacity 0.8s ease-out, transform 0.8s ease-out",
+                maxWidth: "800px",
+                margin: "0 auto",
               }}
             >
               <h3
                 style={{
-                  fontSize: "clamp(36px, 5vw, 34px)",
+                  fontSize: "clamp(36px, 5vw, 48px)",
                   fontFamily: "Poppins",
                   fontWeight: "800",
                   color: "#004d4f",
-                  marginBottom: "0",
-                  lineHeight: "0.2",
+                  marginBottom: "15px",
+                  lineHeight: "1.2",
                 }}
               >
                 How it Works?
               </h3>
+              <p
+                style={{
+                  fontSize: "clamp(16px, 2.5vw, 22px)",
+                  color: "#4a5568",
+                  lineHeight: "1.5",
+                  fontFamily: "Poppins",
+                  marginBottom: "0",
+                  opacity: animated ? 1 : 0,
+                  transform: animated ? "translateY(0)" : "translateY(30px)",
+                  transition:
+                    "opacity 0.8s ease-out 0.2s, transform 0.8s ease-out 0.2s",
+                }}
+              >
+                At Vaidya Bandhu, we make quality healthcare simple, affordable,
+                and accessible. Here's how you can benefit from our services.
+              </p>
             </div>
           </div>
-          <div style={{ flex: "1 1 300px" }}>
+          <div className="membership-button-wrapper" style={{ flex: "none", textAlign: "right" }}>
             {" "}
-            {/* col-lg-4 equivalent */}
-            <p
-              style={{
-                fontSize: "clamp(16px, 2.5vw, 22px)",
-                color: "#4a5568",
-                lineHeight: "1.4",
-                fontFamily: "Poppins",
-                marginBottom: "0",
-                opacity: animated ? 1 : 0,
-                transform: animated ? "translateY(0)" : "translateY(30px)",
-                transition:
-                  "opacity 0.8s ease-out 0.2s, transform 0.8s ease-out 0.2s",
-              }}
-            >
-              At Vaidya Bandhu, we make quality healthcare simple, affordable,
-              and accessible. Here's how you can benefit from our services.
-            </p>
-          </div>
-          <div className="membership-button-wrapper" style={{ flex: "1 1 auto", textAlign: "right" }}>
-            {" "}
-            {/* col-lg-3 equivalent */}
             <MembershipModal />
           </div>
         </div>
-
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", // Adjusted minmax to potentially fit more on a row
+            gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
             gap: "30px",
           }}
         >
@@ -183,7 +172,7 @@ const Workprocess = () => {
                 transition: baseTransition,
                 opacity: animated ? 1 : 0,
                 transform: animated ? "translateY(0)" : "translateY(40px)",
-                transitionDelay: `${0.4 + i * 0.1}s`, // Staggered animation
+                transitionDelay: `${0.4 + i * 0.1}s`,
                 position: "relative",
                 display: "flex",
                 flexDirection: "column",
@@ -197,7 +186,7 @@ const Workprocess = () => {
                   width: "60px",
                   height: "60px",
                   borderRadius: "50%",
-                  background: hoveredStep === i ? "#004d4f" : "#e6fffa", // Icon background changes on hover
+                  background: hoveredStep === i ? "#004d4f" : "#e6fffa",
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
@@ -207,17 +196,16 @@ const Workprocess = () => {
                   flexShrink: 0,
                 }}
               >
-                {/* Replaced span with img for step icon */}
                 <img
                   src={item.imageUrl}
                   alt={`Step ${i + 1}`}
                   style={{
-                    width: "100%", // Image fills the circular div
+                    width: "100%",
                     height: "100%",
                     borderRadius: "50%",
-                    objectFit: "cover", // Ensures the image covers the area without distortion
+                    objectFit: "cover",
                     transition: baseTransition,
-                    ...(hoveredStep === i && { transform: "scale(1.1)" }), // Image scales on hover
+                    ...(hoveredStep === i && { transform: "scale(1.1)" }),
                   }}
                   onError={(e) => {
                     e.target.onerror = null;
@@ -236,7 +224,7 @@ const Workprocess = () => {
                   marginBottom: "15px",
                   lineHeight: "1.3",
                   transition: baseTransition,
-                  ...(hoveredStep === i && { color: "#007a7e" }), // Title color changes on hover
+                  ...(hoveredStep === i && { color: "#007a7e" }),
                 }}
                 dangerouslySetInnerHTML={{ __html: item.title }}
               />
@@ -272,13 +260,12 @@ const Workprocess = () => {
                   </li>
                 ))}
               </ul>
-
               <span
                 className="steps"
                 style={{
                   fontSize: "clamp(28px, 4vw, 36px)",
                   fontWeight: "800",
-                  color: "rgba(0, 77, 79, 0.1)", // Faded step number
+                  color: "rgba(0, 77, 79, 0.1)",
                   position: "absolute",
                   bottom: "15px",
                   fontFamily: "Poppins",
@@ -286,7 +273,7 @@ const Workprocess = () => {
                   zIndex: 0,
                   transition: baseTransition,
                   ...(hoveredStep === i && {
-                    color: "rgba(0, 122, 126, 0.2)", // Slightly more visible on hover
+                    color: "rgba(0, 122, 126, 0.2)",
                     transform: "scale(1.1)",
                   }),
                 }}
@@ -307,14 +294,13 @@ const Workprocess = () => {
                   boxShadow: "0 0 0 0 rgba(0, 122, 126, 0.7)",
                   animation: "pulse 2s infinite",
                   zIndex: 1,
-                  display: hoveredStep === i ? "block" : "none", // Show only on hover
+                  display: hoveredStep === i ? "block" : "none",
                 }}
               />
             </div>
           ))}
         </div>
       </div>
-
       {/* Keyframes for animations */}
       <style>
         {`
@@ -342,8 +328,7 @@ const Workprocess = () => {
               box-shadow: 0 0 0 0 rgba(0, 122, 126, 0);
             }
           }
-
-          /* Remove all gaps between list items - More specific selectors */
+          /* Remove all gaps between list items */
           .container ul li {
             margin: 0 !important;
             padding: 0 !important;
@@ -353,7 +338,6 @@ const Workprocess = () => {
             padding-top: 0 !important;
           }
           
-          /* Target list items in the cards specifically */
           div[style*="background: #ffffff"] ul li {
             margin: 0 !important;
             padding: 0 !important;
@@ -362,76 +346,73 @@ const Workprocess = () => {
             padding-bottom: 0 !important;
             padding-top: 0 !important;
           }
-
           /* Responsive adjustments */
           @media (max-width: 992px) {
             .header-section {
                 flex-direction: column !important;
                 text-align: center !important;
-                gap: 5px !important;
+                gap: 15px !important;
+                margin-bottom: 35px !important;
             }
             
-            .header-section > div {
+            .header-section > div:first-child {
                 flex-basis: 100% !important;
                 text-align: center !important;
             }
             
             .membership-button-wrapper {
                 text-align: center !important;
-                margin-top: 12px !important;
+                margin-top: 10px !important;
             }
             
-            h3[style*="font-size: clamp(36px, 5vw, 48px)"] { /* How it Works title */
+            h3[style*="font-size: clamp(36px, 5vw, 48px)"] {
                 font-size: clamp(32px, 6vw, 40px) !important;
             }
-            p[style*="font-size: clamp(16px, 2.5vw, 18px)"] { /* Intro paragraph */
-                font-size: clamp(15px, 2.8vw, 17px) !important;
+            p[style*="font-size: clamp(16px, 2.5vw, 22px)"] {
+                font-size: clamp(15px, 2.8vw, 18px) !important;
             }
-            a[href="/appointment"] { /* Get Membership button */
+            a[href="/appointment"] {
                 font-size: 16px !important;
                 padding: 10px 20px !important;
             }
           }
-
           @media (max-width: 768px) {
             .header-section {
-                gap: 5px !important;
+                gap: 12px !important;
                 margin-bottom: 30px !important;
             }
             
             .membership-button-wrapper {
-                margin-top: 15px !important;
+                margin-top: 8px !important;
             }
             
-            div[style*="padding: 80px 20px"] { /* Section padding */
-              padding: 60px 15px !important;
+            div[style*="padding: 40px 20px"] {
+              padding: 30px 15px !important;
             }
-            h3[style*="font-size: clamp(36px, 5vw, 48px)"] { /* How it Works title */
+            h3[style*="font-size: clamp(36px, 5vw, 48px)"] {
                 font-size: clamp(28px, 7vw, 36px) !important;
             }
-            p[style*="font-size: clamp(16px, 2.5vw, 18px)"] { /* Intro paragraph */
+            p[style*="font-size: clamp(16px, 2.5vw, 22px)"] {
                 font-size: clamp(14px, 3vw, 16px) !important;
-                margin-bottom: 0 !important;
             }
-            div[style*="padding: 30px"] { /* Card padding */
+            div[style*="padding: 30px"] {
               padding: 25px !important;
             }
-            div[style*="width: 60px"] { /* Icon circle */
+            div[style*="width: 60px"] {
                 width: 50px !important;
                 height: 50px !important;
                 margin-bottom: 15px !important;
             }
-            img[alt^="Step"] { /* Image inside icon circle */
+            img[alt^="Step"] {
                 width: 100% !important;
                 height: 100% !important;
             }
-            h5[style*="font-size: clamp(20px, 2.5vw, 24px)"] { /* Step title */
-                font-size: clamp(18px, 3vw, 22px) !important;
+            h5[style*="font-size: clamp(20px, 2.5vw, 22px)"] {
+                font-size: clamp(18px, 3vw, 20px) !important;
             }
-            ul[style*="font-size: clamp(15px, 1.8vw, 16px)"] { /* List items */
+            ul[style*="font-size: clamp(15px, 1.8vw, 18px)"] {
                 font-size: clamp(14px, 2.5vw, 15px) !important;
             }
-            /* Ensure no gaps between list items on tablet */
             .container ul li {
                 margin: 0 !important;
                 padding: 0 !important;
@@ -448,51 +429,49 @@ const Workprocess = () => {
                 padding-bottom: 0 !important;
                 padding-top: 0 !important;
             }
-            span.steps { /* Faded step text */
-                font-size: clamp(24px, 5vw, 32px) !important;
+            span.steps {
+                font-size: clamp(24px, 5vw, 30px) !important;
                 bottom: 10px !important;
                 right: 15px !important;
             }
-            span.pulsive-dot { /* Pulsing dot */
+            span.pulsive-dot {
                 width: 12px !important;
                 height: 12px !important;
                 top: 15px !important;
                 right: 15px !important;
             }
           }
-
           @media (max-width: 480px) {
             .header-section {
-                gap: 5px !important;
+                gap: 10px !important;
                 margin-bottom: 25px !important;
             }
             
             .membership-button-wrapper {
-                margin-top: 12px !important;
+                margin-top: 5px !important;
             }
             
-            div[style*="padding: 80px 20px"] { /* Section padding */
-              padding: 40px 10px !important;
+            div[style*="padding: 40px 20px"] {
+              padding: 20px 10px !important;
             }
-            div[style*="padding: 30px"] { /* Card padding */
+            div[style*="padding: 30px"] {
               padding: 20px !important;
             }
-            div[style*="width: 60px"] { /* Icon circle */
+            div[style*="width: 60px"] {
                 width: 45px !important;
                 height: 45px !important;
                 margin-bottom: 10px !important;
             }
-            img[alt^="Step"] { /* Image inside icon circle */
+            img[alt^="Step"] {
                 width: 100% !important;
                 height: 100% !important;
             }
-            h5[style*="font-size: clamp(20px, 2.5vw, 24px)"] { /* Step title */
-                font-size: clamp(16px, 4vw, 20px) !important;
+            h5[style*="font-size: clamp(20px, 2.5vw, 22px)"] {
+                font-size: clamp(16px, 4vw, 18px) !important;
             }
-            ul[style*="font-size: clamp(15px, 1.8vw, 16px)"] { /* List items */
+            ul[style*="font-size: clamp(15px, 1.8vw, 18px)"] {
                 font-size: clamp(13px, 3vw, 14px) !important;
             }
-            /* Extra specific rule for smallest screens - no gaps */
             .container ul li {
                 margin: 0 !important;
                 padding: 0 !important;
@@ -511,12 +490,12 @@ const Workprocess = () => {
                 padding-top: 0 !important;
                 line-height: 1.3 !important;
             }
-            span.steps { /* Faded step text */
-                font-size: clamp(20px, 6vw, 28px) !important;
+            span.steps {
+                font-size: clamp(20px, 6vw, 26px) !important;
                 bottom: 8px !important;
                 right: 10px !important;
             }
-            span.pulsive-dot { /* Pulsing dot */
+            span.pulsive-dot {
                 width: 10px !important;
                 height: 10px !important;
                 top: 10px !important;
@@ -528,5 +507,4 @@ const Workprocess = () => {
     </div>
   );
 };
-
 export default Workprocess;

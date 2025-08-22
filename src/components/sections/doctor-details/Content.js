@@ -81,14 +81,14 @@ const Content = ({ detailId }) => {
                             <i className="fal fa-user-md" />
                             {item.experience || "N/A"} Years Experience
                           </span>
-                          <span>
+                          {/* <span>
                             <i className="fal fa-phone" />
                             {item.hospital?.[0]?.mobile || "+91-XXXXXXXXXX"}
                           </span>
                           <span>
                             <i className="fal fa-at" />
                             {item.email || "Not Provided"}
-                          </span>
+                          </span> */}
                           <span>
                             <i className="fal fa-building" />
                             {item.hospital?.[0]?.hospital_name || "N/A"}
@@ -151,7 +151,7 @@ const Content = ({ detailId }) => {
                   <h4>About {item.full_name}</h4>
                   <p>{item.content}</p>
                   <div className="why-trust-section mt-4">
-                    <h5>Why Patients Trust {item.full_name}</h5>
+                    {/* <h5>Why Patients Trust {item.full_name}</h5> */}
                     <p>{item.notes || "—"}</p>
                   </div>
                 </div>
@@ -231,7 +231,7 @@ const Content = ({ detailId }) => {
                 <hr />
                 <div className="widget-inner widget-service">
                   <form>
-                    <div className="form-group">
+                    {/* <div className="form-group">
                       <label>Choose Service</label>
                       <ul>
                         <li className="d-flex justify-content-between mb-3">
@@ -274,7 +274,7 @@ const Content = ({ detailId }) => {
                           <span>₹1200</span>
                         </li>
                       </ul>
-                    </div>
+                    </div> */}
                     <Link
                       to="/appointment"
                       className="sigma_btn btn-block btn-sm"

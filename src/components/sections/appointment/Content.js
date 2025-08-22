@@ -183,7 +183,7 @@ class Content extends Component {
                                                 </div>
                                             </div>
                                         </div>
-                                        <div className="form-block mb-0">
+                                        {/* <div className="form-block mb-0">
                                             <h4>Payment Information:</h4>
                                             <div className="row">
                                                 <div className="col-12">
@@ -216,7 +216,7 @@ class Content extends Component {
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </div> */}
                                         <div className="d-flex align-items-center mt-2">
                                             <input type="checkbox" id="checkbox" value={this.state.condition} onChange={this.condition} />
                                             <label className="mb-0" htmlFor="checkbox">I accept <Link to="#">Terms</Link> and <Link to="#">conditions</Link> and general policy</label>
@@ -243,7 +243,7 @@ class Content extends Component {
                                                 </li>
                                             </ul>
                                             <hr />
-                                            <ul>
+                                            {/* <ul>
                                                 <li className="d-flex align-items-center justify-content-between">
                                                     <span>Lorem ipsum dolor</span>
                                                     <span>$80</span>
@@ -252,16 +252,16 @@ class Content extends Component {
                                                     <span>Lorem ipsum dolor</span>
                                                     <span>$140</span>
                                                 </li>
-                                            </ul>
+                                            </ul> */}
                                             <hr />
                                             <ul>
-                                                <li className="d-flex align-items-center justify-content-between">
+                                                {/* <li className="d-flex align-items-center justify-content-between">
                                                     <span className="secondary-color"><b>Total</b></span>
                                                     <span className="secondary-color"><b>$220</b></span>
-                                                </li>
+                                                </li> */}
                                                 <li className="d-flex align-items-center justify-content-between">
                                                     <button type="submit" className="sigma_btn btn-block btn-sm mt-4">
-                                                        Confirm and Pay
+                                                        Confirm 
                                                         <i className="fal fa-arrow-right ms-3" />
                                                     </button>
                                                 </li>
