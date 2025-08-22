@@ -340,7 +340,10 @@ const Content = ({ detailId }) => {
                     </div>
                     <div className="sigma_info-description">
                       <h5>Our Phone</h5>
-                      <p>Phone No.: {item.hospital?.[0]?.mobile || "+91-XXXXXXXXXX"}</p>
+                      <p>
+                        Phone No:{" "}
+                        {item.hospital?.[0]?.mobile || "+91 8535853589"}
+                      </p>
                     </div>
                   </div>
                   <div className="sigma_info style-24 p-0 shadow-none">
@@ -353,7 +356,7 @@ const Content = ({ detailId }) => {
                       <h5>Our Email</h5>
                       <p>
                         Inquiries:{" "}
-                        {item.email || "dr.vijaykumar@example.com"}
+                        {item.email || "support@vaidyabandhu.com"}
                       </p>
                     </div>
                   </div>
@@ -365,10 +368,10 @@ const Content = ({ detailId }) => {
                     </div>
                     <div className="sigma_info-description">
                       <h5>Our Address</h5>
-                      <p>
-                        {item.hospital?.[0]?.address ||
-                          "Apollo Hospitals, Bannerghatta Road, Bangalore"}
+                       <p>
+                        {item.address || "Bangalore"}
                       </p>
+                     
                     </div>
                   </div>
                 </div>

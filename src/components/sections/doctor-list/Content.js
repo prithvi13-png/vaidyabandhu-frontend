@@ -525,7 +525,7 @@ const Content = () => {
                 >
                   <input
                     type="text"
-                    placeholder="Search for Doctors & Specialities...."
+                    placeholder="Search for Doctors & Special....."
                     value={searchTerm}
                     onChange={handleSearchChange}
                     className="form-control border-0 bg-transparent"
@@ -548,7 +548,7 @@ const Content = () => {
                         top: "50%",
                         transform: "translateY(-50%)",
                         fontSize: "20px",
-                        color: "#6c757d",
+                        color: "rgb(244 250 255)",
                         textDecoration: "none",
                         width: "24px",
                         height: "24px",

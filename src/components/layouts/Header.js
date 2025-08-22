@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 import navigation from "../../data/navigation.json";
 import MembershipModal from "./MembershipModal";
 import "../../assets/css/Header.css";
+import LoginModal from "./LoginModal";
+
 
 // Custom Hamburger Menu Component
 const CustomHamburgerMenu = ({ isOpen, onClick }) => {
@@ -430,14 +432,14 @@ const Header = () => {
                     </>
                   ) : (
                     <>
-                      
+                     
                       {/* Existing Membership Button */}
                       <li className="d-none d-sm-block">
                         <MembershipModal />
                       </li>
                       {/* Login Button UI */}
                       <li className="d-none d-sm-block">
-                        <button
+                        {/* <button
                           className="sigma_btn btn-sm"
                           style={{
                             backgroundColor: "#00908d",
@@ -462,7 +464,8 @@ const Header = () => {
                           }
                         >
                           Login
-                        </button>
+                        </button> */}
+                        <LoginModal/>
                       </li>
                     </>
                   )}
