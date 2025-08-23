@@ -178,7 +178,7 @@ const HospitalsPage = () => {
                             <Col xs="auto">
                               <div 
                                 className="d-flex align-items-center" 
-                                style={{ paddingRight: '160px' }}
+                                style={{ paddingRight: '130px' }}
                               >
                                 <CheckCircle
                                   size={14}
