@@ -10,18 +10,19 @@ const dummyServiceblock = [
   { title: "One-Stop Solution", path: "/services/one-stop-solution" },
 ];
 // === POLICY TEXTS (as provided) ===
-const TERMS_TEXT = `Terms and Conditions:
-Welcome to Vaidya Bandhu. These Terms and Conditions govern your access to and use of our website,
+const TERMS_TEXT = `Welcome to Vaidya Bandhu. These Terms and Conditions govern your access to and use of our website,
 www.vaidyabandhu.com, our mobile applications (if any), and the services provided through them, including membership
 subscriptions, healthcare discounts, consultations, and related features. By accessing or using our Services, you agree to be
 bound by these Terms, our Privacy Policy, Refund Policy, and any other policies referenced herein. If you do not agree,
 please do not use our Services. We may update these terms from time to time. Continued use of the Services after changes
 constitutes your acceptance of the revised Terms.
+
 1. Eligibility: To use our Services, you must:
 ● Be at least 18 years old or have parental/guardian consent if under 18.
 ● Reside in India, as our services are currently available only within India.
 ● Provide accurate and complete information during registration. We reserve the right to
 Refuse or terminate access if you do not meet these criteria
+
 2. Membership and Services
 Vaidya Bandhu offers a paid membership program for ₹49 per year, providing benefits such
 as:
@@ -32,6 +33,7 @@ as:
 non-transferable. Benefits are subject to availability and terms set by our partners. We do not guarantee specific discounts
 or service availability. Services are for informational and facilitative purposes only and do not constitute medical advice.
 Always consult a qualified healthcare professional for medical needs.
+
 3. User Accounts and Obligations
 To access certain Services, you may need to create an account. You agree to:
 ● Provide truthful information and update it as necessary.
@@ -44,14 +46,17 @@ under your account. Prohibited actions include:
 ● Interfering with the Website or Services.
 ● Uploading harmful content or viruses. We may suspend or terminate your account for
 violations.
+
 4. Payments and Fees: Membership fees are payable via secure payment gateways.
 All payments are non-refundable except as outlined in our Refund Policy. You authorize us to charge the applicable fee to
 your chosen payment method. Taxes are included where applicable.
+
 5. Intellectual Property
 All content on the Website and Services, including text, graphics, logos, and software, is owned by us or our licensors and
 protected by intellectual property laws.
 You are granted a limited, non-exclusive license to use the Services for personal, non-commercial purposes. You may not
 copy, modify, distribute, or create derivative works without our written consent.
+
 6. Disclaimers and Limitation of Liability
 Services are provided "as is" without warranties of any kind. We disclaim all warranties, express or implied, including
 fitness for a particular purpose.
@@ -61,34 +66,40 @@ We are not liable for:
 ● Interruptions, errors, or data loss.
 ● Indirect, consequential, or punitive damages.
 Our total liability shall not exceed the membership fee paid by you in the preceding 12 months.
+
 7. Indemnification
 You agree to indemnify and hold us harmless from any claims, losses, or damages arising from your use of the Services,
 violation of these Terms, or infringement of third-party rights.
+
 8. Termination
 We may terminate your access to Services at any time for any reason, including violations of these Terms. Upon termination,
 your right to use Services ceases, but provisions like liability and indemnification survive.
+
 9. Governing Law and Dispute Resolution
 These Terms are governed by the laws of India. Any disputes shall be resolved through arbitration in India, under the
 Arbitration and Conciliation Act, 1996, before a single arbitrator appointed by us. If arbitration is not feasible, disputes shall
 be subject to the exclusive jurisdiction of courts in India.
+
 10. Miscellaneous
 These Terms constitute the entire agreement between you and us. If any provision is invalid, the remainder remains
 enforceable.
 We are not liable for failures due to force majeure events.
+
 11. Contact Us
 For questions about these terms, contact us at
 ● WhatsApp/Helpline: +91 8535853589
 ● Email: support@vaidyabandhu.com
 ● Website: www.vaidyabandhu.com`;
-const PRIVACY_TEXT = `Privacy Policy:
-At Vaidya Bandhu, we are dedicated to safeguarding your privacy and handling your personal data responsibly. This Privacy
+const PRIVACY_TEXT = `At Vaidya Bandhu, we are dedicated to safeguarding your privacy and handling your personal data responsibly. This Privacy
 Policy explains our practices regarding the collection, use, processing, storage, disclosure, and protection of your personal
 information. We comply with the Digital Personal Data Protection Act, 2023 (DPDP Act), and other applicable Indian laws,
 ensuring transparency, fairness, and accountability in data handling.
+
 As a healthcare platform offering membership services, doctor appointment booking, consultations, and discounts at
 partnered facilities, we process personal data as a data fiduciary under the DPDP Act. Personal data includes any
 information that relates to an identified or identifiable individual, and we treat health-related data as sensitive personal data,
 applying enhanced protections.
+
 1. Information We Collect
 We collect personal information only when it is necessary and with your explicit consent or as permitted by law. Categories
 include:
@@ -101,6 +112,7 @@ website or use our services (collected automatically for security and improvemen
 ● Other Data: Payment details (processed through secure gateways) and any other information you voluntarily
 provide during inquiries or support interactions. We adhere to data minimization principles, collecting only what is
 essential for the specified purposes.
+
 2. How We Use Your Information
 We process your personal data based on lawful grounds, primarily your consent or for legitimate uses as defined under the
 DPDP Act. Purposes include:
@@ -115,6 +127,7 @@ analytics.
 • Complying with legal obligations, such as record-keeping for regulatory purposes. We do not use your
 data for secondary purposes without obtaining fresh consent. Health data is used strictly for the purpose consented to, with
 no profiling or automated decision-making unless disclosed.
+
 3. Data Sharing and Disclosure
 We do not sell, rent, or trade your personal data. Sharing occurs only under the following controlled circumstances:
 ● With Data Processors and Partners: Shared with authorised hospitals, doctors, or service providers (e.g.,
@@ -125,14 +138,17 @@ required by law, such as under court orders or for public health emergencies.
 ● Other: In the event of business transfers (e.g., mergers), but only with anonymised data where possible.
 We do not transfer data outside India unless adequate protections are in place, as per the DPDP Act
 requirements.
+
 4. Data Security
 In accordance with the DPDP Act, we have implemented privacy by design and default, vulnerability assessments, and
 breach notification protocols.
 While we take all reasonable steps to secure your data, no system is infallible, especially over internet-based transmission.
 Please use strong passwords and secure networks.
+
 5. Data Retention
 We retain personal data only for as long as necessary to fulfil the purposes outlined or as required by law (e.g., 5-10 years for
 health records under medical regulations). After this period, the data is securely disposed of or anonymised
+
 6. Your Rights
 As a Data Principal under the DPDP Act, you have the following rights:
 ● Access: Request a summary or copy of your personal data.
@@ -146,36 +162,43 @@ services or regulatory retention).
 To exercise these rights, email us at support@vaidyabandhu.com. We will respond within 30 days, free of charge for most
 requests. For grievances, contact us at the same address. If you are a parent/guardian, we require verifiable parental
 Consent for processing children's data (under 18), and such processing is limited.
+
 7. Cookies and Tracking Technologies
 Our website uses cookies, pixels, and analytics tools to enhance user experience, track usage, and improve functionality.
 These do not collect sensitive data without consent.
+
 8. Children's Privacy
 Our services are not directed at children under 18. We do not knowingly collect data from minors without parental consent.
 If we discover such data, we will delete it promptly.
+
 9. Updates to This Policy
 We may update this policy to reflect legal changes or service updates. Changes will be posted on the website with a new
 effective date, and we may notify you via email for significant updates. Continued use constitutes acceptance.
+
 10. Contact Us
 For questions, concerns, or to exercise rights, reach out:
 ● WhatsApp/Helpline: +91 8535853589
 ● Email: support@vaidyabandhu.com
 ● Website: www.vaidyabandhu.com`;
-const REFUND_TEXT = `Refund and Cancellation Policies:
-At Vaidya Bandhu Healthcare Foundation, we are committed to providing quality and affordable healthcare services to our
+const REFUND_TEXT = `At Vaidya Bandhu Healthcare Foundation, we are committed to providing quality and affordable healthcare services to our
 members. This Refund Policy outlines the conditions under which refunds may or may not be issued for payments related to
 our membership and services.
+
 We aim to ensure transparency and fairness in all transactions.
+
 1. The Membership Fee of ₹49 is non-refundable.
 ● Once the payment is successfully processed and the membership is activated, no refund will be issued
 under any circumstances.
 ● This fee covers administrative and operational costs, including the issuance of and access to benefits
 such as discounts on healthcare services and consultations.
+
 2. Service Eligibility Membership benefits, including discounts and consultations, are available throughout the
 1-year validity period of the membership.
 ● If a member is unable to utilise the services due to personal reasons, no partial or full refund will be
 provided.
 ● Non-utilization of services does not entitle members to a refund, as the membership fee is for access
 to the benefits provided during the validity period.
+
 3. Duplicate Payments: In the event of a duplicate payment for the same membership due to a technical error or
 banking issue:
 ● Please contact us with proof of the transaction, such as a transaction reference ID or screenshot of the
@@ -183,11 +206,13 @@ payment.
 ● Upon verification, a refund for the duplicate payment will be processed within 7–10 business days to
 the original mode of payment.
 Please note: Any applicable transaction or processing fees will be deducted from the refund amount.
+
 4. Failed Transactions: If a payment fails but the amount is deducted from your account:
 ● The deducted amount is typically reversed automatically by your bank or payment provider within
 5–7 business days.
 ● If the amount is not refunded within this period, please share the transaction reference ID with us. We
 will coordinate with the payment gateway to resolve the issue promptly.
+
 5. How to Request a Refund. Refunds, applicable only in cases of duplicate payments or failed transactions, can
 be requested by emailing us at payments@vaidyabandhu.com with the following details:
 ● Full Name
@@ -195,6 +220,7 @@ be requested by emailing us at payments@vaidyabandhu.com with the following deta
 ● Transaction Reference ID
 ● Screenshot of payment (if available)
 ● Reason for refund request: We will review and process eligible refund requests within 7–10 business days.
+
 6. Contact Us For any questions related to your membership, billing, or refund requests, please reach out to us at:
 ● WhatsApp/Helpline: +91 8535853589
 ● Email: payments@vaidyabandhu.com
@@ -982,6 +1008,7 @@ const Footer = () => {
                 background: "#001a1b",
                 zIndex: 10,
                 borderRadius: "12px 12px 0 0",
+                paddingLeft: "280px",
               }}
             >
               <h3 style={{ margin: "0", color: "#e2e8f0", fontSize: "18px" }}>
