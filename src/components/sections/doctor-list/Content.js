@@ -4,7 +4,6 @@ import Pagination from "react-js-pagination";
 import { useLocation } from "react-router-dom";
 import { isNotEmptyArray } from "../../utiles/utils";
 import { useFetch } from "../../hooks/usefetch";
-
 // Responsive filter sidebar for mobile + desktop
 function FilterSidebar({
   filtersContent,
@@ -74,7 +73,6 @@ const Content = () => {
   const params = new URLSearchParams(search);
   const specialtyParam = params.get("specialty");
   const id = params.get("id");
-
   // Filters
   const [searchTerm, setSearchTerm] = useState("");
   const [debouncedSearchTerm, setDebouncedSearchTerm] = useState(searchTerm);
@@ -87,11 +85,9 @@ const Content = () => {
   const [selectedGender, setSelectedGender] = useState("");
   const [sortBy, setSortBy] = useState("");
   const [showMobileFilters, setShowMobileFilters] = useState(false);
-
   const [specialtySearchTerm, setSpecialtySearchTerm] = useState("");
   const [locationSearchTerm, setLocationSearchTerm] = useState("");
   console.log({ selectedGender, selectedRating });
-
   // Static options
   const availabilityOptions = [
     "Monday",
@@ -114,20 +110,17 @@ const Content = () => {
     { value: "female", label: "Female" },
     { value: "Nopreference", label: "No preference" },
   ];
-
   // Debounce search
   useEffect(() => {
     const timeoutId = setTimeout(() => setDebouncedSearchTerm(searchTerm), 500);
     return () => clearTimeout(timeoutId);
   }, [searchTerm]);
-
   // Fetch specialties
   const {
     data: specialtiesData,
     loading: specialtiesLoading,
     error: specialtiesError,
   } = useFetch({ method: "GET", request: "specialty/" });
-
   // Fetch locations
   const {
     data: locationsData,
@@ -137,7 +130,6 @@ const Content = () => {
     method: "GET",
     request: "https://stage.vaidyabandhu.com/api/locations/",
   });
-
   useEffect(() => {
     if (locationsData) setLocations(locationsData.data || []);
     if (locationsError) {
@@ -150,7 +142,6 @@ const Content = () => {
       ]);
     }
   }, [locationsData, locationsError]);
-
   // Fetch doctors
   const {
     data,
@@ -174,7 +165,6 @@ const Content = () => {
     },
   });
   console.log({ loader, data });
-
   // Filter Handlers
   const handlePageChange = (pageNumber) => setActivePage(pageNumber);
   const handleSearchChange = (e) => setSearchTerm(e.target.value);
@@ -209,7 +199,6 @@ const Content = () => {
     setSpecialtySearchTerm("");
     setLocationSearchTerm("");
   };
-
   const hasActiveFilters =
     searchTerm ||
     selectedSpecialties.length > 0 ||
@@ -218,7 +207,6 @@ const Content = () => {
     selectedRating ||
     selectedGender ||
     sortBy;
-
   // Filtered
   const filteredSpecialties = specialtiesData?.data?.filter((specialty) =>
     specialty.title.toLowerCase().includes(specialtySearchTerm.toLowerCase())
@@ -226,7 +214,6 @@ const Content = () => {
   const filteredLocations = locations.filter((location) =>
     location.name.toLowerCase().includes(locationSearchTerm.toLowerCase())
   );
-
   // Filter chips
   const getActiveFilters = () => {
     const filters = [];
@@ -269,7 +256,6 @@ const Content = () => {
     }
     return filters;
   };
-
   const removeFilter = (filterType, filterId) => {
     switch (filterType) {
       case "specialty":
@@ -293,9 +279,7 @@ const Content = () => {
         break;
     }
   };
-
   const activeFilters = getActiveFilters();
-
   // Filters sidebar content (single instance, used twice)
   const filtersContent = (
     <>
@@ -473,7 +457,6 @@ const Content = () => {
           </div>
         ))}
       </div>
-
       {/* Gender */}
       <div className="mb-4">
         <h6 className="font-weight-bold mb-3">Gender</h6>
@@ -501,15 +484,13 @@ const Content = () => {
       </div>
     </>
   );
-
   return (
     <div className="sidebar-style-9 container-bg">
       <div className="section section-padding">
         <div className="container-fluid">
-          {/* Top Search Bar */}
-          <div className="row mb-4">
-            {/* Search Bar - Left */}
-            <div className="col-lg-4 col-md-6 col-sm-12 d-flex align-items-center">
+          {/* Top Search Bar - Centered */}
+          <div className="row mb-4 justify-content-center">
+            <div className="col-lg-6 col-md-8 col-sm-12 d-flex justify-content-center">
               <div className="search-container">
                 <div
                   className="search-wrapper d-flex align-items-center"
@@ -518,14 +499,14 @@ const Content = () => {
                     borderRadius: "50px",
                     padding: "0px 23px",
                     border: "1px solid #e9ecef",
-                    maxWidth: "400px",
-                    margin: "0 auto",
+                    width: "130%",
+                    maxWidth: "500px",
                     position: "relative",
                   }}
                 >
                   <input
                     type="text"
-                    placeholder="Search for Doctors & Special....."
+                    placeholder="Search for Doctors & Specialities...."
                     value={searchTerm}
                     onChange={handleSearchChange}
                     className="form-control border-0 bg-transparent"
@@ -544,7 +525,7 @@ const Content = () => {
                       className="btn btn-link p-0"
                       style={{
                         position: "absolute",
-                        right: "70px",
+                        right: "20px",
                         top: "50%",
                         transform: "translateY(-50%)",
                         fontSize: "20px",
@@ -565,35 +546,8 @@ const Content = () => {
                 </div>
               </div>
             </div>
-
-            {/* Hospital Info  */}
-            <div className="col-lg-4 col-md-6 col-sm-12 text-center d-flex flex-column justify-content-center align-items-center">
-              <div
-                className="mb-1"
-                style={{
-                  fontWeight: "bold",
-                  fontSize: "25px", 
-                  color: "#333",
-                  lineHeight: "1.2",
-                }}
-              >
-                Sammprada Hospital
-              </div>
-              <div
-                style={{
-                  fontSize: "20px",
-                  color: "#555",
-                  lineHeight: "1.4",
-                  textAlign: "center",
-                }}
-              >
-                Bangalore # 76-1-1, Sarakki main road, V R Layout, JP Nagar 1st phase, Bangalore 560078.
-              </div>
-            </div>
-
-           
           </div>
-
+          
           {/* Filter Chips Section */}
           <div className="row mb-4">
             <div className="col-12">
@@ -680,7 +634,6 @@ const Content = () => {
               </div>
             </div>
           </div>
-
           <div className="row">
             {/* Filters Sidebar */}
             <div className="col-lg-3 col-md-4 mb-4">
@@ -690,7 +643,6 @@ const Content = () => {
                 setShowMobileFilters={setShowMobileFilters}
               />
             </div>
-
             {/* Doctor List */}
             <div className="col-lg-9 col-md-8">
               {error ? (

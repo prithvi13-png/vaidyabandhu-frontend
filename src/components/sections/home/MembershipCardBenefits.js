@@ -133,7 +133,7 @@ const MembershipCardBenefits = () => {
                 height: "auto",
                 borderRadius: "16px",
                 boxShadow: "0 20px 40px rgba(0, 122, 126, 0.2)",
-                border: "3px solid #007a7e",
+              
                 display: "block",
               }}
               onError={(e) => {
