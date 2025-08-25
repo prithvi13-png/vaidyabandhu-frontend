@@ -7,6 +7,7 @@ function Counter(props) {
     const [focus, setFocus] = React.useState(false);
     return (
         <div className="sigma_counter-wrapper margin-negative bg-primary-1 style-5">
+            <div className='justify-content-center'>
             <div className="row" style={{ justifyContent: 'center' , paddingLeft: '10px' }}>
                 {/* Data */}
                 {counter.map((item, i) => (
@@ -42,6 +43,7 @@ function Counter(props) {
                 ))}
                 {/* Data */}
             </div>
+        </div>
         </div>
     );
 }
