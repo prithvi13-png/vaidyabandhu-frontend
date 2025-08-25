@@ -8,7 +8,7 @@ function Counter(props) {
     return (
         <div className="sigma_counter-wrapper margin-negative bg-primary-1 style-5">
             <div className='justify-content-center'>
-            <div className="row" style={{ justifyContent: 'center' , paddingLeft: '10px' }}>
+            <div className="row" style={{ justifyContent: 'center' }}>
                 {/* Data */}
                 {counter.map((item, i) => (
                   <div key={i} style={{ 

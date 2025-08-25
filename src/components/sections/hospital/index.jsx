@@ -215,10 +215,10 @@ const HospitalsPage = () => {
                       ></div>
                       <Card.Body className="p-3">
                         {/* Contact Actions */}
-                        <div className={style.headerContent}>
+                        {/* <div className={style.headerContent}>
                           <h5 className="mb-1 fw-bold">6th card hospital name</h5>
                           
-                        </div>
+                        </div> */}
                         <div className={`${style.contactActions} mb-3`}>
                           <button
                             className={`${style.contactBtn} ${style.callBtn}`}
