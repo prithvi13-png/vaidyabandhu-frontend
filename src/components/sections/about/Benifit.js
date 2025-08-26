@@ -126,7 +126,7 @@ const WhoCanBenefit = () => {
             }}
           >
             <img
-              src="https://placehold.co/600x400/007a7e/ffffff?text=People+Benefiting"
+              src="assets/img/benefit.jpg"
               alt="People benefiting from healthcare"
               style={{
                 width: "100%",

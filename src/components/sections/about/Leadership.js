@@ -102,7 +102,7 @@ const LeadershipInline = () => {
             </h2>
             <div style={{ display: 'flex', alignItems: 'center', gap: '20px', marginBottom: '20px', flexDirection: 'row' }}>
               <img
-                src={process.env.PUBLIC_URL + "/assets/img/ajith.jpg"}
+                src="/assets/img/ajith.jpg"
                 alt="Dr. Ajith Ramaswamy"
                 style={{
                   width: '150px',
